@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | ZOTEQ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="components/nav.css">
+    <link rel="stylesheet" href="components/footer.css">
+    <style>
+        :root {
+            --bg-primary: #fafafa;
+            --bg-secondary: #f5f5f5;
+            --bg-dark: #1a1a1a;
+            --text-primary: #2d2d2d;
+            --text-secondary: #5a5a5a;
+            --text-tertiary: #8a8a8a;
+            --accent: #e07a5f;
+            --accent-light: #f2a285;
+            --accent-dark: #c4604a;
+            --ocean: #3d8b8b;
+            --white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --space-unit: 8px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            overflow-x: hidden;
+        }
+
+        /* Icon Styles */
+        .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            color: var(--text-secondary);
+        }
+
+        .icon:hover {
+            transform: scale(1.1) rotate(5deg);
+            color: var(--accent);
+        }
+
+        .btn svg,
+        .view-btn svg,
+        .product-card-btn svg,
+        .nav-link svg,
+        .feature-icon svg,
+        .icon-wrapper svg {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .btn:hover svg,
+        .view-btn:hover svg,
+        .product-card-btn:hover svg,
+        .nav-link:hover svg,
+        .feature-icon:hover svg,
+        .icon-wrapper:hover svg {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* ===========================
+           CARD STYLES - 独立卡片CLASS
+           =========================== */
+        .card {
+            border-radius: 16px;
+            background: var(--white);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-sm {
+            border-radius: 12px;
+        }
+
+        .card-lg {
+            border-radius: 20px;
+        }
+
+        .card-glass {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+        }
+
+        h1 { font-size: clamp(3rem, 10vw, 5.5rem); }
+        h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
+        h3 { font-size: clamp(1.15rem, 2vw, 1.5rem); }
+
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            overflow: hidden;
+        }
+
+        .hero-image-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hero-image.active { opacity: 1; }
+        .hero-image.zooming { animation: heroZoom 20s ease-in-out infinite; }
+
+        @keyframes heroZoom {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(26,26,26,0.5) 0%, rgba(26,26,26,0.7) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 120px 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 24px;
+            animation: fadeInUp 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.5rem, 12vw, 6rem);
+            font-weight: 500;
+            line-height: 1.05;
+            color: #ffffff;
+            margin-bottom: 28px;
+            animation: fadeInUp 1s ease 0.5s forwards;
+            opacity: 0;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 520px;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease 0.7s forwards;
+            opacity: 0;
+        }
+
+        .hero-scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255,255,255,0.6);
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            animation: fadeInUp 1s ease 1s forwards, bounce 2s ease-in-out 1.5s infinite;
+            opacity: 0;
+        }
+
+        .hero-scroll-indicator::after {
+            content: '';
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent);
+        }
+
+        .hero-carousel-dots {
+            position: absolute;
+            bottom: 40px;
+            right: 80px;
+            display: flex;
+            gap: 12px;
+            z-index: 3;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .dot:hover { background: rgba(255, 255, 255, 0.6); transform: scale(1.2); }
+        .dot.active { background: #ffffff; transform: scale(1.3); }
+
+        .dot.active::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 18px;
+            height: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+        }
+
+        @keyframes bounce {
+            0%,100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+        .page-content {
+            position: relative;
+            z-index: 3;
+            background: var(--bg-primary);
+            margin-top: -80px;
+            border-radius: 32px 32px 0 0;
+        }
+
+        .content-section { padding: 80px 0; }
+        .page-wrap { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+
+        .image-highlight {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        .image-card { position: relative; overflow: hidden; border-radius: 16px; }
+        .image-card.large { grid-row: span 2; min-height: 500px; }
+        .image-card.medium { min-height: 238px; }
+
+        .image-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s ease; }
+        .image-card:hover img { transform: scale(1.08); }
+
+        .image-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 24px;
+            background: linear-gradient(to top, rgba(26,26,26,0.85), transparent);
+            color: #fff;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .image-card:hover .image-card-overlay { opacity: 1; transform: translateY(0); }
+        .image-card-overlay h3 { font-family: 'Playfair Display', serif; font-size: 1.35rem; margin-bottom: 8px; }
+        .image-card-overlay p { font-size: 0.85rem; opacity: 0.85; }
+
+        .section-header { margin-bottom: 48px; }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(224,122,95,0.1);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .section-icon svg { width: 20px; height: 20px; color: var(--accent); }
+        .section-desc { font-size: 1rem; color: var(--text-secondary); max-width: 400px; }
+
+        .locations-container { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; }
+        .locations-main { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+        .location-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 36px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+
+        .location-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+        .location-card.large { grid-column: 1/-1; padding: 48px; position: relative; overflow: hidden; }
+
+        .location-card.large::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 45%;
+            height: 100%;
+            background: url('images/Contact_SHveranda_800x1000.jpg') center/cover;
+            opacity: 0.08;
+        }
+
+        .location-card.medium { padding: 32px; }
+        .location-card.small { padding: 28px; }
+
+        .location-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+
+        .location-pin {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(224,122,95,0.1);
+            border-radius: 50%;
+        }
+
+        .location-pin svg { width: 14px; height: 14px; color: var(--accent); }
+        .location-marker { font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); }
+        .location-name { font-family: 'Playfair Display', serif; font-size: 1.35rem; margin-bottom: 12px; }
+        .location-address { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; }
+
+        .locations-sidebar { display: flex; flex-direction: column; gap: 24px; }
+
+        .sidebar-note {
+            background: linear-gradient(135deg, var(--accent), #d16a4f);
+            color: #fff;
+            padding: 40px;
+            border-radius: 16px;
+        }
+
+        .sidebar-note h4 { font-family: 'Playfair Display', serif; font-size: 1.35rem; margin-bottom: 12px; }
+        .sidebar-note p { font-size: 0.9rem; opacity: 0.92; line-height: 1.7; }
+        .sidebar-note .section-icon {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .sidebar-note .section-icon svg {
+            color: var(--white);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 32px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 100px;
+        }
+
+        .btn-primary {
+            background: var(--ocean);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--ocean-light);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(90, 173, 173, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--ocean);
+            border: 2px solid var(--ocean);
+        }
+
+        .btn-secondary:hover {
+            background: var(--ocean);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(90, 173, 173, 0.25);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-accent:hover {
+            background: var(--accent-light);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(224, 122, 95, 0.3);
+        }
+
+        .full-width-image { position: relative; height: 400px; margin: 60px 0; overflow: hidden; }
+        .full-width-image img { width: 100%; height: 100%; object-fit: cover; }
+        .full-width-image::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(26,26,26,0.15); }
+
+        .contact-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; }
+        .contact-methods { display: flex; flex-direction: column; gap: 4px; }
+        .contact-method { padding: 20px 0; border-bottom: 1px solid rgba(0,0,0,0.05); transition: padding-left 0.3s ease; }
+        .contact-method:first-child { padding-top: 0; }
+        .contact-method:hover { padding-left: 12px; }
+        .contact-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-tertiary); margin-bottom: 8px; }
+        .contact-value { font-size: 1rem; color: var(--text-primary); }
+        .contact-value a { color: var(--accent); border-bottom: 1px solid transparent; transition: border-color 0.3s ease; }
+        .contact-value a:hover { border-bottom-color: var(--accent); }
+
+        .contact-visual {
+            position: relative;
+            min-height: 380px;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+
+        .contact-visual-image { position: absolute; top: 0; right: 0; width: 50%; height: 100%; object-fit: cover; opacity: 0.06; }
+        .visual-heading { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 16px; line-height: 1.25; }
+        .visual-text { font-size: 0.95rem; color: var(--text-secondary); max-width: 280px; line-height: 1.7; }
+
+        .reveal-on-scroll { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+        .reveal-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 1024px) {
+            .hero-content { padding: 120px 48px; }
+            .image-highlight { grid-template-columns: 1fr; }
+            .image-card.large { grid-row: span 1; min-height: 350px; }
+            .locations-container { grid-template-columns: 1fr; }
+            .locations-sidebar { order: -1; }
+            .contact-layout { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content { padding: 100px 32px; }
+            .hero-title { font-size: clamp(2.5rem, 12vw, 4rem); }
+            .locations-main { grid-template-columns: 1fr; }
+            .location-card.large { padding: 32px; }
+            .full-width-image { height: 280px; }
+            .contact-visual { min-height: 300px; padding: 32px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="nav-container"></div>
+
+    <section class="hero-section">
+        <div class="hero-image-wrapper">
+            <img class="hero-image active zooming" src="images/Contact_hero1_1920x1280.jpg" alt="Hero image 1">
+            <img class="hero-image" src="images/Contact_hero2_1920x1280.jpg" alt="Hero image 2">
+            <img class="hero-image" src="images/Contact_hero3_1920x1280.jpg" alt="Hero image 3">
+            <img class="hero-image" src="images/Contact_hero4_1920x1280.jpg" alt="Hero image 4">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-label">Contact</div>
+            <h1 class="hero-title">Let's talk</h1>
+            <p class="hero-subtitle">We're here to answer your questions and discuss how we can support your needs across the Asia-Pacific region.</p>
+        </div>
+        <div class="hero-scroll-indicator">Scroll</div>
+        <div class="hero-carousel-dots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+            <span class="dot" data-index="3"></span>
+        </div>
+    </section>
+
+    <div class="page-content">
+        <section class="content-section">
+            <div class="page-wrap">
+                <div class="image-highlight reveal-on-scroll">
+                    <div class="image-card large">
+                        <img src="images/Contact_SHveranda_800x1000.jpg" alt="Shanghai Veranda">
+                        <div class="image-card-overlay"><h3>Shanghai Office</h3><p>Our Shanghai Office in east China</p></div>
+                    </div>
+                    <div class="image-card medium">
+                        <img src="images/Contact_CQoffice_800x600.jpg" alt="Chongqing Office">
+                        <div class="image-card-overlay"><h3>Chongqing Office</h3><p>West China operations center</p></div>
+                    </div>
+                    <div class="image-card medium">
+                        <img src="images/Contact_GZoffice_800x600.jpg" alt="Guangzhou Office">
+                        <div class="image-card-overlay"><h3>Guangzhou Hub</h3><p>South China regional office</p></div>
+                    </div>
+                </div>
+
+                <div class="section-header reveal-on-scroll">
+                    <h2 class="section-title">
+                        <span class="section-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </span>
+                        Our offices
+                    </h2>
+                    <p class="section-desc">Visit us at any of our locations across Asia-Pacific.</p>
+                </div>
+
+                <div class="locations-container reveal-on-scroll">
+                    <div class="locations-main">
+                        <div class="location-card large">
+                            <div class="location-header">
+                                <span class="location-pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                                <span class="location-marker">Beijing</span>
+                            </div>
+                            <h3 class="location-name">Headquarters</h3>
+                            <address class="location-address"><p>Room 1602, Unit 2</p><p>No. 6, Linshijia, Lincui Road</p><p>Beijing, 100101</p></address>
+                        </div>
+                        <div class="location-card medium">
+                            <div class="location-header">
+                                <span class="location-pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                                <span class="location-marker">Shanghai</span>
+                            </div>
+                            <h3 class="location-name">East China</h3>
+                            <address class="location-address"><p>No. 285 Yeji Road</p><p>Shanghai, 200444</p></address>
+                        </div>
+                        <div class="location-card small">
+                            <div class="location-header">
+                                <span class="location-pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                                <span class="location-marker">Guangzhou</span>
+                            </div>
+                            <h3 class="location-name">South China</h3>
+                            <address class="location-address"><p>Room 1501, South Block</p><p>Xindacheng Plaza</p><p>Guangzhou, 510000</p></address>
+                        </div>
+                    </div>
+                    <div class="locations-sidebar">
+                        <div class="sidebar-note">
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                                <span class="section-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                </span>
+                                <h4>Prefer a call?</h4>
+                            </div>
+                            <p>Our team is available Monday through Friday, 9am to 6pm local time.</p>
+                        </div>
+                        <div class="location-card small">
+                            <div class="location-header">
+                                <span class="location-pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                                <span class="location-marker">Chongqing</span>
+                            </div>
+                            <h3 class="location-name">West China</h3>
+                            <address class="location-address"><p>Group 4/5, Rong'gui Village</p><p>Chongqing, 408000</p></address>
+                        </div>
+                        <div class="location-card medium">
+                            <div class="location-header">
+                                <span class="location-pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                                <span class="location-marker">Malaysia</span>
+                            </div>
+                            <h3 class="location-name">Southeast Asia</h3>
+                            <address class="location-address"><p>PT 16143</p><p>Jalan Telok Mengkuang</p><p>42500 Telok Panglima Garang</p><p>Selangor, Malaysia</p></address>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="full-width-image reveal-on-scroll">
+            <img src="images/Contact_DesktopPhone_1920x768.jpg" alt="Team collaboration">
+        </div>
+
+        <section class="content-section">
+            <div class="page-wrap">
+                <div class="contact-layout reveal-on-scroll">
+                    <div>
+                        <div class="section-header">
+                            <h2 class="section-title">
+                                <span class="section-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                </span>
+                                Direct contact
+                            </h2>
+                            <p class="section-desc">Choose the channel that works best for you.</p>
+                        </div>
+                        <div class="contact-methods">
+                            <div class="contact-method"><div class="contact-label">Mobile</div><div class="contact-value"><a href="tel:+8613701885592">+86 137 0188 5592</a></div></div>
+                            <div class="contact-method"><div class="contact-label">WhatsApp</div><div class="contact-value"><a href="https://wa.me/8613701885592" target="_blank">+86 137 0188 5592</a></div></div>
+                            <div class="contact-method"><div class="contact-label">Email</div><div class="contact-value"><a href="mailto:info@zoteq.com">info@zoteq.com</a></div></div>
+                        </div>
+                    </div>
+                    <div class="contact-visual">
+                        <img class="contact-visual-image" src="images\Contact_Halfphone_400x500.jpg" alt="Global connectivity">
+                        <div><p class="visual-heading">Respond within 24 hours.</p><p class="visual-text">For urgent inquiries, we recommend calling us directly for the fastest assistance.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="footer-container"></div>
+
+    <script>
+        async function loadComponent(elementId, filePath) {
+            try {
+                const response = await fetch(filePath);
+                if (!response.ok) throw new Error('Failed to load ' + filePath);
+                const html = await response.text();
+                document.getElementById(elementId).innerHTML = html;
+            } catch (error) {
+                console.error('Error loading component:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            Promise.all([
+                loadComponent('nav-container', 'components/nav.html'),
+                loadComponent('footer-container', 'components/footer.html')
+            ]).then(function() {
+                function initMobileMenu() {
+                    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+                    const nav = document.querySelector('.main-nav');
+                    
+                    if (mobileMenuBtn && nav) {
+                        mobileMenuBtn.addEventListener('click', function() {
+                            nav.classList.toggle('mobile-open');
+                            mobileMenuBtn.classList.toggle('active');
+                        });
+                        console.log('Mobile menu initialized successfully');
+                    } else {
+                        console.log('Mobile menu elements not found, retrying...');
+                        setTimeout(initMobileMenu, 50);
+                    }
+                }
+                initMobileMenu();
+
+                const revealElements = document.querySelectorAll('.reveal-on-scroll');
+                const revealObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -80px 0px' });
+
+                revealElements.forEach(function(el) { revealObserver.observe(el); });
+
+                var carouselImages = document.querySelectorAll('.hero-image');
+                var carouselDots = document.querySelectorAll('.dot');
+                var currentIndex = 0;
+                var intervalTime = 6000;
+                var carouselInterval;
+
+                function goToSlide(index) {
+                    carouselImages.forEach(function(img) { img.classList.remove('active', 'zooming'); });
+                    carouselDots.forEach(function(dot) { dot.classList.remove('active'); });
+                    carouselImages[index].classList.add('active', 'zooming');
+                    carouselDots[index].classList.add('active');
+                    currentIndex = index;
+                }
+
+                function nextSlide() {
+                    var newIndex = currentIndex + 1;
+                    if (newIndex >= carouselImages.length) { newIndex = 0; }
+                    goToSlide(newIndex);
+                }
+
+                carouselDots.forEach(function(dot, index) {
+                    dot.addEventListener('click', function() {
+                        clearInterval(carouselInterval);
+                        goToSlide(index);
+                        carouselInterval = setInterval(nextSlide, intervalTime);
+                    });
+                });
+
+                carouselInterval = setInterval(nextSlide, intervalTime);
+            });
+        });
+    </script>
+</body>
+</html>

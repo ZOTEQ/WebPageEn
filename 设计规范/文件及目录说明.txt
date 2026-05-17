@@ -1,0 +1,75 @@
+#触发词：初始化， 重新加载以下信息
+
+# 目录说明
+## backups, 备份用
+## js-tests, 把临时生成的*.js，*.py等调试文件放这里，不要放在根目录
+## components目录下 nav.html, footer.html, 这些公用组件放这里
+## images, 存本地的图片文件
+## 设计规范，所有的规范性文档都放这个目录
+## screenshots, 存放切屏审核截图
+## videos, 存放视频审核文件
+
+# 附助文件说明
+## 根目录下的index.html都是主页用入口文件
+## 设计规范\ICON规范.md是ICON的设计规范
+## 设计规范\DESIGN.MD这个是整个网页的设计规范，每次生成新的样式或页面时，不能与它有冲突
+## 设计规范\视效审核.md
+
+#操作规范
+## 输入"预览"或"启动"，自动激活 Node.js 服务器并打开预览端口
+## 预览窗口自动定位到当前修改的模块位置
+## 本地服务器用 Nodemon 启动，通过 MCP 浏览器预览
+## 每次更新都要备份
+
+#每次启动自检
+## 用 Nodemon 启动服务并打开预览
+## 服务启动后，扫描根目录下所有 *.html 文件并生成预览链接
+## 检查 C:\Users\Admin\AppData\Local\ms-playwright 下是否已安装 Chromium
+## 检查视觉审核组件是否正常工作：Playwright 的 Chromium
+## 配置 PDF 生成用的 Chromium，文件目录为
+C:\Users\Admin\AppData\Local\ms-playwright\chromium-1223\chrome-win64\
+## 加载skill name: karpathy-guidelines
+
+#Playwright Chromium 配置规范
+## 安装位置（固定）
+C:\Users\Admin\AppData\Local\ms-playwright\chromium-1223\chrome-win64\chrome.exe
+
+## 脚本文件
+| 脚本 | 功能 | 命令 |
+|---|---|---|
+| [html_to_pdf.js](../../PlayWright/html_to_pdf.js) | 生成 PDF | `node PlayWright\html_to_pdf.js` |
+| [screenshot.js](../../PlayWright/screenshot.js) | 完整页面截图 | `node PlayWright\screenshot.js` |
+| [screenshot_pages.js](../../PlayWright/screenshot_pages.js) | 逐页截图 | `node PlayWright\screenshot_pages.js` |
+| [screenshot_element.js](../../PlayWright/screenshot_element.js) | 元素截图 | `node PlayWright\screenshot_element.js` |
+| [record_video.js](../../PlayWright/record_video.js) | 视频录制 | `node PlayWright\record_video.js` |
+| [device_test.js](../../PlayWright/device_test.js) | 设备模拟 | `node PlayWright\device_test.js` |
+| [performance_record.js](../../PlayWright/performance_record.js) | 性能录制 | `node PlayWright\performance_record.js` |
+
+## 视效审核规范
+详见：[设计规范/视效审核.md](../../设计规范/视效审核.md)
+
+# 视觉审核通用要求
+## 看用户要求切屏静帧审核画面或视频录屏审核动效
+## 静帧要求加载完毕后再审核
+## 视审触发词：视审
+
+# 主要网页文件说明
+## FacilityInfo.html 公司设施
+## Inddex.html 主页文件
+## ProductSearch_UI.html 所有产品列表
+## ProductInfo.html 产品详情页
+## OwnProduct_light.html 我司自产产品列表
+## Contact.html 我司联系方法
+## \components\nav.html 导航栏，适用于主页以外的所有页面的公共页头文件
+## \components\footer.html 页脚，适用于主页以外的所有页面的公共页脚文件
+
+# SKILLS路径地址
+1. impeccable（GitHub）
+https://github.com/pbakaus/impeccable
+2. taste-skills（GitHub，常用名 taste-skill）
+https://github.com/Leonxlnx/taste-skill
+3. awwwards（无官方 GitHub，推荐两个相关）
+https://github.com/topics/awwwards
+4，frontend-design（最接近）
+https://github.com/anthropics/claude-code/tree/main/plugins/frontend-design/skills/frontend-design
+

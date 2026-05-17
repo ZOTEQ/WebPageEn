@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premium Collection - Aromatic Ingredients</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --accent: #e07a5f;
+      --accent-light: #f2a285;
+      --accent-dark: #c4604a;
+      --ocean: #3d8b8b;
+      --ocean-light: #5aadad;
+      --sand: #d4a574;
+      --text-primary: #2d2d2d;
+      --text-secondary: #5a5a5a;
+      --text-tertiary: #8a8a8a;
+      --white: #ffffff;
+      --bg-primary: #fafafa;
+      --bg-secondary: #f5f5f5;
+      --bg-dark: #1a1a1a;
+      --text-xs: 0.75rem;
+      --text-sm: 0.875rem;
+      --text-base: 1rem;
+      --text-lg: 1.125rem;
+      --text-xl: 1.25rem;
+      --text-2xl: 1.5rem;
+      --text-3xl: 2rem;
+      --text-4xl: 2.5rem;
+      --text-5xl: 3rem;
+      --space-unit: 8px;
+      --space-xs: calc(var(--space-unit) * 1);
+      --space-sm: calc(var(--space-unit) * 2);
+      --space-md: calc(var(--space-unit) * 4);
+      --space-lg: calc(var(--space-unit) * 6);
+      --space-xl: calc(var(--space-unit) * 8);
+      --space-2xl: calc(var(--space-unit) * 12);
+      --space-3xl: calc(var(--space-unit) * 16);
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-out-cubic: cubic-bezier(0.4, 0, 0.2, 1);
+      --ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--text-primary);
+      background-color: var(--bg-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    .font-display {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .products-section {
+      padding: var(--space-3xl) 0 var(--space-2xl);
+      background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    }
+
+    .section-header {
+      max-width: 1200px;
+      margin: 0 auto var(--space-xl);
+      padding: 0 var(--space-lg);
+      text-align: center;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: calc(var(--space-unit) * 4);
+    }
+
+    .section-label::before,
+    .section-label::after {
+      content: '';
+      width: 56px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 500;
+      line-height: 1.15;
+      color: var(--text-primary);
+      letter-spacing: -0.025em;
+      margin-bottom: calc(var(--space-unit) * 3);
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      max-width: 600px;
+      line-height: 1.75;
+      margin: 0 auto;
+    }
+
+    .accordion-container {
+      width: 100%;
+      height: 75vh;
+      min-height: 520px;
+      background-color: var(--bg-dark);
+      display: flex;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .accordion-panel {
+      width: 25%;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: width 0.7s var(--ease-out-expo);
+      will-change: width;
+    }
+
+    .accordion-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.4) 100%);
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .panel-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.7s var(--ease-out-expo);
+      transform-origin: center center;
+    }
+
+    .panel-overlay {
+      position: absolute;
+      inset: 0;
+      transition: opacity 0.7s var(--ease-out-expo);
+      mix-blend-mode: multiply;
+    }
+
+    .panel-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      padding: var(--space-lg);
+    }
+
+    .panel-title-vertical {
+      color: var(--white);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(var(--text-lg), 2.5vw, var(--text-xl));
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      direction: rtl;
+      transition: opacity 0.7s var(--ease-out-expo);
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .panel-expanded {
+      position: absolute;
+      bottom: var(--space-xl);
+      left: var(--space-xl);
+      right: var(--space-xl);
+      z-index: 15;
+      opacity: 0;
+      transform: translateY(var(--space-md));
+      transition: all 0.7s var(--ease-out-expo);
+      pointer-events: none;
+    }
+
+    .panel-expanded.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .panel-expanded .name-en {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: var(--text-xs);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-xs);
+      font-weight: 500;
+      display: block;
+    }
+
+    .panel-expanded .name {
+      color: var(--white);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+      font-weight: 400;
+      margin-bottom: var(--space-md);
+      line-height: 1.1;
+      text-shadow: 0 2px 30px rgba(0,0,0,0.4);
+    }
+
+    .panel-expanded .desc {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: var(--text-sm);
+      line-height: 1.8;
+      max-width: 360px;
+      margin-bottom: var(--space-lg);
+      font-weight: 300;
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.05);
+      padding: var(--space-md);
+      border-radius: 8px;
+    }
+
+    .panel-expanded .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: 14px 28px;
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 100px;
+      transition: all 0.4s var(--ease-out-cubic);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.05em;
+    }
+
+    .panel-expanded .btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--accent);
+      transform: translateX(-100%);
+      transition: transform 0.4s var(--ease-out-cubic);
+    }
+
+    .panel-expanded .btn:hover::before {
+      transform: translateX(0);
+    }
+
+    .panel-expanded .btn span,
+    .panel-expanded .btn svg {
+      position: relative;
+      z-index: 1;
+    }
+
+    .panel-expanded .btn:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(224, 122, 95, 0.3);
+    }
+
+    .panel-expanded .btn svg {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.3s var(--ease-out-cubic);
+    }
+
+    .panel-expanded .btn:hover svg {
+      transform: translateX(3px);
+    }
+
+    .mobile-accordion {
+      display: none;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding: 0 var(--space-md);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .mobile-panel {
+      position: relative;
+      height: 140px;
+      overflow: hidden;
+      cursor: pointer;
+      border-radius: 20px;
+      transition: all 0.5s var(--ease-out-expo);
+      box-shadow: var(--shadow-md);
+    }
+
+    .mobile-panel:hover {
+      box-shadow: var(--shadow-lg);
+    }
+
+    .mobile-panel.active {
+      height: auto;
+      min-height: 420px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .mobile-panel .panel-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.7s var(--ease-out-expo);
+    }
+
+    .mobile-panel.active .panel-bg {
+      transform: scale(1.05);
+    }
+
+    .mobile-panel .panel-overlay {
+      position: absolute;
+      inset: 0;
+      transition: opacity 0.7s var(--ease-out-expo);
+    }
+
+    .mobile-panel .mobile-content {
+      position: relative;
+      z-index: 10;
+      padding: var(--space-lg);
+      background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.7) 100%);
+      min-height: 140px;
+    }
+
+    .mobile-panel.active .mobile-content {
+      min-height: 420px;
+    }
+
+    .mobile-panel .mobile-name-en {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: var(--text-xs);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-xs);
+      font-weight: 500;
+    }
+
+    .mobile-panel .mobile-name {
+      color: var(--white);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: var(--text-2xl);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .mobile-panel .mobile-desc {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: var(--text-sm);
+      line-height: 1.7;
+      margin-top: var(--space-md);
+      opacity: 0;
+      transform: translateY(var(--space-sm));
+      transition: all 0.7s var(--ease-out-expo);
+      max-width: 100%;
+    }
+
+    .mobile-panel.active .mobile-desc {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.2s;
+    }
+
+    .mobile-panel .mobile-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: 14px 28px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 100px;
+      margin-top: var(--space-md);
+      opacity: 0;
+      transform: translateY(var(--space-sm));
+      transition: all 0.7s var(--ease-out-expo);
+      backdrop-filter: blur(10px);
+      letter-spacing: 0.05em;
+    }
+
+    .mobile-panel.active .mobile-btn {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.35s;
+    }
+
+    .mobile-panel .mobile-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .section-fade {
+      opacity: 0;
+      transform: translateY(var(--space-lg));
+      transition: opacity 0.9s var(--ease-out-cubic), transform 0.9s var(--ease-out-cubic);
+    }
+
+    .section-fade.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1200px) {
+      .panel-expanded {
+        bottom: var(--space-lg);
+        left: var(--space-lg);
+        right: var(--space-lg);
+      }
+      
+      .panel-expanded .name {
+        font-size: clamp(var(--text-2xl), 3.5vw, var(--text-3xl));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .accordion-container {
+        display: none;
+      }
+
+      .mobile-accordion {
+        display: flex;
+      }
+
+      .products-section {
+        padding: var(--space-2xl) 0;
+      }
+
+      .section-header {
+        padding: 0 var(--space-md);
+      }
+
+      .section-title {
+        font-size: clamp(var(--text-2xl), 5vw, var(--text-4xl));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .section-title {
+        font-size: clamp(var(--text-xl), 6vw, var(--text-3xl));
+      }
+
+      .mobile-panel {
+        height: 120px;
+      }
+
+      .mobile-panel.active {
+        min-height: 380px;
+      }
+
+      .mobile-panel.active .mobile-content {
+        min-height: 380px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+      
+      .section-fade {
+        transform: none;
+      }
+    }
+
+    .panel-expanded .btn:focus,
+    .mobile-panel .mobile-btn:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(224, 122, 95, 0.4);
+    }
+
+    @media (hover: none) {
+      .panel-expanded .btn:active {
+        transform: translateY(-1px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="products-section section-fade">
+    <div class="section-header">
+      <span class="section-label">Collection</span>
+      <h2 class="section-title">Premium Essential Oils</h2>
+      <p class="section-subtitle">
+        Each essential oil in our collection is sourced from nature's finest origins, carefully selected and distilled to deliver pure aromatic experiences.
+      </p>
+    </div>
+
+    <div id="desktopAccordion" class="accordion-container"></div>
+
+    <div id="mobileAccordion" class="mobile-accordion"></div>
+  </section>
+
+  <script>
+    const seriesData = [
+      {
+        name: 'Herbal',
+        nameEn: 'Mediterranean',
+        color: '#2d5a3d',
+        bg: 'images0/series-herbal.jpg',
+        desc: 'Rosemary, thyme, and basil harvested from the sun-drenched Mediterranean coast. These fresh herbal essences awaken your senses with natural vitality.',
+      },
+      {
+        name: 'Citrus',
+        nameEn: 'Mediterranean',
+        color: '#c76a3f',
+        bg: 'images0/series-citrus.jpg',
+        desc: 'Sweet orange, lemon, and grapefruit kissed by the Mediterranean sun. Every drop carries the brilliance of southern sunshine.',
+      },
+      {
+        name: 'Woody',
+        nameEn: 'Ancient Forests',
+        color: '#4a3728',
+        bg: 'images0/series-woody.jpg',
+        desc: 'Sandalwood, cedar, and oud from ancient trees that have stood for centuries. Find stillness and inner peace in their grounding presence.',
+      },
+      {
+        name: 'Floral',
+        nameEn: 'Garden Bloom',
+        color: '#8b5a6b',
+        bg: 'images0/series-floral.jpg',
+        desc: 'Rose, jasmine, and lavender in full bloom. Let your spirit unfurl and blossom amid these delicate floral whispers.',
+      },
+    ];
+
+    let activeIndex = null;
+    let isMobile = window.innerWidth <= 768;
+
+    window.addEventListener('resize', () => {
+      const wasMobile = isMobile;
+      isMobile = window.innerWidth <= 768;
+      
+      if (wasMobile !== isMobile) {
+        activeIndex = null;
+        buildDesktop();
+        buildMobile();
+      }
+    });
+
+    function preloadImages() {
+      seriesData.forEach(series => {
+        const img = new Image();
+        img.src = series.bg;
+      });
+    }
+
+    function buildDesktop() {
+      const container = document.getElementById('desktopAccordion');
+      if (!container) return;
+      
+      container.innerHTML = '';
+
+      seriesData.forEach((series, index) => {
+        const panel = document.createElement('div');
+        panel.className = 'accordion-panel';
+        panel.setAttribute('role', 'button');
+        panel.setAttribute('tabindex', '0');
+        panel.setAttribute('aria-label', `View ${series.name} series`);
+
+        panel.innerHTML = `
+          <div class="panel-bg" style="background-image: url('${series.bg}');"></div>
+          <div class="panel-overlay" style="background-color: ${series.color}; opacity: 0.65"></div>
+          <div class="panel-content">
+            <span class="panel-title-vertical">${series.name}</span>
+          </div>
+          <div class="panel-expanded">
+            <span class="name-en">${series.nameEn}</span>
+            <h3 class="name">${series.name} Series</h3>
+            <p class="desc">${series.desc}</p>
+            <button class="btn" aria-label="Explore ${series.name} series">
+              <span>Explore</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+        `;
+
+        panel.addEventListener('mouseenter', () => {
+          if (isMobile) return;
+          setActiveDesktop(index);
+        });
+
+        panel.addEventListener('mouseleave', () => {
+          if (isMobile) return;
+          setActiveDesktop(null);
+        });
+
+        panel.addEventListener('focus', () => {
+          if (isMobile) return;
+          setActiveDesktop(index);
+        });
+
+        panel.addEventListener('blur', () => {
+          if (isMobile) return;
+          setActiveDesktop(null);
+        });
+
+        panel.addEventListener('keydown', (e) => {
+          if (isMobile) return;
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            setActiveDesktop(activeIndex === index ? null : index);
+          }
+        });
+
+        container.appendChild(panel);
+      });
+    }
+
+    function setActiveDesktop(index) {
+      const panels = document.querySelectorAll('.accordion-panel');
+
+      panels.forEach((panel, i) => {
+        const bg = panel.querySelector('.panel-bg');
+        const overlay = panel.querySelector('.panel-overlay');
+        const title = panel.querySelector('.panel-title-vertical');
+        const expanded = panel.querySelector('.panel-expanded');
+
+        const isActive = index !== null && i === index;
+
+        panel.style.width = index === null ? '25%' : (isActive ? '45%' : '18.33%');
+        overlay.style.opacity = isActive ? '0.25' : '0.65';
+        title.style.opacity = isActive ? '0' : '1';
+        expanded.classList.toggle('active', isActive);
+
+        panel.setAttribute('aria-expanded', isActive.toString());
+      });
+
+      activeIndex = index;
+    }
+
+    function buildMobile() {
+      const container = document.getElementById('mobileAccordion');
+      if (!container) return;
+      
+      container.innerHTML = '';
+
+      seriesData.forEach((series, index) => {
+        const panel = document.createElement('div');
+        panel.className = 'mobile-panel';
+        panel.setAttribute('role', 'button');
+        panel.setAttribute('tabindex', '0');
+        panel.setAttribute('aria-label', `View ${series.name} series`);
+        panel.setAttribute('aria-expanded', 'false');
+
+        panel.innerHTML = `
+          <div class="panel-bg" style="background-image: url('${series.bg}')"></div>
+          <div class="panel-overlay" style="background-color: ${series.color}; opacity: 0.65"></div>
+          <div class="mobile-content">
+            <span class="mobile-name-en">${series.nameEn}</span>
+            <h3 class="mobile-name">${series.name} Series</h3>
+            <p class="mobile-desc">${series.desc}</p>
+            <button class="mobile-btn" aria-label="Learn more about ${series.name} series">
+              <span>Learn More</span>
+            </button>
+          </div>
+        `;
+
+        panel.addEventListener('click', () => {
+          if (!isMobile) return;
+          toggleMobilePanel(index);
+        });
+
+        panel.addEventListener('keydown', (e) => {
+          if (!isMobile) return;
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleMobilePanel(index);
+          }
+        });
+
+        container.appendChild(panel);
+      });
+    }
+
+    function toggleMobilePanel(index) {
+      const panels = document.querySelectorAll('.mobile-panel');
+      const isActive = activeIndex === index;
+
+      panels.forEach((panel, i) => {
+        const isTarget = i === index;
+        
+        if (isTarget && !isActive) {
+          panel.classList.add('active');
+          panel.setAttribute('aria-expanded', 'true');
+          panel.querySelector('.panel-overlay').style.opacity = '0.3';
+        } else {
+          panel.classList.remove('active');
+          panel.setAttribute('aria-expanded', 'false');
+          panel.querySelector('.panel-overlay').style.opacity = '0.65';
+        }
+      });
+
+      activeIndex = isActive ? null : index;
+    }
+
+    function initScrollFade() {
+      const section = document.querySelector('.products-section');
+      if (!section) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              section.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.05, rootMargin: '-100px' }
+      );
+
+      observer.observe(section);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      preloadImages();
+      buildDesktop();
+      buildMobile();
+      initScrollFade();
+    });
+  </script>
+</body>
+</html>

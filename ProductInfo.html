@@ -1,0 +1,2101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geranyl Acetate 60 | ZOTEQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="components/nav.css">
+    <link rel="stylesheet" href="components/footer.css">
+    
+    <style>
+        :root {
+            --accent: #e07a5f;
+            --accent-light: #f2a285;
+            --accent-dark: #c4604a;
+            --ocean: #3d8b8b;
+            --sand: #d4a574;
+            --text-primary: #2d2d2d;
+            --text-secondary: #5a5a5a;
+            --text-tertiary: #8a8a8a;
+            --white: #ffffff;
+            --bg-primary: #fafafa;
+            --bg-secondary: #f5f5f5;
+            --bg-dark: #0a0f1a;
+            --bg-card: #ffffff;
+            --bg-frosted: rgba(255, 255, 255, 0.7);
+            --border-subtle: rgba(26, 26, 26, 0.08);
+            --border-hover: rgba(26, 26, 26, 0.15);
+            --space-unit: 8px;
+            --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Icon Styles */
+        .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s var(--ease-out), color 0.3s var(--ease-out);
+            color: var(--text-secondary);
+        }
+
+        .icon:hover {
+            transform: scale(1.1) rotate(5deg);
+            color: var(--accent);
+        }
+
+        .btn svg,
+        .view-btn svg,
+        .product-card-btn svg,
+        .nav-link svg,
+        .feature-icon svg,
+        .icon-wrapper svg {
+            transition: transform 0.3s var(--ease-out);
+        }
+
+        .btn:hover svg,
+        .view-btn:hover svg,
+        .product-card-btn:hover svg,
+        .nav-link:hover svg,
+        .feature-icon:hover svg,
+        .icon-wrapper:hover svg {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .hero-section {
+            position: relative;
+            padding: calc(var(--space-unit) * 16) 0;
+            overflow: hidden;
+            background: linear-gradient(135deg, #faf9f7 0%, #f0eeeb 100%);
+        }
+
+        .hero-bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e07a5f' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: calc(var(--space-unit) * 20) calc(var(--space-unit) * 7);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: calc(var(--space-unit) * 10);
+            align-items: center;
+        }
+
+        .hero-text {
+            animation: fadeSlideUp 1s cubic-bezier(0.4, 0, 0.2, 1) both;
+        }
+
+        .hero-visual {
+            animation: fadeSlideUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 1.5);
+            margin-bottom: calc(var(--space-unit) * 5);
+            font-size: 0.8125rem;
+            color: var(--text-tertiary);
+        }
+
+        .breadcrumb a {
+            color: var(--text-tertiary);
+            text-decoration: none;
+            transition: color 0.25s var(--ease-out);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--accent);
+        }
+
+        .breadcrumb-separator {
+            opacity: 0.5;
+        }
+
+        .breadcrumb-current {
+            color: var(--text-secondary);
+        }
+
+        .product-meta-row {
+            display: flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 3);
+            flex-wrap: wrap;
+            margin-bottom: calc(var(--space-unit) * 4);
+        }
+
+        .product-category-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 1);
+            padding: calc(var(--space-unit) * 1.5) calc(var(--space-unit) * 3);
+            background: rgba(224, 122, 95, 0.1);
+            border: 1px solid rgba(224, 122, 95, 0.2);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .product-code-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: calc(var(--space-unit) * 1.5) calc(var(--space-unit) * 3);
+            background: rgba(61, 139, 139, 0.1);
+            border: 1px solid rgba(61, 139, 139, 0.2);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--ocean);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .product-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            letter-spacing: -0.035em;
+            line-height: 1.1;
+            margin-bottom: calc(var(--space-unit) * 3);
+            color: var(--text-primary);
+        }
+
+        .product-synonym {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: calc(var(--space-unit) * 3);
+            font-style: italic;
+        }
+
+        .product-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+            margin: calc(var(--space-unit) * 4) 0;
+        }
+
+        .info-divider {
+            height: 1px;
+            background: var(--border-subtle);
+            margin: calc(var(--space-unit) * 4) 0;
+        }
+
+        .product-detail-row {
+            display: flex;
+            gap: calc(var(--space-unit) * 4);
+        }
+
+        .detail-column {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--space-unit) * 3);
+            flex: 1;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .detail-divider {
+            width: 1px;
+            background: var(--border-subtle);
+        }
+
+        .detail-label {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .detail-value {
+            font-family: 'Inter', monospace;
+            font-size: 0.9375rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .detail-value.reach-yes {
+            color: #10b981;
+        }
+
+        .product-synonym-label {
+            font-weight: 600;
+            color: var(--text-tertiary);
+            font-style: normal;
+            margin-right: 4px;
+        }
+
+        .product-detail-tags {
+            display: flex;
+            gap: calc(var(--space-unit) * 6);
+            margin-bottom: calc(var(--space-unit) * 5);
+            flex-wrap: wrap;
+        }
+
+        .detail-tag {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 140px;
+        }
+
+        .detail-tag-label {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .detail-tag-value {
+            font-family: 'Inter', monospace;
+            font-size: 0.9375rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .detail-tag-value.reach-yes {
+            color: #10b981;
+        }
+
+        .product-codes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: calc(var(--space-unit) * 8);
+            padding-top: calc(var(--space-unit) * 4);
+            border-top: 1px solid var(--border-subtle);
+            justify-content: flex-start;
+        }
+
+        .product-code-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 140px;
+        }
+
+        .code-label {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .code-value {
+            font-family: 'Inter', monospace;
+            font-size: 1rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeSlideUp 0.8s var(--ease-out) 0.2s both;
+        }
+
+        .product-image-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .product-image-container:hover {
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .product-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .product-image-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .molecular-formula-container {
+            position: absolute;
+            bottom: calc(var(--space-unit) * 6);
+            left: calc(var(--space-unit) * 5);
+            right: calc(var(--space-unit) * 5);
+            padding: calc(var(--space-unit) * 4) calc(var(--space-unit) * 5);
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .formula-grid {
+            display: flex;
+            flex-direction: row;
+            gap: calc(var(--space-unit) * 6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .formula-divider {
+            width: 1px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .formula-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .formula-label {
+            font-size: 0.625rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+        }
+
+        .formula-value {
+            font-family: 'Inter', monospace;
+            font-size: 1.125rem;
+            color: var(--text-primary);
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.15s; }
+        .reveal-delay-2 { transition-delay: 0.25s; }
+        .reveal-delay-3 { transition-delay: 0.35s; }
+
+        .info-section {
+            position: relative;
+            z-index: 2;
+            padding: calc(var(--space-unit) * 16) calc(var(--space-unit) * 7);
+            background: linear-gradient(180deg, #ffffff 0%, #fefefe 50%, #fafaf9 100%);
+        }
+
+        .info-header {
+            max-width: 1400px;
+            margin: 0 auto calc(var(--space-unit) * 10);
+            text-align: center;
+        }
+
+        .info-section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 18px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: calc(var(--space-unit) * 4);
+        }
+
+        .info-section-label::before,
+        .info-section-label::after {
+            content: '';
+            width: 56px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+
+        .info-section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: calc(var(--space-unit) * 5);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: calc(var(--space-unit) * 6);
+            transition: all 0.4s var(--ease-out);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+        }
+
+        .info-card:hover {
+            border-color: rgba(224, 122, 95, 0.25);
+            transform: translateY(-8px);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-card-header {
+            display: flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 2.5);
+            margin-bottom: calc(var(--space-unit) * 5);
+        }
+
+        .info-card-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(224, 122, 95, 0.12) 0%, rgba(61, 139, 139, 0.08) 100%);
+            color: var(--accent);
+        }
+
+        .info-card-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .info-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+        }
+
+        .info-list {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--space-unit) * 4);
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--space-unit) * 0.5);
+        }
+
+        .info-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .info-value {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .info-value.highlight {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .info-value.success {
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .specs-section {
+            padding: calc(var(--space-unit) * 16) calc(var(--space-unit) * 7);
+            background: linear-gradient(180deg, #eef0f2 0%, #e5e7ea 50%, #d8dadd 100%);
+        }
+
+        .specs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .specs-header {
+            text-align: center;
+            margin-bottom: calc(var(--space-unit) * 10);
+        }
+
+        .specs-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 18px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: calc(var(--space-unit) * 4);
+        }
+
+        .specs-label::before,
+        .specs-label::after {
+            content: '';
+            width: 56px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+
+        .specs-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .specs-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: calc(var(--space-unit) * 8);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: calc(var(--space-unit) * 4);
+        }
+
+        .spec-item {
+            position: relative;
+            padding: calc(var(--space-unit) * 5);
+            background: linear-gradient(145deg, rgba(255,255,255,0.8), rgba(250,250,250,0.4));
+            border-radius: 16px;
+            border: 1px solid rgba(26, 26, 26, 0.06);
+            transition: all 0.35s var(--ease-out);
+            backdrop-filter: blur(10px);
+        }
+
+        .spec-item:hover {
+            background: var(--bg-card);
+            border-color: rgba(224, 122, 95, 0.25);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .spec-label {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: calc(var(--space-unit) * 1);
+        }
+
+        .spec-value {
+            font-size: 1rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .recommendations-section {
+            padding: calc(var(--space-unit) * 16) calc(var(--space-unit) * 7);
+            background: linear-gradient(180deg, #fefefe 0%, #faf9f7 50%, #f5f4f2 100%);
+        }
+
+        .rec-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .rec-header {
+            text-align: center;
+            margin-bottom: calc(var(--space-unit) * 10);
+        }
+
+        .rec-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 18px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: calc(var(--space-unit) * 4);
+        }
+
+        .rec-label::before,
+        .rec-label::after {
+            content: '';
+            width: 56px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+
+        .rec-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .rec-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: calc(var(--space-unit) * 5);
+        }
+
+        .rec-card {
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s var(--ease-out);
+            cursor: pointer;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+        }
+
+        .rec-card:hover {
+            border-color: rgba(224, 122, 95, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .rec-card-image {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .rec-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .rec-card:hover .rec-card-image img {
+            transform: scale(1.1);
+        }
+
+        .rec-card-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.4) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .rec-card:hover .rec-card-image::after {
+            opacity: 1;
+        }
+
+        .rec-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
+        }
+
+        .rec-card-category {
+            position: absolute;
+            top: calc(var(--space-unit) * 4);
+            left: calc(var(--space-unit) * 4);
+            padding: calc(var(--space-unit) * 1) calc(var(--space-unit) * 2.5);
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            border-radius: 100px;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .rec-card-content {
+            padding: calc(var(--space-unit) * 4);
+        }
+
+        .rec-card-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: calc(var(--space-unit) * 1);
+            letter-spacing: -0.01em;
+        }
+
+        .rec-card-codes {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            font-family: 'Inter', monospace;
+            margin-bottom: calc(var(--space-unit) * 2);
+        }
+
+        .rec-card-desc {
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .rec-card-arrow {
+            position: absolute;
+            top: calc(var(--space-unit) * 4);
+            right: calc(var(--space-unit) * 4);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(224, 122, 95, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            opacity: 0;
+            transform: translateY(12px) scale(0.8);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 16px rgba(224, 122, 95, 0.4);
+        }
+
+        .rec-card:hover .rec-card-arrow {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .rec-card-arrow svg {
+            width: 18px;
+            height: 18px;
+            stroke-width: 2.5;
+            transition: transform 0.3s ease;
+        }
+
+        .rec-card:hover .rec-card-arrow svg {
+            transform: translateX(3px);
+        }
+
+        .cta-section {
+            padding: calc(var(--space-unit) * 16) calc(var(--space-unit) * 7);
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.12;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .cta-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 700;
+            color: white;
+            margin-bottom: calc(var(--space-unit) * 3);
+            letter-spacing: -0.02em;
+        }
+
+        .cta-desc {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: calc(var(--space-unit) * 6);
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: calc(var(--space-unit) * 4);
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: calc(var(--space-unit) * 2);
+            padding: calc(var(--space-unit) * 3) calc(var(--space-unit) * 6);
+            border-radius: 100px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s var(--ease-out);
+            cursor: pointer;
+            border: none;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: calc(var(--space-unit) * 5);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s var(--ease-out);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-sm {
+            border-radius: 12px;
+            padding: calc(var(--space-unit) * 3.5);
+        }
+
+        .card-lg {
+            border-radius: 20px;
+            padding: calc(var(--space-unit) * 6);
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--accent-dark);
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-4px);
+        }
+
+        .btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        @media (max-width: 1100px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: calc(var(--space-unit) * 8);
+            }
+
+            .hero-visual {
+                order: 2;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            .hero-text {
+                order: 1;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .specs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .rec-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                padding: calc(var(--space-unit) * 18) calc(var(--space-unit) * 4) calc(var(--space-unit) * 10);
+            }
+
+            .info-section {
+                padding: calc(var(--space-unit) * 12) calc(var(--space-unit) * 4);
+            }
+
+            .specs-section {
+                padding: calc(var(--space-unit) * 12) calc(var(--space-unit) * 4);
+            }
+
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .recommendations-section {
+                padding: calc(var(--space-unit) * 12) calc(var(--space-unit) * 4);
+            }
+
+            .rec-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: calc(var(--space-unit) * 12) calc(var(--space-unit) * 4);
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .product-codes {
+                gap: calc(var(--space-unit) * 4);
+            }
+
+            .product-meta-row {
+                gap: calc(var(--space-unit) * 2);
+            }
+
+            .formula-grid {
+                flex-direction: column;
+                gap: calc(var(--space-unit) * 3);
+                align-items: center;
+            }
+
+            .formula-divider {
+                width: 60px;
+                height: 1px;
+            }
+        }
+
+        
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                transition: none !important;
+                animation: none !important;
+            }
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body class="force-dark-nav force-dark-footer">
+    <!-- 公共导航 -->
+    <div id="nav-placeholder"></div>
+
+    <main id="fullpage" class="main-content">
+        <section class="hero-section">
+            <div class="hero-bg-pattern"></div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <nav class="breadcrumb" style="margin-top: 60px;">
+                        <a href="index.html">Home</a>
+                        <span class="breadcrumb-separator">/</span>
+                        <a href="ProductSearch_UI.html">Products</a>
+                        <span class="breadcrumb-separator">/</span>
+                        <span class="breadcrumb-current">Geranyl Acetate 60</span>
+                    </nav>
+                    
+                    <div class="product-meta-row">
+                        <span class="product-category-tag">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                <path d="M2 17l10 5 10-5"></path>
+                                <path d="M2 12l10 5 10-5"></path>
+                            </svg>
+                            <span class="category-text">Biobased</span>
+                        </span>
+                        <span class="product-code-tag">Code: C013</span>
+                    </div>
+                    
+                    <h1 class="product-title">Geranyl Acetate 60</h1>
+                    <p class="product-synonym"><span class="product-synonym-label">Synonym:</span>Geranyl acetate synthetic</p>
+                    <div class="info-divider"></div>
+                    
+                    <div class="product-detail-row">
+                        <div class="detail-column">
+                            <div class="detail-item">
+                                <span class="detail-label">REACH:</span>
+                                <span class="detail-value reach-yes">Yes</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">EINECS:</span>
+                                <span class="detail-value">234-323-3</span>
+                            </div>
+                        </div>
+                        <div class="detail-divider"></div>
+                        <div class="detail-column">
+                            <div class="detail-item">
+                                <span class="detail-label">CAS Number</span>
+                                <span class="detail-value">105-87-3</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">FEMA Number</span>
+                                <span class="detail-value">2509</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=800&q=80" alt="Geranyl Acetate">
+                        <div class="molecular-formula-container">
+                            <div class="formula-grid">
+                            <div class="formula-item">
+                                <span class="formula-label">Molecular Formula</span>
+                                <span class="formula-value">C₁₂H₂₀O₂</span>
+                            </div>
+                            <div class="formula-divider"></div>
+                            <div class="formula-item">
+                                <span class="formula-label">Molecular Weight</span>
+                                <span class="formula-value">196.29 g/mol</span>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section">
+            <div class="info-header reveal">
+                <span class="info-section-label">Essential Information</span>
+                <h2 class="info-section-title">Product Details</h2>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-card reveal reveal-delay-1">
+                    <div class="info-card-header">
+                        <div class="info-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                <path d="M2 17l10 5 10-5"></path>
+                                <path d="M2 12l10 5 10-5"></path>
+                            </svg>
+                        </div>
+                        <h3 class="info-card-title">Odor & Application</h3>
+                    </div>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <span class="info-label">Odor Description</span>
+                            <span class="info-value">Strong fruity and floral aromas reminiscent of rose and lavender</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Application</span>
+                            <span class="info-value">Daily chemical essence formula, personal care products</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card reveal reveal-delay-2">
+                    <div class="info-card-header">
+                        <div class="info-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="3" y1="9" x2="21" y2="9"></line>
+                                <line x1="9" y1="21" x2="9" y2="9"></line>
+                            </svg>
+                        </div>
+                        <h3 class="info-card-title">Packing & Storage</h3>
+                    </div>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <span class="info-label">Appearance</span>
+                            <span class="info-value">Colorless to pale yellow liquid</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Shelf Life</span>
+                            <span class="info-value highlight">24 Months</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Storage</span>
+                            <span class="info-value">Cool & dry place, away from oxidizing agents</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Package</span>
+                            <span class="info-value">180KGS / 25KGS / 5KGS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card reveal reveal-delay-3">
+                    <div class="info-card-header">
+                        <div class="info-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="info-card-title">Properties</h3>
+                    </div>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <span class="info-label">Flash Point</span>
+                            <span class="info-value">109°C</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Boiling Point</span>
+                            <span class="info-value">245°C</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="specs-section">
+            <div class="specs-container">
+                <div class="specs-header reveal">
+                    <span class="specs-label">Quality Standards</span>
+                    <h2 class="specs-title">Technical Specifications</h2>
+                </div>
+                
+                <div class="specs-card reveal">
+                    <div class="specs-grid">
+                        <div class="spec-item reveal reveal-delay-1">
+                            <div class="spec-label">Purity by GC</div>
+                            <div class="spec-value">98-100%</div>
+                        </div>
+                        <div class="spec-item reveal reveal-delay-1">
+                            <div class="spec-label">Appearance</div>
+                            <div class="spec-value">Colorless to slightly yellow liquid</div>
+                        </div>
+                        <div class="spec-item reveal reveal-delay-2">
+                            <div class="spec-label">Solubility (25°C)</div>
+                            <div class="spec-value">1ml sample dissolves in 9ml of 70% ethanol</div>
+                        </div>
+                        <div class="spec-item reveal reveal-delay-2">
+                            <div class="spec-label">Specific Gravity</div>
+                            <div class="spec-value">0.891-0.901 @ 20/20°C</div>
+                        </div>
+                        <div class="spec-item reveal reveal-delay-3">
+                            <div class="spec-label">Refractive Index</div>
+                            <div class="spec-value">1.456-1.464 @ 20°C</div>
+                        </div>
+                        <div class="spec-item reveal reveal-delay-3">
+                            <div class="spec-label">Acid Value</div>
+                            <div class="spec-value">Max 1.0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="recommendations-section">
+            <div class="rec-container">
+                <div class="rec-header reveal">
+                    <span class="rec-label">Explore More</span>
+                    <h2 class="rec-title">Related Products</h2>
+                </div>
+                
+                <div class="rec-grid">
+                    <a href="ProductInfo.html" class="rec-card reveal reveal-delay-1">
+                        <div class="rec-card-image">
+                            <img src="https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=400&q=85" alt="Linalool">
+                            <div class="rec-card-overlay"></div>
+                            <span class="rec-card-category">Biobased</span>
+                        </div>
+                        <div class="rec-card-content">
+                            <h3 class="rec-card-name">Linalool</h3>
+                            <div class="rec-card-codes">CAS: 78-70-6 · FEMA: 2635</div>
+                            <p class="rec-card-desc">A naturally occurring terpene alcohol with a sweet, floral scent profile.</p>
+                        </div>
+                        <div class="rec-card-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <a href="ProductInfo.html" class="rec-card reveal reveal-delay-1">
+                        <div class="rec-card-image">
+                            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&q=85" alt="Citronellol">
+                            <div class="rec-card-overlay"></div>
+                            <span class="rec-card-category">EU Natural</span>
+                        </div>
+                        <div class="rec-card-content">
+                            <h3 class="rec-card-name">Citronellol</h3>
+                            <div class="rec-card-codes">CAS: 106-22-9 · FEMA: 2311</div>
+                            <p class="rec-card-desc">A natural monoterpenoid with delicate rose-like fragrance notes.</p>
+                        </div>
+                        <div class="rec-card-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <a href="ProductInfo.html" class="rec-card reveal reveal-delay-2">
+                        <div class="rec-card-image">
+                            <img src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=400&q=85" alt="Geraniol">
+                            <div class="rec-card-overlay"></div>
+                            <span class="rec-card-category">Biobased</span>
+                        </div>
+                        <div class="rec-card-content">
+                            <h3 class="rec-card-name">Geraniol</h3>
+                            <div class="rec-card-codes">CAS: 106-24-1 · FEMA: 2507</div>
+                            <p class="rec-card-desc">A natural monoterpene alcohol with sweet rose fragrance characteristics.</p>
+                        </div>
+                        <div class="rec-card-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <a href="ProductInfo.html" class="rec-card reveal reveal-delay-2">
+                        <div class="rec-card-image">
+                            <img src="https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?w=400&q=85" alt="Neryl Acetate">
+                            <div class="rec-card-overlay"></div>
+                            <span class="rec-card-category">Synthetic</span>
+                        </div>
+                        <div class="rec-card-content">
+                            <h3 class="rec-card-name">Neryl Acetate</h3>
+                            <div class="rec-card-codes">CAS: 141-12-8 · FEMA: 2773</div>
+                            <p class="rec-card-desc">A floral-smelling monoterpene ester found in various essential oils.</p>
+                        </div>
+                        <div class="rec-card-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="cta-pattern"></div>
+            <div class="cta-container reveal">
+                <h2 class="cta-title">Ready to explore more ingredients?</h2>
+                <p class="cta-desc">Contact our team for samples, technical specifications, or custom formulation support. We're here to help create exceptional products together.</p>
+                <div class="cta-buttons">
+                    <a href="ProductSearch_UI.html" class="btn btn-primary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="M21 21l-4.35-4.35"></path>
+                        </svg>
+                        Browse All Products
+                    </a>
+                    <a href="#" class="btn btn-secondary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        Contact Our Team
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 公共页脚 -->
+    <div id="footer-placeholder"></div>
+
+    <script src="components/nav.js"></script>
+    <script src="components/footer.js"></script>
+    <script>
+        const productDatabase = {
+            'Ambroxan': {
+                name: 'Ambroxan',
+                synonym: 'Ambroxide',
+                code: 'AR-001',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '229-881-8',
+                cas: '6790-58-5',
+                fema: '3471',
+                molecularFormula: 'C₁₆H₂₈O',
+                molecularWeight: '236.40 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Limonene': {
+                name: 'd-Limonene',
+                synonym: 'Citrus terpene',
+                code: 'AR-002',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '209-943-4',
+                cas: '5989-27-5',
+                fema: '2633',
+                molecularFormula: 'C₁₀H₁₆',
+                molecularWeight: '136.24 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Geraniol': {
+                name: 'Geraniol',
+                synonym: 'trans-Geraniol',
+                code: 'AR-003',
+                category: 'EU Natural',
+                reach: 'Yes',
+                einecs: '203-377-1',
+                cas: '106-24-1',
+                fema: '2507',
+                molecularFormula: 'C₁₀H₁₈O',
+                molecularWeight: '154.25 g/mol',
+                image: 'https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=800&q=80'
+            },
+            'Vanillin': {
+                name: 'Vanillin',
+                synonym: '4-Hydroxy-3-methoxybenzaldehyde',
+                code: 'AR-004',
+                category: 'US Natural',
+                reach: 'Non',
+                einecs: '204-465-2',
+                cas: '121-33-5',
+                fema: '3107',
+                molecularFormula: 'C₈H₈O₃',
+                molecularWeight: '152.15 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Citral': {
+                name: 'Citral',
+                synonym: '3,7-Dimethyl-2,6-octadienal',
+                code: 'AR-005',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '206-246-3',
+                cas: '5392-40-5',
+                fema: '2303',
+                molecularFormula: 'C₁₀H₁₆O',
+                molecularWeight: '152.24 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Eugenol': {
+                name: 'Eugenol',
+                synonym: '4-Allyl-2-methoxyphenol',
+                code: 'AR-006',
+                category: 'EU Natural',
+                reach: 'Yes',
+                einecs: '202-679-1',
+                cas: '97-53-0',
+                fema: '2467',
+                molecularFormula: 'C₁₀H₁₂O₂',
+                molecularWeight: '164.20 g/mol',
+                image: 'https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=800&q=80'
+            },
+            'Linalool': {
+                name: 'Linalool',
+                synonym: '3,7-Dimethyl-1,6-octadien-3-ol',
+                code: 'AR-007',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '201-144-4',
+                cas: '78-70-6',
+                fema: '2635',
+                molecularFormula: 'C₁₀H₁₈O',
+                molecularWeight: '154.25 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Citronellol': {
+                name: 'Citronellol',
+                synonym: '3,7-Dimethyl-6-octen-1-ol',
+                code: 'AR-008',
+                category: 'EU Natural',
+                reach: 'Yes',
+                einecs: '203-375-0',
+                cas: '106-22-9',
+                fema: '2311',
+                molecularFormula: 'C₁₀H₂₀O',
+                molecularWeight: '156.27 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Menthol': {
+                name: 'Menthol',
+                synonym: '2-Isopropyl-5-methylcyclohexanol',
+                code: 'AR-009',
+                category: 'US Natural',
+                reach: 'Yes',
+                einecs: '218-690-9',
+                cas: '2216-51-5',
+                fema: '2665',
+                molecularFormula: 'C₁₀H₂₀O',
+                molecularWeight: '156.27 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Benzaldehyde': {
+                name: 'Benzaldehyde',
+                synonym: 'Benzoic aldehyde',
+                code: 'AR-010',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '202-860-4',
+                cas: '100-52-7',
+                fema: '2127',
+                molecularFormula: 'C₇H₆O',
+                molecularWeight: '106.12 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Ionone Alpha': {
+                name: 'Alpha-Ionone',
+                synonym: '4-(2,6,6-Trimethylcyclohex-1-en-1-yl)but-3-en-2-one',
+                code: 'AR-011',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '215-093-8',
+                cas: '127-41-3',
+                fema: '2594',
+                molecularFormula: 'C₁₃H₂₀O',
+                molecularWeight: '192.30 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Gamma-Decalactone': {
+                name: 'Gamma-Decalactone',
+                synonym: '4-Hydroxydecanoic acid lactone',
+                code: 'AR-012',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '211-892-9',
+                cas: '706-14-9',
+                fema: '2360',
+                molecularFormula: 'C₁₀H₁₈O₂',
+                molecularWeight: '170.25 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Ethyl Maltol': {
+                name: 'Ethyl Maltol',
+                synonym: '2-Ethyl-3-hydroxy-4-pyranone',
+                code: 'AR-013',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '225-609-6',
+                cas: '4940-11-8',
+                fema: '3487',
+                molecularFormula: 'C₇H₈O₃',
+                molecularWeight: '140.14 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Cinnamaldehyde': {
+                name: 'Cinnamaldehyde',
+                synonym: '3-Phenylprop-2-enal',
+                code: 'AR-014',
+                category: 'EU Natural',
+                reach: 'Yes',
+                einecs: '203-213-9',
+                cas: '104-55-2',
+                fema: '2286',
+                molecularFormula: 'C₉H₈O',
+                molecularWeight: '132.16 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Hexyl Acetate': {
+                name: 'Hexyl Acetate',
+                synonym: 'Acetic acid hexyl ester',
+                code: 'AR-015',
+                category: 'Synthetic',
+                reach: 'Non',
+                einecs: '205-551-8',
+                cas: '142-92-7',
+                fema: '2565',
+                molecularFormula: 'C₈H₁₆O₂',
+                molecularWeight: '144.21 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Benzyl Acetate': {
+                name: 'Benzyl Acetate',
+                synonym: 'Acetic acid phenylmethyl ester',
+                code: 'AR-016',
+                category: 'US Natural',
+                reach: 'Yes',
+                einecs: '205-403-5',
+                cas: '140-11-4',
+                fema: '2135',
+                molecularFormula: 'C₉H₁₀O₂',
+                molecularWeight: '150.18 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Phenylethanol': {
+                name: 'Phenylethanol',
+                synonym: '2-Phenylethanol',
+                code: 'AR-017',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '200-447-2',
+                cas: '60-12-8',
+                fema: '2858',
+                molecularFormula: 'C₈H₁₀O',
+                molecularWeight: '122.16 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Methyl Salicylate': {
+                name: 'Methyl Salicylate',
+                synonym: 'Methyl 2-hydroxybenzoate',
+                code: 'AR-018',
+                category: 'US Natural',
+                reach: 'Yes',
+                einecs: '200-678-5',
+                cas: '68-91-7',
+                fema: '2745',
+                molecularFormula: 'C₈H₈O₃',
+                molecularWeight: '152.15 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Alpha-Pinene': {
+                name: 'Alpha-Pinene',
+                synonym: '2,6,6-Trimethylbicyclo[3.1.1]hept-2-ene',
+                code: 'AR-019',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '201-291-9',
+                cas: '80-56-8',
+                fema: '2902',
+                molecularFormula: 'C₁₀H₁₆',
+                molecularWeight: '136.24 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Damascone Beta': {
+                name: 'Beta-Damascone',
+                synonym: '1-(2,6,6-Trimethylcyclohex-1-en-1-yl)but-2-en-1-one',
+                code: 'AR-020',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '245-851-7',
+                cas: '23726-90-1',
+                fema: '3622',
+                molecularFormula: 'C₁₃H₂₀O',
+                molecularWeight: '192.30 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Hedione': {
+                name: 'Hedione',
+                synonym: 'Methyl dihydrojasmonate',
+                code: 'AR-021',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '250-359-8',
+                cas: '3088-48-7',
+                fema: '3404',
+                molecularFormula: 'C₁₃H₂₂O₃',
+                molecularWeight: '226.31 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Iso E Super': {
+                name: 'Iso E Super',
+                synonym: '7-Methyl-3,4-dihydro-2H-1-benzopyran-4-one',
+                code: 'AR-022',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '259-110-3',
+                cas: '54464-57-2',
+                fema: '3449',
+                molecularFormula: 'C₁₄H₁₈O₂',
+                molecularWeight: '218.29 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Galaxolide': {
+                name: 'Galaxolide',
+                synonym: '1,3,4,6,7,8-Hexahydro-4,6,6,7,8,8-hexamethylcyclopenta[g]benzopyran',
+                code: 'AR-023',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '214-972-9',
+                cas: '1222-05-5',
+                fema: '2544',
+                molecularFormula: 'C₁₈H₂₆O',
+                molecularWeight: '258.40 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Musk Tonalide': {
+                name: 'Musk Tonalide',
+                synonym: '6-Acetyl-1,1,2,4,4,7-hexamethyltetralin',
+                code: 'AR-024',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '216-138-9',
+                cas: '1506-02-1',
+                fema: '2668',
+                molecularFormula: 'C₁₈H₂₆O',
+                molecularWeight: '258.40 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Veratraldehyde': {
+                name: 'Veratraldehyde',
+                synonym: '3,4-Dimethoxybenzaldehyde',
+                code: 'AR-025',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '204-408-1',
+                cas: '120-14-9',
+                fema: '3109',
+                molecularFormula: 'C₉H₁₀O₃',
+                molecularWeight: '166.17 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Anisyl Alcohol': {
+                name: 'Anisyl Alcohol',
+                synonym: '4-Methoxybenzyl alcohol',
+                code: 'AR-026',
+                category: 'EU Natural',
+                reach: 'Yes',
+                einecs: '203-273-6',
+                cas: '105-13-5',
+                fema: '2098',
+                molecularFormula: 'C₈H₁₀O₂',
+                molecularWeight: '138.16 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Cinnamyl Alcohol': {
+                name: 'Cinnamyl Alcohol',
+                synonym: '3-Phenylprop-2-en-1-ol',
+                code: 'AR-027',
+                category: 'EU Natural',
+                reach: 'Yes',
+                einecs: '203-212-3',
+                cas: '104-54-1',
+                fema: '2294',
+                molecularFormula: 'C₉H₁₀O',
+                molecularWeight: '134.18 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Nerol': {
+                name: 'Nerol',
+                synonym: 'cis-Geraniol',
+                code: 'AR-028',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '203-376-5',
+                cas: '106-25-2',
+                fema: '2775',
+                molecularFormula: 'C₁₀H₁₈O',
+                molecularWeight: '154.25 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Geranyl Acetate': {
+                name: 'Geranyl Acetate',
+                synonym: 'Geranyl acetate synthetic',
+                code: 'AR-029',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '234-323-3',
+                cas: '105-87-3',
+                fema: '2509',
+                molecularFormula: 'C₁₂H₂₀O₂',
+                molecularWeight: '196.29 g/mol',
+                image: 'https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=800&q=80'
+            },
+            'Linalyl Acetate': {
+                name: 'Linalyl Acetate',
+                synonym: '3,7-Dimethyl-1,6-octadien-3-yl acetate',
+                code: 'AR-030',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '204-106-2',
+                cas: '115-95-7',
+                fema: '2636',
+                molecularFormula: 'C₁₂H₂₀O₂',
+                molecularWeight: '196.29 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Citronellyl Acetate': {
+                name: 'Citronellyl Acetate',
+                synonym: '3,7-Dimethyl-6-octen-1-yl acetate',
+                code: 'AR-031',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '205-767-8',
+                cas: '150-84-5',
+                fema: '2311',
+                molecularFormula: 'C₁₂H₂₂O₂',
+                molecularWeight: '198.31 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Terpineol Alpha': {
+                name: 'Alpha-Terpineol',
+                synonym: '4-Methyl-1-(1-methylethyl)cyclohex-1-en-1-ol',
+                code: 'AR-032',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '202-676-4',
+                cas: '98-55-5',
+                fema: '3045',
+                molecularFormula: 'C₁₀H₁₈O',
+                molecularWeight: '154.25 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Delta-3-Carene': {
+                name: 'Delta-3-Carene',
+                synonym: '3,7,7-Trimethylbicyclo[4.1.0]hept-3-ene',
+                code: 'AR-033',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '236-600-9',
+                cas: '13466-78-9',
+                fema: '3821',
+                molecularFormula: 'C₁₀H₁₆',
+                molecularWeight: '136.24 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Camphor': {
+                name: 'Camphor',
+                synonym: '1,7,7-Trimethylbicyclo[2.2.1]heptan-2-one',
+                code: 'AR-034',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '200-962-4',
+                cas: '76-22-2',
+                fema: '2231',
+                molecularFormula: 'C₁₀H₁₆O',
+                molecularWeight: '152.24 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Borneol': {
+                name: 'Borneol',
+                synonym: '1,7,7-Trimethylbicyclo[2.2.1]heptan-2-ol',
+                code: 'AR-035',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '208-066-6',
+                cas: '507-70-0',
+                fema: '2157',
+                molecularFormula: 'C₁₀H₁₈O',
+                molecularWeight: '154.25 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Eucalyptol': {
+                name: 'Eucalyptol',
+                synonym: '1,8-Cineole',
+                code: 'AR-036',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '207-431-5',
+                cas: '470-82-6',
+                fema: '2465',
+                molecularFormula: 'C₁₀H₁₈O',
+                molecularWeight: '154.25 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Fenchone': {
+                name: 'Fenchone',
+                synonym: '1,3,3-Trimethylbicyclo[2.2.1]heptan-2-one',
+                code: 'AR-037',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '214-727-6',
+                cas: '1195-79-5',
+                fema: '2479',
+                molecularFormula: 'C₁₀H₁₆O',
+                molecularWeight: '152.24 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Thymol': {
+                name: 'Thymol',
+                synonym: '5-Methyl-2-isopropylphenol',
+                code: 'AR-038',
+                category: 'EU Natural',
+                reach: 'Yes',
+                einecs: '201-944-8',
+                cas: '89-83-8',
+                fema: '3066',
+                molecularFormula: 'C₁₀H₁₄O',
+                molecularWeight: '150.22 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Carvacrol': {
+                name: 'Carvacrol',
+                synonym: '2-Methyl-5-isopropylphenol',
+                code: 'AR-039',
+                category: 'EU Natural',
+                reach: 'Yes',
+                einecs: '207-849-6',
+                cas: '499-89-8',
+                fema: '2249',
+                molecularFormula: 'C₁₀H₁₄O',
+                molecularWeight: '150.22 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Pulegone': {
+                name: 'Pulegone',
+                synonym: '5-Methyl-2-isopropylcyclohex-4-en-1-one',
+                code: 'AR-040',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '201-943-1',
+                cas: '89-82-7',
+                fema: '2963',
+                molecularFormula: 'C₁₀H₁₆O',
+                molecularWeight: '152.24 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Menthone': {
+                name: 'Menthone',
+                synonym: '2-Isopropyl-5-methylcyclohexanone',
+                code: 'AR-041',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '233-952-4',
+                cas: '10458-14-7',
+                fema: '2667',
+                molecularFormula: 'C₁₀H₁₈O',
+                molecularWeight: '154.25 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Isomenthone': {
+                name: 'Isomenthone',
+                synonym: '2-Isopropyl-5-methylcyclohexanone',
+                code: 'AR-042',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '207-732-7',
+                cas: '491-07-6',
+                fema: '3460',
+                molecularFormula: 'C₁₀H₁₈O',
+                molecularWeight: '154.25 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Tetrahydrolinalool': {
+                name: 'Tetrahydrolinalool',
+                synonym: '3,7-Dimethyloctan-3-ol',
+                code: 'AR-043',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '201-134-4',
+                cas: '78-69-3',
+                fema: '3060',
+                molecularFormula: 'C₁₀H₂₂O',
+                molecularWeight: '158.28 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Dimetol': {
+                name: 'Dimetol',
+                synonym: '2,4-Dimethylbenzaldehyde',
+                code: 'AR-044',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '202-887-7',
+                cas: '100-87-0',
+                fema: '3442',
+                molecularFormula: 'C₉H₁₀O',
+                molecularWeight: '134.18 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Myrcene': {
+                name: 'Myrcene',
+                synonym: '7-Methyl-3-methyleneocta-1,6-diene',
+                code: 'AR-045',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '204-622-5',
+                cas: '123-35-3',
+                fema: '2762',
+                molecularFormula: 'C₁₀H₁₆',
+                molecularWeight: '136.24 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Ocimene Beta': {
+                name: 'Beta-Ocimene',
+                synonym: '3,7-Dimethyl-1,3,6-octatriene',
+                code: 'AR-046',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '237-383-2',
+                cas: '13877-91-3',
+                fema: '3539',
+                molecularFormula: 'C₁₀H₁₆',
+                molecularWeight: '136.24 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Sabinene': {
+                name: 'Sabinene',
+                synonym: '4-Methyl-1-(1-methylethyl)bicyclo[3.1.0]hex-3-ene',
+                code: 'AR-047',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '222-226-1',
+                cas: '3387-41-5',
+                fema: '3813',
+                molecularFormula: 'C₁₀H₁₆',
+                molecularWeight: '136.24 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Alloocimene': {
+                name: 'Alloocimene',
+                synonym: '2,6-Dimethyl-2,4,6-octatriene',
+                code: 'AR-048',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '211-612-9',
+                cas: '673-84-7',
+                fema: '2541',
+                molecularFormula: 'C₁₀H₁₆',
+                molecularWeight: '136.24 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Ysland': {
+                name: 'Ysland',
+                synonym: '1,3,4,6,7,8-Hexahydro-4,6,6,7,8,8-hexamethylcyclopenta[g]benzopyran',
+                code: 'AR-049',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '251-693-0',
+                cas: '33745-11-8',
+                fema: '3446',
+                molecularFormula: 'C₁₈H₂₆O',
+                molecularWeight: '258.40 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Citronellal': {
+                name: 'Citronellal',
+                synonym: '3,7-Dimethyl-6-octenal',
+                code: 'AR-050',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '203-374-5',
+                cas: '106-23-0',
+                fema: '2307',
+                molecularFormula: 'C₁₀H₁₈O',
+                molecularWeight: '154.25 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            }
+        };
+
+        function loadProductFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productName = urlParams.get('product');
+            
+            if (productName && productDatabase[productName]) {
+                const product = productDatabase[productName];
+                
+                try {
+                    document.title = product.name + ' | ZOTEQ';
+                    
+                    const elements = {
+                        '.breadcrumb-current': product.name,
+                        '.product-title': product.name,
+                        '.product-code-tag': 'Code: ' + product.code,
+                        '.category-text': product.category,
+                        '.detail-column:first-child .detail-item:nth-child(2) .detail-value': product.einecs,
+                        '.detail-column:last-child .detail-item:first-child .detail-value': product.cas,
+                        '.detail-column:last-child .detail-item:nth-child(2) .detail-value': product.fema,
+                        '.formula-value:first-child': product.molecularFormula,
+                        '.formula-value:last-child': product.molecularWeight
+                    };
+                    
+                    for (const [selector, value] of Object.entries(elements)) {
+                        const element = document.querySelector(selector);
+                        if (element) {
+                            element.textContent = value;
+                        }
+                    }
+                    
+                    const reachElement = document.querySelector('.detail-value.reach-yes, .detail-value.reach-no');
+                    if (reachElement) {
+                        reachElement.textContent = product.reach;
+                        reachElement.className = 'detail-value ' + (product.reach === 'Yes' ? 'reach-yes' : 'reach-no');
+                    }
+                    
+                    const categoryTag = document.querySelector('.product-category-tag');
+                    if (categoryTag) {
+                        const bgColor = product.category === 'Biobased' ? 'rgba(34, 197, 94, 0.1)' :
+                                       product.category === 'Synthetic' ? 'rgba(59, 130, 246, 0.1)' :
+                                       product.category === 'EU Natural' ? 'rgba(245, 158, 11, 0.1)' :
+                                       'rgba(168, 85, 247, 0.1)';
+                        const textColor = product.category === 'Biobased' ? '#16a34a' :
+                                         product.category === 'Synthetic' ? '#2563eb' :
+                                         product.category === 'EU Natural' ? '#d97706' :
+                                         '#9333ea';
+                        categoryTag.style.background = bgColor;
+                        categoryTag.style.color = textColor;
+                    }
+                    
+                    const synonymElement = document.querySelector('.product-synonym');
+                    if (synonymElement) {
+                        synonymElement.innerHTML = `<span class="product-synonym-label">Synonym:</span>${product.synonym}`;
+                    }
+                    
+                    const imgElement = document.querySelector('.product-image-container img');
+                    if (imgElement) {
+                        imgElement.src = product.image;
+                        imgElement.alt = product.name;
+                    }
+                } catch (e) {
+                    console.error('Error loading product:', e);
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProductFromURL();
+            document.querySelectorAll('.reveal').forEach((el, i) => {
+                setTimeout(() => {
+                    el.classList.add('visible');
+                }, i * 100);
+            });
+        });
+    </script>
+</body>
+</html>

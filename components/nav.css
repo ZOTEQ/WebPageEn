@@ -1,0 +1,418 @@
+/**
+ * ZOTEQ Navigation Styles
+ * 公共导航栏样式，支持深色/浅色主题
+ */
+
+/* ========== BASE NAVIGATION ========== */
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: calc(var(--space-unit) * 4) calc(var(--space-unit) * 7);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    transition: padding 0.5s var(--ease-out-expo), 
+                background 0.5s ease, 
+                box-shadow 0.5s ease;
+}
+
+.main-nav .nav-center {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    max-width: 900px;
+}
+
+/* ========== SCrolled STATE ========== */
+.main-nav.scrolled {
+    padding: calc(var(--space-unit) * 2) calc(var(--space-unit) * 7);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* ========== LOGO ========== */
+.main-nav .logo {
+    display: inline-flex;
+    align-items: center;
+    height: 32px;
+    text-decoration: none;
+    transition: transform 0.4s var(--ease-out-expo);
+}
+
+.main-nav .logo svg {
+    height: 100%;
+    width: auto;
+}
+
+.main-nav .logo-svg path,
+.main-nav .logo-svg polygon {
+    transition: fill 0.5s ease;
+}
+
+.main-nav .logo:hover {
+    transform: scale(1.03);
+}
+
+/* ========== NAV LINKS ========== */
+.main-nav .nav-links {
+    display: flex;
+    gap: calc(var(--space-unit) * 6);
+    list-style: none;
+}
+
+.main-nav .nav-links a {
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    transition: color 0.35s ease;
+    position: relative;
+    padding: 10px 0;
+}
+
+.main-nav .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s var(--ease-out-expo);
+}
+
+.main-nav .nav-links a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* ========== SEARCH CONTAINER ========== */
+.main-nav .search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    padding: 8px 14px;
+    border: 1px solid;
+    transition: all 0.35s ease;
+}
+
+.main-nav .search-icon {
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.main-nav .search-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 0.75rem;
+    width: 180px;
+    padding: 6px 0;
+}
+
+.main-nav .search-input::placeholder {
+    transition: color 0.35s ease;
+}
+
+/* ========== NAV CTA BUTTON ========== */
+.main-nav .nav-cta {
+    padding: 14px 28px;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    border-radius: 100px;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-nav .nav-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.main-nav .nav-cta:hover::before {
+    left: 100%;
+}
+
+.main-nav .nav-cta:active {
+    transform: translateY(-1px);
+}
+
+/* ========== DARK THEME (DEFAULT) ========== */
+.main-nav.dark-theme {
+    background: rgba(15, 23, 42, 0.95);
+}
+
+.main-nav.dark-theme .logo-svg path,
+.main-nav.dark-theme .logo-svg polygon {
+    fill: var(--white);
+}
+
+.main-nav.dark-theme .nav-links a {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.main-nav.dark-theme .nav-links a:hover {
+    color: var(--accent);
+}
+
+.main-nav.dark-theme .nav-links a::after {
+    background: var(--accent);
+}
+
+.main-nav.dark-theme .search-container {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.main-nav.dark-theme .search-icon {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.main-nav.dark-theme .search-input {
+    color: var(--white);
+}
+
+.main-nav.dark-theme .search-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.main-nav.dark-theme .search-container:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.main-nav.dark-theme .nav-cta {
+    background: var(--accent);
+    color: var(--white);
+}
+
+.main-nav.dark-theme .nav-cta:hover {
+    background: var(--accent-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(224, 122, 95, 0.4);
+}
+
+.main-nav.dark-theme.scrolled {
+    background: rgba(15, 23, 42, 0.92);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ========== LIGHT THEME ========== */
+.main-nav.light-theme {
+    background: transparent;
+}
+
+.main-nav.light-theme .logo-svg path,
+.main-nav.light-theme .logo-svg polygon {
+    fill: var(--text-primary);
+}
+
+.main-nav.light-theme .nav-links a {
+    color: var(--text-secondary);
+}
+
+.main-nav.light-theme .nav-links a:hover {
+    color: var(--accent);
+}
+
+.main-nav.light-theme .nav-links a::after {
+    background: var(--accent);
+}
+
+.main-nav.light-theme .search-container {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.main-nav.light-theme .search-icon {
+    color: var(--text-tertiary);
+}
+
+.main-nav.light-theme .search-input {
+    color: var(--text-primary);
+}
+
+.main-nav.light-theme .search-input::placeholder {
+    color: var(--text-tertiary);
+}
+
+.main-nav.light-theme .search-container:hover {
+    background: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+.main-nav.light-theme .nav-cta {
+    background: var(--accent);
+    color: var(--white);
+}
+
+.main-nav.light-theme .nav-cta:hover {
+    background: var(--accent-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(224, 122, 95, 0.3);
+}
+
+.main-nav.light-theme.scrolled {
+    background: rgba(250, 249, 247, 0.92);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* ========== MOBILE MENU ========== */
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: var(--white);
+}
+
+.main-nav.dark-theme .mobile-menu-btn {
+    color: var(--white);
+}
+
+.main-nav.light-theme .mobile-menu-btn {
+    color: var(--text-primary);
+}
+
+.mobile-menu-btn svg {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.mobile-menu-btn.active svg {
+    transform: rotate(90deg);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 968px) {
+    .main-nav {
+        padding: calc(var(--space-unit) * 3) calc(var(--space-unit) * 4);
+    }
+
+    .main-nav .nav-center {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--bg-primary);
+        flex-direction: column;
+        justify-content: center;
+        gap: calc(var(--space-unit) * 4);
+        transform: none;
+        z-index: -1;
+    }
+
+    .main-nav.mobile-open .nav-center {
+        display: flex;
+        z-index: 99;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+        z-index: 101;
+        position: relative;
+    }
+
+    .main-nav.mobile-open .mobile-menu-btn {
+        z-index: 102;
+    }
+
+    .main-nav .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: calc(var(--space-unit) * 3);
+    }
+
+    .main-nav .nav-links a {
+        font-size: 1.25rem;
+        padding: calc(var(--space-unit) * 2);
+    }
+
+    /* 移动端菜单打开时的链接颜色 */
+    .main-nav.mobile-open .nav-links a {
+        color: var(--text-primary);
+    }
+
+    .main-nav.mobile-open .nav-links a:hover {
+        color: var(--accent);
+    }
+
+    .main-nav.mobile-open .nav-links a::after {
+        background: var(--accent);
+    }
+
+    .main-nav .search-container {
+        max-width: 280px;
+        margin: 0 auto;
+    }
+
+    .main-nav .search-input {
+        width: 200px;
+    }
+    
+    /* 确保搜索框在移动端菜单中始终可见 */
+    .main-nav.mobile-open .search-container {
+        display: flex;
+    }
+
+    .main-nav .nav-cta {
+        position: relative;
+        z-index: 102;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-nav .nav-cta {
+        padding: 12px 20px;
+        font-size: 0.7rem;
+    }
+}
+
+/* ========== REDUCED MOTION ========== */
+@media (prefers-reduced-motion: reduce) {
+    .main-nav,
+    .main-nav .logo,
+    .main-nav .nav-links a,
+    .main-nav .nav-links a::after,
+    .main-nav .search-container,
+    .main-nav .nav-cta,
+    .main-nav .nav-cta::before,
+    .mobile-menu-btn .hamburger {
+        transition: none;
+        animation: none;
+    }
+}

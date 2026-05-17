@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingredients Library | ZOTEQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="components/nav.css">
+    <link rel="stylesheet" href="components/footer.css">
+    <style>
+        :root {
+            --accent: #e07a5f;
+            --accent-light: #f2a285;
+            --accent-dark: #c4604a;
+            --ocean: #3d8b8b;
+            --sand: #d4a574;
+            --text-primary: #2d2d2d;
+            --text-secondary: #5a5a5a;
+            --text-tertiary: #8a8a8a;
+            --white: #ffffff;
+            --bg-primary: #fafafa;
+            --bg-secondary: #f5f5f5;
+            --bg-dark: #e2e8f0;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f8fafc;
+            --success: #22c55e;
+            --error: #ef4444;
+            --border-subtle: rgba(0, 0, 0, 0.08);
+            --space-unit: 8px;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Icon Styles */
+        .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s var(--ease-out-expo), color 0.3s var(--ease-out-expo);
+            color: var(--text-secondary);
+        }
+
+        .icon:hover {
+            transform: scale(1.1) rotate(5deg);
+            color: var(--accent);
+        }
+
+        .btn svg,
+        .view-btn svg,
+        .product-card-btn svg,
+        .nav-link svg,
+        .feature-icon svg,
+        .icon-wrapper svg {
+            transition: transform 0.3s var(--ease-out-expo);
+        }
+
+        .btn:hover svg,
+        .view-btn:hover svg,
+        .product-card-btn:hover svg,
+        .nav-link:hover svg,
+        .feature-icon:hover svg,
+        .icon-wrapper:hover svg {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .background-hero {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60vh;
+            background: 
+                linear-gradient(135deg, rgba(61, 139, 139, 0.18) 0%, rgba(224, 122, 95, 0.15) 50%, rgba(61, 139, 139, 0.1) 100%),
+                linear-gradient(180deg, rgba(250, 249, 247, 0.98) 0%, rgba(245, 243, 240, 0.95) 100%);
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .background-hero::before {
+            content: '';
+            position: absolute;
+            width: 1000px;
+            height: 1000px;
+            background: radial-gradient(ellipse at center, rgba(224, 122, 95, 0.12) 0%, transparent 60%);
+            top: -300px;
+            right: -300px;
+            border-radius: 50%;
+            animation: floatOrb 20s ease-in-out infinite;
+        }
+
+        .background-hero::after {
+            content: '';
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(ellipse at center, rgba(61, 139, 139, 0.08) 0%, transparent 60%);
+            bottom: -200px;
+            left: -200px;
+            border-radius: 50%;
+            animation: floatOrb 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes floatOrb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -30px) scale(1.05); }
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        .page-header {
+            padding: calc(var(--space-unit) * 20) calc(var(--space-unit) * 7) 0;
+            text-align: center;
+        }
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+
+        .search-wrapper {
+            max-width: 768px;
+            margin: calc(var(--space-unit) * 4) auto calc(var(--space-unit) * 4);
+            padding: 0 calc(var(--space-unit) * 7);
+        }
+
+        .search-bar {
+            width: 100%;
+            position: relative;
+        }
+
+        .search-icon-left {
+            position: absolute;
+            left: calc(var(--space-unit) * 3);
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            color: var(--text-tertiary);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: calc(var(--space-unit) * 2);
+            padding: calc(var(--space-unit) * 3) calc(var(--space-unit) * 6);
+            border-radius: 100px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s var(--ease-out);
+            cursor: pointer;
+            border: none;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: calc(var(--space-unit) * 5);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s var(--ease-out);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-sm {
+            border-radius: 12px;
+            padding: calc(var(--space-unit) * 3.5);
+        }
+
+        .card-lg {
+            border-radius: 20px;
+            padding: calc(var(--space-unit) * 6);
+        }
+
+        .search-input {
+            width: 100%;
+            padding: calc(var(--space-unit) * 2.5) calc(var(--space-unit) * 3) calc(var(--space-unit) * 2.5) calc(var(--space-unit) * 10);
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            font-size: 0.9375rem;
+            color: var(--text-primary);
+            font-family: inherit;
+            outline: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(224, 122, 95, 0.1);
+        }
+
+        .search-input::placeholder {
+            color: var(--text-tertiary);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: calc(var(--space-unit) * 1.5) calc(var(--space-unit) * 3);
+            background: var(--accent);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            background: var(--accent-dark);
+            transform: translateY(-50%) scale(1.05);
+            box-shadow: 0 8px 24px rgba(224, 122, 95, 0.35);
+        }
+
+        .search-btn svg {
+            width: 18px;
+            height: 18px;
+            color: white;
+            display: block;
+        }
+
+        .table-section {
+            padding: 0 calc(var(--space-unit) * 7) calc(var(--space-unit) * 12);
+            position: relative;
+            z-index: 2;
+        }
+
+        .table-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(20px);
+            overflow: hidden;
+            max-width: 1400px;
+            margin: 0 auto;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        .ingredients-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .ingredients-table thead {
+            background: rgba(30, 41, 59, 0.03);
+        }
+
+        .ingredients-table th {
+            text-align: left;
+            padding: calc(var(--space-unit) * 3) calc(var(--space-unit) * 4);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .ingredients-table td {
+            padding: calc(var(--space-unit) * 3) calc(var(--space-unit) * 4);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            vertical-align: middle;
+        }
+
+        .ingredients-table tbody tr {
+            transition: all 0.3s ease;
+        }
+
+        .ingredients-table tbody tr:hover {
+            background: rgba(224, 122, 95, 0.03);
+        }
+
+        .ingredient-cell {
+            display: flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 2.5);
+        }
+
+        .ingredient-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            background: linear-gradient(
+                135deg,
+                rgba(224, 122, 95, 0.15) 0%,
+                rgba(61, 139, 139, 0.1) 100%
+            );
+            border: 1px solid rgba(224, 122, 95, 0.2);
+            color: var(--accent);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .ingredient-icon:hover {
+            background: linear-gradient(
+                135deg,
+                rgba(224, 122, 95, 0.25) 0%,
+                rgba(61, 139, 139, 0.15) 100%
+            );
+            transform: scale(1.05);
+        }
+
+        .ingredient-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ingredient-name {
+            font-weight: 600;
+            font-size: 0.9375rem;
+            margin-bottom: 2px;
+        }
+
+        .ingredient-group {
+            font-size: 0.7rem;
+            color: var(--text-tertiary);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .category-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            padding: calc(var(--space-unit) * 0.75) calc(var(--space-unit) * 1.5);
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .category-biobased {
+            background: rgba(34, 197, 94, 0.08);
+            color: #16a34a;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .category-synthetic {
+            background: rgba(59, 130, 246, 0.08);
+            color: #2563eb;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .category-eu-nat {
+            background: rgba(245, 158, 11, 0.08);
+            color: #d97706;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .category-us-nat {
+            background: rgba(168, 85, 247, 0.08);
+            color: #9333ea;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+
+        .cas-number, .fema-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .reach-status {
+            display: inline-flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 1);
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .reach-yes {
+            color: var(--success);
+        }
+
+        .reach-no {
+            color: var(--error);
+        }
+
+        .reach-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .reach-yes .reach-dot {
+            background: var(--success);
+            box-shadow: 0 0 8px rgba(34, 197, 94, 0.3);
+        }
+
+        .reach-no .reach-dot {
+            background: var(--error);
+            box-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
+        }
+
+        .view-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-secondary);
+        }
+
+        .view-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .view-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: calc(var(--space-unit) * 1.5);
+            padding: calc(var(--space-unit) * 5);
+            border-top: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .pagination-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pagination-btn:hover:not(:disabled) {
+            background: rgba(0, 0, 0, 0.03);
+            border-color: rgba(0, 0, 0, 0.15);
+            color: var(--text-primary);
+        }
+
+        .pagination-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        .pagination-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .pagination-arrow {
+            width: 16px;
+            height: 16px;
+        }
+
+        .cards-container {
+            display: none;
+        }
+
+        .pagination-info {
+            margin-left: calc(var(--space-unit) * 4);
+            font-size: 0.8125rem;
+            color: var(--text-tertiary);
+        }
+
+        .pagination-dots {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+        }
+
+        .table-row-animate {
+            opacity: 0;
+            transform: translateX(-8px);
+            animation: rowSlideIn 0.4s var(--ease-out-expo) forwards;
+        }
+
+        @keyframes rowSlideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .page-header, .search-wrapper, .table-section {
+                padding-left: calc(var(--space-unit) * 4);
+                padding-right: calc(var(--space-unit) * 4);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                padding-top: calc(var(--space-unit) * 18);
+            }
+
+            .table-wrapper {
+                display: none;
+            }
+
+            .cards-container {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: calc(var(--space-unit) * 3);
+                padding: calc(var(--space-unit) * 3);
+            }
+
+            .product-card {
+                background: rgba(255, 255, 255, 0.9);
+                border: 1px solid rgba(0, 0, 0, 0.06);
+                border-radius: 16px;
+                padding: calc(var(--space-unit) * 3);
+                display: flex;
+                flex-direction: column;
+                gap: calc(var(--space-unit) * 2);
+                transition: all 0.3s ease;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+                animation: fadeSlideUp 0.5s var(--ease-out-expo) both;
+            }
+
+            .product-card:hover {
+                background: white;
+                border-color: rgba(0, 0, 0, 0.1);
+                transform: translateY(-2px);
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            }
+
+            .product-card-header {
+                display: flex;
+                align-items: center;
+                gap: calc(var(--space-unit) * 2.5);
+            }
+
+            .product-card-icon {
+                width: 44px;
+                height: 44px;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.25rem;
+                font-weight: 700;
+                background: linear-gradient(135deg, rgba(224, 122, 95, 0.15) 0%, rgba(61, 139, 139, 0.1) 100%);
+                border: 1px solid rgba(224, 122, 95, 0.2);
+                color: var(--accent);
+                flex-shrink: 0;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .product-card-icon:hover {
+                background: linear-gradient(135deg, rgba(224, 122, 95, 0.25) 0%, rgba(61, 139, 139, 0.15) 100%);
+                transform: scale(1.05);
+            }
+
+            .product-card-title {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .product-card-name {
+                font-weight: 700;
+                font-size: 1rem;
+                color: var(--text-primary);
+            }
+
+            .product-card-group {
+                font-size: 0.75rem;
+                color: var(--text-tertiary);
+                font-family: 'Inter', sans-serif;
+            }
+
+            .product-card-body {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: calc(var(--space-unit) * 2);
+            }
+
+            .product-card-field {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .product-card-label {
+                font-size: 0.7rem;
+                color: var(--text-tertiary);
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+            }
+
+            .product-card-value {
+                font-size: 0.9rem;
+                color: var(--text-secondary);
+            }
+
+            .product-card-value.badge {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: calc(var(--space-unit) * 0.75) calc(var(--space-unit) * 1.5);
+                border-radius: 8px;
+                font-size: 0.75rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.04em;
+                width: fit-content;
+            }
+
+            .product-card-value.badge.biobased {
+                background: rgba(34, 197, 94, 0.08);
+                color: #16a34a;
+                border: 1px solid rgba(34, 197, 94, 0.2);
+            }
+
+            .product-card-value.badge.synthetic {
+                background: rgba(59, 130, 246, 0.08);
+                color: #2563eb;
+                border: 1px solid rgba(59, 130, 246, 0.2);
+            }
+
+            .product-card-value.badge.eu-nat {
+                background: rgba(245, 158, 11, 0.08);
+                color: #d97706;
+                border: 1px solid rgba(245, 158, 11, 0.2);
+            }
+
+            .product-card-value.badge.us-nat {
+                background: rgba(168, 85, 247, 0.08);
+                color: #9333ea;
+                border: 1px solid rgba(168, 85, 247, 0.2);
+            }
+
+            .product-card-value.reach {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                width: fit-content;
+            }
+
+            .product-card-value.reach .dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+            }
+
+            .product-card-value.reach.yes .dot {
+                background: var(--success);
+            }
+
+            .product-card-value.reach.no .dot {
+                background: var(--error);
+            }
+
+            .product-card-footer {
+                display: flex;
+                justify-content: flex-end;
+                padding-top: calc(var(--space-unit) * 1);
+                border-top: 1px solid rgba(0, 0, 0, 0.04);
+            }
+
+            .product-card-btn {
+                width: 100%;
+                padding: calc(var(--space-unit) * 2);
+                background: rgba(0, 0, 0, 0.03);
+                border: 1px solid rgba(0, 0, 0, 0.08);
+                border-radius: 10px;
+                color: var(--text-secondary);
+                font-size: 0.875rem;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+            }
+
+            .product-card-btn:hover {
+                background: var(--accent);
+                border-color: var(--accent);
+                color: white;
+            }
+
+            .product-card-btn svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            .table-section {
+                padding-left: calc(var(--space-unit) * 3);
+                padding-right: calc(var(--space-unit) * 3);
+            }
+
+            .ingredient-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 1.1rem;
+            }
+
+            .category-badge {
+                width: 90px;
+                font-size: 0.7rem;
+                padding: calc(var(--space-unit) * 0.5) calc(var(--space-unit) * 1);
+            }
+
+            .pagination {
+                flex-wrap: wrap;
+                gap: calc(var(--space-unit) * 1);
+                padding: calc(var(--space-unit) * 4) calc(var(--space-unit) * 3);
+            }
+
+            .pagination-btn {
+                width: 36px;
+            }
+
+            .pagination-info {
+                width: 100%;
+                text-align: center;
+                margin: calc(var(--space-unit) * 2) 0 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
+    .icon-img {
+            width: 20px;
+            height: 20px;
+            display: block;
+            object-fit: contain;
+        }
+        </style>
+</head>
+<body>
+    <div class="background-hero"></div>
+    <div id="nav-placeholder"></div>
+
+    <main class="main-content">
+        <div class="page-header reveal">
+            <h1 class="page-title">Exploring Our Own In-House Products</h1>
+        </div>
+        <div class="search-wrapper reveal reveal-delay-1">
+            <div class="search-bar">
+                <svg class="search-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="M21 21l-4.35-4.35"></path>
+                </svg>
+                <input type="text" id="search-input" class="search-input" placeholder="Search by ingredient name, CAS, FEMA...">
+                <button class="search-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="M21 21l-4.35-4.35"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <section class="table-section">
+            <div class="table-container reveal reveal-delay-2">
+                <div class="table-wrapper">
+                    <table class="ingredients-table">
+                        <thead>
+                            <tr>
+                                <th>Ingredient</th>
+                                <th>Category</th>
+                                <th>CAS</th>
+                                <th>FEMA</th>
+                                <th>REACH Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="cards-container" id="cards-body">
+                </div>
+
+                <div class="pagination" id="pagination">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="components/nav.js"></script>
+    <script src="components/footer.js"></script>
+    <script>
+        const products = [
+            { name: 'Para Methoxy Acetophenone', group: 'ZPC0038', category: 'us-nat', cas: '100-06-1', fema: '2005', reach: false, odorCategory: '青香' },
+            { name: 'Hexyl Isovalerate', group: 'ZPC0281', category: 'us-nat', cas: '10032-13-0', fema: '3500', reach: true, odorCategory: '果香' },
+            { name: 'Benzyl Alcohol Synth.', group: 'GRP2813', category: 'synthetic', cas: '100-51-6', fema: '2137', reach: true, odorCategory: '甜香' },
+            { name: 'Benzyl Alcohol Nat.', group: 'ZPC0001', category: 'synthetic', cas: '100-51-6', fema: '2137', reach: true, odorCategory: '甜香' },
+            { name: 'Benzaldehyde Synth.', group: 'ZPC0078', category: 'us-nat', cas: '100-52-7', fema: '2127', reach: true, odorCategory: '烘焙' },
+            { name: 'Benzaldehyde Nat.', group: 'GRP2206', category: 'synthetic', cas: '100-52-7', fema: '2127', reach: true, odorCategory: '烘焙' },
+            { name: 'DMBCB', group: 'ZPC0211', category: 'biobased', cas: '10094-34-5', fema: '2394', reach: true, odorCategory: '果香' },
+            { name: 'Phenyl Acetic Aldehyde Dimethyl Acetal 50%', group: 'ZPC0289', category: 'eu-nat', cas: '101-48-4', fema: '2876', reach: true, odorCategory: '青香' },
+            { name: 'Hexyl Cinnamic Aldehyde', group: 'ZPC0411', category: 'us-nat', cas: '101-86-0', fema: '2569', reach: true, odorCategory: '花香' },
+            { name: 'Ethyl Phenyl Acetate', group: 'ZPC0064', category: 'us-nat', cas: '101-97-3', fema: '2452', reach: true, odorCategory: '脂香' },
+            { name: 'Isoamyl Phenylacetate', group: 'ZPC0042', category: 'eu-nat', cas: '102-19-2', fema: '2081', reach: true, odorCategory: '烘焙' },
+            { name: 'Phenethyl Phenylacetate', group: 'ZPC0060', category: 'eu-nat', cas: '102-20-5', fema: '2866', reach: true, odorCategory: '花香' },
+            { name: 'Triacetin', group: 'ZPC0083', category: 'eu-nat', cas: '102-76-1', fema: '2007', reach: true, odorCategory: '果香' },
+            { name: 'Methyl Cinnamate', group: 'GRP6221', category: 'eu-nat', cas: '103-26-4', fema: '2698', reach: true, odorCategory: '果香' },
+            { name: 'Methyl Cinnamate Nat.', group: 'GRP1904', category: 'synthetic', cas: '103-26-4', fema: '2698', reach: true, odorCategory: '果香' },
+            { name: 'Ethyl Cinnamate', group: 'GRP6196', category: 'eu-nat', cas: '103-36-6', fema: '2430', reach: false, odorCategory: '脂香' },
+            { name: 'Ethyl Cinnamate Nat.', group: 'ZPC0005', category: 'biobased', cas: '103-36-6', fema: '2430', reach: true, odorCategory: '辛香' },
+            { name: 'Benzyl Butyrate', group: 'ZPC0256', category: 'eu-nat', cas: '103-37-7', fema: '2140', reach: true, odorCategory: '果香' },
+            { name: 'Phenethyl Acetate', group: 'ZPC0041', category: 'us-nat', cas: '103-45-7', fema: '2857', reach: true, odorCategory: '甜香' },
+            { name: 'Phenylethyl Isobutyrate', group: 'ZPC0444', category: 'eu-nat', cas: '103-48-0', fema: '2862', reach: true, odorCategory: '青香' },
+            { name: 'Cinnamyl  Acetate', group: 'ZPC0387', category: 'us-nat', cas: '103-54-8', fema: '2293', reach: false, odorCategory: '甜香' },
+            { name: 'Phenoxyethyl Isobutyrate', group: 'ZPC0058', category: 'synthetic', cas: '103-60-6', fema: '2873', reach: true, odorCategory: '果香' },
+            { name: 'Magantol', group: 'GRP7385', category: 'eu-nat', cas: '103694-68-4', fema: '-', reach: true, odorCategory: '花香' },
+            { name: 'Anethole Nat.', group: 'GRP5715', category: 'biobased', cas: '104-46-1', fema: '2086', reach: true, odorCategory: '辛香' },
+            { name: 'Gamma Octalactone', group: 'GRP6512', category: 'biobased', cas: '104-50-7', fema: '2796', reach: true, odorCategory: '奶香' },
+            { name: 'Gamma Octalactone Nat.', group: 'ZPC0205', category: 'eu-nat', cas: '104-50-7', fema: '2796', reach: true, odorCategory: '甜香' },
+            { name: 'Gamma Nonalactone Bio.', group: 'GRP7700', category: 'biobased', cas: '104-61-0', fema: '2781', reach: true, odorCategory: '奶香' },
+            { name: 'Gamma Nonalactone', group: 'GRP6969', category: 'eu-nat', cas: '104-61-0', fema: '2781', reach: true, odorCategory: '奶香' },
+            { name: 'Gamma Nonalactone Nat.', group: 'ZPC0003', category: 'biobased', cas: '104-61-0', fema: '2781', reach: true, odorCategory: '果香' },
+            { name: 'Gamma Undecalactone', group: 'GRP6968', category: 'eu-nat', cas: '104-67-6', fema: '3091', reach: true, odorCategory: '奶香' },
+            { name: 'Gamma Undecalactone Nat.', group: 'GRP2922', category: 'us-nat', cas: '104-67-6', fema: '3091', reach: true, odorCategory: '果香' },
+            { name: 'Gamma Undecalactone Bio.', group: 'ZPC0072', category: 'biobased', cas: '104-67-6', fema: '3091', reach: true, odorCategory: '果香' },
+            { name: 'Gamma Heptalactone', group: 'GRP6511', category: 'biobased', cas: '105-21-5', fema: '2539', reach: true, odorCategory: '奶香' },
+            { name: 'Ethyl Propionate', group: 'GRP6220', category: 'us-nat', cas: '105-37-3', fema: '2456', reach: true, odorCategory: '果香' },
+            { name: 'Diethyl Malonate', group: 'ZPC0084', category: 'eu-nat', cas: '105-53-3', fema: '2375', reach: true, odorCategory: '甜香' },
+            { name: 'Ethyl Butyrate', group: 'GRP6153', category: 'synthetic', cas: '105-54-4', fema: '2427', reach: true, odorCategory: '果香' },
+            { name: 'Ethyl Butyrate Nat.', group: 'GRP5168', category: 'us-nat', cas: '105-54-4', fema: '2427', reach: true, odorCategory: '果香' },
+            { name: 'Citronellyl Formate', group: 'ZPC0364', category: 'us-nat', cas: '105-85-1', fema: '2314', reach: true, odorCategory: '花香' },
+            { name: 'Geranyl Acetate Nat.', group: 'ZPC0027', category: 'biobased', cas: '105-87-3', fema: '2509', reach: true, odorCategory: '果香' },
+            { name: 'Geranyl Acetate 98', group: 'ZPC0360', category: 'us-nat', cas: '105-87-3', fema: '2509', reach: true, odorCategory: '花香' },
+            { name: 'Geranyl Acetate 60', group: 'ZPC0278', category: 'eu-nat', cas: '105-87-3', fema: '2509', reach: true, odorCategory: '果香' },
+            { name: 'Musk T', group: 'ZPC0049', category: 'us-nat', cas: '105-95-3', fema: '', reach: true, odorCategory: '麝香' },
+            { name: 'Citronellol', group: 'ZPC0069', category: 'biobased', cas: '106-22-9', fema: '2309', reach: true, odorCategory: '花香' },
+            { name: 'Citronellal,85', group: 'ZPC0044', category: 'us-nat', cas: '106-23-0', fema: '2307', reach: true, odorCategory: '果香' },
+            { name: 'Citronellal,96', group: 'ZPC0317', category: 'us-nat', cas: '106-23-0', fema: '2307', reach: true, odorCategory: '花香' },
+            { name: 'Geraniol 98', group: 'ZPC0335', category: 'biobased', cas: '106-24-1', fema: '2507', reach: false, odorCategory: '花香' },
+            { name: 'Geraniol 60', group: 'ZPC0070', category: 'us-nat', cas: '106-24-1', fema: '2507', reach: true, odorCategory: '花香' },
+            { name: 'Isoamyl Butyrate, 2 Peaks', group: 'GRP6163', category: 'biobased', cas: '106-27-4', fema: '2060', reach: true, odorCategory: '果香' },
+            { name: 'Isoamyl Butyrate Nat.', group: 'ZPC0203', category: 'us-nat', cas: '106-27-4', fema: '2060', reach: true, odorCategory: '果香' },
+            { name: 'Ethyl Dodecanonate', group: 'ZPC0055', category: 'biobased', cas: '106-33-2', fema: '2441', reach: false, odorCategory: '果香' },
+            { name: '3-Octanone', group: 'GRP7149', category: 'synthetic', cas: '106-68-3', fema: '2803', reach: true, odorCategory: '果香' },
+            { name: 'Melonal', group: 'ZPC0043', category: 'us-nat', cas: '106-72-9  ', fema: '2389', reach: false, odorCategory: '果香' },
+            { name: 'Hydroxy Citronellal', group: 'ZPC0047', category: 'us-nat', cas: '107-75-5', fema: '2583', reach: false, odorCategory: '青香' },
+            { name: '2-Pentanone', group: 'GRP7089', category: 'biobased', cas: '107-87-9', fema: '2842', reach: true, odorCategory: '酒香' },
+            { name: 'Butyric Acid', group: 'ZPC0306', category: 'biobased', cas: '107-92-6', fema: '2221', reach: true, odorCategory: '奶香' },
+            { name: '2,6 Dimethyl Pyrazine', group: 'ZPC0232', category: 'eu-nat', cas: '108-50-9', fema: '3273', reach: false, odorCategory: '烘焙' },
+            { name: 'Ethyl Isovalerate', group: 'GRP6155', category: 'biobased', cas: '108-64-5', fema: '2463', reach: true, odorCategory: '果香' },
+            { name: 'Ethyl Formate', group: 'ZPC0279', category: 'synthetic', cas: '109-94-4', fema: '2434', reach: true, odorCategory: '酒香' },
+            { name: 'Succinic Acid', group: 'GRP6979', category: 'us-nat', cas: '110-15-6', fema: '4719', reach: true, odorCategory: '其他' },
+            { name: 'Isobutyl Acetate', group: 'ZPC0237', category: 'biobased', cas: '110-19-0', fema: '2175', reach: true, odorCategory: '果香' },
+            { name: 'Ethyl Decenoate', group: 'ZPC0212', category: 'eu-nat', cas: '110-38-3', fema: '2432', reach: true, odorCategory: '烘焙' },
+            { name: 'Aldehyde C-12 MNA', group: 'ZPC0231', category: 'eu-nat', cas: '110-41-8', fema: '2749', reach: true, odorCategory: '果香' },
+            { name: '2-Heptanone', group: 'GRP7069', category: 'us-nat', cas: '110-43-0', fema: '2544', reach: true, odorCategory: '果香' },
+            { name: 'Isoamyl Formate', group: 'ZPC0280', category: 'synthetic', cas: '110-45-2', fema: '2069', reach: true, odorCategory: '果香' },
+            { name: '1,4-Butanediol Nat.', group: 'ZPC0366', category: 'biobased', cas: '110-63-4', fema: '-', reach: true, odorCategory: '其他' },
+            { name: '2-Octanone', group: 'GRP7183', category: 'us-nat', cas: '111-13-7', fema: '2802', reach: true, odorCategory: '果香' },
+            { name: 'N, Hexanol', group: 'GRP6549', category: 'us-nat', cas: '111-27-3', fema: '2567', reach: false, odorCategory: '青香' },
+            { name: 'Ethyl Oleate', group: 'ZPC0439', category: 'us-nat', cas: '111-62-6', fema: '2450', reach: true, odorCategory: '花香' },
+            { name: '2-Undecanone', group: 'GRP7066', category: 'eu-nat', cas: '112-12-9', fema: '3093', reach: true, odorCategory: '果香' },
+            { name: 'Decyl Acetate', group: 'ZPC0338', category: 'eu-nat', cas: '112-17-4', fema: '2367', reach: true, odorCategory: '果香' },
+            { name: '4-Dimethyl Amino Pyridine', group: 'ZPC0196', category: 'us-nat', cas: '1122-58-3', fema: '', reach: true, odorCategory: '其他' },
+            { name: '2-Acetyl Pyridine', group: 'ZPC0198', category: 'us-nat', cas: '1122-62-9', fema: '3251', reach: true, odorCategory: '烘焙' },
+            { name: 'N, Decanal Nat.', group: 'ZPC0347', category: 'biobased', cas: '112-31-2', fema: '2362', reach: true, odorCategory: '果香' },
+            { name: 'Ketoisophorone', group: 'GRP5932', category: 'eu-nat', cas: '1125-21-9', fema: '3421', reach: true, odorCategory: '木香' },
+            { name: 'Dihydro Jasmone', group: 'GRP7080', category: 'synthetic', cas: '1128-08-1', fema: '3763', reach: false, odorCategory: '木香' },
+            { name: 'Linalyl Acetate Nat.', group: 'GRP5169', category: 'us-nat', cas: '115-95-7', fema: '2636', reach: true, odorCategory: '花香' },
+            { name: 'Linalyl Acetate', group: 'GRP4197', category: 'biobased', cas: '115-95-7', fema: '2636', reach: true, odorCategory: '花香' },
+            { name: '2-Methyl Butyric Acid', group: 'ZPC0300', category: 'eu-nat', cas: '116-53-0', fema: '2695', reach: true, odorCategory: '辛香' },
+            { name: 'Benzyl Salicylate', group: 'ZPC0051', category: 'eu-nat', cas: '118-58-1', fema: '2151', reach: true, odorCategory: '花香' },
+            { name: 'Maltol', group: 'ZPC0026', category: 'eu-nat', cas: '118-71-8', fema: '2656', reach: true, odorCategory: '烘焙' },
+            { name: 'Methyl Salicylate', group: 'ZPC0059', category: 'synthetic', cas: '119-36-8', fema: '2745', reach: true, odorCategory: '青香' },
+            { name: 'Benzophenone', group: 'ZPC0359', category: 'biobased', cas: '119-61-9', fema: '2134', reach: true, odorCategory: '花香' },
+            { name: 'Dihydro Coumarin', group: 'GRP6837', category: 'eu-nat', cas: '119-84-6', fema: '2381', reach: true, odorCategory: '果香' },
+            { name: 'Veratraldehyde', group: 'ZPC0191', category: 'eu-nat', cas: '120-14-9', fema: '3109', reach: true, odorCategory: '木香' },
+            { name: 'Benzyl Benzoate', group: 'ZPC0006', category: 'biobased', cas: '120-51-4', fema: '2138', reach: true, odorCategory: '花香' },
+            { name: 'Helional', group: 'GRP5103', category: 'biobased', cas: '1205-17-0', fema: '', reach: false, odorCategory: '果香' },
+            { name: 'Ethyl Vanillin', group: 'GRP3429', category: 'us-nat', cas: '121-32-4', fema: '2464', reach: true, odorCategory: '奶香' },
+            { name: 'Vanillin US Nat.', group: 'ZPC0328', category: 'us-nat', cas: '121-33-5', fema: '3107', reach: false, odorCategory: '甜香' },
+            { name: 'Vanillin EU Nat.', group: 'ZPC0355', category: 'us-nat', cas: '121-33-5', fema: '3107', reach: true, odorCategory: '甜香' },
+            { name: 'Vanillin', group: 'GRP3507', category: 'biobased', cas: '121-33-5', fema: '3107', reach: true, odorCategory: '奶香' },
+            { name: 'P-Methyl Acetophenone', group: 'ZPC0385', category: 'eu-nat', cas: '122-00-9', fema: '2677', reach: true, odorCategory: '花香' },
+            { name: 'Galaxolide Pure', group: 'ZPC0250', category: 'eu-nat', cas: '1222-05-5', fema: '3626', reach: true, odorCategory: '麝香' },
+            { name: 'Galaxolide 50% IPM', group: 'ZPC0242', category: 'us-nat', cas: '1222-05-5,110-27-0', fema: '-', reach: true, odorCategory: '麝香' },
+            { name: 'Galaxolide 50% BB', group: 'ZPC0243', category: 'us-nat', cas: '1222-05-5,120-51-4', fema: '', reach: true, odorCategory: '麝香' },
+            { name: 'Galaxolide 50% DPG', group: 'ZPC0244', category: 'us-nat', cas: '1222-05-5,25265-71-8', fema: '-', reach: true, odorCategory: '麝香' },
+            { name: 'Galaxolide 50% DEP', group: 'ZPC0227', category: 'biobased', cas: '1222-05-5,84-66-2', fema: '-', reach: false, odorCategory: '麝香' },
+            { name: 'Cinnamyl Cinnamate', group: 'ZPC0081', category: 'synthetic', cas: '122-69-0', fema: '2298', reach: true, odorCategory: '花香' },
+            { name: 'Phenyl Acetaldehyde 50%', group: 'ZPC0290', category: 'eu-nat', cas: '122-78-1', fema: '2874', reach: true, odorCategory: '青香' },
+            { name: 'Phenoxyethyl Alcohol', group: 'ZPC0079', category: 'eu-nat', cas: '122-99-6', fema: '4620', reach: false, odorCategory: '花香' },
+            { name: 'Anisic Aldehyde', group: 'ZPC0408', category: 'biobased', cas: '123-11-5', fema: '2670', reach: true, odorCategory: '甜香' },
+            { name: 'Diethyl Succinate', group: 'ZPC0361', category: 'synthetic', cas: '123-25-1', fema: '', reach: true, odorCategory: '果香' },
+            { name: 'Ethyl Nonanoate', group: 'ZPC0054', category: 'biobased', cas: '123-29-5', fema: '2447', reach: true, odorCategory: '脂香' },
+            { name: '2,5-Dimethyl Pyrazine', group: 'ZPC0228', category: 'us-nat', cas: '123-32-0', fema: '3272', reach: true, odorCategory: '辛香' },
+            { name: 'Myrcene', group: 'ZPC0263', category: 'biobased', cas: '123-35-3', fema: '2762', reach: true, odorCategory: '脂香' },
+            { name: 'Ethyl Hexanoate', group: 'ZPC0309', category: 'synthetic', cas: '123-66-0', fema: '2439', reach: true, odorCategory: '酒香' },
+            { name: 'Allyl Caproate', group: 'GRP6167', category: 'eu-nat', cas: '123-68-2', fema: '2032', reach: true, odorCategory: '果香' },
+            { name: 'Allyl Hexanoate Nat.', group: 'ZPC0354', category: 'biobased', cas: '123-68-2', fema: '2032', reach: true, odorCategory: '果香' },
+            { name: 'Levulinic Acid', group: 'ZPC0332', category: 'synthetic', cas: '123-76-2', fema: '2627', reach: true, odorCategory: '甜香' },
+            { name: 'Butyl Acetate', group: 'ZPC0341', category: 'eu-nat', cas: '123-86-4', fema: '2174', reach: true, odorCategory: '果香' },
+            { name: 'Isoamyl Acetate Nat.', group: 'GRP5172', category: 'synthetic', cas: '123-92-2', fema: '2055', reach: true, odorCategory: '果香' },
+            { name: 'Isoamyl Acetate, Single', group: 'GRP0846', category: 'eu-nat', cas: '123-92-2', fema: '', reach: true, odorCategory: '果香' },
+            { name: 'Isoamyl Acetate, 2 Peaks', group: 'ZPC0260', category: 'us-nat', cas: '123-92-2', fema: '2055', reach: true, odorCategory: '果香' },
+            { name: 'N, Octanal Nat.', group: 'ZPC0348', category: 'us-nat', cas: '124-13-0', fema: '2797', reach: true, odorCategory: '果香' },
+            { name: 'N, Octanal', group: 'ZPC0020', category: 'biobased', cas: '124-13-0', fema: '2797', reach: true, odorCategory: '果香' },
+            { name: 'Isoborneol', group: 'ZPC0249', category: 'biobased', cas: '124-76-5', fema: '', reach: true, odorCategory: '药香' },
+            { name: 'Isobornylacetate', group: 'ZPC0048', category: 'eu-nat', cas: '125-12-2', fema: '2160', reach: false, odorCategory: '木香' },
+            { name: 'Ionone Alpha', group: 'ZPC0251', category: 'us-nat', cas: '127-41-3,8013-90-9', fema: '2594', reach: true, odorCategory: '花香' },
+            { name: 'BHT', group: 'GRP6577', category: 'synthetic', cas: '128-37-0', fema: '2184', reach: true, odorCategory: '其他' },
+            { name: 'Nopyl Acetate', group: 'ZPC0294', category: 'synthetic', cas: '128-51-8', fema: '', reach: true, odorCategory: '木香' },
+            { name: '9-Decenol', group: 'ZPC0337', category: 'eu-nat', cas: '13019-22-2', fema: '-', reach: true, odorCategory: '花香' },
+            { name: 'Celestolide', group: 'ZPC0343', category: 'eu-nat', cas: '13171-00-1', fema: '3653', reach: true, odorCategory: '麝香' },
+            { name: 'Ethyl 3-Methylthio Propionate', group: 'ZPC0311', category: 'synthetic', cas: '13327-56-5', fema: '3343', reach: true, odorCategory: '果香' },
+            { name: 'Isocyclocitral', group: 'ZPC0045', category: 'synthetic', cas: '1335-66-6', fema: '', reach: false, odorCategory: '青香' },
+            { name: 'Methyl Anthranilate', group: 'ZPC0052', category: 'us-nat', cas: '134-20-3', fema: '2682', reach: true, odorCategory: '花香' },
+            { name: 'Methyl-3-Methylthio Propionate', group: 'ZPC0296', category: 'biobased', cas: '13532-18-8', fema: '2720', reach: true, odorCategory: '果香' },
+            { name: 'Linalool Oxide', group: 'GRP6565', category: 'biobased', cas: '1365-19-1', fema: '3746', reach: true, odorCategory: '花香' },
+            { name: 'Sulfurol, Milky', group: 'GRP5814', category: 'eu-nat', cas: '137-00-8', fema: '3204', reach: true, odorCategory: '烘焙' },
+            { name: '2-Heptyl Cyclopentanone', group: 'GRP7897', category: 'synthetic', cas: '137-03-1', fema: '-', reach: false, odorCategory: '花香' },
+            { name: 'Dipentene', group: 'ZPC0030', category: 'biobased', cas: '138-86-3', fema: '', reach: true, odorCategory: '果香' },
+            { name: '1-(2-tert-Butylcyclohexyloxy)-2-butanol', group: 'ZPC0433', category: 'eu-nat', cas: '139504-68-0', fema: '', reach: true, odorCategory: '木香' },
+            { name: 'Benzyl Acetate Nat.', group: 'ZPC0002', category: 'eu-nat', cas: '140-11-4', fema: '2135', reach: true, odorCategory: '花香' },
+            { name: 'Benzyl Acetate', group: 'GRP2648', category: 'us-nat', cas: '140-11-4', fema: '2135', reach: true, odorCategory: '花香' },
+            { name: 'Estragole', group: 'ZPC0416', category: 'us-nat', cas: '140-67-0', fema: '2411', reach: true, odorCategory: '辛香' },
+            { name: 'Neryl Acetate Nat.', group: 'ZPC0025', category: 'us-nat', cas: '141-12-8', fema: '2773', reach: true, odorCategory: '果香' },
+            { name: 'Ethyl Acetate', group: 'ZPC0410', category: 'us-nat', cas: '141-78-6', fema: '2414', reach: true, odorCategory: '果香' },
+            { name: 'Ethyl Acetoacetate', group: 'GRP6157', category: 'synthetic', cas: '141-97-9', fema: '2415', reach: true, odorCategory: '果香' },
+            { name: 'Allyl Oenanthate', group: 'ZPC0076', category: 'synthetic', cas: '142-19-8', fema: '2031', reach: true, odorCategory: '果香' },
+            { name: 'Hexanoic Acid', group: 'ZPC0419', category: 'eu-nat', cas: '142-62-1', fema: '2559', reach: false, odorCategory: '奶香' },
+            { name: 'Hexyl Acetate', group: 'GRP6182', category: 'us-nat', cas: '142-92-7', fema: '2565', reach: true, odorCategory: '果香' },
+            { name: '2,3,5 Trimethyl Pyrazine', group: 'ZPC0245', category: 'biobased', cas: '14667-55-1', fema: '3244', reach: true, odorCategory: '烘焙' },
+            { name: 'Freskomenthe', group: 'GRP7041', category: 'us-nat', cas: '14765-30-1', fema: '3261', reach: true, odorCategory: '药香' },
+            { name: 'Beta Ionone', group: 'ZPC0082', category: 'eu-nat', cas: '14901-07-6', fema: '2595', reach: true, odorCategory: '花香' },
+            { name: 'Ionone Beta Nat.', group: 'ZPC0204', category: 'biobased', cas: '14901-07-6', fema: '2595', reach: true, odorCategory: '木香' },
+            { name: 'Tonalid', group: 'ZPC0229', category: 'biobased', cas: '1506-02-1', fema: '-', reach: true, odorCategory: '麝香' },
+            { name: 'Citronellyl Acetate', group: 'ZPC0275', category: 'us-nat', cas: '150-84-5', fema: '2311', reach: true, odorCategory: '花香' },
+            { name: 'Dimethyl Benzyl Carbinyl Acetate', group: 'ZPC0210', category: 'eu-nat', cas: '151-05-3', fema: '2392', reach: true, odorCategory: '花香' },
+            { name: '2-Isopropyl-4-Methyl Thiazole', group: 'ZPC0261', category: 'us-nat', cas: '15679-13-7', fema: '3555', reach: true, odorCategory: '青香' },
+            { name: '2-Ethyl-3-Methyl Pyrazine', group: 'ZPC0285', category: 'synthetic', cas: '15707-23-0', fema: '', reach: false, odorCategory: '烘焙' },
+            { name: 'Hexanol PG Acetal', group: 'ZPC0226', category: 'eu-nat', cas: '1599-49-1', fema: '3630', reach: true, odorCategory: '果香' },
+            { name: 'Hexenyl Butyrate', group: 'GRP6257', category: 'synthetic', cas: '16491-36-4', fema: '3402', reach: true, odorCategory: '果香' },
+            { name: 'Dihydroactinidiolide', group: 'GRP5570', category: 'biobased', cas: '17092-92-1', fema: '4020', reach: true, odorCategory: '麝香' },
+            { name: 'Beta Dihydro Ionone 89%', group: 'ZPC0406', category: 'us-nat', cas: '17283-81-7', fema: '3626', reach: true, odorCategory: '花香' },
+            { name: 'Beta Dihydro Ionone 94%', group: 'ZPC0388', category: 'biobased', cas: '17283-81-7', fema: '3626', reach: true, odorCategory: '花香' },
+            { name: 'Bourgeonal', group: 'GRP2121', category: 'us-nat', cas: '18127-01-0', fema: '', reach: true, odorCategory: '青香' },
+            { name: 'beta Pinene', group: 'ZPC0234', category: 'eu-nat', cas: '18172-67-3', fema: '2903', reach: true, odorCategory: '木香' },
+            { name: 'Dihydro Linalool', group: 'ZPC0248', category: 'synthetic', cas: '18479-51-1', fema: '-', reach: true, odorCategory: '花香' },
+            { name: 'Dihydro Myrcenol', group: 'ZPC0056', category: 'synthetic', cas: '18479-58-8', fema: '-', reach: true, odorCategory: '果香' },
+            { name: 'Methyl Cedryl Ether', group: 'ZPC0220', category: 'us-nat', cas: '19870-74-7', fema: '-', reach: true, odorCategory: '木香' },
+            { name: 'Hotrienol', group: 'ZPC0077', category: 'us-nat', cas: '20053-88-7', fema: '3830', reach: true, odorCategory: '花香' },
+            { name: 'Amyl Salicylate', group: 'ZPC0208', category: 'eu-nat', cas: '2050-08-0', fema: '2026', reach: true, odorCategory: '花香' },
+            { name: 'Vanillin Isobutyrate', group: 'ZPC0392', category: 'biobased', cas: '20665-85-4', fema: '3754', reach: true, odorCategory: '甜香' },
+            { name: 'Zombrocenide', group: 'GRP6265', category: 'us-nat', cas: '211299-54-6', fema: '-', reach: true, odorCategory: '麝香' },
+            { name: 'Cocal', group: 'ZPC0221', category: 'biobased', cas: '21834-92-4', fema: '3199', reach: true, odorCategory: '烘焙' },
+            { name: 'Ethyl Cyclopentenone 50', group: 'ZPC0314', category: 'us-nat', cas: '21835-01-8', fema: '3152', reach: true, odorCategory: '甜香' },
+            { name: '2-Acetyl Pyrazine', group: 'GRP8238', category: 'eu-nat', cas: '22047-25-2', fema: '3126', reach: true, odorCategory: '烘焙' },
+            { name: 'L-Menthol', group: 'ZPC0421', category: 'us-nat', cas: '2216-51-5', fema: '2665', reach: true, odorCategory: '青香' },
+            { name: 'Gamma Dodecalactone', group: 'GRP6507', category: 'synthetic', cas: '2305-05-7', fema: '2400', reach: true, odorCategory: '奶香' },
+            { name: 'Hexyl Isobutyrate', group: 'ZPC0323', category: 'biobased', cas: '2349-07-7', fema: '3172', reach: true, odorCategory: '果香' },
+            { name: 'Beta Damascone', group: 'ZPC0023', category: 'biobased', cas: '23726-91-2', fema: '3243', reach: true, odorCategory: '果香' },
+            { name: 'Isolongifolanone 60', group: 'ZPC0276', category: 'synthetic', cas: '23787-90-8', fema: '', reach: true, odorCategory: '木香' },
+            { name: 'Isolongifolanone 80', group: 'ZPC0396', category: 'synthetic', cas: '23787-90-8', fema: '', reach: true, odorCategory: '木香' },
+            { name: '2-Acetyl Thiazole', group: 'ZPC0197', category: 'synthetic', cas: '24295-03-2', fema: '3328', reach: true, odorCategory: '烘焙' },
+            { name: 'Methyl Dihydro Jasmonate', group: 'ZPC0050', category: 'biobased', cas: '24851-98-7', fema: '3408', reach: true, odorCategory: '花香' },
+            { name: '2,4-Decadienal', group: 'ZPC0065', category: 'synthetic', cas: '25152-84-5', fema: '3135', reach: true, odorCategory: '脂香' },
+            { name: 'Cis-3-Hexenyl Benzoate', group: 'GRP6247', category: 'synthetic', cas: '25152-85-6', fema: '3688', reach: true, odorCategory: '青香' },
+            { name: 'Afermate', group: 'ZPC0382', category: 'biobased', cas: '25225-08-5', fema: '', reach: false, odorCategory: '果香' },
+            { name: 'Benzaldehyde PG Acetal', group: 'ZPC0225', category: 'synthetic', cas: '2568-25-4', fema: '2130', reach: true, odorCategory: '花香' },
+            { name: 'L-Menthyl Acetate', group: 'GRP4620', category: 'eu-nat', cas: '2623-23-6', fema: '2668', reach: true, odorCategory: '青香' },
+            { name: 'Allyl Cyclohexyl Propionate', group: 'GRP6437', category: 'us-nat', cas: '2705-87-5', fema: '2026', reach: true, odorCategory: '果香' },
+            { name: 'delta Tetradecalactone', group: 'ZPC0034', category: 'us-nat', cas: '2721-22-4', fema: '3590', reach: true, odorCategory: '果香' },
+            { name: 'Magnolene', group: 'ZPC0386', category: 'us-nat', cas: '27606-09-3', fema: '', reach: true, odorCategory: '花香' },
+            { name: '4-Ethyl Guaiacol', group: 'ZPC0407', category: 'us-nat', cas: '2785-89-9', fema: '2436', reach: false, odorCategory: '酒香' },
+            { name: 'Sandal 208', group: 'ZPC0293', category: 'us-nat', cas: '28219-61-6', fema: '-', reach: true, odorCategory: '木香' },
+            { name: '2-Methoxy-3-Methyl Pyrazine', group: 'ZPC0262', category: 'us-nat', cas: '2847-30-5', fema: '3183', reach: true, odorCategory: '烘焙' },
+            { name: '2-Methyl-3(5/6)-Methylthio Pyrazine', group: 'ZPC0303', category: 'eu-nat', cas: '2882-20-4', fema: '3208', reach: true, odorCategory: '烘焙' },
+            { name: 'Watermelon Ketone', group: 'ZPC0086', category: 'us-nat', cas: '28940-11-6', fema: '-', reach: true, odorCategory: '青香' },
+            { name: 'Strawberry acid', group: 'ZPC0313', category: 'eu-nat', cas: '3142-72-1', fema: '3195', reach: true, odorCategory: '果香' },
+            { name: 'Cis-3-Hexenyl Hexanoate', group: 'GRP6176', category: 'synthetic', cas: '31501-11-8', fema: '3403', reach: true, odorCategory: '果香' },
+            { name: 'Lyral', group: 'ZPC0061', category: 'biobased', cas: '31906-04-4', fema: '', reach: true, odorCategory: '花香' },
+            { name: 'Ptbcha', group: 'ZPC0233', category: 'eu-nat', cas: '32210-23-4', fema: '-', reach: true, odorCategory: '花香' },
+            { name: 'Methyl Cedryl Ketone', group: 'GRP9133', category: 'us-nat', cas: '32388-55-9', fema: '-', reach: true, odorCategory: '木香' },
+            { name: 'Delta Nonalactone', group: 'GRP6277', category: 'biobased', cas: '3301-94-8', fema: '3356', reach: true, odorCategory: '果香' },
+            { name: 'Cashmeran', group: 'ZPC0383', category: 'synthetic', cas: '33704-61-9', fema: '-', reach: true, odorCategory: '花香' },
+            { name: 'Sabinene 78', group: 'ZPC0291', category: 'us-nat', cas: '3387-41-5', fema: '', reach: true, odorCategory: '青香' },
+            { name: 'Cis-3-Hexenyl Isovalerate', group: 'GRP6274', category: 'synthetic', cas: '35154-45-1', fema: '3498', reach: true, odorCategory: '甜香' },
+            { name: 'Furanone', group: 'ZPC0282', category: 'synthetic', cas: '3658-77-3', fema: '3174', reach: true, odorCategory: '果香' },
+            { name: 'Cis-3-Hexenyl Acetate', group: 'ZPC0239', category: 'biobased', cas: '3681-71-8', fema: '3171', reach: true, odorCategory: '青香' },
+            { name: 'Ethyl 2-Methylpentanoate', group: 'ZPC0292', category: 'us-nat', cas: '39255-32-8', fema: '3488', reach: false, odorCategory: '果香' },
+            { name: 'Isononyl Acetate', group: 'GRP7397', category: 'eu-nat', cas: '40379-24-6', fema: '', reach: false, odorCategory: '花香' },
+            { name: 'Cis-3-Hexenyl Isobutyrate', group: 'GRP4644', category: 'us-nat', cas: '41519-23-7', fema: '3929', reach: true, odorCategory: '果香' },
+            { name: 'Anethole Synth.', group: 'ZPC0046', category: 'synthetic', cas: '4180-23-8', fema: '2086', reach: true, odorCategory: '辛香' },
+            { name: 'Diacetyl', group: 'ZPC0299', category: 'biobased', cas: '431-03-8', fema: '2370', reach: true, odorCategory: '奶香' },
+            { name: 'Camphor Powder Nat.', group: 'ZPC0274', category: 'us-nat', cas: '464-49-3', fema: '2230', reach: false, odorCategory: '药香' },
+            { name: 'Nootkatone', group: 'ZPC0033', category: 'eu-nat', cas: '4674-50-4', fema: '3166', reach: true, odorCategory: '果香' },
+            { name: 'Veramoss', group: 'GRP5050', category: 'biobased', cas: '4707-47-5', fema: '', reach: true, odorCategory: '木香' },
+            { name: '2-Pentyl Cyclopentanone', group: 'GRP5139', category: 'us-nat', cas: '4819-67-4', fema: '-', reach: true, odorCategory: '花香' },
+            { name: 'Cis Jasmone', group: 'ZPC0257', category: 'synthetic', cas: '488-10-8', fema: '3196', reach: true, odorCategory: '花香' },
+            { name: 'Ethyl Maltol', group: 'GRP6722', category: 'synthetic', cas: '4940-11-8', fema: '3279', reach: false, odorCategory: '奶香' },
+            { name: 'Bisabolene', group: 'ZPC0207', category: 'us-nat', cas: '495-62-5', fema: '3331', reach: false, odorCategory: '甜香' },
+            { name: 'Isovaleric Acid', group: 'ZPC0286', category: 'biobased', cas: '503-74-2', fema: '3102', reach: true, odorCategory: '奶香' },
+            { name: 'Isovaleric Acid', group: 'ZPC0287', category: 'synthetic', cas: '503-74-2', fema: '3102', reach: true, odorCategory: '奶香' },
+            { name: 'Acetoin Nat.', group: 'ZPC0334', category: 'biobased', cas: '513-86-0', fema: '2008', reach: true, odorCategory: '酒香' },
+            { name: 'Acetoin', group: 'ZPC0036', category: 'synthetic', cas: '513-86-0', fema: '2008', reach: true, odorCategory: '酒香' },
+            { name: 'Precyclemone', group: 'ZPC0318', category: 'biobased', cas: '52474-60-9', fema: '2762', reach: true, odorCategory: '药香' },
+            { name: 'Cis-3-Hexenyl 2-Methyl Butyrate', group: 'GRP6122', category: 'biobased', cas: '53398-85-9', fema: '3497', reach: true, odorCategory: '果香' },
+            { name: 'Citral', group: 'ZPC0223', category: 'eu-nat', cas: '5392-40-5', fema: '2303', reach: true, odorCategory: '果香' },
+            { name: 'Citral Nat.', group: 'GRP4339', category: 'synthetic', cas: '5392-40-5', fema: '2303', reach: true, odorCategory: '果香' },
+            { name: 'Ethyl Acetyl Propionate', group: 'ZPC0071', category: 'biobased', cas: '539-88-8', fema: '2442', reach: true, odorCategory: '果香' },
+            { name: 'Amyl Butyrate', group: 'ZPC0236', category: 'synthetic', cas: '540-18-1', fema: '2059', reach: false, odorCategory: '果香' },
+            { name: 'Verdyl Acetate', group: 'ZPC0302', category: 'eu-nat', cas: '5413-60-5', fema: '', reach: true, odorCategory: '青香' },
+            { name: 'Canthoxal', group: 'ZPC0195', category: 'biobased', cas: '5462-06-6', fema: '', reach: true, odorCategory: '花香' },
+            { name: 'Raspberry Ketone', group: 'ZPC0087', category: 'eu-nat', cas: '5471-51-2', fema: '2588', reach: true, odorCategory: '果香' },
+            { name: 'Raspberry Ketone Nat.', group: 'GRP5170', category: 'us-nat', cas: '5471-51-2', fema: '2588', reach: true, odorCategory: '果香' },
+            { name: 'Phenoxanol', group: 'ZPC0283', category: 'eu-nat', cas: '55066-48-3', fema: '', reach: true, odorCategory: '花香' },
+            { name: 'Terpinen-4-ol', group: 'ZPC0284', category: 'synthetic', cas: '562-74-3', fema: '2248', reach: true, odorCategory: '花香' },
+            { name: 'Eth Tiglate', group: 'ZPC0277', category: 'us-nat', cas: '5837-78-5', fema: '2460', reach: false, odorCategory: '果香' },
+            { name: 'Amber Decane', group: 'GRP7735', category: 'eu-nat', cas: '58567-11-6', fema: '', reach: true, odorCategory: '木香' },
+            { name: '2-Tridecanone', group: 'GRP7091', category: 'us-nat', cas: '593-08-8', fema: '3388', reach: true, odorCategory: '脂香' },
+            { name: 'D-Limonene', group: 'ZPC0295', category: 'synthetic', cas: '5989-27-5', fema: '', reach: true, odorCategory: '果香' },
+            { name: '2,3-Pentanedione', group: 'ZPC0213', category: 'synthetic', cas: '600-14-6', fema: '2841', reach: true, odorCategory: '奶香' },
+            { name: 'Phenyl Ethyl Alcohol', group: 'GRP7121', category: 'us-nat', cas: '60-12-8', fema: '2858', reach: true, odorCategory: '花香' },
+            { name: 'Phenethyl Alcohol Nat.', group: 'ZPC0393', category: 'synthetic', cas: '60-12-8', fema: '2858', reach: true, odorCategory: '花香' },
+            { name: 'Ethyllinalyl Acetate', group: 'ZPC0422', category: 'synthetic', cas: '61931-80-4', fema: '-', reach: true, odorCategory: '花香' },
+            { name: 'Cis-3-Hexenyl Lactate', group: 'GRP6379', category: 'synthetic', cas: '61931-81-5', fema: '3690', reach: false, odorCategory: '果香' },
+            { name: '5-methyl furfural', group: 'ZPC0028', category: 'biobased', cas: '620-02-0', fema: '2702', reach: true, odorCategory: '甜香' },
+            { name: 'Cinnamic Acid Nat.', group: 'ZPC0004', category: 'biobased', cas: '621-82-9', fema: '2288', reach: true, odorCategory: '辛香' },
+            { name: 'Hexyl Salicylate', group: 'ZPC0209', category: 'biobased', cas: '6259-76-3', fema: '-', reach: true, odorCategory: '花香' },
+            { name: 'N,Amyl Acetate', group: 'ZPC0235', category: 'us-nat', cas: '628-63-7', fema: '', reach: true, odorCategory: '果香' },
+            { name: 'Pyranol', group: 'GRP8905', category: 'synthetic', cas: '63500-71-0', fema: '', reach: true, odorCategory: '花香' },
+            { name: 'Hexyl Hexanoate', group: 'GRP8363', category: 'eu-nat', cas: '6378-65-0', fema: '2572', reach: true, odorCategory: '药香' },
+            { name: 'Fructone', group: 'GRP3037', category: 'biobased', cas: '6413-10-1', fema: '4477', reach: true, odorCategory: '青香' },
+            { name: 'Sandal 210', group: 'ZPC0378', category: 'eu-nat', cas: '65113-99-7', fema: '-', reach: true, odorCategory: '木香' },
+            { name: 'Cis-3-Hexenyl Salicylate', group: 'ZPC0214', category: 'us-nat', cas: '65405-77-8', fema: '4750', reach: false, odorCategory: '花香' },
+            { name: 'Benzoic Acid Synth.', group: 'GRP7227', category: 'synthetic', cas: '65-85-0', fema: '2131', reach: true, odorCategory: '脂香' },
+            { name: 'Benzoic Acid Nat.', group: 'ZPC0345', category: 'biobased', cas: '65-85-0', fema: '2131', reach: false, odorCategory: '酒香' },
+            { name: 'Isoamyl Isovalerate', group: 'ZPC0305', category: 'synthetic', cas: '659-70-1', fema: '2085', reach: false, odorCategory: '果香' },
+            { name: 'Sandal 803', group: 'ZPC0200', category: 'synthetic', cas: '66068-84-6', fema: '-', reach: false, odorCategory: '木香' },
+            { name: 'N, Hexanal Nat.', group: 'ZPC0346', category: 'synthetic', cas: '66-25-1', fema: '2557', reach: true, odorCategory: '青香' },
+            { name: 'Trans-2-Hexenal', group: 'ZPC0080', category: 'biobased', cas: '6728-26-3', fema: '2560', reach: true, odorCategory: '果香' },
+            { name: 'Allyl Amyl Glycolate', group: 'ZPC0015', category: 'us-nat', cas: '67634-00-8', fema: '-', reach: true, odorCategory: '花香' },
+            { name: 'Floralozone', group: 'ZPC0193', category: 'us-nat', cas: '67634-15-5 /67634-14-4', fema: '', reach: true, odorCategory: '青香' },
+            { name: 'Methyl Pamplemousse', group: 'ZPC0037', category: 'biobased', cas: '67674-46-8', fema: '', reach: true, odorCategory: '果香' },
+            { name: 'Ebaneol', group: 'ZPC0342', category: 'us-nat', cas: '67801-20-1', fema: '4775', reach: true, odorCategory: '木香' },
+            { name: 'Dihydro Farnesoxyde', group: 'GRP7827', category: 'eu-nat', cas: '6790-58-5', fema: '', reach: false, odorCategory: '木香' },
+            { name: 'Ligustral', group: 'ZPC0206', category: 'synthetic', cas: '68039-49-6', fema: '', reach: true, odorCategory: '青香' },
+            { name: 'Vanillin PG Acetal', group: 'ZPC0053', category: 'biobased', cas: '68527-74-2', fema: '3905', reach: true, odorCategory: '奶香' },
+            { name: 'Ethyl Vanillin PG Acetal', group: 'ZPC0333', category: 'us-nat', cas: '68527-76-4', fema: '3838', reach: true, odorCategory: '甜香' },
+            { name: 'Cyclogalbanate', group: 'ZPC0273', category: 'eu-nat', cas: '68901-15-5', fema: '-', reach: false, odorCategory: '青香' },
+            { name: 'Gamma Hexalactone', group: 'GRP6508', category: 'us-nat', cas: '695-06-7', fema: '2556', reach: true, odorCategory: '酒香' },
+            { name: 'Maple Furanone', group: 'ZPC0255', category: 'eu-nat', cas: '698-10-2', fema: '3153', reach: true, odorCategory: '奶香' },
+            { name: 'Delta Octalactone', group: 'GRP6456', category: 'eu-nat', cas: '698-76-0', fema: '3214', reach: true, odorCategory: '果香' },
+            { name: 'Gamma Methyl Decalactone', group: 'ZPC0201', category: 'synthetic', cas: '7011-83-8', fema: '3786', reach: true, odorCategory: '花香' },
+            { name: 'Delta Decalactone', group: 'GRP6338', category: 'eu-nat', cas: '705-86-2', fema: '2361', reach: false, odorCategory: '果香' },
+            { name: 'Gamma Decalactone Bio.', group: 'GRP7701', category: 'us-nat', cas: '706-14-9', fema: '2360', reach: true, odorCategory: '奶香' },
+            { name: 'Gamma Decalactone', group: 'GRP6487', category: 'biobased', cas: '706-14-9', fema: '2360', reach: true, odorCategory: '奶香' },
+            { name: 'Gamma Decalactone Nat.', group: 'GRP2923', category: 'biobased', cas: '706-14-9', fema: '2360', reach: true, odorCategory: '果香' },
+            { name: 'Delta Undecalactone', group: 'GRP5889', category: 'us-nat', cas: '710-04-3', fema: '3294', reach: true, odorCategory: '奶香' },
+            { name: 'Delta Dodecalactone', group: 'GRP6339', category: 'synthetic', cas: '713-95-1', fema: '2401', reach: true, odorCategory: '果香' },
+            { name: 'Delta Dodecalactone Nat.', group: 'ZPC0376', category: 'eu-nat', cas: '713-95-1', fema: '2401', reach: true, odorCategory: '果香' },
+            { name: 'Milk Lactone', group: 'GRP6232', category: 'eu-nat', cas: '72881-27-7', fema: '3742', reach: false, odorCategory: '奶香' },
+            { name: '2-Methyl Ethyl Butyrate', group: 'GRP6187', category: 'synthetic', cas: '7452-79-1', fema: '2443', reach: true, odorCategory: '青香' },
+            { name: 'Ethyl 2-Methyl Butyrate Nat.', group: 'ZPC0353', category: 'eu-nat', cas: '7452-79-1', fema: '2443', reach: true, odorCategory: '果香' },
+            { name: 'Butyl Butyryl Lactate', group: 'GRP6148', category: 'us-nat', cas: '7492-70-8', fema: '2190', reach: true, odorCategory: '奶香' },
+            { name: 'Allyl Phenoxy Acetate', group: 'ZPC0418', category: 'biobased', cas: '7493-74-5', fema: '2038', reach: true, odorCategory: '果香' },
+            { name: 'Cedrol Crystal', group: 'GRP7345', category: 'eu-nat', cas: '77-53-2', fema: '', reach: true, odorCategory: '木香' },
+            { name: 'Cedryl Acetate 50', group: 'ZPC0063', category: 'us-nat', cas: '77-54-3', fema: '-', reach: false, odorCategory: '木香' },
+            { name: 'Cedryl Acetate 98', group: 'ZPC0412', category: 'biobased', cas: '77-54-3', fema: '-', reach: true, odorCategory: '木香' },
+            { name: 'Strawberry Aldehyde', group: 'GRP6910', category: 'eu-nat', cas: '77-83-8', fema: '2444', reach: true, odorCategory: '果香' },
+            { name: 'Triethyl Citrate', group: 'ZPC0252', category: 'us-nat', cas: '77-93-0', fema: '3083', reach: false, odorCategory: '果香' },
+            { name: 'Tetrahydro Linalool', group: 'ZPC0219', category: 'eu-nat', cas: '78-69-3', fema: '3060', reach: true, odorCategory: '花香' },
+            { name: 'Linalool Nat. Flv', group: 'ZPC0218', category: 'eu-nat', cas: '78-70-6', fema: '2635', reach: true, odorCategory: '果香' },
+            { name: 'Isobutyric acid', group: 'ZPC0321', category: 'synthetic', cas: '79-31-2 ', fema: '2222', reach: true, odorCategory: '奶香' },
+            { name: 'Camphene', group: 'ZPC0230', category: 'eu-nat', cas: '79-92-5', fema: '2229', reach: true, odorCategory: '脂香' },
+            { name: 'Cedarwood Virginia', group: 'ZPC0215', category: 'synthetic', cas: '8000-27-9', fema: '-', reach: true, odorCategory: '木香' },
+            { name: 'Eucalyptus Oil', group: 'ZPC0021', category: 'synthetic', cas: '8000-48-4', fema: '2466', reach: false, odorCategory: '辛香' },
+            { name: 'Patchouli China Oil', group: 'ZPC0062', category: 'us-nat', cas: '8014-09-3', fema: '', reach: true, odorCategory: '木香' },
+            { name: 'Terpinyl Acetate', group: 'ZPC0057', category: 'eu-nat', cas: '80-26-2；10198-23-9', fema: '3047', reach: true, odorCategory: '花香' },
+            { name: 'Methyl Hydrogenated Rosinate', group: 'ZPC0217', category: 'us-nat', cas: '8050-15-5,30968-45-7', fema: '', reach: true, odorCategory: '脂香' },
+            { name: 'MCP Nat.', group: 'ZPC0202', category: 'eu-nat', cas: '80-71-7', fema: '2700', reach: true, odorCategory: '甜香' },
+            { name: 'Methyl Cyclopentenolone', group: 'GRP7015', category: 'eu-nat', cas: '80-71-7,765-70-8', fema: '2700', reach: true, odorCategory: '烘焙' },
+            { name: 'Musk Ketone', group: 'ZPC0413', category: 'us-nat', cas: '81-14-1', fema: '', reach: false, odorCategory: '麝香' },
+            { name: 'Undecavertol', group: 'ZPC0379', category: 'biobased', cas: '81782-77-6', fema: '-', reach: true, odorCategory: '花香' },
+            { name: '2-Nonanone', group: 'GRP7070', category: 'eu-nat', cas: '821-55-6  ', fema: '2785', reach: false, odorCategory: '果香' },
+            { name: 'Delta Hexalactone', group: 'ZPC0035', category: 'biobased', cas: '823-22-3', fema: '3167', reach: true, odorCategory: '奶香' },
+            { name: 'Otbcha', group: 'ZPC0075', category: 'synthetic', cas: '88-41-5', fema: '-', reach: true, odorCategory: '木香' },
+            { name: 'Aurantion', group: 'GRP6522', category: 'eu-nat', cas: '89-43-0', fema: '', reach: true, odorCategory: '花香' },
+            { name: 'Rosephenone', group: 'ZPC0085', category: 'us-nat', cas: '90-17-5', fema: '-', reach: true, odorCategory: '花香' },
+            { name: 'Coumarin', group: 'ZPC0224', category: 'eu-nat', cas: '91-64-5', fema: '', reach: true, odorCategory: '烘焙' },
+            { name: '6-Methyl Coumarin', group: 'ZPC0365', category: 'eu-nat', cas: '92-48-8', fema: '2699', reach: true, odorCategory: '果香' },
+            { name: 'Beta Naphthol Methyl Ether', group: 'ZPC0029', category: 'us-nat', cas: '93-04-9', fema: '4704', reach: true, odorCategory: '花香' },
+            { name: 'Nerolin Bromelia', group: 'ZPC0241', category: 'biobased', cas: '93-18-5', fema: '2768', reach: true, odorCategory: '花香' },
+            { name: 'Propenyl Guaethol', group: 'ZPC0336', category: 'us-nat', cas: '94-86-0', fema: '2922', reach: true, odorCategory: '甜香' },
+            { name: 'Ethyl Isobutyrate', group: 'ZPC0312', category: 'synthetic', cas: '97-62-1', fema: '2428', reach: true, odorCategory: '果香' },
+            { name: 'Ethyl Lactate', group: 'ZPC0301', category: 'synthetic', cas: '97-64-3', fema: '2440', reach: true, odorCategory: '酒香' },
+            { name: 'Ethyl Lactate Nat.', group: 'ZPC0073', category: 'eu-nat', cas: '97-64-3', fema: '2440', reach: true, odorCategory: '甜香' },
+            { name: 'Furfuryl Alcohol', group: 'ZPC0199', category: 'biobased', cas: '98-00-0', fema: '2491', reach: false, odorCategory: '脂香' },
+            { name: 'Terpineol', group: 'ZPC0040', category: 'eu-nat', cas: '98-55-5', fema: '3045', reach: true, odorCategory: '木香' },
+            { name: 'Alpha Terpineol EU', group: 'ZPC0310', category: 'biobased', cas: '98-55-5', fema: '3045', reach: true, odorCategory: '花香' },
+            { name: 'Acetophenone', group: 'ZPC0331', category: 'eu-nat', cas: '98-86-2', fema: '2009', reach: true, odorCategory: '烘焙' },
+            { name: 'Gamma Terpinene', group: 'ZPC0238', category: 'biobased', cas: '99-85-4', fema: '3559', reach: true, odorCategory: '果香' }
+        ];
+
+        function getIconName(odorCategory) {
+            const iconMap = {
+                '果香': 'Icon_odor_Fruity.svg',
+                '烘焙': 'Icon_odor_Bakery.svg',
+                '花香': 'Icon_odor_Florol.svg',
+                '酒香': 'Icon_odor_Alcoholic.svg',
+                '木香': 'Icon_odor_Woody.svg',
+                '奶香': 'Icon_odor_Milky.svg',
+                '其他': 'Icon_odor_Others.svg',
+                '青香': 'Icon_odor_Green.svg',
+                '麝香': 'Icon_odor_Musky.svg',
+                '甜香': 'Icon_odor_Sweety.svg',
+                '辛香': 'Icon_odor_Spicy.svg',
+                '药香': 'Icon_odor_Herbal.svg',
+                '脂香': 'Icon_odor_Fatty.svg'
+            };
+            return iconMap[odorCategory] || 'Icon_odor_Others.svg';
+        }
+
+        function capitalizeCategory(category) {
+            return category.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+        }
+
+        const itemsPerPage = 20;
+        let currentPage = 1;
+        let searchQuery = '';
+
+        function filterProducts(query) {
+            if (!query.trim()) {
+                return products;
+            }
+            const lowerQuery = query.toLowerCase();
+            return products.filter(product => 
+                product.name.toLowerCase().includes(lowerQuery) ||
+                product.group.toLowerCase().includes(lowerQuery) ||
+                product.cas.toLowerCase().includes(lowerQuery) ||
+                product.fema.toLowerCase().includes(lowerQuery) ||
+                product.category.toLowerCase().includes(lowerQuery)
+            );
+        }
+
+        function renderTable(page) {
+            const filteredProducts = filterProducts(searchQuery);
+            const start = (page - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const pageItems = filteredProducts.slice(start, end);
+
+            const tbody = document.getElementById('table-body');
+            tbody.innerHTML = pageItems.map((product, index) => {
+                const iconName = getIconName(product.odorCategory);
+                return `
+                    <tr class="table-row-animate" style="animation-delay: ${index * 0.03}s">
+                        <td>
+                            <div class="ingredient-cell">
+                                <div class="ingredient-icon" onclick="viewProduct('${product.name}')">
+                                    <img src="images/${iconName}" alt="${product.odorCategory}" class="icon-img">
+                                </div>
+                                <div class="ingredient-info">
+                                    <span class="ingredient-name">${product.name}</span>
+                                   <span class="ingredient-group">${product.group}</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="category-badge category-${product.category}">${capitalizeCategory(product.category)}</span>
+                        </td>
+                        <td><span class="cas-number">${product.cas}</span></td>
+                        <td><span class="fema-number">${product.fema}</span></td>
+                        <td>
+                            <span class="reach-status ${product.reach ? 'reach-yes' : 'reach-no'}">
+                                <span class="reach-dot"></span>
+                                ${product.reach ? 'Yes' : 'Non'}
+                            </span>
+                        </td>
+                        <td>
+                            <button class="view-btn" onclick="viewProduct('${product.name}')" title="View details">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                   <path d="M21 21l-4.35-4.35"></path>
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            renderCards(pageItems);
+            renderPagination();
+        }
+
+        function renderCards(pageItems) {
+            const cardsBody = document.getElementById('cards-body');
+            cardsBody.innerHTML = pageItems.map((product, index) => {
+                const iconName = getIconName(product.odorCategory);
+                return `
+                    <div class="product-card" style="animation-delay: ${index * 0.05}s">
+                        <div class="product-card-header">
+                            <div class="product-card-icon" onclick="viewProduct('${product.name}')">
+                                <img src="images/${iconName}" alt="${product.odorCategory}" class="icon-img">
+                            </div>
+                            <div class="product-card-title">
+                                <div class="product-card-name">${product.name}</div>
+                               <div class="product-card-group">${product.group}</div>
+                            </div>
+                        </div>
+                        <div class="product-card-body">
+                            <div class="product-card-field">
+                                <span class="product-card-label">Category</span>
+                               <span class="product-card-value badge ${product.category}">${capitalizeCategory(product.category)}</span>
+                            </div>
+                            <div class="product-card-field">
+                                <span class="product-card-label">REACH</span>
+                               <span class="product-card-value reach ${product.reach ? 'yes' : 'no'}">
+                                    <span class="dot"></span>
+                                    ${product.reach ? 'Yes' : 'Non'}
+                                </span>
+                            </div>
+                            <div class="product-card-field">
+                                <span class="product-card-label">CAS</span>
+                               <span class="product-card-value">${product.cas}</span>
+                            </div>
+                            <div class="product-card-field">
+                                <span class="product-card-label">FEMA</span>
+                               <span class="product-card-value">${product.fema}</span>
+                            </div>
+                        </div>
+                        <div class="product-card-footer">
+                            <button class="product-card-btn" onclick="viewProduct('${product.name}')">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                   <path d="M21 21l-4.35-4.35"></path>
+                                </svg>
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderPagination() {
+            const filteredProducts = filterProducts(searchQuery);
+            const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+            const pagination = document.getElementById('pagination');
+            const isMobile = window.innerWidth < 768;
+            const maxVisiblePages = isMobile ? 5 : 10;
+
+            let html = `
+                <button class="pagination-btn" onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
+                    <svg class="pagination-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+            `;
+
+            let startPage = 1;
+            let endPage = totalPages;
+
+            if (totalPages > maxVisiblePages) {
+                const halfVisible = Math.floor(maxVisiblePages / 2);
+                if (currentPage <= halfVisible) {
+                    endPage = maxVisiblePages;
+                } else if (currentPage >= totalPages - halfVisible) {
+                    startPage = totalPages - maxVisiblePages + 1;
+                } else {
+                    startPage = currentPage - halfVisible;
+                    endPage = currentPage + halfVisible;
+                }
+            }
+
+            if (startPage > 1) {
+                html += `<button class="pagination-btn" onclick="changePage(1)">1</button>`;
+                if (startPage > 2) {
+                    html += `<span class="pagination-dots">...</span>`;
+                }
+            }
+
+            for (let i = startPage; i <= endPage; i++) {
+                html += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
+            }
+
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) {
+                    html += `<span class="pagination-dots">...</span>`;
+                }
+                html += `<button class="pagination-btn" onclick="changePage(${totalPages})">${totalPages}</button>`;
+            }
+
+            html += `
+                <button class="pagination-btn" onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
+                    <svg class="pagination-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+                <span class="pagination-info">Showing ${(currentPage - 1) * itemsPerPage + 1}-${Math.min(currentPage * itemsPerPage, products.length)} of ${products.length} results</span>
+            `;
+
+            pagination.innerHTML = html;
+        }
+
+        function changePage(page) {
+            const filteredProducts = filterProducts(searchQuery);
+            const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+            if (page < 1 || page > totalPages) return;
+            currentPage = page;
+            renderTable(currentPage);
+        }
+
+        function viewProduct(name) {
+            window.location.href = 'ProductInfo.html?product=' + encodeURIComponent(name);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const initialSearch = urlParams.get('search');
+            if (initialSearch) {
+                document.getElementById('search-input').value = initialSearch;
+                searchQuery = initialSearch;
+            }
+            renderTable(1);
+            
+            const searchInput = document.getElementById('search-input');
+            searchInput.addEventListener('input', (e) => {
+                searchQuery = e.target.value;
+                currentPage = 1;
+                renderTable(1);
+                renderPagination();
+            });
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
