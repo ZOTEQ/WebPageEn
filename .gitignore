@@ -31,5 +31,6 @@ screenshots/
 # Other
 src/
 public/
+!public/images/
 *.xlsx
 *.env

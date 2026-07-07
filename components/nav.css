@@ -33,9 +33,40 @@
 /* ========== SCrolled STATE ========== */
 .main-nav.scrolled {
     padding: calc(var(--space-unit) * 2) calc(var(--space-unit) * 7);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+}
+
+.main-nav.scrolled .logo-svg path,
+.main-nav.scrolled .logo-svg polygon {
+    fill: #2d2d2d;
+}
+
+.main-nav.scrolled .nav-center a {
+    color: #2d2d2d;
+}
+
+.main-nav.scrolled .nav-center a:hover {
+    color: #e07a5f;
+}
+
+.main-nav.scrolled .search-container {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.main-nav.scrolled .search-icon {
+    color: #5a5a5a;
+}
+
+.main-nav.scrolled .search-input {
+    color: #2d2d2d;
+}
+
+.main-nav.scrolled .search-input::placeholder {
+    color: #999;
 }
 
 /* ========== LOGO ========== */

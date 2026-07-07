@@ -47,6 +47,16 @@
                     nav.classList.toggle('mobile-open');
                     mobileMenuBtn.classList.toggle('active');
                 });
+
+                // 滚动时添加 scrolled 类
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 80) {
+                        nav.classList.add('scrolled');
+                    } else {
+                        nav.classList.remove('scrolled');
+                    }
+                });
+
                 console.log('Mobile menu initialized successfully');
             } else {
                 console.log('Mobile menu elements not found, retrying...');
