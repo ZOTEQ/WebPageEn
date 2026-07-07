@@ -1,0 +1,175 @@
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.3s var(--ease-out-expo);
+    cursor: pointer;
+    border: none;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background: var(--accent-dark);
+    box-shadow: 0 12px 32px rgba(224, 122, 95, 0.4);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary:hover {
+    background: rgba(224, 122, 95, 0.85);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 12px 32px rgba(224, 122, 95, 0.4);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn svg {
+    transition: transform 0.3s var(--ease-out-expo);
+}
+
+.btn:hover svg {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.card {
+    border-radius: 16px;
+    background: var(--white);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s var(--ease-out-expo);
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.card-sm {
+    border-radius: 12px;
+}
+
+.card-lg {
+    border-radius: 20px;
+}
+
+.card-elevated {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.card-glass {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s var(--ease-out-expo), color 0.3s var(--ease-out-expo);
+    color: var(--text-secondary);
+}
+
+.icon:hover {
+    transform: scale(1.1) rotate(5deg);
+    color: var(--accent);
+}
+
+.btn svg,
+.view-btn svg,
+.product-card-btn svg,
+.nav-link svg,
+.feature-icon svg,
+.icon-wrapper svg {
+    transition: transform 0.3s var(--ease-out-expo);
+}
+
+.btn:hover svg,
+.view-btn:hover svg,
+.product-card-btn:hover svg,
+.nav-link:hover svg,
+.feature-icon:hover svg,
+.icon-wrapper:hover svg {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.cursor {
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 10000;
+    transition: transform 0.15s var(--ease-out-expo), background 0.2s ease, width 0.35s var(--ease-out-expo), height 0.35s var(--ease-out-expo), border-width 0.2s ease;
+    mix-blend-mode: difference;
+}
+
+.cursor.hover {
+    width: 56px;
+    height: 56px;
+    transform: translateY(-22px) translateX(-22px);
+    background: rgba(224, 122, 95, 0.15);
+    border-width: 2px;
+}
+
+.cursor.clicking {
+    transform: scale(0.85);
+}
+
+.cursor-dot {
+    width: 4px;
+    height: 4px;
+    background: var(--white);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.cursor.hover .cursor-dot {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.cursor-trail {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}

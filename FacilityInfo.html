@@ -428,6 +428,17 @@
             z-index: 1;
         }
 
+        .base-hero-card .halftone-overlay {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, #000 1px, transparent 1px);
+            background-size: 4px 4px;
+            opacity: 0.2;
+            mix-blend-mode: multiply;
+            pointer-events: none;
+            z-index: 1;
+        }
+
         .base-hero-content {
             position: relative;
             z-index: 2;
@@ -1642,6 +1653,7 @@
                 <div class="bases-showcase">
                     <div class="base-hero-card reveal">
                         <img class="base-hero-image" src="images/Facility_Workshop2_1920x1280.jpg" alt="Chongqing Factory">
+                        <div class="halftone-overlay"></div>
                         <div class="base-hero-overlay"></div>
                         <div class="base-hero-content">
                             <span class="base-hero-badge">Est. 2018</span>
@@ -1680,6 +1692,7 @@
                     <div class="base-list">
                         <div class="base-hero-card reveal" style="overflow: hidden; flex: 1; min-height: 400px;">
                             <img class="base-hero-image" src="images/Facility_OutsideSunShine_800x533.jpg" alt="Malaysia Factory" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div class="halftone-overlay"></div>
                             <div class="base-hero-overlay"></div>
                             <div class="base-hero-content">
                                 <span class="base-hero-badge">EST. 2019</span>

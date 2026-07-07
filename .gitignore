@@ -1,52 +1,35 @@
-# 开发测试文件
-JS-tests/
+# Dependencies
+node_modules/
+
+# Backups
+*-backup-*.html
+*-备份*.html
 backups/
-.trae/
+
+# Temp files
+JS-tests/
+*.log
+js-tests/
+
+# Playwright
 PlayWright/
 
-# 图片资源（已迁移到images目录）
-images0/
-备用图片/
-
-# 参考资料和设计文件
-参考资料/
-
-# 数据文件
-*.xlsx
-*.xls
-*.csv
-
-# 临时文件和构建文件
-node_modules/
-dist/
-build/
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# 系统文件
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# 编辑器文件
+# IDE
 .vscode/
 .idea/
-*.swp
-*.swo
+.trae/
 
-# 批处理文件
-*.bat
+# OS files
+.DS_Store
+Thumbs.db
 
-# 环境变量
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# Design docs
+设计规范/
+参考资料/
+screenshots/
 
-# 其他
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
+# Other
+src/
+public/
+*.xlsx
+*.env

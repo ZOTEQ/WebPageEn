@@ -107,7 +107,10 @@
 }
 
 .main-nav .search-icon {
-    margin-right: 8px;
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
     flex-shrink: 0;
 }
 
@@ -117,7 +120,7 @@
     outline: none;
     font-size: 0.75rem;
     width: 180px;
-    padding: 6px 0;
+    padding: 6px 0 6px 28px;
 }
 
 .main-nav .search-input::placeholder {
@@ -156,9 +159,9 @@
     transform: translateY(-1px);
 }
 
-/* ========== DARK THEME (DEFAULT) ========== */
+/* ========== DARK THEME (DEFAULT) - 置顶时白字透明底 ========== */
 .main-nav.dark-theme {
-    background: rgba(15, 23, 42, 0.95);
+    background: transparent;
 }
 
 .main-nav.dark-theme .logo-svg path,
@@ -167,24 +170,24 @@
 }
 
 .main-nav.dark-theme .nav-links a {
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .main-nav.dark-theme .nav-links a:hover {
-    color: var(--accent);
+    color: var(--accent-light);
 }
 
 .main-nav.dark-theme .nav-links a::after {
-    background: var(--accent);
+    background: var(--accent-light);
 }
 
 .main-nav.dark-theme .search-container {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .main-nav.dark-theme .search-icon {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .main-nav.dark-theme .search-input {
@@ -192,28 +195,83 @@
 }
 
 .main-nav.dark-theme .search-input::placeholder {
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .main-nav.dark-theme .search-container:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .main-nav.dark-theme .nav-cta {
-    background: var(--accent);
+    background: rgba(255, 255, 255, 0.15);
     color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .main-nav.dark-theme .nav-cta:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-3px);
+}
+
+/* ========== DARK THEME SCROLLED - 滚动后白底黑字 ========== */
+.main-nav.dark-theme.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+}
+
+.main-nav.dark-theme.scrolled .logo-svg path,
+.main-nav.dark-theme.scrolled .logo-svg polygon {
+    fill: var(--text-primary);
+}
+
+.main-nav.dark-theme.scrolled .nav-links a {
+    color: var(--text-secondary);
+}
+
+.main-nav.dark-theme.scrolled .nav-links a:hover {
+    color: var(--accent);
+}
+
+.main-nav.dark-theme.scrolled .nav-links a::after {
+    background: var(--accent);
+}
+
+.main-nav.dark-theme.scrolled .search-container {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.main-nav.dark-theme.scrolled .search-icon {
+    color: var(--text-tertiary);
+}
+
+.main-nav.dark-theme.scrolled .search-input {
+    color: var(--text-primary);
+}
+
+.main-nav.dark-theme.scrolled .search-input::placeholder {
+    color: var(--text-tertiary);
+}
+
+.main-nav.dark-theme.scrolled .search-container:hover {
+    background: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+.main-nav.dark-theme.scrolled .nav-cta {
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+}
+
+.main-nav.dark-theme.scrolled .nav-cta:hover {
     background: var(--accent-dark);
     transform: translateY(-3px);
     box-shadow: 0 16px 40px rgba(224, 122, 95, 0.4);
-}
-
-.main-nav.dark-theme.scrolled {
-    background: rgba(15, 23, 42, 0.92);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* ========== LIGHT THEME ========== */
@@ -311,7 +369,7 @@
 }
 
 /* ========== RESPONSIVE ========== */
-@media (max-width: 968px) {
+@media (max-width: 1200px) {
     .main-nav {
         padding: calc(var(--space-unit) * 3) calc(var(--space-unit) * 4);
     }
