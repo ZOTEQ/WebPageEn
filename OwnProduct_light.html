@@ -1,0 +1,963 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<title>Zoteq - In-house Production List</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="components/nav.css">
+<link rel="stylesheet" href="components/footer.css">
+<style>
+:root {
+  --accent: #e07a5f;
+  --accent-light: #f2a285;
+  --accent-dark: #c4604a;
+  --ocean: #3d8b8b;
+  --ocean-light: #5aadad;
+  --ocean-dark: #2d6b6b;
+  --sand: #d4a574;
+  --text-primary: #2d2d2d;
+  --text-secondary: #5a5a5a;
+  --text-tertiary: #8a8a8a;
+  --white: #ffffff;
+  --bg-primary: #fafafa;
+  --bg-secondary: #f5f5f5;
+  --bg-dark: #1a1a1a;
+  --radius-card: 16px;
+  --radius-card-lg: 20px;
+  --radius-pill: 100px;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-cubic: cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.08);
+  --font-heading: 'Playfair Display','Noto Serif SC',serif;
+  --font-body: 'Inter','PingFang SC',system-ui,sans-serif;
+  --font-mono: 'JetBrains Mono',monospace;
+  --space-unit: 8px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:focus-visible{outline:2px solid var(--ocean);outline-offset:3px;border-radius:4px}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-primary);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6}
+::selection{background:rgba(61,139,139,0.15);color:var(--text-primary)}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--ocean-light);border-radius:2px}
+h1,h2,h3,h4,h5,h6{font-family:var(--font-heading);font-weight:400;letter-spacing:-0.025em}
+a{text-decoration:none;color:inherit}
+
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
+}
+
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.8s var(--ease-out-expo),transform 0.8s var(--ease-out-expo)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:0.08s}.reveal-d2{transition-delay:0.16s}.reveal-d3{transition-delay:0.24s}.reveal-d4{transition-delay:0.32s}.reveal-d5{transition-delay:0.40s}.reveal-d6{transition-delay:0.48s}
+
+#bg-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
+
+/* Navbar styles handled by components/nav.css */
+
+.hero{position:relative;width:100%;min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-slider{position:absolute;inset:0;z-index:0}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s var(--ease-out-expo),transform 1.2s var(--ease-out-expo);transform:scale(1.05)}
+.hero-slide.active{opacity:1;transform:scale(1)}
+.hero-slide img{width:100%;height:120%;object-fit:cover;margin-top:-10%;filter:brightness(0.75) saturate(1.05);transition:transform 8s var(--ease-out-expo);will-change:transform}
+.hero-slide.active img{transform:scale(1.1)}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:rgba(15,25,25,0.6)}
+.hero-content{position:relative;z-index:10;text-align:center;padding:0 24px;max-width:896px;margin:0 auto;margin-top:-4vh}
+.hero-sub{font-size:11px;letter-spacing:0.06em;text-transform:uppercase;font-family:var(--font-body);font-weight:400;margin-bottom:24px;color:#ffffff;opacity:0;animation:fadeIn 1s ease 0.3s forwards}
+.hero-title{font-family:var(--font-heading);font-weight:400;font-size:48px;letter-spacing:-0.025em;line-height:1.15;margin-bottom:24px;color:var(--white);text-shadow:0 2px 24px rgba(0,0,0,0.12)}
+@media(min-width:640px){.hero-title{font-size:60px}}
+@media(min-width:768px){.hero-title{font-size:72px}}
+@media(min-width:1024px){.hero-title{font-size:84px}}
+.hero-divider{width:64px;height:1px;margin:0 auto 24px;background:linear-gradient(90deg,transparent,var(--ocean-light),transparent);opacity:0;animation:fadeIn 1s ease 0.6s forwards}
+.hero-desc{font-size:16px;font-family:var(--font-body);font-weight:300;margin-bottom:32px;max-width:448px;margin-left:auto;margin-right:auto;line-height:1.7;color:rgba(255,255,255,0.75);opacity:0;animation:fadeIn 1s ease 0.8s forwards}
+.hero-btn-wrap{opacity:0;animation:fadeIn 1s ease 1.2s forwards}
+.hero-btn{display:inline-block;padding:14px 36px;font-size:13px;font-family:var(--font-body);font-weight:500;border:none;border-radius:var(--radius-pill);cursor:pointer;transition:all 0.3s var(--ease-out-expo);color:var(--white);box-shadow:0 4px 20px rgba(61,139,139,0.3);background:var(--ocean)}
+.hero-btn:hover{transform:scale(1.05);box-shadow:0 8px 28px rgba(61,139,139,0.4)}
+.hero-wave{position:absolute;bottom:0;left:0;right:0;height:96px;background:linear-gradient(to top,var(--bg-primary),transparent);pointer-events:none;z-index:2}
+.char{display:inline-block;opacity:0;transform:translateY(24px)}
+.hero-scroll{position:absolute;bottom:48px;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:12px;opacity:0;animation:fadeIn 1s ease 1.8s forwards}
+.hero-scroll span{font-size:9px;letter-spacing:0.06em;text-transform:uppercase;font-family:var(--font-body);color:rgba(255,255,255,0.35);animation:pulse 3s ease-in-out infinite}
+.hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,0.25),transparent);animation:pulse 3s ease-in-out infinite}
+.hero-controls{position:absolute;bottom:80px;left:50%;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:16px}
+.hero-nav{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:none;border-radius:50%;cursor:pointer;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);color:var(--white);transition:all 0.3s var(--ease-out-cubic)}
+.hero-nav:hover{background:rgba(255,255,255,0.25);transform:scale(1.1)}
+.hero-dots{display:flex;align-items:center;gap:8px}
+.hero-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer;transition:all 0.3s var(--ease-out-cubic);border:2px solid transparent}
+.hero-dot.active{width:24px;border-radius:5px;background:var(--white);border-color:rgba(61,139,139,0.3)}.section{padding:120px 0;width:100%;position:relative;z-index:1}
+.section-inner{max-width:1248px;margin:0 auto;padding:0 24px}
+@media(min-width:1024px){.section-inner{padding:0 48px}}
+.section-label{display:flex;align-items:center;justify-content:center;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;font-family:var(--font-body);font-weight:700;margin-bottom:24px;color:var(--accent);gap:16px;width:100%}
+.section-label::before,.section-label::after{content:'';display:block;width:40px;height:1px;background:var(--accent)}
+.section-title{font-family:var(--font-heading);font-weight:400;font-size:32px;letter-spacing:-0.025em;margin-bottom:16px;color:var(--text-primary);line-height:1.2;text-align:center}
+@media(min-width:768px){.section-title{font-size:40px}}
+@media(min-width:1024px){.section-title{font-size:48px}}
+.section-desc{font-size:14px;font-family:var(--font-body);font-weight:300;color:var(--text-tertiary);max-width:480px;line-height:1.7;margin-left:auto;margin-right:auto;text-align:center}
+
+.phil-grid{display:grid;grid-template-columns:1fr;gap:24px}
+@media(min-width:768px){.phil-grid{grid-template-columns:repeat(3,1fr)}}
+.phil-card{background:var(--white);border-radius:var(--radius-card-lg);padding:40px 32px;text-align:center;transition:all 0.5s var(--ease-out-expo);border:1px solid rgba(61,139,139,0.06);box-shadow:var(--shadow-sm)}
+.phil-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.phil-icon{width:56px;height:56px;margin:0 auto 24px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius-card);transition:transform 0.5s var(--ease-out-expo)}
+.phil-card:hover .phil-icon{transform:scale(1.1) rotate(4deg)}
+.phil-num{font-family:var(--font-heading);font-size:36px;font-weight:400;margin-bottom:8px;color:var(--text-primary)}
+@media(min-width:768px){.phil-num{font-size:42px}}
+.phil-label{font-size:15px;font-weight:500;margin-bottom:6px;color:var(--text-primary)}
+.phil-desc{font-size:12px;font-family:var(--font-body);font-weight:300;color:var(--text-tertiary)}
+
+.filter-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid rgba(61,139,139,0.08)}
+.filter-btn{display:inline-block;padding:8px 24px;font-size:12px;font-family:var(--font-body);font-weight:400;border:none;border-radius:var(--radius-pill);cursor:pointer;transition:all 0.3s var(--ease-out-cubic)}
+.filter-btn:hover{opacity:0.85}
+.search-wrap{position:relative}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--text-tertiary)}
+.search-input{padding:10px 24px 10px 40px;font-size:13px;font-family:var(--font-body);width:160px;outline:none;background:var(--white);transition:all 0.3s;border-radius:var(--radius-pill);border:1px solid rgba(61,139,139,0.12);color:var(--text-primary)}
+.search-input:focus{width:200px;border-color:var(--ocean)}
+.search-input::placeholder{color:var(--text-tertiary)}
+.search-clear{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--text-tertiary);padding:4px;display:flex;align-items:center}
+.result-count{font-size:12px;font-family:var(--font-body);color:var(--text-tertiary);margin-bottom:20px}
+.result-count strong{color:var(--ocean);font-weight:500}
+
+.prod-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+@media(min-width:768px){.prod-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1024px){.prod-grid{grid-template-columns:repeat(4,1fr)}}
+.prod-card{position:relative;border-radius:var(--radius-card);overflow:hidden;cursor:pointer;aspect-ratio:3/4;transition:all 0.5s var(--ease-out-expo)}
+.prod-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.prod-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.6s var(--ease-out-expo)}
+.prod-card:hover .prod-img{transform:scale(1.06)}
+.prod-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.15) 40%,transparent 60%);transition:all 0.5s;z-index:1;pointer-events:none}
+.prod-card .halftone-overlay{position:absolute;inset:0;background-image:radial-gradient(circle,#000 1px,transparent 1px);background-size:4px 4px;opacity:0.2;mix-blend-mode:multiply;pointer-events:none;z-index:1;transition:opacity 0.5s var(--ease-out-expo)}
+.prod-card:hover .halftone-overlay{opacity:0}
+.prod-card:hover .prod-overlay{background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,rgba(0,0,0,0.25) 40%,transparent 60%)}
+.prod-badge{position:absolute;top:14px;left:14px;z-index:3;padding:4px 14px;font-size:9px;font-family:var(--font-body);font-weight:500;letter-spacing:0.06em;border-radius:var(--radius-pill);background:rgba(255,255,255,0.88);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:var(--text-secondary)}
+.prod-info{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:24px 20px 22px;transform:translateY(0);transition:transform 0.5s var(--ease-out-expo)}
+.prod-card:hover .prod-info{transform:translateY(-4px)}
+.prod-en{font-size:9px;letter-spacing:0.1em;text-transform:uppercase;font-family:var(--font-body);font-weight:400;display:block;margin-bottom:4px;color:rgba(255,255,255,0.6)}
+.prod-name{font-family:var(--font-heading);font-size:18px;font-weight:500;color:var(--white);letter-spacing:-0.02em;margin-bottom:6px;line-height:1.25}
+.prod-bottom{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.prod-origin{font-size:10px;font-family:var(--font-body);font-weight:300;color:rgba(255,255,255,0.5)}
+.prod-price{font-size:14px;font-family:var(--font-heading);font-weight:500;color:var(--white);letter-spacing:-0.01em;white-space:nowrap}
+.prod-price::before{content:'$';font-size:12px;font-weight:400;margin-right:1px}
+
+.pagination{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:48px}
+.page-btn{width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:13px;font-family:var(--font-body);border:none;border-radius:50%;cursor:pointer;transition:all 0.2s;background:var(--white);color:var(--text-secondary);box-shadow:var(--shadow-sm)}
+.page-btn:hover:not(:disabled){background:rgba(61,139,139,0.06);color:var(--ocean)}
+.page-btn:disabled{cursor:not-allowed;opacity:0.3;box-shadow:none}
+.page-btn.active{background:var(--ocean);color:var(--white);box-shadow:0 2px 12px rgba(61,139,139,0.25)}
+.empty-state{padding:96px 0;text-align:center}
+.empty-state p{font-size:14px;font-family:var(--font-body);font-weight:300;color:var(--text-tertiary)}
+
+.prod-card.img-fallback{background:linear-gradient(135deg,rgba(61,139,139,0.08),rgba(224,122,95,0.08))}
+.prod-card.img-fallback .prod-img{display:none}
+.prod-card.img-fallback::after{content:attr(data-name);position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:18px;font-weight:500;color:var(--text-secondary);text-align:center;padding:24px}
+.prod-card.img-fallback .prod-overlay{display:none}
+.modal-img-fallback{width:100%;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(61,139,139,0.06),rgba(224,122,95,0.06));font-family:var(--font-heading);font-size:24px;font-weight:400;color:var(--text-secondary);text-align:center;padding:40px}
+
+.modal-overlay{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:16px}
+@media(min-width:768px){.modal-overlay{padding:40px}}
+.modal-backdrop{position:absolute;inset:0;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.modal-content{position:relative;width:100%;max-width:896px;max-height:90vh;overflow-y:auto;border-radius:var(--radius-card-lg);background:var(--bg-primary);box-shadow:var(--shadow-lg)}
+.modal-close{position:absolute;top:20px;right:20px;z-index:10;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:none;border-radius:50%;cursor:pointer;background:rgba(255,255,255,0.85);transition:all 0.2s;color:var(--text-secondary)}
+.modal-close:hover{background:rgba(61,139,139,0.08);color:var(--ocean)}
+.modal-grid{display:grid;grid-template-columns:1fr}
+@media(min-width:1024px){.modal-grid{grid-template-columns:2fr 3fr}}
+.modal-img{aspect-ratio:3/4;width:100%;height:100%;object-fit:cover}
+.modal-body{padding:32px}
+@media(min-width:1024px){.modal-body{padding:40px}}
+.modal-meta{font-size:10px;letter-spacing:0.06em;text-transform:uppercase;font-family:var(--font-body);font-weight:500;display:block;margin-bottom:12px}
+.modal-title{font-family:var(--font-heading);font-size:26px;font-weight:400;margin-bottom:4px;color:var(--text-primary)}
+@media(min-width:768px){.modal-title{font-size:32px}}
+.modal-en{font-size:12px;letter-spacing:0.02em;text-transform:uppercase;font-family:var(--font-body);display:block;margin-bottom:24px;color:var(--text-tertiary)}
+.modal-desc{font-size:14px;font-family:var(--font-body);font-weight:300;line-height:1.8;margin-bottom:32px;color:var(--text-secondary)}
+.scent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:32px}
+.scent-item{padding:14px;border-radius:12px;background:var(--white);border:1px solid rgba(61,139,139,0.06)}
+.scent-item-label{font-size:9px;letter-spacing:0.06em;text-transform:uppercase;font-family:var(--font-body);font-weight:500;display:block;margin-bottom:4px}
+.scent-item-val{font-size:12px;font-family:var(--font-body);color:var(--text-secondary)}
+.benefit-wrap{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.benefit-tag{padding:6px 14px;font-size:12px;font-family:var(--font-body);border-radius:var(--radius-pill)}
+.story-box{padding:16px;border-radius:12px;background:var(--white);border:1px solid rgba(61,139,139,0.06);margin-bottom:32px}
+.story-box-label{font-size:11px;font-family:var(--font-body);font-weight:500;letter-spacing:0.02em;color:var(--text-primary)}
+.story-box-text{font-size:12px;font-family:var(--font-body);font-weight:300;line-height:1.7;color:var(--text-tertiary);margin-top:8px}
+.safety-box{padding:14px;border-radius:12px;background:rgba(245,158,11,0.04);border:1px solid rgba(245,158,11,0.1);margin-bottom:24px}
+.safety-box-inner{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.safety-label{font-size:10px;letter-spacing:0.02em;text-transform:uppercase;font-family:var(--font-body);font-weight:500;color:#b45309}
+.safety-text{font-size:11px;font-family:var(--font-body);font-weight:300;color:var(--text-tertiary)}
+.price-bar{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-radius:var(--radius-card);background:var(--ocean)}
+.price-bar-label{font-size:10px;letter-spacing:0.02em;text-transform:uppercase;font-family:var(--font-body);font-weight:400;display:block;margin-bottom:4px;color:rgba(255,255,255,0.6)}
+.price-bar-val{font-size:22px;font-family:var(--font-heading);font-weight:400;color:var(--white)}
+.price-bar-right{text-align:right}
+.price-bar-cap{font-size:16px;font-family:var(--font-body);color:var(--white)}
+.price-bar-cap-label{font-size:10px;letter-spacing:0.02em;text-transform:uppercase;font-family:var(--font-body);font-weight:400;display:block;margin-bottom:4px;color:rgba(255,255,255,0.6)}
+.modal-section{margin-bottom:48px}
+
+/* ========== CSR / Sustainability Section — Magazine Layout + Enhanced Motion ========== */
+.csr-section{background:transparent;position:relative}
+.csr-row{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:80px;perspective:1200px}
+.csr-row:last-child{margin-bottom:0}
+.csr-row.reverse{direction:rtl}.csr-row.reverse>*{direction:ltr}
+.csr-visual{position:relative;border-radius:var(--radius-card-lg);aspect-ratio:4/3;overflow:hidden;transform:translateY(40px) scale(0.96) rotateX(8deg);opacity:0;filter:blur(10px);transition:transform 1.2s cubic-bezier(0.19,1,0.22,1),opacity 1s cubic-bezier(0.19,1,0.22,1),filter 0.8s cubic-bezier(0.19,1,0.22,1)}
+.csr-row.visible .csr-visual{transform:translateY(0) scale(1) rotateX(0);opacity:1;filter:blur(0)}
+.csr-visual::before{content:'';position:absolute;inset:-10%;background:inherit;background-size:cover;background-position:center;transform:scale(1);transition:transform 8s cubic-bezier(0.19,1,0.22,1);z-index:0}
+.csr-row.visible .csr-visual::before{transform:scale(1.08)}
+.csr-visual-bg{position:absolute;inset:0;z-index:1;background-size:cover;background-position:center;transform:scale(1);transition:transform 6s cubic-bezier(0.19,1,0.22,1);animation:csrKenburns 12s cubic-bezier(0.19,1,0.22,1) infinite alternate;animation-delay:1s}
+.csr-visual-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--csr-tint,rgba(61,139,139,0.25)),rgba(20,25,25,0.55));z-index:2}
+@keyframes csrKenburns{0%{transform:scale(1) translate(0,0)}50%{transform:scale(1.06) translate(-1%,-1%)}100%{transform:scale(1.12) translate(1%,1%)}}
+.csr-visual-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.4) rotate(-45deg);color:rgba(255,255,255,0.9);opacity:0;transition:transform 0.9s cubic-bezier(0.175,0.885,0.32,1.275),opacity 0.6s ease;z-index:3;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.3))}
+.csr-row.visible .csr-visual-icon{transform:translate(-50%,-50%) scale(1) rotate(0);opacity:1;transition-delay:0.4s}
+.csr-visual-icon svg,.csr-visual-icon img{width:80px;height:80px;transition:transform 0.6s cubic-bezier(0.19,1,0.22,1),filter 0.4s ease}
+.csr-visual-icon img{filter:brightness(0) invert(1)}
+.csr-visual:hover .csr-visual-icon{transform:translate(-50%,-52%) scale(1.08) rotate(8deg);filter:drop-shadow(0 0 16px rgba(255,255,255,0.5))}
+.csr-visual-label{position:absolute;bottom:24px;left:24px;font-size:11px;font-family:var(--font-body);font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.9);z-index:4;transform:translateY(20px);opacity:0;transition:transform 0.6s cubic-bezier(0.19,1,0.22,1) 0.6s,opacity 0.6s ease 0.6s;backdrop-filter:blur(8px);background:rgba(0,0,0,0.25);padding:8px 14px;border-radius:100px;border:1px solid rgba(255,255,255,0.15)}
+.csr-row.visible .csr-visual-label{transform:translateY(0);opacity:1}
+.csr-visual::after{content:'';position:absolute;top:0;left:-150%;width:150%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);transform:skewX(-20deg);z-index:5;pointer-events:none;transition:transform 1.4s cubic-bezier(0.19,1,0.22,1) 0.3s}
+.csr-row.visible .csr-visual::after{transform:translateX(250%)}
+.csr-content{position:relative;padding:16px 0;opacity:0;transform:translateX(-30px);transition:opacity 0.8s cubic-bezier(0.19,1,0.22,1) 0.3s,transform 0.8s cubic-bezier(0.19,1,0.22,1) 0.3s}
+.csr-row.reverse .csr-content{transform:translateX(30px)}
+.csr-row.visible .csr-content{opacity:1;transform:translateX(0)}
+.csr-number{position:absolute;top:-30px;right:0;font-family:var(--font-heading);font-size:120px;font-weight:300;color:var(--text-primary);opacity:0;transform:scale(0.5) rotate(-8deg) translateY(20px);transition:all 1.4s cubic-bezier(0.19,1,0.22,1);pointer-events:none;line-height:1;letter-spacing:-0.04em;text-shadow:0 2px 20px rgba(61,139,139,0.1);z-index:0}
+.csr-row.visible .csr-number{opacity:0.07;transform:scale(1) rotate(0) translateY(0);transition-delay:0.2s;animation:csrNumberBreathe 6s ease-in-out infinite;animation-delay:1.5s}
+@keyframes csrNumberBreathe{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.02) rotate(0.5deg);opacity:0.09}}
+.csr-title{display:flex;align-items:center;gap:14px;font-family:var(--font-heading);font-size:30px;font-weight:500;color:var(--text-primary);letter-spacing:-0.02em;line-height:1.25;margin-bottom:16px;opacity:0;transform:translateY(20px);filter:blur(8px);transition:opacity 0.8s cubic-bezier(0.19,1,0.22,1) 0.4s,transform 0.8s cubic-bezier(0.19,1,0.22,1) 0.4s,filter 0.8s cubic-bezier(0.19,1,0.22,1) 0.4s;position:relative;z-index:1}
+.csr-row.visible .csr-title{opacity:1;transform:translateY(0);filter:blur(0)}
+.csr-title-icon{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;flex-shrink:0;opacity:0;transform:translateX(-15px) scale(0.7) rotate(-15deg);transition:all 0.7s cubic-bezier(0.175,0.885,0.32,1.275) 0.5s}
+.csr-row.visible .csr-title-icon{opacity:1;transform:translateX(0) scale(1) rotate(0)}
+.csr-title-icon svg,.csr-title-icon img{width:56px;height:56px;transition:transform 0.4s cubic-bezier(0.19,1,0.22,1),filter 0.4s ease}
+.csr-title-icon img{filter:var(--csr-icon-filter,none)}
+.csr-title-icon:hover svg,.csr-title-icon:hover img{transform:scale(1.1) rotate(-5deg)}
+.csr-row.visible .csr-accent-line{transform:scaleX(1)}
+.csr-accent-line{position:relative;width:80px;height:3px;border-radius:2px;margin-left:58px;margin-bottom:24px;transform-origin:left;transition:transform 0.8s cubic-bezier(0.19,1,0.22,1) 0.6s;transform:scaleX(0);overflow:hidden;box-shadow:0 0 12px currentColor}
+.csr-accent-line::after{content:'';position:absolute;top:-1px;left:0;width:30px;height:5px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.8),transparent);transform:translateX(-100%);border-radius:2px;transition:transform 0.8s cubic-bezier(0.19,1,0.22,1) 1s}
+.csr-row.visible .csr-accent-line::after{transform:translateX(350%);animation:csrSweep 3s cubic-bezier(0.19,1,0.22,1) infinite;animation-delay:1.5s}
+@keyframes csrSweep{0%,100%{transform:translateX(-100%)}50%{transform:translateX(350%)}}
+.csr-list{list-style:none;display:flex;flex-direction:column;gap:14px;position:relative;z-index:1}
+.csr-list li{font-size:15px;font-family:var(--font-body);font-weight:400;color:var(--text-secondary);line-height:1.7;padding-left:26px;position:relative;opacity:0;transform:translateX(20px) translateY(8px);transition:all 0.5s cubic-bezier(0.19,1,0.22,1)}
+.csr-row.visible .csr-list li{opacity:1;transform:translateX(0) translateY(0)}
+.csr-list li::before{content:'';position:absolute;left:0;top:10px;width:8px;height:8px;border-radius:50%;background:var(--csr-color,#3d8b8b);box-shadow:0 0 0 0 var(--csr-color,#3d8b8b);opacity:0;transform:scale(0);transition:opacity 0.4s ease,transform 0.5s cubic-bezier(0.175,0.885,0.32,1.275),box-shadow 0.6s ease}
+.csr-row.visible .csr-list li::before{opacity:1;transform:scale(1);animation:csrDotPulse 2.5s ease-in-out infinite}
+@keyframes csrDotPulse{0%,100%{box-shadow:0 0 0 0 var(--csr-color,#3d8b8b);transform:scale(1)}50%{box-shadow:0 0 0 6px transparent;transform:scale(1.15)}}
+.csr-list li:hover{color:var(--text-primary);transform:translateX(4px)}
+.csr-list li:hover::before{transform:scale(1.3)}
+.csr-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:80px;padding-top:48px;border-top:1px solid transparent;position:relative;text-align:center;opacity:0;transform:translateY(30px);transition:opacity 0.8s cubic-bezier(0.19,1,0.22,1) 0.3s,transform 0.8s cubic-bezier(0.19,1,0.22,1) 0.3s}
+.csr-stats::before{content:'';position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(61,139,139,0.3),rgba(61,139,139,0.5),rgba(61,139,139,0.3),transparent);transform-origin:left;transform:scaleX(0);transition:transform 1.2s cubic-bezier(0.19,1,0.22,1) 0.3s}
+.csr-row.visible + .csr-stats, .csr-stats.visible{opacity:1;transform:translateY(0)}
+.csr-row.visible + .csr-stats::before, .csr-stats.visible::before{transform:scaleX(1)}
+.csr-stat-num{font-family:var(--font-heading);font-size:clamp(36px,4.5vw,56px);font-weight:300;color:var(--ocean);line-height:1.2;letter-spacing:-0.03em;text-shadow:0 2px 12px rgba(61,139,139,0.15);transition:transform 0.3s ease}
+.csr-stat-num:hover{transform:scale(1.05)}
+.csr-stat-label{font-size:12px;font-family:var(--font-body);font-weight:500;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.15em;margin-top:12px;display:block}
+.csr-stat{opacity:0;transform:translateY(15px);transition:all 0.6s cubic-bezier(0.19,1,0.22,1)}
+.csr-stats.visible .csr-stat{opacity:1;transform:translateY(0)}
+@media(max-width:767px){.csr-row{grid-template-columns:1fr;gap:32px;margin-bottom:56px;perspective:none}.csr-row.reverse{direction:ltr}.csr-visual{aspect-ratio:16/9;transform:translateY(20px);opacity:0}.csr-content{transform:translateY(20px)}.csr-row.reverse .csr-content{transform:translateY(20px)}.csr-number{font-size:72px;top:-10px;right:8px}.csr-title{font-size:22px}.csr-stats{grid-template-columns:repeat(2,1fr);gap:24px;margin-top:48px;padding-top:32px}}
+
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}
+.csr-visual-bg{animation:none!important}
+.csr-number{animation:none!important}
+.csr-accent-line::after{animation:none!important}
+}
+
+.factory-section{background:transparent;position:relative}
+.factory-wall{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(min-width:640px){.factory-wall{grid-template-columns:repeat(3,1fr);gap:16px}}
+@media(min-width:1024px){.factory-wall{grid-template-columns:repeat(4,1fr);gap:20px}}
+.factory-card{position:relative;border-radius:var(--radius-card-lg);overflow:hidden;cursor:pointer;box-shadow:var(--shadow-sm);transition:all 0.5s var(--ease-out-expo)}
+.factory-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px)}
+.factory-card--lg{grid-column:span 2;grid-row:span 2}
+.factory-card img{width:100%;height:100%;object-fit:cover;transition:transform 0.7s var(--ease-out-expo)}
+.factory-card:hover img{transform:scale(1.08)}
+.factory-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,20,20,0.65) 0%,rgba(20,20,20,0.15) 40%,transparent 65%);pointer-events:none}
+.factory-card .halftone-overlay{position:absolute;inset:0;background-image:radial-gradient(circle,#000 1px,transparent 1px);background-size:4px 4px;opacity:0.2;mix-blend-mode:multiply;pointer-events:none}
+.factory-card-info{position:absolute;bottom:0;left:0;right:0;padding:20px 16px;transform:translateY(0);transition:transform 0.5s var(--ease-out-expo)}
+.factory-card:hover .factory-card-info{transform:translateY(-4px)}
+.factory-card-title{font-family:var(--font-heading);font-size:14px;font-weight:400;color:var(--white);margin-bottom:2px}
+@media(min-width:768px){.factory-card-title{font-size:16px}}
+.factory-card-sub{font-size:10px;font-family:var(--font-body);color:rgba(255,255,255,0.55);letter-spacing:0.02em}
+
+.search-cta-section{background:linear-gradient(135deg, var(--ocean) 0%, var(--ocean-dark) 100%);position:relative;overflow:hidden;min-height:70vh;display:flex;align-items:center;justify-content:center;padding:128px 24px}
+.search-cta-pattern{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0.12;background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.search-cta-content{position:relative;z-index:1;text-align:center;max-width:900px;margin:0 auto}
+.search-cta-title{font-family:var(--font-heading);font-size:clamp(1.75rem, 3.5vw, 2.25rem);font-weight:700;color:var(--white);margin-bottom:24px;letter-spacing:-0.02em;line-height:1.3}
+.search-cta-desc{font-size:1rem;color:rgba(255,255,255,0.9);margin-bottom:48px;line-height:1.7}
+.search-cta-form{max-width:620px;margin:0 auto}
+.search-cta-input-wrap{display:flex;align-items:center;background:var(--white);border-radius:100px;box-shadow:0 16px 50px rgba(0,0,0,0.2);overflow:hidden;padding:8px 8px 8px 8px;transition:transform 0.3s var(--ease-out-expo)}
+.search-cta-input-wrap:hover{transform:translateY(-2px)}
+.search-cta-icon{color:var(--ocean-dark);margin-left:16px;flex-shrink:0;display:flex;align-items:center}
+.search-cta-input{flex:1;padding:14px 16px;font-size:15px;font-family:var(--font-body);font-weight:400;border:none;outline:none;background:transparent;color:var(--text-primary)}
+.search-cta-input::placeholder{color:var(--text-tertiary);font-weight:300}
+.search-cta-button{padding:14px 32px;font-size:14px;font-family:var(--font-body);font-weight:600;border:none;border-radius:100px;cursor:pointer;transition:all 0.3s var(--ease-out-expo);background:var(--ocean-dark);color:var(--white);white-space:nowrap}
+.search-cta-button:hover{background:var(--ocean);transform:translateY(-2px);box-shadow:0 8px 24px rgba(61,139,139,0.4)}
+.search-cta-tags{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:24px;flex-wrap:wrap}
+.search-cta-tag{padding:8px 20px;font-size:12px;font-family:var(--font-body);font-weight:500;letter-spacing:0.05em;border-radius:100px;background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border:1px solid rgba(255,255,255,0.2);backdrop-filter:blur(8px);transition:all 0.3s ease}
+.search-cta-tag:hover{background:rgba(255,255,255,0.25);transform:translateY(-2px)}
+@media(max-width:767px){.search-cta-section{padding:80px 16px;min-height:60vh}.search-cta-title{font-size:1.5rem}.search-cta-desc{font-size:14px;margin-bottom:32px}.search-cta-input-wrap{padding:6px 6px 6px 6px}.search-cta-input{padding:12px 10px;font-size:14px}.search-cta-button{padding:12px 20px;font-size:13px}}
+
+footer{position:relative;width:100%;overflow:hidden}
+
+.flex{display:flex}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}
+.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}
+.text-center{text-align:center}.w-full{width:100%}.h-full{height:100%}.min-h-screen{min-height:100vh}
+.relative{position:relative}.absolute{position:absolute}.fixed{position:fixed}
+.inset-0{top:0;right:0;bottom:0;left:0}.z-0{z-index:0}.z-10{z-index:10}.z-50{z-index:50}.z-100{z-index:100}
+.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.pointer-events-none{pointer-events:none}
+.cursor-pointer{cursor:pointer}.block{display:block}.inline-block{display:inline-block}
+.mx-auto{margin-left:auto;margin-right:auto}.object-cover{object-fit:cover}
+.flex-1{flex:1}.flex-shrink-0{flex-shrink:0}
+.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.grid{display:grid}
+.list-none{list-style:none}
+.space-y-3>*+*{margin-top:12px}.space-y-2>*+*{margin-top:8px}
+
+/* Mobile menu handled by components/nav.css */
+</style>
+</head>
+<body class="force-dark-nav">
+
+<canvas id="bg-canvas"></canvas>
+
+<div id="nav-placeholder"></div>
+
+<section class="hero">
+  <div class="hero-slider" id="heroSlider">
+    <div class="hero-slide active">
+      <img src="images/Own_Hero1_1920x1080.jpg" alt="Premium Essential Oils" />
+    </div>
+    <div class="hero-slide">
+      <img src="images/Own_Hero2_1920x1080.jpg" alt="Natural Ingredients" />
+    </div>
+    <div class="hero-slide">
+      <img src="images/Own_Hero3_1920x1080.jpg" alt="Pure Extraction" />
+    </div>
+    <div class="hero-slide">
+      <img src="images/Own_Hero4_1920x1080.jpg" alt="Quality Assurance" />
+    </div>
+  </div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <p class="hero-sub">Premium F&F Ingredients Collection</p>
+    <h1 class="hero-title" id="heroTitle"></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-desc">High-quality perfumery materials with stable performance<br/>every drop delivers impeccable scent value</p>
+    <div class="hero-btn-wrap">
+      <button class="hero-btn" onclick="document.getElementById('catalog')?.scrollIntoView({behavior:'smooth'})">Explore the Collection</button>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+  <div class="hero-wave"></div>
+  <div class="hero-controls">
+    <button class="hero-nav hero-nav-prev" id="heroPrev">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+    </button>
+    <div class="hero-dots" id="heroDots"></div>
+    <button class="hero-nav hero-nav-next" id="heroNext">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"/>
+      </svg>
+    </button>
+  </div>
+</section>
+
+<section id="catalog" class="section">
+  <div class="section-inner">
+    <div class="reveal" style="margin-bottom:48px">
+      <span class="section-label">Product Catalog</span>
+      <h2 class="section-title">Essential Oil<br/>Catalog</h2>
+      <p class="section-desc">A curated selection of the finest essential oils, each carrying the memory of its origin</p>
+    </div>
+    <div class="filter-bar" id="filterBar"></div>
+    <div class="result-count" id="resultCount"></div>
+    <div class="prod-grid" id="prodGrid"></div>
+    <div class="empty-state" id="emptyState" style="display:none">
+      <p>No matching products found</p>
+    </div>
+    <div class="pagination" id="pagination"></div>
+  </div>
+</section>
+
+<section id="factory" class="section factory-section">
+  <div class="section-inner">
+    <div class="reveal" style="margin-bottom:48px">
+      <span class="section-label">Dual Factories</span>
+      <h2 class="section-title">Equipment & Facilities</h2>
+      <p class="section-desc" style="margin-top:8px">From Chongqing, China to Selangor, Malaysia</p>
+    </div>
+    <div class="factory-wall" id="factoryWall"></div>
+  </div>
+</section>
+
+<section id="csr" class="section csr-section">
+  <div class="section-inner">
+    <div class="reveal" style="margin-bottom:64px">
+      <span class="section-label">Commitment</span>
+      <h2 class="section-title">Corporate Social<br/>Responsibility</h2>
+      <p class="section-desc" style="margin-top:8px">Our dedication to ethical practices, environmental stewardship, and sustainable growth across every layer of our operations</p>
+    </div>
+    <div id="csrContent"></div>
+  </div>
+</section>
+
+<section id="search-cta" class="search-cta-section">
+  <div class="search-cta-pattern"></div>
+  <div class="search-cta-content reveal">
+    <h2 class="search-cta-title">Find Your Essential Oils</h2>
+    <p class="search-cta-desc">Search our comprehensive range of traded and in-house products. From rare botanicals to signature blends, discover the perfect ingredients for your next creation.</p>
+    <div class="search-cta-form">
+      <div class="search-cta-input-wrap">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-cta-icon">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" class="search-cta-input" id="productSearchInput" placeholder="Search by name, CAS, FEMA, or REACH..."/>
+        <button class="search-cta-button" id="productSearchBtn">Search</button>
+      </div>
+      <div class="search-cta-tags">
+        <span class="search-cta-tag">Traded Products</span>
+        <span class="search-cta-tag">In-house Products</span>
+        <span class="search-cta-tag">Essential Oils</span>
+        <span class="search-cta-tag">Aroma Chemicals</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<div class="modal-overlay" id="modalOverlay" style="display:none">
+  <div class="modal-backdrop" onclick="closeModal()"></div>
+  <div class="modal-content" id="modalContent"></div>
+</div>
+
+<script src="components/nav.js"></script>
+<script src="components/footer.js"></script>
+<script>
+const ICONS = {
+  menu: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>',
+  x: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
+  search: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
+  chevronLeft: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>',
+  chevronRight: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>',
+  arrowUpRight: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>',
+  leaf: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>',
+  droplet: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>',
+  wind: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg>',
+  mapPin: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>',
+  heart: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>',
+  bookOpen: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>',
+  alertTriangle: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
+  envLeaf: '<img src="images/CSR_Environment.svg" alt="Environment" aria-hidden="true" />',
+  laborPeople: '<img src="images/CSR_Labor.svg" alt="Labor" aria-hidden="true" />',
+  ethicsShield: '<img src="images/CSR_Ethics.svg" alt="Ethics" aria-hidden="true" />',
+  procureLink: '<img src="images/CSR_Sustainable.svg" alt="Sustainable Procurement" aria-hidden="true" />',
+};
+
+const CATEGORIES = [
+  { id: 'all', label: 'All', color: '#3d8b8b' },
+  { id: 'herbal', label: 'Herbal', color: '#5a9e7d' },
+  { id: 'citrus', label: 'Citrus', color: '#d4a574' },
+  { id: 'woody', label: 'Woody', color: '#8b6e4e' },
+  { id: 'floral', label: 'Floral', color: '#e07a5f' },
+];
+
+const PRODUCTS = [
+  { id:1,name:'Rosemary',nameEn:'Rosemary',origin:'Morocco',price:'268',capacity:'10ml',image:'public/images/herbal-rosemary.jpg',category:'herbal',categoryLabel:'Herbal',description:'A fresh, herbaceous aroma that sharpens focus and memory',note:'Focus / Energy',scentProfile:{top:'Camphoraceous',middle:'Warm herbal',base:'Woody finish'},benefits:['Boosts memory','Relieves muscle pain','Stimulates scalp'],extraction:'Steam distillation',story:'Ancient Greek students wore rosemary garlands to enhance memory.' },
+  { id:2,name:'Bergamot',nameEn:'Bergamot',origin:'Italy',price:'458',capacity:'10ml',image:'public/images/citrus-bergamot.jpg',category:'citrus',categoryLabel:'Citrus',description:'A sun-kissed citrus fragrance that soothes anxiety',note:'Joy / Calm',scentProfile:{top:'Bright citrus',middle:'Soft floral',base:'Woody undertone'},benefits:['Relieves anxiety','Improves sleep','Balances sebum'],extraction:'Cold-pressed',story:'The soul of Earl Grey tea, from Calabria, Italy.' },
+  { id:3,name:'Sandalwood',nameEn:'Sandalwood',origin:'India',price:'1280',capacity:'5ml',image:'public/images/woody-sandalwood.jpg',category:'woody',categoryLabel:'Woody',description:'The soul of ancient trees, the ultimate meditation companion',note:'Calm / Meditation',scentProfile:{top:'Mild wood',middle:'Creamy sweetness',base:'Amber depth'},benefits:['Deep relaxation','Improves dry skin','Enhances focus'],extraction:'Steam distillation',story:'Sacred wood in Hinduism and Buddhism.' },
+  { id:4,name:'Damask Rose',nameEn:'Damask Rose',origin:'Bulgaria',price:'898',capacity:'5ml',image:'public/images/floral-rose.jpg',category:'floral',categoryLabel:'Floral',description:'The luxurious fragrance of the queen of flowers, nourishing the skin',note:'Nourish / Warmth',scentProfile:{top:'Sweet floral',middle:'Honeyed notes',base:'Woody depth'},benefits:['Nourishes skin','Balances hormones','Eases menstrual discomfort'],extraction:'Steam distillation',story:'About 4,000 kg of petals yield just 1 kg of essential oil.' },
+  { id:5,name:'Lavender',nameEn:'Lavender',origin:'France',price:'368',capacity:'10ml',image:'public/images/prod-lavender.jpg',category:'floral',categoryLabel:'Floral',description:'The classic essential oil for restful sleep and calm',note:'Sleep / Soothe',scentProfile:{top:'Fresh floral',middle:'Herbaceous',base:'Woody finish'},benefits:['Improves insomnia','Soothes sunburn','Relieves headaches'],extraction:'Steam distillation',story:'Sourced from organic farms above 800m in Provence.' },
+  { id:6,name:'Frankincense',nameEn:'Frankincense',origin:'Oman',price:'788',capacity:'10ml',image:'public/images/prod-frankincense.jpg',category:'woody',categoryLabel:'Woody',description:'Sacred woody aroma that purifies the spirit',note:'Meditation / Purify',scentProfile:{top:'Lemon-like',middle:'Resinous',base:'Woody depth'},benefits:['Deep meditation','Reduces fine lines','Purifies space'],extraction:'Steam distillation',story:'Called the "Gold of the Desert," used in sacred incense for millennia.' },
+  { id:7,name:'Peppermint',nameEn:'Peppermint',origin:'USA',price:'228',capacity:'10ml',image:'public/images/prod-peppermint.jpg',category:'herbal',categoryLabel:'Herbal',description:'Cool and refreshing, relieves headaches',note:'Cool / Energize',scentProfile:{top:'Cool mint',middle:'Sweet herb',base:'Slight bitterness'},benefits:['Relieves headaches','Boosts alertness','Cools fever'],extraction:'Steam distillation',story:'One of the oldest medicinal plants.' },
+  { id:8,name:'Eucalyptus',nameEn:'Eucalyptus',origin:'Australia',price:'298',capacity:'10ml',image:'public/images/prod-eucalyptus.jpg',category:'herbal',categoryLabel:'Herbal',description:'Fresh and invigorating, your breath\'s best friend',note:'Respiratory / Purify',scentProfile:{top:'Camphor fresh',middle:'Cool mint',base:'Woody note'},benefits:['Clears nasal congestion','Purifies air','Relieves muscle pain'],extraction:'Steam distillation',story:'An iconic Australian native plant.' },
+  { id:9,name:'Lemon',nameEn:'Lemon',origin:'Italy',price:'198',capacity:'10ml',image:'public/images/prod-lemon.jpg',category:'citrus',categoryLabel:'Citrus',description:'Sun-kissed fruit fragrance that uplifts the spirit',note:'Purify / Uplift',scentProfile:{top:'Bright citrus',middle:'Sweet fruit',base:'Green undertone'},benefits:['Purifies air','Brightens skin','Relieves fatigue'],extraction:'Cold-pressed',story:'Sicily\'s volcanic soil gives it a uniquely vibrant aroma.' },
+  { id:10,name:'Cedarwood',nameEn:'Cedarwood',origin:'Morocco',price:'328',capacity:'10ml',image:'public/images/prod-cedarwood.jpg',category:'woody',categoryLabel:'Woody',description:'A grounding woody scent that stabilizes emotions',note:'Grounding / Sleep',scentProfile:{top:'Warm wood',middle:'Honeyed sweet',base:'Resinous depth'},benefits:['Improves sleep','Relieves anxiety','Reduces dandruff'],extraction:'Steam distillation',story:'Ancient tree species from the Atlas Mountains of North Africa.' },
+  { id:11,name:'Jasmine',nameEn:'Jasmine',origin:'Egypt',price:'1680',capacity:'3ml',image:'public/images/prod-jasmine.jpg',category:'floral',categoryLabel:'Floral',description:'The intoxicating fragrance of the queen of flowers',note:'Confidence / Charm',scentProfile:{top:'Rich floral',middle:'Sweet fruit',base:'Musk finish'},benefits:['Boosts confidence','Nourishes skin','Enhances mood'],extraction:'Solvent extraction',story:'8 million jasmine flowers yield just 1 kg of essential oil.' },
+  { id:12,name:'Geranium',nameEn:'Geranium',origin:'Réunion',price:'358',capacity:'10ml',image:'public/images/prod-geranium.jpg',category:'floral',categoryLabel:'Floral',description:'A balancing rose-like alternative for body and mind',note:'Balance / Skin',scentProfile:{top:'Fresh rose',middle:'Minty herb',base:'Woody finish'},benefits:['Balances hormones','Regulates sebum','Eases PMS'],extraction:'Steam distillation',story:'Known as the "poor man\'s rose."' },
+  { id:13,name:'Tea Tree',nameEn:'Tea Tree',origin:'Australia',price:'188',capacity:'10ml',image:'public/images/herbal-rosemary.jpg',category:'herbal',categoryLabel:'Herbal',description:'Nature\'s powerful antimicrobial defender',note:'Antibacterial / Purify',benefits:['Powerful antimicrobial','Treats acne','Relieves athlete\'s foot'],extraction:'Steam distillation',safety:'Do not ingest. Avoid contact with eyes.' },
+  { id:14,name:'Sweet Orange',nameEn:'Sweet Orange',origin:'Brazil',price:'168',capacity:'10ml',image:'public/images/citrus-bergamot.jpg',category:'citrus',categoryLabel:'Citrus',description:'Warm and sweet sun-drenched fragrance',note:'Joy / Digest',benefits:['Lifts mood','Aids digestion','Improves circulation'],extraction:'Cold-pressed' },
+  { id:15,name:'Agarwood',nameEn:'Agarwood',origin:'Vietnam',price:'2880',capacity:'3ml',image:'public/images/woody-sandalwood.jpg',category:'woody',categoryLabel:'Woody',description:'The ultimate precious oud fragrance',note:'Meditation / Collectible',benefits:['Deep meditation','Calms the mind','Investment value'],extraction:'Steam distillation',safety:'Extremely precious, use sparingly.' },
+  { id:16,name:'Chamomile',nameEn:'Chamomile',origin:'Germany',price:'458',capacity:'5ml',image:'public/images/prod-lavender.jpg',category:'floral',categoryLabel:'Floral',description:'Gentle soothing power for body and soul',note:'Calm / Baby',benefits:['Soothes sensitivity','Relieves anxiety','Calms babies'],extraction:'Steam distillation',safety:'Avoid if allergic to Asteraceae plants.' },
+  { id:17,name:'Thyme',nameEn:'Thyme',origin:'France',price:'288',capacity:'10ml',image:'public/images/prod-peppermint.jpg',category:'herbal',categoryLabel:'Herbal',description:'A powerful herbaceous force of nature',note:'Immunity / Antibacterial',benefits:['Strong antimicrobial','Boosts immunity','Relieves joint pain'],extraction:'Steam distillation',safety:'Avoid during pregnancy.' },
+  { id:18,name:'Grapefruit',nameEn:'Grapefruit',origin:'USA',price:'228',capacity:'10ml',image:'public/images/prod-lemon.jpg',category:'citrus',categoryLabel:'Citrus',description:'Vibrant and energizing citrus sweetness',note:'Detox / Slim',benefits:['Promotes detox','Reduces water retention','Suppresses appetite'],extraction:'Cold-pressed',safety:'Photosensitive essential oil.' },
+  { id:19,name:'Patchouli',nameEn:'Patchouli',origin:'Indonesia',price:'298',capacity:'10ml',image:'public/images/prod-cedarwood.jpg',category:'woody',categoryLabel:'Woody',description:'An enigmatic oriental fragrance',note:'Grounding / Skin',benefits:['Stabilizes mood','Improves dry skin','Aids healing'],extraction:'Steam distillation' },
+  { id:20,name:'Ylang Ylang',nameEn:'Ylang Ylang',origin:'Madagascar',price:'528',capacity:'10ml',image:'public/images/prod-jasmine.jpg',category:'floral',categoryLabel:'Floral',description:'The exotic allure of tropical gardens',note:'Romance / Hair',benefits:['Relieves anxiety','Lowers blood pressure','Adds hair shine'],extraction:'Fractional distillation' },
+  { id:21,name:'Cypress',nameEn:'Cypress',origin:'France',price:'318',capacity:'10ml',image:'public/images/prod-eucalyptus.jpg',category:'herbal',categoryLabel:'Herbal',description:'Fresh needle-leaf fragrance',note:'Astringent / Purify',benefits:['Improves circulation','Controls oil','Relieves hot flashes'],extraction:'Steam distillation' },
+  { id:22,name:'Lime',nameEn:'Lime',origin:'Mexico',price:'208',capacity:'10ml',image:'public/images/prod-lemon.jpg',category:'citrus',categoryLabel:'Citrus',description:'Greener and brighter than lemon',note:'Fresh / Appetite',benefits:['Purifies air','Brightens complexion','Stimulates appetite'],extraction:'Cold-pressed' },
+  { id:23,name:'Vetiver',nameEn:'Vetiver',origin:'Haiti',price:'388',capacity:'10ml',image:'public/images/prod-frankincense.jpg',category:'woody',categoryLabel:'Woody',description:'The grounding scent of the earth itself',note:'Grounding / Sleep',benefits:['Deep relaxation','Improves focus','Promotes sleep'],extraction:'Steam distillation' },
+  { id:24,name:'Neroli',nameEn:'Neroli',origin:'Tunisia',price:'1580',capacity:'3ml',image:'public/images/prod-geranium.jpg',category:'floral',categoryLabel:'Floral',description:'Precious white floral essence',note:'Anti-anxiety / Skin',benefits:['Eases anxiety','Fades scars','Improves elasticity'],extraction:'Steam distillation' },
+];
+
+(function initCanvas() {
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  let w = window.innerWidth, h = window.innerHeight;
+  canvas.width = w; canvas.height = h;
+  const colors = ['rgba(61,139,139,0.06)','rgba(90,173,173,0.04)','rgba(61,139,139,0.05)','rgba(61,139,139,0.08)','rgba(90,173,173,0.04)'];
+  const bubbles = [];
+  const count = Math.min(25, Math.floor(w * h / 50000));
+  for (let i = 0; i < count; i++) {
+    bubbles.push({ x: Math.random() * w, y: Math.random() * h, r: Math.random() * 60 + 20, color: colors[Math.floor(Math.random() * colors.length)], delay: Math.random() * 5, rot: Math.random() * Math.PI });
+  }
+  function drawHex(cx, cy, radius, rotation) {
+    ctx.beginPath();
+    for (let i = 0; i < 6; i++) {
+      const a = rotation + (Math.PI / 3) * i;
+      const px = cx + radius * Math.cos(a);
+      const py = cy + radius * Math.sin(a);
+      if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    }
+    ctx.closePath();
+  }
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let t = 0;
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    t += reducedMotion ? 0 : 0.016;
+    for (const b of bubbles) {
+      const dy = Math.sin((t + b.delay) * 0.5) * (reducedMotion ? 0 : 15);
+      const dx = Math.cos((t + b.delay) * 0.3) * (reducedMotion ? 0 : 8);
+      drawHex(b.x + dx, b.y + dy, b.r, b.rot + (reducedMotion ? 0 : t * 0.1));
+      ctx.fillStyle = b.color;
+      ctx.fill();
+    }
+    if (!reducedMotion) requestAnimationFrame(draw);
+  }
+  draw();
+  window.addEventListener('resize', () => { w = window.innerWidth; h = window.innerHeight; canvas.width = w; canvas.height = h; }, { passive: true });
+})();
+
+(function initHero() {
+  const titleEl = document.getElementById('heroTitle');
+  const text = 'Olfactive Excellence';
+  titleEl.innerHTML = text.split('').map(ch => ch === ' ' ? '<span class="char">&nbsp;</span>' : `<span class="char">${ch}</span>`).join('');
+  const chars = titleEl.querySelectorAll('.char');
+  chars.forEach((el, i) => {
+    el.style.transition = `opacity 0.8s var(--ease-out-expo) ${i * 0.07}s, transform 0.8s var(--ease-out-expo) ${i * 0.07}s`;
+    setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, 200);
+  });
+
+  const slider = document.getElementById('heroSlider');
+  const slides = slider.querySelectorAll('.hero-slide');
+  const prevBtn = document.getElementById('heroPrev');
+  const nextBtn = document.getElementById('heroNext');
+  const dotsContainer = document.getElementById('heroDots');
+  
+  let currentIndex = 0;
+  let isTransitioning = false;
+  const intervalTime = 5000;
+  let autoPlayInterval;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = `hero-dot ${i === 0 ? 'active' : ''}`;
+    dot.setAttribute('data-index', i);
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  function goToSlide(index) {
+    if (isTransitioning || index === currentIndex) return;
+    
+    isTransitioning = true;
+    const dots = dotsContainer.querySelectorAll('.hero-dot');
+    
+    slides[currentIndex].classList.remove('active');
+    dots[currentIndex].classList.remove('active');
+    
+    if (index > currentIndex) {
+      slides[currentIndex].classList.add('next');
+    } else {
+      slides[currentIndex].classList.add('prev');
+    }
+    
+    setTimeout(() => {
+      slides[currentIndex].classList.remove('next', 'prev');
+      slides[index].classList.add('active');
+      dots[index].classList.add('active');
+      currentIndex = index;
+      
+      setTimeout(() => {
+        isTransitioning = false;
+      }, 1200);
+    }, 600);
+    
+    resetAutoPlay();
+  }
+
+  function nextSlide() {
+    const nextIndex = (currentIndex + 1) % slides.length;
+    goToSlide(nextIndex);
+  }
+
+  function prevSlide() {
+    const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+    goToSlide(prevIndex);
+  }
+
+  function startAutoPlay() {
+    autoPlayInterval = setInterval(nextSlide, intervalTime);
+  }
+
+  function resetAutoPlay() {
+    clearInterval(autoPlayInterval);
+    setTimeout(startAutoPlay, intervalTime);
+  }
+
+  prevBtn.addEventListener('click', prevSlide);
+  nextBtn.addEventListener('click', nextSlide);
+  
+  slider.addEventListener('mouseenter', () => {
+    clearInterval(autoPlayInterval);
+  });
+  
+  slider.addEventListener('mouseleave', startAutoPlay);
+  
+  startAutoPlay();
+})();
+
+
+
+function observeReveal(entries) {
+  for (const entry of entries) { if (entry.isIntersecting) entry.target.classList.add('visible'); }
+}
+const observer = new IntersectionObserver(observeReveal, { threshold: 0.05 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+(function initCatalog() {
+  const PER_PAGE = 12;
+  let cat = 'all', query = '', page = 1;
+  const filterBar = document.getElementById('filterBar');
+  const resultCount = document.getElementById('resultCount');
+  const prodGrid = document.getElementById('prodGrid');
+  const emptyState = document.getElementById('emptyState');
+  const pagination = document.getElementById('pagination');
+
+  function getFiltered() {
+    let r = [...PRODUCTS];
+    if (cat !== 'all') r = r.filter(p => p.category === cat);
+    if (query.trim()) { const q = query.toLowerCase(); r = r.filter(p => p.name.toLowerCase().includes(q) || p.nameEn.toLowerCase().includes(q)); }
+    return r;
+  }
+  function catColor(id) { const c = CATEGORIES.find(c => c.id === id); return c ? c.color : '#3d8b8b'; }
+
+  function render() {
+    const filtered = getFiltered();
+    const pages = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
+    const start = (page - 1) * PER_PAGE;
+    const items = filtered.slice(start, start + PER_PAGE);
+
+    filterBar.innerHTML = CATEGORIES.map(c => `<button class="filter-btn" data-cat="${c.id}" style="background:${cat === c.id ? c.color : 'var(--white)'};color:${cat === c.id ? '#fff' : 'var(--text-secondary)'};box-shadow:${cat === c.id ? `0 2px 12px ${c.color}30` : 'var(--shadow-sm)'}">${c.label}</button>`).join('') + `<div style="flex:1"></div><div class="search-wrap"><span class="search-icon">${ICONS.search}</span><input type="text" class="search-input" placeholder="Search..." value="${query}" id="searchInput" />${query ? `<button class="search-clear" id="searchClear">${ICONS.x}</button>` : ''}</div>`;
+
+    filterBar.querySelectorAll('.filter-btn').forEach(btn => { btn.addEventListener('click', () => { cat = btn.getAttribute('data-cat'); page = 1; render(); }); });
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) searchInput.addEventListener('input', () => { query = searchInput.value; page = 1; render(); });
+    const searchClear = document.getElementById('searchClear');
+    if (searchClear) searchClear.addEventListener('click', () => { query = ''; page = 1; render(); });
+
+    resultCount.innerHTML = `<strong>${filtered.length}</strong> oils found`;
+
+    if (items.length === 0) { prodGrid.innerHTML = ''; emptyState.style.display = 'block'; pagination.innerHTML = ''; return; }
+    emptyState.style.display = 'none';
+
+    prodGrid.innerHTML = items.map((p, i) => `<div class="prod-card reveal reveal-d${(i % 4) + 1}" role="button" tabindex="0" aria-label="View ${p.name} details" data-id="${p.id}" data-name="${p.name}"><img src="${p.image}" alt="${p.name}" class="prod-img" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('img-fallback')" /><div class="halftone-overlay"></div><div class="prod-overlay"></div><div class="prod-badge" style="color:${catColor(p.category)}">${p.categoryLabel}</div><div class="prod-info"><span class="prod-en">${p.nameEn}</span><h3 class="prod-name">${p.name}</h3><div class="prod-bottom"><span class="prod-origin">${p.origin}</span><div class="prod-price">${p.price}</div></div></div></div>`).join('');
+
+    prodGrid.querySelectorAll('.prod-card').forEach(el => {
+      const id = parseInt(el.getAttribute('data-id'));
+      const openProduct = () => { const product = PRODUCTS.find(p => p.id === id); if (product) openModal(product); };
+      el.addEventListener('click', openProduct);
+      el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openProduct(); } });
+    });
+    prodGrid.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    if (pages > 1) {
+      pagination.innerHTML = `<button class="page-btn" data-page="${page - 1}" ${page === 1 ? 'disabled' : ''}>${ICONS.chevronLeft}</button>${Array.from({ length: pages }, (_, i) => i + 1).map(p => `<button class="page-btn ${page === p ? 'active' : ''}" data-page="${p}">${p}</button>`).join('')}<button class="page-btn" data-page="${page + 1}" ${page === pages ? 'disabled' : ''}>${ICONS.chevronRight}</button>`;
+      pagination.querySelectorAll('.page-btn:not(:disabled)').forEach(btn => {
+        btn.addEventListener('click', () => { const p = parseInt(btn.getAttribute('data-page')); if (p && p !== page) { page = p; render(); document.getElementById('catalog')?.scrollIntoView({ behavior: 'smooth' }); } });
+      });
+    } else pagination.innerHTML = '';
+  }
+  render();
+})();
+
+function openModal(product) {
+  const overlay = document.getElementById('modalOverlay');
+  const content = document.getElementById('modalContent');
+  const c = CATEGORIES.find(x => x.id === product.category);
+  const cColor = c ? c.color : '#3d8b8b';
+  document.body.style.overflow = 'hidden';
+
+  let html = `<button class="modal-close" onclick="closeModal()">${ICONS.x}</button><div class="modal-grid"><img src="${product.image}" alt="${product.name}" class="modal-img" onerror="this.outerHTML='<div class=\\'modal-img-fallback\\'>${product.name}</div>'" /><div class="modal-body"><span class="modal-meta" style="color:${cColor}">${product.categoryLabel} &middot; ${product.origin}</span><h2 class="modal-title">${product.name}</h2><span class="modal-en">${product.nameEn}</span><p class="modal-desc">${product.description}</p>`;
+
+  if (product.scentProfile) {
+    const keys = ['top', 'middle', 'base'];
+    const labels = ['Top', 'Middle', 'Base'];
+    const colors = [cColor, '#5aadad', '#3d8b8b'];
+    html += `<div class="modal-section"><div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">${ICONS.wind}<span style="font-size:12px;font-family:var(--font-body);font-weight:500;color:var(--text-primary)">Scent Profile</span></div><div class="scent-grid">`;
+    keys.forEach((k, i) => {
+      if (product.scentProfile[k]) html += `<div class="scent-item"><span class="scent-item-label" style="color:${colors[i]}">${labels[i]}</span><p class="scent-item-val">${product.scentProfile[k]}</p></div>`;
+    });
+    html += `</div></div>`;
+  }
+
+  if (product.benefits) {
+    html += `<div class="modal-section"><div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">${ICONS.heart}<span style="font-size:12px;font-family:var(--font-body);font-weight:500;color:var(--text-primary)">Benefits</span></div><div class="benefit-wrap">`;
+    product.benefits.forEach(b => html += `<span class="benefit-tag" style="background:${cColor}0d;color:${cColor}">${b}</span>`);
+    html += `</div></div>`;
+  }
+
+  if (product.story) html += `<div class="story-box"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">${ICONS.bookOpen}<span class="story-box-label">Plant Story</span></div><p class="story-box-text">${product.story}</p></div>`;
+  if (product.safety) html += `<div class="safety-box"><div class="safety-box-inner">${ICONS.alertTriangle}<span class="safety-label">Safety</span></div><p class="safety-text">${product.safety}</p></div>`;
+
+  html += `<div class="price-bar"><div><span class="price-bar-label">Price</span><span class="price-bar-val">&yen;${product.price}</span></div><div class="price-bar-right"><span class="price-bar-cap-label">Volume</span><span class="price-bar-cap">${product.capacity || ''}</span></div></div></div></div></div>`;
+
+  content.innerHTML = html;
+  overlay.style.display = 'flex';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+(function initSearchCTA() {
+  const searchInput = document.getElementById('productSearchInput');
+  const searchBtn = document.getElementById('productSearchBtn');
+  
+  function handleSearch() {
+    const query = searchInput.value.trim();
+    if (query) {
+      const encodedQuery = encodeURIComponent(query);
+      window.location.href = `ProductSearch_UI.html?search=${encodedQuery}`;
+    }
+  }
+  
+  searchBtn.addEventListener('click', handleSearch);
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  });
+})();
+
+document.getElementById('modalOverlay').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget || e.target.classList.contains('modal-backdrop')) closeModal();
+});
+
+(function initFactory() {
+  const wall = document.getElementById('factoryWall');
+  const items = [
+    { img: 'images/Own_PlantA_1200x1200.jpg', title: 'Distillation Equipment', sub: 'Location: Selangor, Malaysia', size: 'lg' },
+    { img: 'images/Own_Plant2_1200x800.jpg', title: 'Inner Workshop I', sub: 'Location: Chongqing, China', size: '' },
+    { img: 'images/Own_Plant3_1200x800.jpg', title: 'Vacuum Unit & other Facilities', sub: 'Location: Chongqing, China', size: '' },
+    { img: 'images/Own_PlantB_1200x1200.jpg', title: 'Inner Workshop ', sub: 'Location: Selangor, Malaysia', size: 'lg' },
+    { img: 'images/Own_Plant1_1200x800.jpg', title: 'Nightview of Workshop II', sub: 'Location: Chongqing, China', size: '' },
+    { img: 'images/Own_Plant4_1200x800.jpg', title: 'Inner Workshop II', sub: 'Location: Chongqing, China', size: '' },
+  ];
+  items.forEach((item, i) => {
+    const card = document.createElement('div');
+    const sizeClass = item.size ? `factory-card--${item.size}` : '';
+    card.className = `factory-card ${sizeClass} reveal reveal-d${(i % 4) + 1}`;
+    card.innerHTML = `<img src="${item.img}" alt="${item.title}" loading="lazy" /><div class="halftone-overlay"></div><div class="factory-card-overlay"></div><div class="factory-card-info"><div class="factory-card-title">${item.title}</div><div class="factory-card-sub">${item.sub}</div></div>`;
+    wall.appendChild(card);
+    observer.observe(card);
+  });
+})();
+
+(function initCSR() {
+  var container = document.getElementById('csrContent');
+  var colorFilters = {
+    '#3d8b8b': 'brightness(0) saturate(100%) invert(44%) sepia(43%) saturate(1519%) hue-rotate(133deg) brightness(82%) contrast(85%)',
+    '#5a8a6e': 'brightness(0) saturate(100%) invert(46%) sepia(25%) saturate(1000%) hue-rotate(100deg) brightness(78%) contrast(80%)',
+    '#6b7fa3': 'brightness(0) saturate(100%) invert(52%) sepia(18%) saturate(660%) hue-rotate(174deg) brightness(83%) contrast(85%)',
+    '#8b7355': 'brightness(0) saturate(100%) invert(48%) sepia(22%) saturate(850%) hue-rotate(10deg) brightness(78%) contrast(82%)'
+  };
+  var items = [
+    {
+      icon: ICONS.envLeaf, num: '01', title: 'Environment',
+      color: '#3d8b8b', tint: 'rgba(61,139,139,0.35)', img: 'images/own_CSR_Environment_1440x810.jpg',
+      list: [
+        'Legal waste disposal & hazardous waste records',
+        'Energy conservation for utilities',
+        'Chemical & VOC control with leak prevention',
+        'Waste & packaging recycling',
+        'Carbon tracking & environmental certifications'
+      ]
+    },
+    {
+      icon: ICONS.laborPeople, num: '02', title: 'Labor & Human Rights',
+      color: '#5a8a6e', tint: 'rgba(90,138,110,0.35)', img: 'images/Own_CSR_Labor_1440x810.jpg',
+      list: [
+        'Standard contracts & regulated working hours',
+        'Legal payroll, no child/forced labor',
+        'PPE & occupational health care',
+        'Anti-discrimination & staff complaint channel'
+      ]
+    },
+    {
+      icon: ICONS.ethicsShield, num: '03', title: 'Ethics',
+      color: '#6b7fa3', tint: 'rgba(107,127,163,0.35)', img: 'images/Own_CSR_Ethics_1440x810.jpg',
+      list: [
+        'Anti-bribery & conflict of interest rules',
+        'Controlled business hospitality',
+        'Third-party due diligence & compliance training',
+        'Confidential whistleblowing & compliance files'
+      ]
+    },
+    {
+      icon: ICONS.procureLink, num: '04', title: 'Sustainable Procurement',
+      color: '#8b7355', tint: 'rgba(139,115,85,0.35)', img: 'images/Own_CSR_Recycle_1440x810.jpg',
+      list: [
+        'Supplier EHS qualification audit',
+        'Periodic sustainable supplier reviews',
+        'Eco-material & recyclable packaging priority',
+        'Supply chain labor risk inspection'
+      ]
+    }
+  ];
+
+  var stats = [
+    { num: '100', suffix: '%', label: 'Compliance Rate' },
+    { num: '50', suffix: '+', label: 'Global Certifications' },
+    { num: '0', suffix: '', label: 'Environmental Incidents' },
+    { num: '100', suffix: '%', label: 'Ethical Sourcing' }
+  ];
+
+  // Render 4 alternating rows
+  items.forEach(function(item, i) {
+    var row = document.createElement('div');
+    row.className = 'csr-row' + (i % 2 === 1 ? ' reverse' : '');
+    row.style.setProperty('--csr-color', item.color);
+    row.style.setProperty('--csr-tint', item.tint);
+    row.innerHTML =
+      '<div class="csr-visual">' +
+        '<div class="csr-visual-bg" style="background-image:url(' + item.img + ')"></div>' +
+        '<div class="csr-visual-icon" style="color:#ffffff">' + item.icon + '</div>' +
+        '<div class="csr-visual-label">' + item.title + '</div>' +
+      '</div>' +
+      '<div class="csr-content">' +
+        '<div class="csr-number">' + item.num + '</div>' +
+        '<h3 class="csr-title"><span class="csr-title-icon" style="color:' + item.color + ';--csr-icon-filter:' + (colorFilters[item.color] || '') + '">' + item.icon + '</span>' + item.title + '</h3>' +
+        '<div class="csr-accent-line" style="color:' + item.color + ';background:linear-gradient(90deg,' + item.color + ',' + item.color + '99)"></div>' +
+        '<ul class="csr-list" style="color:' + item.color + '">' +
+          item.list.map(function(text, j) {
+            return '<li style="transition-delay:' + (0.5 + j * 0.12) + 's;--dot-delay:' + (0.5 + j * 0.12) + 's">' + text + '</li>';
+          }).join('') +
+        '</ul>' +
+      '</div>';
+    container.appendChild(row);
+    observer.observe(row);
+  });
+
+  // Render stats bar
+  var statsBar = document.createElement('div');
+  statsBar.className = 'csr-stats';
+  statsBar.innerHTML = stats.map(function(s, idx) {
+    return '<div class="csr-stat" style="transition-delay:' + (idx * 0.15) + 's"><div class="csr-stat-num" data-target="' + s.num + '" data-suffix="' + s.suffix + '">0' + s.suffix + '</div><span class="csr-stat-label">' + s.label + '</span></div>';
+  }).join('');
+  container.appendChild(statsBar);
+
+  // Enhanced stats bar observer: animate counters + fade in staggered
+  var statsObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        var nums = entry.target.querySelectorAll('.csr-stat-num');
+        nums.forEach(function(el, idx) {
+          setTimeout(function() {
+            var target = parseInt(el.dataset.target);
+            var suffix = el.dataset.suffix;
+            var start = performance.now();
+            var duration = 1800 + idx * 200;
+            function tick(now) {
+              var p = Math.min((now - start) / duration, 1);
+              var ease = 1 - Math.pow(1 - p, 3);
+              el.textContent = Math.round(target * ease) + suffix;
+              if (p < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+          }, idx * 150);
+        });
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.25 });
+  statsObserver.observe(statsBar);
+
+  // Inject per-row dot colors
+  var style = document.createElement('style');
+  style.textContent = items.map(function(item, i) {
+    return '.csr-row:nth-child(' + (i + 1) + ') .csr-list li::before{background:' + item.color + '}';
+  }).join('\n');
+  document.head.appendChild(style);
+})();
+
+(function initOrigins() {
+  var grid = document.getElementById('originsGrid');
+  if (!grid) return;
+  const originList = [
+    { name: 'Provence', country: 'France', note: 'Home of lavender' },
+    { name: 'Atlas Mountains', country: 'Morocco', note: 'Rosemary & cedar' },
+    { name: 'Karnataka', country: 'India', note: 'Sacred sandalwood' },
+    { name: 'Rose Valley', country: 'Bulgaria', note: 'Damask rose' },
+    { name: 'Dhofar', country: 'Oman', note: 'Desert gold frankincense' },
+    { name: 'São Paulo', country: 'Brazil', note: 'Sweet orange groves' },
+    { name: 'Nile Delta', country: 'Egypt', note: 'Jasmine homeland' },
+    { name: 'Madagascar', country: 'Madagascar', note: 'Ylang ylang paradise' },
+  ];
+  const statsData = [
+    { value: 26, suffix: '+', label: 'Global Origins' },
+    { value: 100, suffix: '%', label: 'Pure Extraction' },
+    { value: 50, suffix: '+', label: 'Oil Varieties' },
+    { value: 3000, suffix: 'm', label: 'Highest Altitude' },
+  ];
+
+  originList.forEach((o, i) => {
+    const el = document.createElement('div');
+    el.className = `origin-card reveal reveal-d${(i % 4) + 1}`;
+    el.innerHTML = `<div class="origin-icon">${ICONS.mapPin}</div><div><div style="display:flex;align-items:center;gap:8px"><h4 class="origin-name">${o.name}</h4><span class="origin-country">${o.country}</span></div><p class="origin-note">${o.note}</p></div>`;
+    grid.appendChild(el);
+    observer.observe(el);
+  });
+
+  const statsGrid = document.getElementById('statsGrid');
+  statsData.forEach((s, i) => {
+    const el = document.createElement('div');
+    el.className = `stat-card reveal reveal-d${i + 1}`;
+    el.innerHTML = `<div class="stat-num"><span class="counter" data-target="${s.value}">0</span><span class="stat-suffix">${s.suffix}</span></div><div class="stat-label">${s.label}</div>`;
+    statsGrid.appendChild(el);
+    observer.observe(el);
+  });
+
+  const statCounterObserver = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.getAttribute('data-target'));
+        const t0 = performance.now();
+        const dur = 2000;
+        function tick(t) {
+          const p = Math.min((t - t0) / dur, 1);
+          el.textContent = Math.round((1 - Math.pow(1 - p, 4)) * target).toLocaleString();
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        statCounterObserver.unobserve(el);
+      }
+    }
+  }, { threshold: 0.05 });
+  document.querySelectorAll('#statsGrid .counter').forEach(el => statCounterObserver.observe(el));
+})();
+</script>
+</body>
+</html>

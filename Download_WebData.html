@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>预警明细项列表 | ZOTEQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #e07a5f;
+            --success: #16a34a;
+            --warning: #f97316;
+            --error: #dc2626;
+            --info: #3b82f6;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-tertiary: #9ca3af;
+            --bg-primary: linear-gradient(135deg, #e8f4fd 0%, #fef3f2 50%, #fdf2f8 100%);
+            --bg-card: rgba(255, 255, 255);
+            --space-unit: 4px;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'Microsoft YaHei UI', 'SimHei', 'PingFang SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .background-hero {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-primary);
+            z-index: 0;
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: calc(var(--space-unit) * 6) calc(var(--space-unit) * 4);
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: calc(var(--space-unit) * 8);
+        }
+
+        .page-title {
+            font-family: 'Microsoft YaHei', 'Microsoft YaHei UI', 'SimHei', 'PingFang SC', sans-serif;
+            font-size: clamp(1.75rem, 5vw, 2.25rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: calc(var(--space-unit) * 2);
+        }
+
+        .page-subtitle {
+            font-size: clamp(0.875rem, 3vw, 0.9375rem);
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .search-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: calc(var(--space-unit) * 4);
+            margin-bottom: calc(var(--space-unit) * 4);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .search-bar {
+            display: flex;
+            gap: calc(var(--space-unit) * 3);
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-input-wrapper {
+            flex: 1;
+            min-width: 280px;
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding-left: calc(var(--space-unit) * 4);
+            transition: all 0.3s var(--ease-out-expo);
+            overflow: hidden;
+        }
+
+        .search-input-wrapper:focus-within {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(224, 122, 95, 0.1);
+        }
+
+        .search-input-wrapper svg {
+            width: 18px;
+            height: 18px;
+            color: var(--text-tertiary);
+            margin-right: calc(var(--space-unit) * 2);
+            flex-shrink: 0;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: calc(var(--space-unit) * 3) calc(var(--space-unit) * 4);
+            border: none;
+            border-radius: 12px;
+            font-size: clamp(0.875rem, 3vw, 0.9375rem);
+            font-family: inherit;
+            background: transparent;
+            color: var(--text-primary);
+        }
+
+        .search-btn-inside {
+            padding: calc(var(--space-unit) * 3) calc(var(--space-unit) * 5);
+            margin: calc(var(--space-unit) * 1);
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(135deg, #e07a5f 0%, #f2cc8f 100%);
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s var(--ease-out-expo);
+            display: flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 1.5);
+            flex-shrink: 0;
+        }
+
+        .search-btn-inside:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(224, 122, 95, 0.3);
+        }
+
+        .search-btn-inside svg {
+            width: 14px;
+            height: 14px;
+            color: white;
+        }
+
+        .search-input:focus {
+            outline: none;
+        }
+
+        .filter-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: calc(var(--space-unit) * 5);
+            margin-bottom: calc(var(--space-unit) * 6);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .filter-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: calc(var(--space-unit) * 4);
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--space-unit) * 2);
+        }
+
+        .filter-group label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-select-wrapper {
+            position: relative;
+        }
+
+        .filter-select-wrapper::after {
+            content: '';
+            position: absolute;
+            right: calc(var(--space-unit) * 4);
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid #9ca3af;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .filter-select {
+            width: 100%;
+            padding: calc(var(--space-unit) * 3) calc(var(--space-unit) * 8) calc(var(--space-unit) * 3) calc(var(--space-unit) * 4);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            font-size: clamp(0.875rem, 3vw, 0.9375rem);
+            font-family: inherit;
+            transition: all 0.3s var(--ease-out-expo);
+            background: rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            appearance: none;
+            color: var(--text-primary);
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(224, 122, 95, 0.1);
+        }
+
+        .dashboard-section {
+            margin-bottom: calc(var(--space-unit) * 6);
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: calc(var(--space-unit) * 4);
+        }
+
+        .dashboard-card {
+            display: flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 3);
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            padding: calc(var(--space-unit) * 5);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s var(--ease-out-expo);
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .dashboard-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(224, 122, 95, 0.1) 0%, rgba(61, 139, 139, 0.1) 100%);
+            border-radius: 14px;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .dashboard-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .dashboard-icon.warning {
+            background: rgba(249, 115, 22, 0.1);
+            color: #f97316;
+        }
+
+        .dashboard-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .dashboard-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .dashboard-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-top: 4px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: calc(var(--space-unit) * 2);
+            padding: calc(var(--space-unit) * 3) calc(var(--space-unit) * 6);
+            border-radius: 100px;
+            font-size: clamp(0.875rem, 3vw, 0.9375rem);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s var(--ease-out-expo);
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+            min-width: 100px;
+            white-space: nowrap;
+        }
+
+        .btn svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #e07a5f 0%, #f2cc8f 100%);
+            color: white;
+            box-shadow: 0 4px 16px rgba(224, 122, 95, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(224, 122, 95, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(30, 41, 59, 0.05);
+            color: var(--text-secondary);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(30, 41, 59, 0.08);
+            color: var(--text-primary);
+        }
+
+        .table-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            margin-bottom: calc(var(--space-unit) * 6);
+        }
+
+        .table-header-bar {
+            padding: calc(var(--space-unit) * 5);
+            background: rgba(30, 41, 59, 0.03);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: calc(var(--space-unit) * 4);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: calc(var(--space-unit) * 3);
+        }
+
+        .header-actions .btn {
+            padding: calc(var(--space-unit) * 2.5) calc(var(--space-unit) * 5);
+            font-size: 0.875rem;
+        }
+
+        .selected-count {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .selected-count span {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table thead {
+            background: rgba(30, 41, 59, 0.03);
+        }
+
+        .data-table th {
+            padding: calc(var(--space-unit) * 4);
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .data-table th.checkbox-header {
+            width: 80px;
+        }
+
+        .data-table td {
+            padding: calc(var(--space-unit) * 4);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            font-size: clamp(0.875rem, 3vw, 0.9375rem);
+            color: var(--text-primary);
+            white-space: nowrap;
+        }
+
+        .data-table tbody tr {
+            transition: background-color 0.3s var(--ease-out-expo);
+        }
+
+        .data-table tbody tr:hover {
+            background: rgba(224, 122, 95, 0.02);
+        }
+
+        .data-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s var(--ease-out-expo);
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .checkbox:hover {
+            border-color: var(--accent);
+        }
+
+        .checkbox.checked {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .checkbox.checked::after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .select-all-wrapper {
+            display: flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 2);
+            cursor: pointer;
+        }
+
+        .select-all-text {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .combined-cell {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .combined-value {
+            font-size: clamp(0.875rem, 3vw, 0.9375rem);
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .combined-sub {
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+        }
+
+        .category-badge {
+            display: inline-flex;
+            padding: 8px 14px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            min-width: 80px;
+            justify-content: center;
+        }
+
+        .category-synthetic {
+            background: rgba(239, 68, 68, 0.08);
+            color: #dc2626;
+            border: 1px solid rgba(220, 38, 38, 0.2);
+        }
+
+        .category-biobased {
+            background: rgba(34, 197, 94, 0.08);
+            color: #16a34a;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .category-eunat {
+            background: rgba(59, 130, 246, 0.08);
+            color: #3b82f6;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .category-usnat {
+            background: rgba(168, 85, 247, 0.08);
+            color: #9333ea;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            min-width: 80px;
+            justify-content: center;
+        }
+
+        .status-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .status-badge.status-yes {
+            background: rgba(34, 197, 94, 0.08);
+            color: #16a34a;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .status-badge.status-yes::before {
+            background: #16a34a;
+            box-shadow: 0 0 8px rgba(34, 197, 94, 0.4);
+        }
+
+        .status-badge.status-no {
+            background: rgba(220, 38, 38, 0.08);
+            color: #dc2626;
+            border: 1px solid rgba(220, 38, 38, 0.2);
+        }
+
+        .status-badge.status-no::before {
+            background: #dc2626;
+            box-shadow: 0 0 8px rgba(220, 38, 38, 0.4);
+        }
+
+        .pagination-container {
+            padding: calc(var(--space-unit) * 4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: calc(var(--space-unit) * 2);
+            border-top: 1px solid rgba(0, 0, 0, 0.04);
+            flex-wrap: wrap;
+        }
+
+        .pagination-btn {
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: rgba(0, 0, 0, 0.02);
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s var(--ease-out-expo);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .pagination-btn svg {
+            width: 16px;
+            height: 16px;
+            color: var(--text-secondary);
+        }
+
+        .pagination-btn:hover:not(:disabled) {
+            background: rgba(224, 122, 95, 0.1);
+            color: var(--accent);
+        }
+
+        .pagination-btn:hover:not(:disabled) svg {
+            color: var(--accent);
+        }
+
+        .pagination-btn.active {
+            background: var(--accent);
+            color: white;
+        }
+
+        .pagination-btn.active svg {
+            color: white;
+        }
+
+        .pagination-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .pagination-info {
+            margin-left: calc(var(--space-unit) * 4);
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: calc(var(--space-unit) * 10);
+            color: var(--text-tertiary);
+        }
+
+        .empty-state-icon {
+            font-size: 3rem;
+            margin-bottom: calc(var(--space-unit) * 3);
+        }
+
+        .empty-state-text {
+            font-size: 0.9375rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: calc(var(--space-unit) * 4) calc(var(--space-unit) * 3);
+            }
+
+            .filter-row {
+                grid-template-columns: 1fr;
+            }
+
+            .header-actions {
+                flex-wrap: wrap;
+            }
+
+            .btn {
+                min-width: auto;
+                padding: calc(var(--space-unit) * 2.5) calc(var(--space-unit) * 4);
+                font-size: 0.8125rem;
+            }
+
+            .table-wrapper {
+                overflow-x: visible;
+            }
+
+            .data-table thead {
+                display: none;
+            }
+
+            .data-table tbody {
+                display: flex;
+                flex-direction: column;
+                gap: calc(var(--space-unit) * 3);
+            }
+
+            .data-table tbody tr {
+                display: flex;
+                flex-direction: column;
+                background: rgba(255, 255, 255, 0.95);
+                border-radius: 16px;
+                padding: calc(var(--space-unit) * 4);
+                box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+                border: 1px solid rgba(0, 0, 0, 0.04);
+            }
+
+            .data-table tbody tr:hover {
+                background: rgba(224, 122, 95, 0.02);
+            }
+
+            .data-table td {
+                display: flex;
+                flex-direction: column;
+                padding: calc(var(--space-unit) * 2) 0;
+                border-bottom: 1px dashed rgba(0, 0, 0, 0.04);
+                white-space: normal;
+            }
+
+            .data-table td:first-child {
+                flex-direction: row;
+                align-items: center;
+                gap: calc(var(--space-unit) * 2);
+            }
+
+            .data-table td:last-child {
+                border-bottom: none;
+            }
+
+            .data-table td::before {
+                content: attr(data-label);
+                font-size: 0.75rem;
+                font-weight: 600;
+                color: var(--text-secondary);
+                text-transform: uppercase;
+                letter-spacing: 0.04em;
+                margin-bottom: 4px;
+            }
+
+            .data-table td:first-child::before {
+                display: none;
+            }
+
+            .category-badge,
+            .status-badge {
+                align-self: flex-start;
+            }
+
+            .combined-cell {
+                flex-direction: row;
+                align-items: center;
+                gap: calc(var(--space-unit) * 3);
+            }
+
+            .combined-sub {
+                font-size: 0.75rem;
+                padding: 4px 10px;
+                background: rgba(0, 0, 0, 0.03);
+                border-radius: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-hero"></div>
+    
+    <div class="main-content">
+        <header class="page-header">
+            <h1 class="page-title">网页数据采购</h1>
+            <p class="page-subtitle">筛选与管理产品信息</p>
+        </header>
+
+        <section class="search-section">
+            <div class="search-bar">
+                <div class="search-input-wrapper">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <input type="text" id="searchInput" class="search-input" placeholder="输入查询内容" onkeyup="handleSearch()">
+                    <button class="search-btn-inside" onclick="handleSearch()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        搜索
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="filter-section">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label class="filter-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="9" y1="9" x2="15" y2="9"></line>
+                            <line x1="9" y1="15" x2="15" y2="15"></line>
+                        </svg>
+                        产品分类
+                    </label>
+                    <div class="filter-select-wrapper">
+                        <select id="categoryFilter" class="filter-select" onchange="handleFilterChange()">
+                            <option value="all">全部</option>
+                            <option value="SYNTHETIC">SYNTHETIC</option>
+                            <option value="BIOBASED">BIOBASED</option>
+                            <option value="EU NAT">EU NAT</option>
+                            <option value="US NAT">US NAT</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                            <path d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        香气分类
+                    </label>
+                    <div class="filter-select-wrapper">
+                        <select id="fragranceFilter" class="filter-select" onchange="handleFilterChange()">
+                            <option value="all">全部</option>
+                            <option value="果香">果香</option>
+                            <option value="烘焙">烘焙</option>
+                            <option value="花香">花香</option>
+                            <option value="酒香">酒香</option>
+                            <option value="木香">木香</option>
+                            <option value="奶香">奶香</option>
+                            <option value="青香">青香</option>
+                            <option value="麝香">麝香</option>
+                            <option value="甜香">甜香</option>
+                            <option value="辛香">辛香</option>
+                            <option value="药香">药香</option>
+                            <option value="脂香">脂香</option>
+                            <option value="其他">其他</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                            <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        是否自产
+                    </label>
+                    <div class="filter-select-wrapper">
+                        <select id="ownFilter" class="filter-select" onchange="handleFilterChange()">
+                            <option value="all">全部</option>
+                            <option value="是">是</option>
+                            <option value="否">否</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                        规格书
+                    </label>
+                    <div class="filter-select-wrapper">
+                        <select id="specFilter" class="filter-select" onchange="handleFilterChange()">
+                            <option value="all">全部</option>
+                            <option value="有">有</option>
+                            <option value="无">无</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dashboard-section">
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="dashboard-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="9" y1="9" x2="15" y2="9"></line>
+                            <line x1="9" y1="15" x2="15" y2="15"></line>
+                        </svg>
+                    </div>
+                    <div class="dashboard-info">
+                        <div class="dashboard-value" id="selectedRatio">0/0</div>
+                        <div class="dashboard-label">选中产品数</div>
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="dashboard-icon warning">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                    </div>
+                    <div class="dashboard-info">
+                        <div class="dashboard-value" id="missingCategory">0</div>
+                        <div class="dashboard-label">产品分类缺失</div>
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="dashboard-icon warning">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                    </div>
+                    <div class="dashboard-info">
+                        <div class="dashboard-value" id="missingFragrance">0</div>
+                        <div class="dashboard-label">香气分类缺失</div>
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="dashboard-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="dashboard-info">
+                        <div class="dashboard-value" id="ownCount">0</div>
+                        <div class="dashboard-label">是否自产</div>
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="dashboard-icon warning">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                    </div>
+                    <div class="dashboard-info">
+                        <div class="dashboard-value" id="missingSpec">0</div>
+                        <div class="dashboard-label">规格书缺失</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="table-container">
+            <div class="table-header-bar">
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="downloadSelected()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        下载选中
+                    </button>
+                    <button class="btn btn-secondary" onclick="resetSelection()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="23 4 23 10 17 16"></polyline>
+                            <polyline points="1 20 1 14 7 8"></polyline>
+                            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                        </svg>
+                        重载数据
+                    </button>
+                    <button class="btn btn-secondary" onclick="showUnselected()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="3" y1="9" x2="21" y2="9"></line>
+                            <line x1="9" y1="21" x2="9" y2="9"></line>
+                        </svg>
+                        列未选中
+                    </button>
+                    <button class="btn btn-secondary" onclick="resetToDefault()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                        </svg>
+                        恢复默认
+                    </button>
+                </div>
+                <div class="selected-count">
+                    已选中 <span id="selectedCount">0</span> 项
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="data-table" id="dataTable">
+                    <thead>
+                        <tr>
+                            <th class="checkbox-header">
+                                <div class="select-all-wrapper" onclick="toggleSelectAll()">
+                                    <div class="checkbox" id="selectAllCheckbox"></div>
+                                    <span class="select-all-text">全选</span>
+                                </div>
+                            </th>
+                            <th>产品信息</th>
+                            <th>产品分类</th>
+                            <th>CAS</th>
+                            <th>FEMA</th>
+                            <th>REACH</th>
+                            <th>香气分类</th>
+                            <th>自产</th>
+                            <th>规格书</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="pagination" class="pagination-container">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const categories = ['SYNTHETIC', 'BIOBASED', 'EU NAT', 'US NAT'];
+        const fragrances = ['果香', '烘焙', '花香', '酒香', '木香', '奶香', '青香', '麝香', '甜香', '辛香', '药香', '脂香', '其他'];
+        
+        let products = [];
+        let currentPage = 1;
+        let itemsPerPage = 15;
+        let selectedItems = new Set();
+        let searchQuery = '';
+        let filters = {
+            category: 'all',
+            fragrance: 'all',
+            own: 'all',
+            spec: 'all'
+        };
+        let showOnlyUnselected = false;
+        
+        products = [
+            { code: 'ZPC0038', name: 'Para Methoxy Acetophenone', cas: '100-06-1', fema: '2005', category: 'SYNTHETIC', fragrance: '青香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'ZPC0281', name: 'Hexyl Isovalerate', cas: '10032-13-0', fema: '3500', category: 'US NAT', fragrance: '果香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'GRP2813', name: 'Benzyl Alcohol Synth.', cas: '100-51-6', fema: '2137', category: 'SYNTHETIC', fragrance: '甜香', reach: 'No', own: '是', spec: '有' },
+            { code: 'ZPC0001', name: 'Benzyl Alcohol Nat.', cas: '100-51-6', fema: '2137', category: 'EU NAT', fragrance: '甜香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'ZPC0078', name: 'Benzaldehyde Synth.', cas: '100-52-7', fema: '2127', category: 'BIOBASED', fragrance: '烘焙', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'GRP2206', name: 'Benzaldehyde Nat.', cas: '100-52-7', fema: '2127', category: 'BIOBASED', fragrance: '烘焙', reach: 'No', own: '是', spec: '有' },
+            { code: 'ZPC0211', name: 'DMBCB', cas: '10094-34-5', fema: '2394', category: 'US NAT', fragrance: '果香', reach: 'Yes', own: '否', spec: '有' },
+            { code: 'ZPC0289', name: 'Phenyl Acetic Aldehyde Dimethyl Acetal 50%', cas: '101-48-4', fema: '2876', category: 'US NAT', fragrance: '青香', reach: 'No', own: '是', spec: '有' },
+            { code: 'ZPC0411', name: 'Hexyl Cinnamic Aldehyde', cas: '101-86-0', fema: '2569', category: 'US NAT', fragrance: '花香', reach: 'No', own: '是', spec: '有' },
+            { code: 'ZPC0064', name: 'Ethyl Phenyl Acetate', cas: '101-97-3', fema: '2452', category: 'US NAT', fragrance: '脂香', reach: 'Yes', own: '是', spec: '无' },
+            { code: 'ZPC0042', name: 'Isoamyl Phenylacetate', cas: '102-19-2', fema: '2081', category: 'SYNTHETIC', fragrance: '烘焙', reach: 'No', own: '是', spec: '有' },
+            { code: 'ZPC0060', name: 'Phenethyl Phenylacetate', cas: '102-20-5', fema: '2866', category: 'SYNTHETIC', fragrance: '花香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'ZPC0083', name: 'Triacetin', cas: '102-76-1', fema: '2007', category: 'SYNTHETIC', fragrance: '果香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'GRP6221', name: 'Methyl Cinnamate', cas: '103-26-4', fema: '2698', category: 'BIOBASED', fragrance: '果香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'GRP1904', name: 'Methyl Cinnamate Nat.', cas: '103-26-4', fema: '2698', category: 'BIOBASED', fragrance: '果香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'GRP6196', name: 'Ethyl Cinnamate', cas: '103-36-6', fema: '2430', category: 'EU NAT', fragrance: '脂香', reach: 'No', own: '否', spec: '有' },
+            { code: 'ZPC0005', name: 'Ethyl Cinnamate Nat.', cas: '103-36-6', fema: '2430', category: 'EU NAT', fragrance: '辛香', reach: 'No', own: '否', spec: '有' },
+            { code: 'ZPC0256', name: 'Benzyl Butyrate', cas: '103-37-7', fema: '2140', category: 'US NAT', fragrance: '果香', reach: 'No', own: '否', spec: '有' },
+            { code: 'ZPC0041', name: 'Phenethyl Acetate', cas: '103-45-7', fema: '2857', category: 'SYNTHETIC', fragrance: '甜香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'ZPC0078', name: 'Benzaldehyde Synth.', cas: '100-52-7', fema: '2127', category: 'BIOBASED', fragrance: '烘焙', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'GRP2206', name: 'Benzaldehyde Nat.', cas: '100-52-7', fema: '2127', category: 'BIOBASED', fragrance: '烘焙', reach: 'No', own: '是', spec: '有' },
+            { code: 'ZPC0211', name: 'DMBCB', cas: '10094-34-5', fema: '2394', category: 'US NAT', fragrance: '果香', reach: 'Yes', own: '否', spec: '有' },
+            { code: 'ZPC0289', name: 'Phenyl Acetic Aldehyde Dimethyl Acetal 50%', cas: '101-48-4', fema: '2876', category: 'US NAT', fragrance: '青香', reach: 'No', own: '是', spec: '有' },
+            { code: 'ZPC0411', name: 'Hexyl Cinnamic Aldehyde', cas: '101-86-0', fema: '2569', category: 'US NAT', fragrance: '花香', reach: 'No', own: '是', spec: '有' },
+            { code: 'ZPC0064', name: 'Ethyl Phenyl Acetate', cas: '101-97-3', fema: '2452', category: 'US NAT', fragrance: '脂香', reach: 'Yes', own: '是', spec: '无' },
+            { code: 'ZPC0042', name: 'Isoamyl Phenylacetate', cas: '102-19-2', fema: '2081', category: 'SYNTHETIC', fragrance: '烘焙', reach: 'No', own: '是', spec: '有' },
+            { code: 'ZPC0060', name: 'Phenethyl Phenylacetate', cas: '102-20-5', fema: '2866', category: 'SYNTHETIC', fragrance: '花香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'ZPC0083', name: 'Triacetin', cas: '102-76-1', fema: '2007', category: 'SYNTHETIC', fragrance: '果香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'GRP6221', name: 'Methyl Cinnamate', cas: '103-26-4', fema: '2698', category: 'BIOBASED', fragrance: '果香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'GRP1904', name: 'Methyl Cinnamate Nat.', cas: '103-26-4', fema: '2698', category: 'BIOBASED', fragrance: '果香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'ZPC0331', name: 'Acetophenone', cas: '98-86-2', fema: '2009', category: 'US NAT', fragrance: '烘焙', reach: 'No', own: '是', spec: '有' },
+            { code: 'ZPC0238', name: 'Gamma Terpinene', cas: '99-85-4', fema: '3559', category: 'EU NAT', fragrance: '果香', reach: 'Yes', own: '否', spec: '有' },
+            { code: 'AR-001', name: 'Ambroxan', cas: '6790-58-5', fema: '3471', category: 'SYNTHETIC', fragrance: '木香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-002', name: 'Alpha Ionone', cas: '127-41-3', fema: '2593', category: 'SYNTHETIC', fragrance: '花香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-003', name: 'Beta Ionone', cas: '14901-07-6', fema: '2594', category: 'SYNTHETIC', fragrance: '花香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-004', name: 'Gamma Decalactone', cas: '705-86-2', fema: '2361', category: 'BIOBASED', fragrance: '果香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-005', name: 'Delta Decalactone', cas: '705-87-3', fema: '2360', category: 'BIOBASED', fragrance: '果香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-006', name: 'Vanillin', cas: '121-33-5', fema: '3107', category: 'BIOBASED', fragrance: '甜香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-007', name: 'Ethyl Vanillin', cas: '121-32-4', fema: '2464', category: 'SYNTHETIC', fragrance: '甜香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-008', name: 'Methyl Anthranilate', cas: '134-20-3', fema: '2682', category: 'EU NAT', fragrance: '果香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-009', name: 'Benzyl Benzoate', cas: '120-51-4', fema: '2138', category: 'SYNTHETIC', fragrance: '花香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-010', name: 'Linalool', cas: '78-70-6', fema: '2635', category: 'EU NAT', fragrance: '花香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-011', name: 'Citronellol', cas: '106-22-9', fema: '2309', category: 'EU NAT', fragrance: '花香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-012', name: 'Geraniol', cas: '106-24-1', fema: '2507', category: 'EU NAT', fragrance: '花香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-013', name: 'Citral', cas: '5392-40-5', fema: '2303', category: 'EU NAT', fragrance: '果香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-014', name: 'Limonene', cas: '138-86-3', fema: '2633', category: 'EU NAT', fragrance: '果香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-015', name: 'Menthol', cas: '15356-70-4', fema: '2665', category: 'EU NAT', fragrance: '药香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-016', name: 'Camphor', cas: '464-49-3', fema: '2230', category: 'EU NAT', fragrance: '药香', reach: 'No', own: '否', spec: '有' },
+            { code: 'AR-017', name: 'Eucalyptol', cas: '470-82-6', fema: '2466', category: 'EU NAT', fragrance: '药香', reach: 'Yes', own: '否', spec: '有' },
+            { code: 'AR-018', name: 'Thymol', cas: '89-83-8', fema: '3066', category: 'EU NAT', fragrance: '药香', reach: 'Yes', own: '否', spec: '有' },
+            { code: 'AR-019', name: 'Carvone', cas: '99-49-0', fema: '2249', category: 'EU NAT', fragrance: '果香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-020', name: 'Anethole', cas: '4180-23-8', fema: '2086', category: 'BIOBASED', fragrance: '辛香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-021', name: 'Eugenol', cas: '97-53-0', fema: '2467', category: 'BIOBASED', fragrance: '辛香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-022', name: 'Cinnamaldehyde', cas: '104-55-2', fema: '2286', category: 'BIOBASED', fragrance: '辛香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-023', name: 'Cinnamyl Alcohol', cas: '104-54-1', fema: '2294', category: 'BIOBASED', fragrance: '花香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-024', name: 'Phenyl Ethyl Alcohol', cas: '60-12-8', fema: '2858', category: 'BIOBASED', fragrance: '花香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-025', name: 'Benzaldehyde', cas: '100-52-7', fema: '2127', category: 'BIOBASED', fragrance: '烘焙', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-026', name: 'Vanillin Ethylene Glycol Acetal', cas: '68527-74-2', fema: '3108', category: 'SYNTHETIC', fragrance: '甜香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-027', name: 'Ethyl Maltol', cas: '4940-11-8', fema: '3487', category: 'SYNTHETIC', fragrance: '甜香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-028', name: 'Maltol', cas: '118-71-8', fema: '2656', category: 'BIOBASED', fragrance: '甜香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-029', name: 'Furaneol', cas: '3658-77-3', fema: '3164', category: 'SYNTHETIC', fragrance: '果香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-030', name: 'Strawberry Furanone', cas: '31364-29-1', fema: '3817', category: 'SYNTHETIC', fragrance: '果香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-031', name: 'Methyl DiHydro Jasmonate', cas: '24851-98-7', fema: '3408', category: 'SYNTHETIC', fragrance: '花香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-032', name: 'Jasmonal H', cas: '1105-60-2', fema: '3102', category: 'SYNTHETIC', fragrance: '花香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-033', name: 'Hedione', cas: '24851-98-7', fema: '3408', category: 'SYNTHETIC', fragrance: '花香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-034', name: 'Methyl Ionone Gamma', cas: '1322-27-4', fema: '2692', category: 'SYNTHETIC', fragrance: '花香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-035', name: 'Methyl Ionone Alpha', cas: '127-41-3', fema: '2593', category: 'SYNTHETIC', fragrance: '花香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-036', name: 'Iso E Super', cas: '54464-57-2', fema: '3556', category: 'SYNTHETIC', fragrance: '木香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-037', name: 'Cashmeran', cas: '30275-60-8', fema: '3479', category: 'SYNTHETIC', fragrance: '麝香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-038', name: 'Galaxolide', cas: '1222-05-5', fema: '3543', category: 'SYNTHETIC', fragrance: '麝香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-039', name: 'Tonalide', cas: '1506-02-1', fema: '3548', category: 'SYNTHETIC', fragrance: '麝香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-040', name: 'Celestolide', cas: '13171-00-1', fema: '3561', category: 'SYNTHETIC', fragrance: '麝香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-041', name: 'Tridecen-2-one', cas: '10406-06-3', fema: '3082', category: 'SYNTHETIC', fragrance: '麝香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-042', name: 'Amyl Cinnamic Aldehyde', cas: '122-40-7', fema: '2006', category: 'SYNTHETIC', fragrance: '花香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-043', name: 'Hexyl Cinnamic Aldehyde', cas: '101-86-0', fema: '2569', category: 'SYNTHETIC', fragrance: '花香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-044', name: 'Hydroxycitronellal', cas: '107-75-5', fema: '2583', category: 'SYNTHETIC', fragrance: '花香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-045', name: 'Citronellal', cas: '106-23-0', fema: '2307', category: 'EU NAT', fragrance: '花香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-046', name: 'Geranial', cas: '16736-42-8', fema: '2508', category: 'EU NAT', fragrance: '果香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-047', name: 'Neral', cas: '16736-42-8', fema: '2773', category: 'EU NAT', fragrance: '果香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-048', name: 'Phenyl Acetaldehyde', cas: '122-78-1', fema: '2874', category: 'SYNTHETIC', fragrance: '花香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-049', name: 'Vanillyl Butyl Ether', cas: '82654-98-6', fema: '3796', category: 'SYNTHETIC', fragrance: '甜香', reach: 'Yes', own: '是', spec: '有' },
+            { code: 'AR-050', name: 'Methyl Salicylate', cas: '119-36-8', fema: '2745', category: 'BIOBASED', fragrance: '药香', reach: 'Yes', own: '是', spec: '有' }
+        ];
+
+        function loadSelectedItems() {
+            const saved = localStorage.getItem('selectedItems');
+            if (saved) {
+                try {
+                    const arr = JSON.parse(saved);
+                    selectedItems = new Set(arr);
+                } catch (e) {
+                    selectedItems = new Set(products.map((_, index) => index));
+                }
+            } else {
+                selectedItems = new Set(products.map((_, index) => index));
+                saveSelectedItems();
+            }
+        }
+
+        function saveSelectedItems() {
+            const arr = Array.from(selectedItems);
+            localStorage.setItem('selectedItems', JSON.stringify(arr));
+        }
+
+        function saveFilters() {
+            const filterData = {
+                searchQuery: searchQuery,
+                filters: filters,
+                currentPage: currentPage
+            };
+            localStorage.setItem('productFilters', JSON.stringify(filterData));
+        }
+
+        function loadFilters() {
+            const saved = localStorage.getItem('productFilters');
+            if (saved) {
+                try {
+                    const data = JSON.parse(saved);
+                    searchQuery = data.searchQuery || '';
+                    filters = { ...filters, ...data.filters };
+                    currentPage = data.currentPage || 1;
+                } catch (e) {
+                    console.error('加载筛选状态失败:', e);
+                }
+            }
+        }
+
+        function updateFilterUI() {
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.value = searchQuery;
+            }
+            
+            const categoryFilter = document.getElementById('categoryFilter');
+            if (categoryFilter) {
+                categoryFilter.value = filters.category;
+            }
+            
+            const fragranceFilter = document.getElementById('fragranceFilter');
+            if (fragranceFilter) {
+                fragranceFilter.value = filters.fragrance;
+            }
+            
+            const ownFilter = document.getElementById('ownFilter');
+            if (ownFilter) {
+                ownFilter.value = filters.own;
+            }
+            
+            const specFilter = document.getElementById('specFilter');
+            if (specFilter) {
+                specFilter.value = filters.spec;
+            }
+        }
+
+        function updateDashboard() {
+            const selectedCount = selectedItems.size;
+            const totalCount = products.length;
+            
+            document.getElementById('selectedRatio').textContent = `${selectedCount}/${totalCount}`;
+            
+            const missingCategory = products.filter(p => !p.category || p.category === '').length;
+            document.getElementById('missingCategory').textContent = missingCategory;
+            
+            const missingFragrance = products.filter(p => !p.fragrance || p.fragrance === '').length;
+            document.getElementById('missingFragrance').textContent = missingFragrance;
+            
+            const missingSpec = products.filter(p => !p.spec || p.spec === '' || p.spec === '无').length;
+            document.getElementById('missingSpec').textContent = missingSpec;
+            
+            const ownCount = products.filter((p, index) => selectedItems.has(index) && p.own === '是').length;
+            document.getElementById('ownCount').textContent = ownCount;
+        }
+
+        function init() {
+            loadSelectedItems();
+            loadFilters();
+            updateSelectedCount();
+            updateDashboard();
+            updateFilterUI();
+            renderTable();
+            renderPagination();
+        }
+
+        function getCategoryClass(category) {
+            switch(category) {
+                case 'SYNTHETIC': return 'category-synthetic';
+                case 'BIOBASED': return 'category-biobased';
+                case 'EU NAT': return 'category-eunat';
+                case 'US NAT': return 'category-usnat';
+                default: return '';
+            }
+        }
+
+        function renderTable() {
+            const filtered = filterProducts();
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const paginatedProducts = filtered.slice(start, end);
+            const tbody = document.getElementById('tableBody');
+
+            if (paginatedProducts.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="9" class="empty-state">
+                            <div class="empty-state-icon">📭</div>
+                            <div class="empty-state-text">没有找到匹配的数据</div>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = paginatedProducts.map((product, index) => {
+                const globalIndex = start + index;
+                const isSelected = selectedItems.has(globalIndex);
+                return `
+                    <tr>
+                        <td>
+                            <div class="checkbox ${isSelected ? 'checked' : ''}" onclick="toggleSelect(${globalIndex})"></div>
+                        </td>
+                        <td data-label="产品信息">
+                            <div class="combined-cell">
+                                <span class="combined-value">${product.name}</span>
+                                <span class="combined-sub">${product.code}</span>
+                            </div>
+                        </td>
+                        <td data-label="产品分类">
+                            <span class="category-badge ${getCategoryClass(product.category)}">${product.category}</span>
+                        </td>
+                        <td data-label="CAS">${product.cas || '-'}</td>
+                        <td data-label="FEMA">${product.fema || '-'}</td>
+                        <td data-label="REACH"><span class="status-badge ${product.reach === 'Yes' ? 'status-yes' : 'status-no'}">${product.reach}</span></td>
+                        <td data-label="香气分类">${product.fragrance}</td>
+                        <td data-label="自产"><span class="status-badge ${product.own === '是' ? 'status-yes' : 'status-no'}">${product.own}</span></td>
+                        <td data-label="规格书"><span class="status-badge ${product.spec === '有' ? 'status-yes' : 'status-no'}">${product.spec}</span></td>
+                    </tr>
+                `;
+            }).join('');
+
+            updateSelectAllCheckbox();
+        }
+
+        function filterProducts() {
+            return products.filter((product, index) => {
+                const matchesSearch = searchQuery === '' || 
+                    product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    product.code.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    product.cas.toLowerCase().includes(searchQuery.toLowerCase());
+                
+                const matchesCategory = filters.category === 'all' || product.category === filters.category;
+                const matchesFragrance = filters.fragrance === 'all' || product.fragrance === filters.fragrance;
+                const matchesOwn = filters.own === 'all' || product.own === filters.own;
+                const matchesSpec = filters.spec === 'all' || product.spec === filters.spec;
+
+                const matchesSelection = !showOnlyUnselected || !selectedItems.has(index);
+
+                return matchesSearch && matchesCategory && matchesFragrance && matchesOwn && matchesSpec && matchesSelection;
+            });
+        }
+
+        function toggleSelect(index) {
+            if (selectedItems.has(index)) {
+                selectedItems.delete(index);
+            } else {
+                selectedItems.add(index);
+            }
+            saveSelectedItems();
+            updateSelectedCount();
+            updateDashboard();
+            renderTable();
+            updateSelectAllCheckbox();
+        }
+
+        function toggleSelectAll() {
+            const filtered = filterProducts();
+            const start = (currentPage - 1) * itemsPerPage;
+            
+            if (selectedItems.size === filtered.length) {
+                selectedItems.clear();
+            } else {
+                filtered.forEach((_, index) => {
+                    selectedItems.add(start + index);
+                });
+            }
+            saveSelectedItems();
+            updateSelectedCount();
+            updateDashboard();
+            renderTable();
+            updateSelectAllCheckbox();
+        }
+
+        function updateSelectAllCheckbox() {
+            const checkbox = document.getElementById('selectAllCheckbox');
+            const filtered = filterProducts();
+            checkbox.classList.toggle('checked', selectedItems.size === filtered.length);
+        }
+
+        function updateSelectedCount() {
+            document.getElementById('selectedCount').textContent = selectedItems.size;
+        }
+
+        function changePage(page) {
+            const totalPages = Math.ceil(filterProducts().length / itemsPerPage);
+            if (page < 1 || page > totalPages || page === currentPage) return;
+            currentPage = page;
+            saveFilters();
+            renderTable();
+            renderPagination();
+        }
+
+        function renderPagination() {
+            const filtered = filterProducts();
+            const totalPages = Math.ceil(filtered.length / itemsPerPage);
+            const pagination = document.getElementById('pagination');
+            const maxVisiblePages = 5;
+
+            if (totalPages <= 1) {
+                pagination.innerHTML = '';
+                return;
+            }
+
+            let html = `
+                <button class="pagination-btn" onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+            `;
+
+            if (totalPages > maxVisiblePages) {
+                let startPage, endPage;
+                const halfVisible = Math.floor(maxVisiblePages / 2);
+                
+                if (currentPage <= halfVisible + 1) {
+                    startPage = 1;
+                    endPage = maxVisiblePages;
+                } else if (currentPage >= totalPages - halfVisible) {
+                    startPage = totalPages - maxVisiblePages + 1;
+                    endPage = totalPages;
+                } else {
+                    startPage = currentPage - halfVisible;
+                    endPage = currentPage + halfVisible;
+                }
+
+                if (startPage > 1) {
+                    html += `<button class="pagination-btn" onclick="changePage(1)">1</button>`;
+                    if (startPage > 2) {
+                        html += `<span style="color: var(--text-tertiary);">...</span>`;
+                    }
+                }
+
+                for (let i = startPage; i <= endPage; i++) {
+                    html += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
+                }
+
+                if (endPage < totalPages) {
+                    if (endPage < totalPages - 1) {
+                        html += `<span style="color: var(--text-tertiary);">...</span>`;
+                    }
+                    html += `<button class="pagination-btn" onclick="changePage(${totalPages})">${totalPages}</button>`;
+                }
+            } else {
+                for (let i = 1; i <= totalPages; i++) {
+                    html += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
+                }
+            }
+
+            html += `
+                <button class="pagination-btn" onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+                <span class="pagination-info">显示 ${(currentPage - 1) * itemsPerPage + 1}-${Math.min(currentPage * itemsPerPage, filtered.length)} 条，共 ${filtered.length} 条</span>
+            `;
+
+            pagination.innerHTML = html;
+        }
+
+        function handleSearch() {
+            searchQuery = document.getElementById('searchInput').value;
+            currentPage = 1;
+            saveFilters();
+            renderTable();
+            renderPagination();
+        }
+
+        function handleFilterChange() {
+            filters.category = document.getElementById('categoryFilter').value;
+            filters.fragrance = document.getElementById('fragranceFilter').value;
+            filters.own = document.getElementById('ownFilter').value;
+            filters.spec = document.getElementById('specFilter').value;
+            currentPage = 1;
+            saveFilters();
+            renderTable();
+            renderPagination();
+        }
+
+        function downloadSelected() {
+            const filtered = filterProducts();
+            const selectedProducts = filtered.filter((_, index) => selectedItems.has(index));
+            
+            if (selectedProducts.length === 0) {
+                alert('请先选择要下载的产品');
+                return;
+            }
+
+            const headers = ['产品组号', '产品名称', '产品分类', 'CAS', 'FEMA', 'REACH', '香气分类', '自产', '规格书'];
+            const rows = selectedProducts.map(p => [p.code, p.name, p.category, p.cas, p.fema, p.reach, p.fragrance, p.own, p.spec]);
+            
+            const csvContent = [headers.join(','), ...rows.map(row => row.map(cell => `"${cell || ''}"`).join(','))].join('\n');
+            
+            const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', `预警明细_${new Date().toISOString().split('T')[0]}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function resetSelection() {
+            selectedItems = new Set(products.map((_, index) => index));
+            saveSelectedItems();
+            updateSelectedCount();
+            updateDashboard();
+            renderTable();
+            updateSelectAllCheckbox();
+            alert('已重置选择，所有产品已选中');
+        }
+
+        function resetToDefault() {
+            searchQuery = '';
+            filters = {
+                category: 'all',
+                fragrance: 'all',
+                own: 'all',
+                spec: 'all'
+            };
+            currentPage = 1;
+            showOnlyUnselected = false;
+            
+            selectedItems = new Set(products.map((_, index) => index));
+            
+            document.getElementById('searchInput').value = '';
+            document.getElementById('categoryFilter').value = 'all';
+            document.getElementById('fragranceFilter').value = 'all';
+            document.getElementById('ownFilter').value = 'all';
+            document.getElementById('specFilter').value = 'all';
+            
+            const showUnselectedBtn = document.querySelector('button[onclick="showUnselected()"]');
+            if (showUnselectedBtn) {
+                showUnselectedBtn.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                        <line x1="9" y1="21" x2="9" y2="9"></line>
+                    </svg>
+                    列未选中
+                `;
+                showUnselectedBtn.classList.remove('btn-primary');
+                showUnselectedBtn.classList.add('btn-secondary');
+            }
+            
+            saveSelectedItems();
+            saveFilters();
+            updateSelectedCount();
+            updateDashboard();
+            renderTable();
+            renderPagination();
+        }
+
+        function showUnselected() {
+            showOnlyUnselected = !showOnlyUnselected;
+            currentPage = 1;
+            renderTable();
+            renderPagination();
+            
+            const button = document.querySelector('button[onclick="showUnselected()"]');
+            if (showOnlyUnselected) {
+                button.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                        <line x1="9" y1="21" x2="9" y2="9"></line>
+                    </svg>
+                    显示全部
+                `;
+                button.classList.add('btn-primary');
+                button.classList.remove('btn-secondary');
+            } else {
+                button.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                        <line x1="9" y1="21" x2="9" y2="9"></line>
+                    </svg>
+                    列未选中
+                `;
+                button.classList.remove('btn-primary');
+                button.classList.add('btn-secondary');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

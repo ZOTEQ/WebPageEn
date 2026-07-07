@@ -1,0 +1,94 @@
+/**
+ * ZOTEQ Footer Styles
+ * 公共页脚样式
+ */
+
+footer {
+    padding: 60px 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+.footer-logo {
+    height: 20px;
+    width: auto;
+}
+
+.footer-links {
+    display: flex;
+    gap: 40px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.footer-copy {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    letter-spacing: 0.02em;
+}
+
+/* ========== DARK THEME (DEFAULT) ========== */
+footer {
+    background: #0f172a;
+}
+
+footer .footer-links a {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+footer .footer-links a:hover {
+    color: var(--accent);
+}
+
+footer .footer-copy {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* ========== LIGHT THEME ========== */
+body.light-theme footer,
+footer.light-theme {
+    background: var(--bg-secondary);
+}
+
+body.light-theme .footer-links a,
+footer.light-theme .footer-links a {
+    color: var(--text-secondary);
+}
+
+body.light-theme .footer-links a:hover,
+footer.light-theme .footer-links a:hover {
+    color: var(--accent);
+}
+
+body.light-theme .footer-copy,
+footer.light-theme .footer-copy {
+    color: var(--text-tertiary);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .footer-links {
+        gap: 24px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .footer-links a {
+        font-size: 0.7rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .footer-links a {
+        transition: none;
+    }
+}

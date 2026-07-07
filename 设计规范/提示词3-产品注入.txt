@@ -1,0 +1,30 @@
+#先备份 OwnProduct_light.html，然后开始对这个文件进行下一步操作
+
+#先清除原HTML中所有JS遗留的产品数据
+读取EXCEL表LISTSIMP.XLSX中的数据，按下述规则来替换HTML文件中的原有数据，要求全部导入
+
+#ICON替换
+根据EXCEL中的分类字段，请将每行首品名前的容器中的首字母替换成SVG格式的ICON, 
+ 注意调整适配DIV大小，不要改变外容器的大小
+对照列表如下，ICON文件都存在images\目录下
+果香= Icon_odor_Fruity.svg
+烘焙= Icon_odor_Bakery.svg
+花香= Icon_odor_Florol.svg
+酒香= Icon_odor_Alcoholic.svg
+木香= Icon_odor_Woody.svg
+奶香= Icon_odor_Milky.svg
+其他= Icon_odor_Others.svg
+青香= Icon_odor_Green.svg
+麝香= Icon_odor_Musky.svg
+甜香= Icon=odor_Sweety.svg
+辛香= Icon_odor_Spicy.svg
+药香= Icon_odor_Herbal.svg
+脂香= Icon_odor_Fatty.svg
+
+#其它字段替换说明
+## 将HTML中的产品名称字段（如Ambroxan）替换为Excel表中的Product Name字段
+## 将HTML中产品名下面的产品编号（如AR-001）用Excel表中的Code字段替换， 
+## 将HTML中的CATEGORY字段：有四个值， SYNTHETIC, BIOBASED, EU NAT, US NAT请随机生成， 配色按现有方案
+## 将HTML中的REACH STATUS有二个值： Yes, No, 请随机分配
+
+# 视觉审核无误后才能交付

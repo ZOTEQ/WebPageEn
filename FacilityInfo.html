@@ -1,0 +1,2197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Facilities | ZOTEQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="components/nav.css">
+    <link rel="stylesheet" href="components/footer.css">
+    <style>
+        :root {
+            --accent: #e07a5f;
+            --accent-light: #f2a285;
+            --accent-dark: #c4604a;
+            --ocean: #3d8b8b;
+            --ocean-light: #5aadad;
+            --sand: #d4a574;
+            --text-primary: #2d2d2d;
+            --text-secondary: #5a5a5a;
+            --text-tertiary: #8a8a8a;
+            --white: #ffffff;
+            --bg-primary: #fafafa;
+            --bg-secondary: #f5f5f5;
+            --bg-dark: #0f172a;
+            --bg-card: #ffffff;
+            --border-subtle: rgba(26, 26, 26, 0.08);
+            --space-unit: 8px;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Icon Styles */
+        .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s var(--ease-out-expo), color 0.3s var(--ease-out-expo);
+            color: var(--text-secondary);
+        }
+
+        .icon:hover {
+            transform: scale(1.1) rotate(5deg);
+            color: var(--accent);
+        }
+
+        .btn svg,
+        .view-btn svg,
+        .product-card-btn svg,
+        .nav-link svg,
+        .feature-icon svg,
+        .icon-wrapper svg {
+            transition: transform 0.3s var(--ease-out-expo);
+        }
+
+        .btn:hover svg,
+        .view-btn:hover svg,
+        .product-card-btn:hover svg,
+        .nav-link:hover svg,
+        .feature-icon:hover svg,
+        .icon-wrapper:hover svg {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 calc(var(--space-unit) * 4);
+            position: relative;
+            z-index: 10;
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 calc(var(--space-unit) * 8);
+            }
+        }
+
+        .section {
+            padding: calc(var(--space-unit) * 16) 0;
+        }
+
+        @media (min-width: 1024px) {
+            .section {
+                padding: calc(var(--space-unit) * 20) 0;
+            }
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: calc(var(--space-unit) * 12);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 600;
+            margin-bottom: calc(var(--space-unit) * 3);
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 100px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background-image: url('images/Facility_innerWorkshop2_1920x1080.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                180deg,
+                rgba(0, 0, 0, 0.2) 0%,
+                rgba(0, 0, 0, 0.4) 50%,
+                rgba(0, 0, 0, 0.6) 100%
+            );
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 2);
+            margin-bottom: calc(var(--space-unit) * 6);
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .breadcrumb-separator {
+            opacity: 0.5;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: calc(var(--space-unit) * 5);
+            letter-spacing: -0.03em;
+            color: #ffffff;
+        }
+
+        .hero-title .accent {
+            color: var(--accent);
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            line-height: 1.8;
+            margin: 0 auto calc(var(--space-unit) * 8);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: calc(var(--space-unit) * 2);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        .scroll-arrow {
+            width: 24px;
+            height: 24px;
+            border-right: 2px solid var(--accent);
+            border-bottom: 2px solid var(--accent);
+            transform: rotate(45deg);
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) rotate(45deg); }
+            50% { transform: translateY(10px) rotate(45deg); }
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 2);
+            padding: calc(var(--space-unit) * 3) calc(var(--space-unit) * 6);
+            border-radius: 100px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s var(--ease-out-expo);
+            border: none;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+
+        .card {
+            border-radius: 16px;
+            background: var(--bg-card);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s var(--ease-out-expo);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-sm {
+            border-radius: 12px;
+        }
+
+        .card-lg {
+            border-radius: 20px;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(224, 122, 95, 0.3);
+        }
+
+        .btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .section-alt {
+            background: var(--bg-secondary);
+        }
+
+        .bases-showcase {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: calc(var(--space-unit) * 6);
+            padding: 0 calc(var(--space-unit) * 4);
+            max-width: calc(100vw - 32px);
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .base-hero-card {
+            max-width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            #bases {
+                overflow: hidden !important;
+                max-width: 100vw !important;
+                width: 100vw !important;
+                position: relative;
+            }
+            
+            #bases .container {
+                max-width: calc(100vw - 24px) !important;
+                width: calc(100vw - 24px) !important;
+                padding: 0 calc(var(--space-unit) * 3);
+                margin: 0 auto !important;
+                overflow: hidden !important;
+                box-sizing: border-box !important;
+            }
+            
+            .bases-showcase {
+                max-width: 100% !important;
+                width: 100% !important;
+                padding: 0;
+                gap: calc(var(--space-unit) * 4);
+                overflow: hidden !important;
+                box-sizing: border-box !important;
+            }
+            
+            .base-hero-card {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: auto !important;
+                min-height: 400px;
+                margin: 0 !important;
+                box-sizing: border-box !important;
+                position: relative !important;
+            }
+            
+            .base-hero-card * {
+                box-sizing: border-box !important;
+                max-width: 100% !important;
+            }
+            
+            .base-hero-stats {
+                flex-wrap: wrap;
+            }
+            
+            .base-hero-certs {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .bases-showcase {
+                grid-template-columns: 2fr 1fr;
+                gap: calc(var(--space-unit) * 8);
+                align-items: stretch;
+                padding: 0 calc(var(--space-unit) * 8);
+                max-width: 1400px;
+            }
+        }
+
+        .base-list {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: calc(var(--space-unit) * 4);
+        }
+
+        .base-hero-card {
+            position: relative;
+            border-radius: 28px;
+            overflow: hidden;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: calc(var(--space-unit) * 7);
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.7) 100%);
+        }
+
+        @media (min-width: 1024px) {
+            .base-hero-card {
+                min-height: 600px;
+            }
+        }
+
+        .base-hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .base-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.25) 40%, rgba(0, 0, 0, 0.6) 100%);
+            z-index: 1;
+        }
+
+        .base-hero-card .halftone-overlay {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, #000 1px, transparent 1px);
+            background-size: 4px 4px;
+            opacity: 0.2;
+            mix-blend-mode: multiply;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .base-hero-content {
+            position: relative;
+            z-index: 2;
+            color: var(--white);
+        }
+
+        .base-hero-badge {
+            display: inline-block;
+            padding: calc(var(--space-unit) * 1.5) calc(var(--space-unit) * 4);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: calc(var(--space-unit) * 3);
+        }
+
+        .base-hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            margin-bottom: calc(var(--space-unit) * 3);
+            line-height: 1.2;
+        }
+
+        .base-hero-description {
+            font-size: 1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: calc(var(--space-unit) * 4);
+            max-width: 500px;
+        }
+
+        .base-hero-stats {
+            display: flex;
+            gap: calc(var(--space-unit) * 6);
+            margin-bottom: calc(var(--space-unit) * 4);
+        }
+
+        .base-stat {
+            text-align: left;
+        }
+
+        .base-stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--accent-light);
+            display: block;
+            line-height: 1;
+        }
+
+        .base-stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            opacity: 0.8;
+        }
+
+        .base-hero-certs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: calc(var(--space-unit) * 2);
+        }
+
+        .base-hero-cert {
+            padding: calc(var(--space-unit) * 1.5) calc(var(--space-unit) * 3);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .base-list {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--space-unit) * 4);
+        }
+
+        .base-list-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: calc(var(--space-unit) * 5);
+            display: flex;
+            gap: calc(var(--space-unit) * 4);
+            align-items: flex-start;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .base-list-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .base-list-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 16px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .base-list-content {
+            flex: 1;
+        }
+
+        .base-list-badge {
+            display: inline-block;
+            padding: calc(var(--space-unit) * 1) calc(var(--space-unit) * 2.5);
+            background: rgba(224, 122, 95, 0.1);
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--accent-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: calc(var(--space-unit) * 2);
+        }
+
+        .base-list-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: calc(var(--space-unit) * 1.5);
+        }
+
+        .base-list-text {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: calc(var(--space-unit) * 12);
+            padding-top: calc(var(--space-unit) * 8);
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        /* ===== R&D Laboratories - Full Height Section ===== */
+        #labs {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: calc(var(--space-unit) * 16) 0;
+        }
+
+        .labs-cards-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: calc(var(--space-unit) * 5);
+            height: 100%;
+        }
+
+        .lab-graphic-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            background: var(--bg-card);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .lab-graphic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(61, 139, 139, 0.2);
+        }
+
+        .lab-card-image-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .lab-card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .lab-graphic-card:hover .lab-card-image {
+            transform: scale(1.08);
+        }
+
+        .lab-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                180deg,
+                transparent 50%,
+                rgba(15, 23, 33, 0.6) 100%
+            );
+            z-index: 1;
+            transition: background 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .lab-graphic-card:hover .lab-card-overlay {
+            background: linear-gradient(
+                180deg,
+                transparent 30%,
+                rgba(61, 139, 139, 0.4) 100%
+            );
+        }
+
+        .lab-card-content {
+            padding: calc(var(--space-unit) * 4);
+            background: var(--bg-card);
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--space-unit) * 1.5);
+        }
+
+        .lab-card-badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--ocean);
+            padding: 4px 10px;
+            background: rgba(61, 139, 139, 0.08);
+            border-radius: 8px;
+            align-self: flex-start;
+        }
+
+        .lab-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.125rem;
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--text-primary);
+        }
+
+        .lab-card-location {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-tertiary);
+        }
+
+        .lab-card-description {
+            font-size: 0.825rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-top: calc(var(--space-unit) * 1);
+        }
+
+        .lab-card-glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            border-radius: 20px 20px 0 0;
+            background: radial-gradient(
+                ellipse at center top,
+                rgba(61, 139, 139, 0.15) 0%,
+                transparent 70%
+            );
+            opacity: 0;
+            z-index: 2;
+            pointer-events: none;
+            transition: opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .lab-graphic-card:hover .lab-card-glow {
+            opacity: 1;
+        }
+
+        @media (max-width: 1200px) {
+            .labs-cards-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: calc(var(--space-unit) * 4);
+            }
+
+            #labs {
+                min-height: auto;
+                padding: calc(var(--space-unit) * 12) 0;
+            }
+        }
+
+        @media (max-width: 639px) {
+            .labs-cards-container {
+                grid-template-columns: 1fr;
+                gap: calc(var(--space-unit) * 4);
+            }
+
+            #labs {
+                min-height: auto;
+                padding: calc(var(--space-unit) * 10) 0;
+            }
+        }
+
+        .sites-section {
+            background: var(--bg-secondary);
+            border-radius: 32px;
+            padding: 0;
+            margin: calc(var(--space-unit) * 4) 0;
+            width: 100%;
+        }
+
+        .sites-section > * {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+        }
+
+        @media (min-width: 1024px) {
+            .sites-section {
+                margin: calc(var(--space-unit) * 6) 0;
+                padding: 0;
+            }
+        }
+
+        .distribution-desktop {
+            display: block;
+            margin-bottom: calc(var(--space-unit) * 8);
+        }
+
+        .distribution-mobile {
+            display: none;
+        }
+
+        .dist-table {
+            background: var(--bg-card);
+            border-radius: 20px;
+            border: 1px solid var(--border-subtle);
+            overflow: hidden;
+        }
+
+        .dist-row {
+            display: flex;
+            border-bottom: 1px solid var(--border-subtle);
+            transition: background 0.25s ease;
+        }
+
+        .dist-row:hover {
+            background: rgba(224, 122, 95, 0.06);
+        }
+
+        .dist-row:last-child {
+            border-bottom: none;
+        }
+
+        .dist-row.dist-header-row {
+            background: rgba(8, 12, 20, 0.9);
+        }
+
+        .dist-cell {
+            flex: 1;
+            padding: calc(var(--space-unit) * 3) calc(var(--space-unit) * 2);
+            text-align: center;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 70px;
+        }
+
+        .dist-header-row .dist-cell {
+            color: var(--white);
+        }
+
+        .dist-cell.location-header {
+            flex: 1.8;
+            justify-content: flex-start;
+            text-align: left;
+            padding-left: calc(var(--space-unit) * 4);
+        }
+
+        .dist-cell.location-cell {
+            flex: 1.8;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            text-align: left;
+            padding-left: calc(var(--space-unit) * 4);
+        }
+
+        .dist-cell.location-cell strong {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: calc(var(--space-unit) * 0.5);
+        }
+
+        .dist-cell.location-cell span {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .dist-cell.has-func {
+            position: relative;
+        }
+
+        .dist-cell.has-func .check {
+            width: 16px;
+            height: 16px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0;
+            box-shadow: 0 4px 12px rgba(224, 122, 95, 0.5),
+                        0 2px 4px rgba(224, 122, 95, 0.3);
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+        }
+
+        .dist-cell.has-func .check::before {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 6px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+        }
+
+        .dist-cell.has-func:hover .check {
+            transform: scale(1.2);
+            box-shadow: 0 6px 16px rgba(224, 122, 95, 0.6),
+                        0 3px 6px rgba(224, 122, 95, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .distribution-desktop {
+                display: none;
+            }
+
+            .distribution-mobile {
+                display: block;
+                margin-bottom: calc(var(--space-unit) * 8);
+            }
+
+            .location-card {
+                background: var(--bg-card);
+                border-radius: 16px;
+                padding: calc(var(--space-unit) * 4);
+                margin-bottom: calc(var(--space-unit) * 4);
+                border: 1px solid var(--border-subtle);
+            }
+
+            .location-card:last-child {
+                margin-bottom: 0;
+            }
+
+            .card-header {
+                margin-bottom: calc(var(--space-unit) * 3);
+                padding-bottom: calc(var(--space-unit) * 3);
+                border-bottom: 1px solid var(--border-subtle);
+            }
+
+            .card-header h3 {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.25rem;
+                font-weight: 600;
+                color: var(--text-primary);
+                margin-bottom: calc(var(--space-unit) * 0.5);
+            }
+
+            .card-header span {
+                font-size: 0.75rem;
+                color: var(--text-tertiary);
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+            }
+
+            .card-functions {
+                display: flex;
+                flex-wrap: wrap;
+                gap: calc(var(--space-unit) * 2);
+            }
+
+            .func-tag {
+                flex: 1;
+                min-width: calc(50% - calc(var(--space-unit) * 1));
+                padding: calc(var(--space-unit) * 2) calc(var(--space-unit) * 2.5);
+                background: rgba(224, 122, 95, 0.1);
+                color: var(--accent);
+                border-radius: 20px;
+                font-size: 0.7rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+                text-align: center;
+            }
+        }
+
+        .site-info {
+            display: flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 4);
+        }
+
+        .site-info-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--ocean) 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .site-info-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--white);
+        }
+
+        .site-info-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: calc(var(--space-unit) * 0.5);
+        }
+
+        .site-info-text span {
+            font-size: 0.8125rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .site-functions-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: calc(var(--space-unit) * 2);
+        }
+
+        .site-function-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 1.5);
+            padding: calc(var(--space-unit) * 1.5) calc(var(--space-unit) * 3);
+            background: var(--bg-card);
+            border-radius: 10px;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all 0.3s var(--ease-out-expo);
+        }
+
+        .site-function-tag:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .site-function-tag svg {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+        }
+
+        .logo-wall {
+            margin-top: calc(var(--space-unit) * 10);
+            padding-top: calc(var(--space-unit) * 8);
+        }
+
+        .logo-wall-title {
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: calc(var(--space-unit) * 6);
+        }
+
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: calc(var(--space-unit) * 4);
+        }
+
+        @media (max-width: 768px) {
+            .logo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .logo-item {
+            height: 180px;
+            background: var(--bg-card);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-tertiary);
+            font-size: 0.7rem;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            padding: calc(var(--space-unit) * 4);
+            gap: calc(var(--space-unit) * 3);
+            cursor: pointer;
+        }
+
+        .logo-item img {
+            width: 100%;
+            max-width: 120px;
+            max-height: 70px;
+            height: auto;
+            object-fit: contain;
+            filter: grayscale(100%) brightness(0.6);
+            opacity: 0.75;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .logo-item-name {
+            text-align: center;
+            line-height: 1.4;
+            margin-top: calc(var(--space-unit) * 1);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            color: var(--text-tertiary);
+        }
+
+        .logo-item:hover {
+            background: var(--accent);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(224, 122, 95, 0.35),
+                        0 8px 20px rgba(224, 122, 95, 0.25);
+        }
+
+        .logo-item:hover img {
+            filter: brightness(0) invert(1);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .logo-item:hover .logo-item-name {
+            color: var(--white);
+        }
+
+        .alibaba-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-top: calc(var(--space-unit) * 6);
+            width: 100%;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            flex-wrap: wrap;
+        }
+
+        .alibaba-buttons a {
+            min-width: 180px;
+            flex: 1;
+            justify-content: center;
+            max-width: 260px;
+            padding: 20px 40px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            border-radius: 100px;
+            gap: 10px;
+        }
+
+        .btn-alibaba {
+            background: var(--accent);
+            color: var(--white);
+            border: 2px solid var(--accent);
+            min-width: 200px;
+        }
+
+        .btn-alibaba:hover {
+            background: var(--accent-dark);
+            border-color: var(--accent-dark);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(230, 126, 34, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .alibaba-section {
+                min-height: 100vh;
+                height: 100vh;
+            }
+
+            .alibaba-hero {
+                min-height: 100vh;
+                height: 100vh;
+                background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            }
+
+            .hero-image {
+                display: block;
+                opacity: 0.3;
+            }
+
+            .alibaba-hero-overlay {
+                min-height: 100vh;
+                height: 100vh;
+                background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.8) 100%);
+                padding: 60px 16px 40px;
+            }
+
+            .hero-content .badge,
+            .hero-content .badge * {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                height: 0 !important;
+                width: 0 !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                border: none !important;
+                overflow: hidden !important;
+                position: absolute !important;
+                top: -9999px !important;
+                left: -9999px !important;
+            }
+
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .stat-value {
+                font-size: 2.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.95rem;
+            }
+
+            .hero-stats {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                height: 0 !important;
+                overflow: hidden !important;
+            }
+
+            .hero-features {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                height: 0 !important;
+                overflow: hidden !important;
+            }
+
+            .alibaba-buttons {
+                flex-direction: column;
+                align-items: center;
+                padding: 0 16px;
+                width: 100%;
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                gap: 14px;
+                max-width: 340px;
+                margin-bottom: 30px;
+            }
+
+            .alibaba-buttons a {
+                justify-content: center;
+                width: 100%;
+                max-width: 300px;
+                display: inline-flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                position: relative !important;
+                left: auto !important;
+                right: auto !important;
+                top: auto !important;
+                bottom: auto !important;
+                margin: 0;
+                min-width: 160px;
+                padding: 16px 30px;
+                font-size: 1rem;
+                border-radius: 100px;
+            }
+        }
+
+        .bento-section {
+            background: linear-gradient(180deg, #fffef9 0%, #fdfbf7 30%, #faf8f4 60%, #f5f3f0 100%);
+            color: var(--text-primary);
+            padding: calc(var(--space-unit) * 20) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bento-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(circle at 20% 80%, rgba(224, 122, 95, 0.06) 0%, transparent 45%),
+                              radial-gradient(circle at 80% 20%, rgba(250, 200, 180, 0.08) 0%, transparent 45%);
+            pointer-events: none;
+        }
+
+        .bento-header {
+            text-align: center;
+            margin-bottom: calc(var(--space-unit) * 12);
+            position: relative;
+            z-index: 1;
+        }
+
+        .bento-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.25rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: calc(var(--space-unit) * 4);
+            color: var(--text-primary);
+        }
+
+        .bento-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: calc(var(--space-unit) * 5);
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: calc(var(--space-unit) * 6);
+            }
+        }
+
+        .bento-item {
+            aspect-ratio: 1;
+            border-radius: 28px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            box-shadow: 
+                0 8px 32px rgba(150, 200, 200, 0.15),
+                0 2px 8px rgba(150, 200, 200, 0.1),
+                inset 0 0 0 1px rgba(200, 230, 230, 0.6);
+            transition: 
+                transform 0.5s var(--ease-out-expo), 
+                box-shadow 0.5s var(--ease-out-expo),
+                background 0.4s ease;
+        }
+
+        .bento-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+            opacity: 1;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .bento-item:hover {
+            transform: translateY(-15px) scale(1.02);
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 
+                0 25px 60px rgba(255, 180, 140, 0.25),
+                0 15px 35px rgba(255, 150, 100, 0.2),
+                0 5px 15px rgba(255, 120, 80, 0.1),
+                inset 0 0 0 1px rgba(255, 160, 120, 0.3);
+        }
+
+        .bento-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s var(--ease-out-expo);
+        }
+
+        .bento-item:hover .bento-image {
+            transform: scale(1.12);
+        }
+
+        .bento-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: calc(var(--space-unit) * 5);
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .bento-item:hover .bento-overlay {
+            opacity: 1;
+            background: linear-gradient(
+                to top, 
+                rgba(224, 122, 95, 0.9) 0%, 
+                rgba(255, 160, 120, 0.5) 50%,
+                rgba(255, 180, 140, 0.2) 80%,
+                transparent 100%
+            );
+        }
+
+        .bento-label {
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: var(--white);
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+            transform: translateY(12px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .bento-sub {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+            margin-top: 6px;
+            transform: translateY(12px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .bento-item:hover .bento-label {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .bento-item:hover .bento-sub {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .alibaba-section {
+            padding: 0;
+            overflow: hidden;
+            min-height: 100vh;
+            height: 100vh;
+        }
+
+        .alibaba-hero {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .alibaba-hero-overlay {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            min-height: 100vh;
+            height: 100vh;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px;
+            box-sizing: border-box;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            max-width: 1000px;
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .hero-content .badge {
+            display: inline-block !important;
+            padding: 14px 40px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 35px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 35px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            z-index: 10;
+            position: relative;
+            visibility: visible !important;
+            opacity: 1 !important;
+            height: auto !important;
+            width: auto !important;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 600;
+            margin-bottom: calc(var(--space-unit) * 3);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 600px;
+            margin: 0 auto calc(var(--space-unit) * 5);
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            margin-bottom: 50px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.85;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--text-primary);
+            border: none;
+        }
+
+        .btn-white:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+        }
+
+        .hero-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-bottom: 45px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-features {
+                grid-template-columns: repeat(4, 220px);
+                max-width: 950px;
+                padding: 0;
+                gap: 16px;
+            }
+        }
+
+        .hero-features .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            width: 100%;
+            min-height: 70px;
+            max-height: 70px;
+            box-sizing: border-box;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .hero-features .feature-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .hero-features .feature-item svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .hero-features .feature-item span {
+            font-size: 0.95rem;
+            font-weight: 500;
+            opacity: 0.95;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+    <div id="nav-container"></div>
+
+    <main>
+        <section class="hero" id="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-overlay"></div>
+            <div class="container">
+                <div class="hero-content reveal">
+                    <h1 class="hero-title">
+                        Global<br><span class="accent">Manufacturing</span><br> & Distribution
+                    </h1>
+                    <p class="hero-description">
+                        State-of-the-art production facilities, advanced R&D laboratories, and a global distribution network dedicated to delivering excellence in flavor & fragrance ingredients.
+                    </p>
+                    <div class="hero-buttons" style="display: flex; gap: 16px; margin-top: 48px; justify-content: center; width: 100%; max-width: 440px; margin-left: auto; margin-right: auto;">
+                        <a href="#bases" class="btn btn-primary" style="background: var(--accent); color: white; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; border-radius: 100px; font-weight: 600; transition: all 0.3s ease; flex: 1;">
+                            View Introduction
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px;">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <a href="OwnProduct_light.html" class="btn" style="background: rgba(255, 255, 255, 0.2); color: white; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; border-radius: 100px; font-weight: 600; transition: all 0.3s ease; border: 1px solid rgba(255, 255, 255, 0.3); flex: 1;">
+                            Products List
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px;">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>Explore</span>
+                <div class="scroll-arrow"></div>
+            </div>
+        </section>
+
+        <section class="section" id="bases">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Dual Production Bases</h2>
+                    <p class="section-subtitle">Two world-class manufacturing facilities ensuring consistent quality and reliable supply</p>
+                </div>
+
+                <div class="bases-showcase">
+                    <div class="base-hero-card reveal">
+                        <img class="base-hero-image" src="images/Facility_Workshop2_1920x1280.jpg" alt="Chongqing Factory">
+                        <div class="halftone-overlay"></div>
+                        <div class="base-hero-overlay"></div>
+                        <div class="base-hero-content">
+                            <span class="base-hero-badge">Est. 2018</span>
+                            <h3 class="base-hero-title">Chongqing Production Base</h3>
+                            <p class="base-hero-description">
+                                Located in Longqiao Industrial Park, Fuling District, Chongqing city, our flagship facility specializes in R&D and production of gamma-lactone and other F&F ingredients.
+                            </p>
+                            <div class="base-hero-stats">
+                                <div class="base-stat">
+                                    <span class="base-stat-number">120k</span>
+                                    <span class="base-stat-label">SQMT Site</span>
+                                </div>
+                                <div class="base-stat">
+                                    <span class="base-stat-number">5,000</span>
+                                    <span class="base-stat-label">Tons/Year</span>
+                                </div>
+                                <div class="base-stat">
+                                    <span class="base-stat-number">100+</span>
+                                    <span class="base-stat-label">Varieties</span>
+                                </div>
+                                <div class="base-stat">
+                                    <span class="base-stat-number">150+</span>
+                                    <span class="base-stat-label">Employees</span>
+                                </div>
+                            </div>
+                            <div class="base-hero-certs">
+                                <span class="base-hero-cert">ISO Cert.</span>
+                                <span class="base-hero-cert">REACH Reg.</span>
+                                <span class="base-hero-cert">FSSC Cert.</span>
+                                <span class="base-hero-cert">kOSHER Cert.</span>
+                                <span class="base-hero-cert">Halal Cert.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="base-list">
+                        <div class="base-hero-card reveal" style="overflow: hidden; flex: 1; min-height: 400px;">
+                            <img class="base-hero-image" src="images/Facility_OutsideSunShine_800x533.jpg" alt="Malaysia Factory" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div class="halftone-overlay"></div>
+                            <div class="base-hero-overlay"></div>
+                            <div class="base-hero-content">
+                                <span class="base-hero-badge">EST. 2019</span>
+                                <h3 class="base-hero-title">Malaysia Production Base</h3>
+                                <p class="base-hero-description">
+                                    Professional F&F supplier serving worldwide customers with complete production lines and global distribution network.
+                                </p>
+                                <div class="base-hero-stats">
+                                    <div class="base-stat">
+                                        <span class="base-stat-number">30+</span>
+                                        <span class="base-stat-label">Varieties</span>
+                                    </div>
+                                    <div class="base-stat">
+                                        <span class="base-stat-number">2,000</span>
+                                        <span class="base-stat-label">Tons/Year</span>
+                                    </div>
+                                    <div class="base-stat">
+                                        <span class="base-stat-number">50+</span>
+                                        <span class="base-stat-label">Partners</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cta-section reveal" style="margin-top: 32px; border-top: none; padding-top: 0;">
+                            <a href="OwnProduct_light.html" class="btn btn-primary" style="width: 100%; white-space: nowrap; padding: 18px 32px; font-size: 1.1rem; border-radius: 100px; display: flex; align-items: center; justify-content: center; gap: 12px;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="16" y1="13" x2="8" y2="13"/>
+                                    <line x1="16" y1="17" x2="8" y2="17"/>
+                                    <polyline points="10 9 9 9 8 9"/>
+                                </svg>
+                                <span>Own-Products List</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 22px; height: 22px;">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt" id="labs">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">R&D Laboratories</h2>
+                    <p class="section-subtitle">Four specialized research facilities driving innovation in fragrance and flavor science</p>
+                </div>
+
+                <div class="labs-cards-container">
+                    <!-- Synthetic Fragrance Lab -->
+                    <div class="lab-graphic-card">
+                        <div class="lab-card-image-wrapper">
+                            <img class="lab-card-image" src="images/Lab_Chemsynthesis_800x800.jpg" alt="Synthetic Fragrance Lab">
+                            <div class="lab-card-overlay"></div>
+                            <div class="lab-card-glow"></div>
+                        </div>
+                        <div class="lab-card-content">
+                            <span class="lab-card-badge">Flagship Lab</span>
+                            <h3 class="lab-card-title">Chemical Synthesis Lab</h3>
+                            <span class="lab-card-location">Chongqing</span>
+                            <p class="lab-card-description">Advanced organic synthesis and molecular engineering for creating unique fragrance molecules.</p>
+                        </div>
+                    </div>
+
+                    <!-- Biosynthesis Lab -->
+                    <div class="lab-graphic-card">
+                        <div class="lab-card-image-wrapper">
+                            <img class="lab-card-image" src="images/Lab_BioSynthesis_800x800.jpg" alt="Biosynthesis Lab">
+                            <div class="lab-card-overlay"></div>
+                            <div class="lab-card-glow"></div>
+                        </div>
+                        <div class="lab-card-content">
+                            <span class="lab-card-badge">Bio-Techonolgy</span>
+                            <h3 class="lab-card-title">Biosynthesis Lab</h3>
+                            <span class="lab-card-location">Shanghai</span>
+                            <p class="lab-card-description">Cutting-edge biotechnological approaches for sustainable and natural aroma production.</p>
+                        </div>
+                    </div>
+
+                    <!-- Aroma Blending Lab -->
+                    <div class="lab-graphic-card">
+                        <div class="lab-card-image-wrapper">
+                            <img class="lab-card-image" src="images/Lab_OdorProcessing_800x800.jpg" alt="Aroma Blending Lab">
+                            <div class="lab-card-overlay"></div>
+                            <div class="lab-card-glow"></div>
+                        </div>
+                        <div class="lab-card-content">
+                            <span class="lab-card-badge">Art & Technology</span>
+                            <h3 class="lab-card-title">Odor Optimization Lab</h3>
+                            <span class="lab-card-location">Shanghai</span>
+                            <p class="lab-card-description">Expert formulation and sensory evaluation for superior olfactory performance.</p>
+                        </div>
+                    </div>
+
+                    <!-- Plant Extraction Lab -->
+                    <div class="lab-graphic-card">
+                        <div class="lab-card-image-wrapper">
+                            <img class="lab-card-image" src="images/Lab_PlantExtract_800x800.jpg" alt="Plant Extraction Lab">
+                            <div class="lab-card-overlay"></div>
+                            <div class="lab-card-glow"></div>
+                        </div>
+                        <div class="lab-card-content">
+                            <span class="lab-card-badge">Natural Excellence</span>
+                            <h3 class="lab-card-title">Plant Extraction Lab</h3>
+                            <span class="lab-card-location">Chongqing</span>
+                            <p class="lab-card-description">State-of-the-art extraction technologies for natural botanical Extracts.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="sites">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Distribution Network</h2>
+                    <p class="section-subtitle">Four strategic locations ensuring efficient service and delivery across Asia</p>
+                </div>
+
+                <div class="sites-section reveal">
+                    <div class="distribution-desktop">
+                        <div class="dist-table">
+                            <div class="dist-row dist-header-row">
+                                <div class="dist-cell location-header">LOCATION</div>
+                                <div class="dist-cell">HEAD<br>QUARTER</div>
+                                <div class="dist-cell">SALES</div>
+                                <div class="dist-cell">PROCURE<br>MENT</div>
+                                <div class="dist-cell">PRODUC<br>TION</div>
+                                <div class="dist-cell">WARE<br>HOUSE</div>
+                                <div class="dist-cell">I.T.</div>
+                                <div class="dist-cell">SAMPL<br>ING</div>
+                                <div class="dist-cell">Q.C.</div>
+                            </div>
+                            
+                            <div class="dist-row">
+                                <div class="dist-cell location-cell">
+                                    <strong>BEIJING</strong>
+                                    <span>Headquarters</span>
+                                </div>
+                                <div class="dist-cell has-func"><span class="check">✓</span></div>
+                                <div class="dist-cell has-func"><span class="check">✓</span></div>
+                                <div class="dist-cell"></div>
+                                <div class="dist-cell"></div>
+                                <div class="dist-cell"></div>
+                                <div class="dist-cell"></div>
+                                <div class="dist-cell"></div>
+                                <div class="dist-cell"></div>
+                            </div>
+                            
+                            <div class="dist-row">
+                                <div class="dist-cell location-cell">
+                                    <strong>SHANGHAI</strong>
+                                    <span>Regional Hub</span>
+                                </div>
+                                <div class="dist-cell"></div>
+                                <div class="dist-cell has-func"><span class="check">✓</span></div>
+                                <div class="dist-cell has-func"><span class="check">✓</span></div>
+                                <div class="dist-cell"></div>
+                                <div class="dist-cell has-func"><span class="check">✓</span></div>
+                                <div class="dist-cell has-func"><span class="check">✓</span></div>
+                                <div class="dist-cell has-func"><span class="check">✓</span></div>
+                                <div class="dist-cell has-func"><span class="check">✓</span></div>
+                            </div>
+                            
+                            <div class="dist-row">
+                                <div class="dist-cell location-cell">
+                                    <strong>GUANGZHOU</strong>
+                                    <span>South Hub</span>
+                                </div>
+                                <div class="dist-cell"></div>
+                                <div class="dist-cell has-func"><span class="check">✓</span></div>
+                                <div class="dist-cell"></div>
+                                <div class="dist-cell"></div>
+                                <div class="dist-cell has-func"><span class="check">✓</span></div>
+                                <div class="dist-cell"></div>
+                                <div class="dist-cell"></div>
+                                <div class="dist-cell"></div>
+                            </div>
+                            
+                            <div class="dist-row">
+                                <div class="dist-cell location-cell">
+                                    <strong>CHONGQING</strong>
+                                    <span>Production Hub</span>
+                                </div>
+                                <div class="dist-cell"></div>
+                                <div class="dist-cell has-func"><span class="check">✓</span></div>
+                                <div class="dist-cell has-func"><span class="check">✓</span></div>
+                                <div class="dist-cell has-func"><span class="check">✓</span></div>
+                                <div class="dist-cell has-func"><span class="check">✓</span></div>
+                                <div class="dist-cell has-func"><span class="check">✓</span></div>
+                                <div class="dist-cell"></div>
+                                <div class="dist-cell has-func"><span class="check">✓</span></div>
+                            </div>
+                            
+                            <div class="dist-row">
+                                <div class="dist-cell location-cell">
+                                    <strong>SELANGOR</strong>
+                                    <span>Malaysia Hub</span>
+                                </div>
+                                <div class="dist-cell"></div>
+                                <div class="dist-cell has-func"><span class="check">✓</span></div>
+                                <div class="dist-cell"></div>
+                                <div class="dist-cell has-func"><span class="check">✓</span></div>
+                                <div class="dist-cell has-func"><span class="check">✓</span></div>
+                                <div class="dist-cell"></div>
+                                <div class="dist-cell"></div>
+                                <div class="dist-cell"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="distribution-mobile">
+                        <div class="location-card">
+                            <div class="card-header">
+                                <h3>BEIJING</h3>
+                                <span>Headquarters</span>
+                            </div>
+                            <div class="card-functions">
+                                <span class="func-tag">Head Quarter</span>
+                                <span class="func-tag">Sales</span>
+                            </div>
+                        </div>
+
+                        <div class="location-card">
+                            <div class="card-header">
+                                <h3>SHANGHAI</h3>
+                                <span>Regional Hub</span>
+                            </div>
+                            <div class="card-functions">
+                                <span class="func-tag">Sales</span>
+                                <span class="func-tag">Procurement</span>
+                                <span class="func-tag">Warehouse</span>
+                                <span class="func-tag">I.T.</span>
+                                <span class="func-tag">Sampling</span>
+                                <span class="func-tag">Q.C.</span>
+                            </div>
+                        </div>
+
+                        <div class="location-card">
+                            <div class="card-header">
+                                <h3>GUANGZHOU</h3>
+                                <span>South Hub</span>
+                            </div>
+                            <div class="card-functions">
+                                <span class="func-tag">Sales</span>
+                                <span class="func-tag">Warehouse</span>
+                            </div>
+                        </div>
+
+                        <div class="location-card">
+                            <div class="card-header">
+                                <h3>CHONGQING</h3>
+                                <span>Production Hub</span>
+                            </div>
+                            <div class="card-functions">
+                                <span class="func-tag">Sales</span>
+                                <span class="func-tag">Procurement</span>
+                                <span class="func-tag">Production</span>
+                                <span class="func-tag">Warehouse</span>
+                                <span class="func-tag">I.T.</span>
+                                <span class="func-tag">Q.C.</span>
+                            </div>
+                        </div>
+
+                        <div class="location-card">
+                            <div class="card-header">
+                                <h3>SELANGOR</h3>
+                                <span>Malaysia Hub</span>
+                            </div>
+                            <div class="card-functions">
+                                <span class="func-tag">Sales</span>
+                                <span class="func-tag">Production</span>
+                                <span class="func-tag">Warehouse</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="logo-wall">
+                        <h4 class="logo-wall-title">Trusted by Leading Brands Worldwide</h4>
+                        <div class="logo-grid">
+                            <div class="logo-item">
+                                <img src="images/LOGO_SVG_Bedoukian.svg" alt="Bedoukian Inc"/>
+                                <span class="logo-item-name">BEDOUKIAN INC</span>
+                            </div>
+                            <div class="logo-item">
+                                <img src="images/LOGO_SVG_Capua.svg" alt="Capua S.R.L."/>
+                                <span class="logo-item-name">CAPUA S.R.L.</span>
+                            </div>
+                            <div class="logo-item">
+                                <img src="images/LOGO_SVG_Kalama.svg" alt="Emerald Kalama"/>
+                                <span class="logo-item-name">EMERALD KALAMA</span>
+                            </div>
+                            <div class="logo-item">
+                                <img src="images/LOGO_SVG_Evera.svg" alt="Evera"/>
+                                <span class="logo-item-name">EVERA BY CITROSUCO</span>
+                            </div>
+                            <div class="logo-item">
+                                <img src="images/LOGO_SVG_firmenich.svg" alt="Firmenich S.A."/>
+                                <span class="logo-item-name">FIRMENICH S.A.</span>
+                            </div>
+                            <div class="logo-item">
+                                <img src="images/LOGO_SVG_givaudan.svg" alt="Givaudan S.A."/>
+                                <span class="logo-item-name">GIVAUDAN S.A.</span>
+                            </div>
+                            <div class="logo-item">
+                                <img src="images/LOGO_SVG_ZEON.svg" alt="Nippon Zeon"/>
+                                <span class="logo-item-name">NIPPON ZEON</span>
+                            </div>
+                            <div class="logo-item">
+                                <img src="images/LOGO_SVG_Synarome.svg" alt="Synarome S.A."/>
+                                <span class="logo-item-name">SYNAROME S.A.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section alibaba-section" id="alibaba">
+            <div class="alibaba-hero">
+                <img src="images/Facility_RosemaryBanner_1920x1280.jpg" alt="Alibaba Store" class="hero-image">
+                <div class="alibaba-hero-overlay">
+                    <div class="hero-content">
+                        <span class="badge">Official Flagship Store</span>
+                        <h2>Online-Shop on Alibaba</h2>
+                        <p>Trusted supplier since 2016 - Direct factory supply with competitive pricing</p>
+                        <div class="hero-stats">
+                            <div class="stat-item"><div class="stat-value">1000+</div><div class="stat-label">Available Online</div></div>
+                            <div class="stat-item"><div class="stat-value">95%</div><div class="stat-label">Positive Feedback</div></div>
+                            <div class="stat-item"><div class="stat-value">50K+</div><div class="stat-label">Transactions</div></div>
+                        </div>
+                        <div class="hero-features">
+                            <div class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Premium Quality</span></div>
+                            <div class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Reliable Service</span></div>
+                            <div class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Professional Team</span></div>
+                            <div class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg><span>Certified Products</span></div>
+                            <div class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg><span>Diverse Range</span></div>
+                            <div class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg><span>Ample Stock</span></div>
+                            <div class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/><path d="M18 12v9"/></svg><span>Fast Delivery</span></div>
+                            <div class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12h6"/><path d="M12 9v6"/></svg><span>Customizable</span></div>
+                        </div>
+                        <div class="alibaba-buttons">
+                            <a href="https://zoteqcq.1688.com" class="btn btn-alibaba" target="_blank">
+                                <span>GO ALIBABA</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                            <a href="https://zoteqcq.1688.com" class="btn btn-white" target="_blank">
+                                <span>CHEMBOOK</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                            <a href="https://zoteqcq.1688.com" class="btn btn-white" target="_blank">
+                                <span>TRADEINDIA</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bento-section" id="equipment">
+            <div class="container">
+                <div class="bento-header reveal">
+                    <h2 class="bento-title">Lab Equipment</h2>
+                    <p class="bento-subtitle">Advanced analytical instrumentation ensuring precision and quality control</p>
+                </div>
+
+                <div class="bento-grid">
+                    <div class="bento-item reveal">
+                        <img class="bento-image" src="images/Lab_GC_800x800.jpg" alt="GC" onerror="this.style.background='linear-gradient(135deg, #3d8b8b 0%, #e07a5f 100%)'">
+                        <div class="bento-overlay">
+                            <div class="bento-label">Gas Chromatography</div>
+                            <div class="bento-sub">Quantantive Analysis</div>
+                        </div>
+                    </div>
+                    <div class="bento-item reveal">
+                        <img class="bento-image" src="images/Lab_GCMS_800x800.jpg" alt="GC-MS" onerror="this.style.background='linear-gradient(135deg, #e07a5f 0%, #3d8b8b 100%)'">
+                        <div class="bento-overlay">
+                            <div class="bento-label">GC-MS</div>
+                            <div class="bento-sub">Mass Spectrometry</div>
+                        </div>
+                    </div>
+                    <div class="bento-item reveal">
+                        <img class="bento-image" src="images/Lab_HPLC_800x800.jpg" alt="HPLC" onerror="this.style.background='linear-gradient(135deg, #3d8b8b 0%, #d4a574 100%)'">
+                        <div class="bento-overlay">
+                            <div class="bento-label">HPLC</div>
+                            <div class="bento-sub"> Liquid Phase Analysis</div>
+                        </div>
+                    </div>
+                    <div class="bento-item reveal">
+                        <img class="bento-image" src="images/Lab_MT-D30_800x800.JPG" alt="Density" onerror="this.style.background='linear-gradient(135deg, #d4a574 0%, #e07a5f 100%)'">
+                        <div class="bento-overlay">
+                            <div class="bento-label">Auto-Densitometer</div>
+                            <div class="bento-sub">Relative Density</div>
+                        </div>
+                    </div>
+                    <div class="bento-item reveal">
+                        <img class="bento-image" src="images/Lab_Rotative_800x800.JPG" alt="Polarimeter" onerror="this.style.background='linear-gradient(135deg, #e07a5f 0%, #3d8b8b 100%)'">
+                        <div class="bento-overlay">
+                            <div class="bento-label">Auto-Polarimeter</div>
+                            <div class="bento-sub">Optical Analysis</div>
+                        </div>
+                    </div>
+                    <div class="bento-item reveal">
+                        <img class="bento-image" src="images/Lab_MeltingPoint_800x800.JPG" alt="Acid" onerror="this.style.background='linear-gradient(135deg, #3d8b8b 0%, #e07a5f 100%)'">
+                        <div class="bento-overlay">
+                            <div class="bento-label">Auto Melting Meter</div>
+                            <div class="bento-sub"> Melting Range Measure</div>
+                        </div>
+                    </div>
+                    <div class="bento-item reveal">
+                        <img class="bento-image" src="images/Lab_Colorimeter_800x800.jpg" alt="Auto Pol" onerror="this.style.background='linear-gradient(135deg, #e07a5f 0%, #d4a574 100%)'">
+                        <div class="bento-overlay">
+                            <div class="bento-label">Auto-Colorimeter</div>
+                            <div class="bento-sub">Visual Assessment</div>
+                        </div>
+                    </div>
+                    <div class="bento-item reveal">
+                        <img class="bento-image" src="images/Lab_MT-R40_800x800.jpg" alt="Soft Box" onerror="this.style.background='linear-gradient(135deg, #d4a574 0%, #3d8b8b 100%)'">
+                        <div class="bento-overlay">
+                            <div class="bento-label">Auto-Refractometer</div>
+                            <div class="bento-sub">Refractive Index</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script>
+        function loadComponent(elementId, url) {
+            return fetch(url)
+                .then(response => response.text())
+                .then(html => {
+                    const container = document.getElementById(elementId);
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const bodyContent = doc.body.childNodes;
+
+                    bodyContent.forEach(node => {
+                        container.appendChild(node);
+                    });
+
+                    const scripts = container.querySelectorAll('script');
+                    scripts.forEach(script => {
+                        const newScript = document.createElement('script');
+                        newScript.textContent = script.textContent;
+                        document.head.appendChild(newScript);
+                    });
+
+                    if (elementId === 'nav-container' && typeof window.initNav === 'function') {
+                        setTimeout(window.initNav, 10);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading component:', error);
+                });
+        }
+
+        Promise.all([
+            loadComponent('nav-container', 'components/nav.html'),
+            loadComponent('footer-container', 'components/footer.html')
+        ]);
+
+        // Labs cards grid animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const labCards = document.querySelectorAll('.lab-graphic-card');
+
+            // Staggered reveal animation on scroll
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: '0px 0px -30px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0) scale(1)';
+                        }, index * 120);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Initialize cards with hidden state
+            labCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px) scale(0.95)';
+                card.style.transition = `opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1), transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)`;
+                card.style.transitionDelay = `${index * 0.05}s`;
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

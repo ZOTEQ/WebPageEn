@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Backups
+*-backup-*.html
+*-备份*.html
+backups/
+
+# Temp files
+JS-tests/
+*.log
+js-tests/
+
+# Playwright
+PlayWright/
+
+# IDE
+.vscode/
+.idea/
+.trae/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Design docs
+设计规范/
+参考资料/
+screenshots/
+
+# Other
+src/
+public/
+*.xlsx
+*.env

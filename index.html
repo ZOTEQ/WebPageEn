@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZOTEQ | F&F Ingredients Specialist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+    <div class="grain"></div>
+
+    <div class="cursor">
+        <div class="cursor-dot"></div>
+    </div>
+
+    <nav id="navbar">
+        <a href="#" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84.4 17.8" class="logo-svg">
+                <path d="M28.6-21.7h-5.5c-2.4,0-4.3,2.2-4.3,4.9v2c0,2.7,1.9,4.9,4.3,4.9h5.5c2.4,0,4.3-2.2,4.3-4.9v-2c0-2.7-1.9-4.9-4.3-4.9ZM30.7-14.9c0,1.5-1.3,2.7-3,2.7h-.2c-.1,0-.3,0-.4,0h-3.1c-1.6,0-3-1.2-3-2.7v-1.8c0-1.5,1.3-2.7,3-2.7h3.1c.1,0,.3,0,.4,0h.2c1.6,0,3,1.2,3,2.7v1.8Z"/>
+                <polygon points="41.2 -21.7 35.3 -21.7 35.3 -19.5 41.2 -19.5 41.2 -19.5 41.2 -9.9 43.5 -9.9 43.5 -19.5 43.5 -19.5 49.4 -19.5 49.4 -21.7 43.5 -21.7 41.2 -21.7"/>
+                <path d="M51.8-16.8v2c0,2.7,1.9,4.9,4.3,4.9h9.8v-2.2h-8.9c-1.5,0-2.8-1.1-2.9-2.5h11.9v-2.3h-11.9c.1-1.4,1.4-2.5,2.9-2.5h8.9v-2.2h-9.8c-2.3,0-4.3,2.2-4.3,4.9Z"/>
+                <path d="M82.3-16.8c0-2.7-1.9-4.9-4.3-4.9h-5.5c-2.3,0-4.3,2.2-4.3,4.9v2c0,2.7,1.9,4.9,4.3,4.9h5.6c.8,0,1.5-.2,2.1-.6l.7.6,1.5-1.6-.7-.6c.4-.8.7-1.7.7-2.6v-2h0ZM77.2-12.2h-.2c-.1,0-.3,0-.4,0h-3.2c-1.6,0-2.9-1.2-2.9-2.7v-1.8c0-1.5,1.3-2.7,2.9-2.7h.2c.1,0,.3,0,.4,0h3.2c1.6,0,2.9,1.2,2.9,2.7v1.8c0,.4,0,.7-.2,1.1l-.7-.6-1.5,1.6.5.5c-.3.1-.7.2-1,.2Z"/>
+                <path d="M2.3-19.4h10.2L4-13.4s-.4.3-.6.4c-.4.2-1,.7-1,1.4v1.6h14.1v-2.2H6.2l8.3-5.9s.6-.4.7-.5c.9-.6,1.2-.9,1.2-1.5v-1.6H2.3v2.2Z"/>
+                <path d="M28.6,3h-5.5c-2.4,0-4.3,2.2-4.3,4.9v2c0,2.7,1.9,4.9,4.3,4.9h5.5c2.4,0,4.3-2.2,4.3-4.9v-2c0-2.7-1.9-4.9-4.3-4.9ZM30.7,9.7c0,1.5-1.3,2.7-3,2.7h-.2c-.1,0-.3,0-.4,0h-3.1c-1.6,0-3-1.2-3-2.7v-1.8c0-1.5,1.3-2.7,3-2.7h3.1c.1,0,.3,0,.4,0h.2c1.6,0,3,1.2,3,2.7v1.8Z"/>
+                <polygon points="41.2 3 35.3 3 35.3 5.2 41.2 5.2 41.2 5.2 41.2 14.7 43.5 14.7 43.5 5.2 43.5 5.2 49.4 5.2 49.4 3 43.5 3 41.2 3"/>
+                <path d="M51.8,7.8v2c0,2.7,1.9,4.9,4.3,4.9h9.8v-2.2h-8.9c-1.5,0-2.8-1.1-2.9-2.5h11.9v-2.3h-11.9c.1-1.4,1.4-2.5,2.9-2.5h8.9v-2.2h-9.8c-2.3,0-4.3,2.2-4.3,4.9Z"/>
+                <path d="M82.3,7.9c0-2.7-1.9-4.9-4.3-4.9h-5.5c-2.3,0-4.3,2.2-4.3,4.9v2c0,2.7,1.9,4.9,4.3,4.9h5.6c.8,0,1.5-.2,2.1-.6l.7.6,1.5-1.6-.7-.6c.4-.8.7-1.7.7-2.6v-2h0ZM77.2,12.5h-.2c-.1,0-.3,0-.4,0h-3.2c-1.6,0-2.9-1.2-2.9-2.7v-1.8c0-1.5,1.3-2.7,2.9-2.7h.2c.1,0,.3,0,.4,0h3.2c1.6,0,2.9,1.2,2.9,2.7v1.8c0,.4,0,.7-.2,1.1l-.7-.6-1.5,1.6.5.5c-.3.1-.7.2-1,.2Z"/>
+                <path d="M2.3,5.2h10.2L4,11.3s-.4.3-.6.4c-.4.2-1,.7-1,1.4v1.6h14.1v-2.2H6.2l8.3-5.9s.6-.4.7-.5c.9-.6,1.2-.9,1.2-1.5v-1.6H2.3v2.2Z"/>
+            </svg>
+        </a>
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-center">
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="FacilityInfo.html">Facilities</a></li>
+		<li><a href="OwnProduct_light.html">Own Products</a></li>
+                <li><a href="ProductSearch_UI.html">Total Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="search-container">
+                <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <input type="text" class="search-input" placeholder="Products name, CAS, FEMA...">
+            </div>
+        </div>
+        <a href="#book" class="nav-cta">CHINESE</a>
+    </nav>
+
+    <section class="hero" id="HERO">
+        <div class="hero-bg">
+            <img src="images/Home_OfficeBuilding_1920x1280.jpg" loading="lazy" alt="ZOTEQ Office Building">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="floating-element el-1"></div>
+        <div class="floating-element el-2"></div>
+        <div class="floating-element el-3"></div>
+        <div class="hero-content">
+            <span class="hero-badge">Discover our Expertise</span>
+            <h1>Specialized Solutions for F&F Industry</h1>
+            <p class="hero-tagline">"Zoteq, your Trusted Partner industrial!"</p>
+            <div class="hero-meta">
+                <div class="hero-meta-item">
+                    <span>F&F SUBSTANCES</span>
+                    <strong>Distributor</strong>
+                </div>
+                <div class="hero-meta-item">
+                    <span>INGREDIENTS</span>
+                    <strong>Manufacturer</strong>
+                </div>
+                <div class="hero-meta-item">
+                    <span>RAW MATERIALS</span>
+                    <strong>Exporter</strong>
+                </div>
+            </div>
+            <a href="ProductSearch_UI.html" class="hero-cta">
+                Exploring Products
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <section class="our-mission fullscreen-section" id="OUR-MISSION">
+        <div class="our-mission-content reveal">
+            <span class="section-label">OUR Mission</span>
+            <h2>Cultivating Collaborative Partnerships for Success</h2>
+            <p>We provide comprehensive solutions to the F&F industry, integrating the entire value chain from ingredient production to distribution. From supplying a complete range of raw materials to ensuring the highest quality in every step, we are committed to excellence throughout the process.</p>
+        </div>
+    </section>
+
+
+    <section class="products-section" id="COLLECTION">
+        <div class="section-header reveal">
+            <span class="section-label">NEW COLLECTION</span>
+            <h2>Discover Our Latest Creations</h2>
+            <p>Explore our newest fragrance ingredients, each crafted with precision and passion</p>
+        </div>
+
+        <div id="desktopAccordion" class="accordion-container"></div>
+        <div id="mobileAccordion" class="mobile-accordion"></div>
+    </section>
+
+    <section class="explore-zoteq" id="EXPLORE-ZOTEQ">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Beyond The Expectation</span>
+                <h2>Explore What Sets Us Apart</h2>
+            </div>
+            <div class="marquee-container reveal-scale">
+                <div class="marquee">
+                    <span>Ingredients · Aroma · Craft · Innovation · Expertise · Discovery · Signature · Experience</span>
+                    <span>Ingredients · Aroma · Craft · Innovation · Expertise · Discovery · Signature · Experience</span>
+                </div>
+            </div>
+            <div class="explore-zoteq-grid">
+                <div class="explore-zoteq-card reveal">
+                    <img src="images\Home_SunshineWarehouse_800x800.jpg" loading="lazy" alt="Yoga">
+                    <div class="halftone-overlay"></div>
+                    <div class="explore-zoteq-overlay">
+                        <span class="explore-zoteq-tag">Malaysia Site</span>
+                        <h3>F&F Warehouse</h3>
+                        <p>A global hub for our F&F ingredients</p>
+                    </div>
+                </div>
+                <div class="explore-zoteq-card reveal">
+                    <img src="images\Home_CQFacility_800x800.jpg" loading="lazy" alt="Chongqing Plant">
+                    <div class="halftone-overlay"></div>
+                    <div class="explore-zoteq-overlay">
+                        <span class="explore-zoteq-tag">Chongqing Plant</span>
+                        <h3>Tail Gas Absorbtion</h3>
+                        <p>Environmental protection is placed in the highest priority</p>
+                    </div>
+                </div>
+                <div class="explore-zoteq-card reveal">
+                    <img src="images\Home_InnerBoiler_800x800.jpg" loading="lazy" alt="Culture">
+                    <div class="halftone-overlay"></div>
+                    <div class="explore-zoteq-overlay">
+                        <span class="explore-zoteq-tag">Chongqing Plant</span>
+                        <h3>Inner Powerstation</h3>
+                        <p>Eco-friendly equipment & clean fuels for green environmental protection</p>
+                    </div>
+                </div>
+                <div class="explore-zoteq-card reveal">
+                    <img src="images/Home_SHQC_800x800.jpg" loading="lazy" alt="Quality Control">
+                    <div class="halftone-overlay"></div>
+                    <div class="explore-zoteq-overlay">
+                        <span class="explore-zoteq-tag">Shanghai QC</span>
+                        <h3>Quality Control Center</h3>
+                        <p>Regular quality inspection of F&F ingredients with modern facilities</p>
+                    </div>
+                </div>
+                <div class="explore-zoteq-card large reveal">
+                    <img src="images/Home_SHOffice_1600x1000.jpg" loading="lazy" alt="Shanghai Office">
+                    <div class="halftone-overlay"></div>
+                    <div class="explore-zoteq-overlay">
+                        <span class="explore-zoteq-tag">SHanghai Office</span>
+                        <h3>Distribution & Logistic Center</h3>
+                        <p>Sales, Procurement, Quality Control, Warehousing, Sample Processing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ff-hub fullscreen-section" id="FF-HUB">
+        <div class="ff-hub-carousel">
+            <div class="ff-hub-header">
+                <div class="container">
+                    <div class="section-header reveal">
+                        <span class="section-label">F&amp;F HUB</span>
+                        <h2>Our Three Major Activities</h2>
+                        <p>A multi-modal business hub integrating the production, distribution, and export of F&amp;F ingredients.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-track">
+                
+                <div class="carousel-slide active" data-index="0">
+                    <div class="slide-background">
+                        <img src="images/Home_OutsideWorkshop_1920x1280.jpg" loading="lazy" alt="Chemical Manufacturing"/>
+                        <div class="slide-overlay"></div>
+                    </div>
+                    <div class="slide-content">
+                        <h2>Manufacturer</h2>
+                        <p>End-to-end manufacturing & processing of F&F raw materials, with strict quality control from sourcing to finished goods.</p>
+                        <div class="slide-tags">
+                            <span>Dual Sites</span>
+                            <span>Quality System</span>
+                            <span>Traceable QC</span>
+                            <span>Eco-System</span>
+                            <span>ISO Certified</span>
+                            <span>Batch Tracking</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide" data-index="1">
+                    <div class="slide-background">
+                        <img src="images/Home_SampleBottle_1920x1280.jpg" loading="lazy" alt="Shanghai Facility"/>
+                        <div class="slide-overlay"></div>
+                    </div>
+                    <div class="slide-content">
+                        <h2>Distributor</h2>
+                        <p>Reliable distributor of premium F&F raw materials, ensuring consistent quality and fast delivery worldwide.</p>
+                        <div class="slide-tags">
+                            <span>World Brands</span>
+                            <span>Fast Delivery</span>
+                            <span>Cyber Shop</span>
+                            <span>Ready Stock</span>
+                            <span>Global Network</span>
+                            <span>Tech Enabled</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide" data-index="2">
+                    <div class="slide-background">
+                        <img src="images/Home_OceanCargo_1920x1280.jpg" loading="lazy" alt="Shipping Container"/>
+                        <div class="slide-overlay"></div>
+                    </div>
+                    <div class="slide-content">
+                        <h2>Exporter</h2>
+                        <p>Full-service export consolidation solutions for F&F raw materials, powered by AI-driven digital management.</p>
+                        <div class="slide-tags">
+                            <span>Consolidation</span>
+                            <span>AI-Digital</span>
+                            <span>China-Sourced</span>
+                            <span>Flexible Terms</span>
+                            <span>Customs Clearance</span>
+                            <span>Logistics</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <button class="carousel-nav prev" aria-label="Previous slide">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+            </button>
+            <button class="carousel-nav next" aria-label="Next slide">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M9 18l6-6-6-6"/>
+                </svg>
+            </button>
+            
+            <div class="carousel-indicators">
+                <button class="indicator active" data-index="0" aria-label="Go to slide 1"></button>
+                <button class="indicator" data-index="1" aria-label="Go to slide 2"></button>
+                <button class="indicator" data-index="2" aria-label="Go to slide 3"></button>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <section class="milestone-moments" id="MILESTONE-MOMENTS">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Our Journey</span>
+                <h2>Chronicles of Growth</h2>
+                <p>From humble beginnings to industry leadership �?each milestone marks our commitment to excellence.</p>
+            </div>
+            <div class="timeline">
+                
+                <div class="timeline-item reveal">
+                    <div class="timeline-left">
+                        <div class="timeline-content">
+                            <div class="timeline-year-text">1998</div>
+                            <h3 class="timeline-title">Distribution Launch</h3>
+                            <div class="timeline-divider"></div>
+                            <p class="timeline-description">Entered the fragrance ingredient distribution market as a subsidiary of FOUNDER GROUP.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-center">
+                        <div class="timeline-connector-top"></div>
+                        <div class="timeline-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 9L12 3L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </div>
+                        <div class="timeline-connector"></div>
+                    </div>
+                    <div class="timeline-right">
+                        <div class="timeline-year-bg">1998</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item reveal">
+                    <div class="timeline-left">
+                        <div class="timeline-year-bg">1999</div>
+                    </div>
+                    <div class="timeline-center">
+                        <div class="timeline-connector-top"></div>
+                        <div class="timeline-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21"/>
+                                <path d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z"/>
+                                <path d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13"/>
+                                <path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88"/>
+                            </svg>
+                        </div>
+                        <div class="timeline-connector"></div>
+                    </div>
+                    <div class="timeline-right">
+                        <div class="timeline-content">
+                            <div class="timeline-year-text">1999</div>
+                            <h3 class="timeline-title">Strategic Partnerships</h3>
+                            <div class="timeline-divider"></div>
+                            <p class="timeline-description">Established comprehensive partnerships with FIRMENICH and GIVAUDAN as their authorized distributor in China.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item reveal">
+                    <div class="timeline-left">
+                        <div class="timeline-content">
+                            <div class="timeline-year-text">2000</div>
+                            <h3 class="timeline-title">Founding of ZOTEQ</h3>
+                            <div class="timeline-divider"></div>
+                            <p class="timeline-description">The company was officially renamed ZOTEQ, marking a brand-new chapter of development.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-center">
+                        <div class="timeline-connector-top"></div>
+                        <div class="timeline-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                            </svg>
+                        </div>
+                        <div class="timeline-connector"></div>
+                    </div>
+                    <div class="timeline-right">
+                        <div class="timeline-year-bg">2000</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item reveal">
+                    <div class="timeline-left">
+                        <div class="timeline-year-bg">2003</div>
+                    </div>
+                    <div class="timeline-center">
+                        <div class="timeline-connector-top"></div>
+                        <div class="timeline-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="4" y="2" width="16" height="20" rx="2" ry="2"/>
+                                <path d="M9 22V12H15V22"/>
+                                <path d="M8 6H16"/>
+                                <path d="M8 10H16"/>
+                            </svg>
+                        </div>
+                        <div class="timeline-connector"></div>
+                    </div>
+                    <div class="timeline-right">
+                        <div class="timeline-content">
+                            <div class="timeline-year-text">2003</div>
+                            <h3 class="timeline-title">Factory Construction</h3>
+                            <div class="timeline-divider"></div>
+                            <p class="timeline-description">Construction of the Chongqing factory commenced; its flagship product Aldehyde C14 was officially put into production the following year.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item reveal">
+                    <div class="timeline-left">
+                        <div class="timeline-content">
+                            <div class="timeline-year-text">2004</div>
+                            <h3 class="timeline-title">Brand Enhancement</h3>
+                            <div class="timeline-divider"></div>
+                            <p class="timeline-description">Secured exclusive China distribution rights for DSM and KALAMA, further consolidating brand influence.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-center">
+                        <div class="timeline-connector-top"></div>
+                        <div class="timeline-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="8" r="6"/>
+                                <path d="M15.477 12.89L17 22L12 19L7 22L8.523 12.89"/>
+                            </svg>
+                        </div>
+                        <div class="timeline-connector"></div>
+                    </div>
+                    <div class="timeline-right">
+                        <div class="timeline-year-bg">2004</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item reveal">
+                    <div class="timeline-left">
+                        <div class="timeline-year-bg">2019</div>
+                    </div>
+                    <div class="timeline-center">
+                        <div class="timeline-connector-top"></div>
+                        <div class="timeline-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="2" y1="12" x2="22" y2="12"/>
+                                <path d="M12 2C14.5 4.5 16 8 16 12C16 16 14.5 19.5 12 22C9.5 19.5 8 16 8 12C8 8 9.5 4.5 12 2Z"/>
+                                <path d="M12 2C9.5 4.5 8 8 8 12C8 16 9.5 19.5 12 22C14.5 19.5 16 16 16 12C16 8 14.5 4.5 12 2Z"/>
+                            </svg>
+                        </div>
+                        <div class="timeline-connector"></div>
+                    </div>
+                    <div class="timeline-right">
+                        <div class="timeline-content">
+                            <div class="timeline-year-text">2019</div>
+                            <h3 class="timeline-title">International Expansion</h3>
+                            <div class="timeline-divider"></div>
+                            <p class="timeline-description">Initiated the construction of the Malaysia factory while continuing its global distribution business.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item reveal">
+                    <div class="timeline-left">
+                        <div class="timeline-content">
+                            <div class="timeline-year-text">2023</div>
+                            <h3 class="timeline-title">Global Distribution Layout</h3>
+                            <div class="timeline-divider"></div>
+                            <p class="timeline-description">Officially expanded into global flavor & fragrance ingredient distribution, integrating self-produced and traded products.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-center">
+                        <div class="timeline-connector-top"></div>
+                        <div class="timeline-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"/>
+                                <polyline points="8 6 2 12 8 18"/>
+                            </svg>
+                        </div>
+                        <div class="timeline-connector"></div>
+                    </div>
+                    <div class="timeline-right">
+                        <div class="timeline-year-bg">2023</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item reveal">
+                    <div class="timeline-left">
+                        <div class="timeline-year-bg">2025</div>
+                    </div>
+                    <div class="timeline-center">
+                        <div class="timeline-connector-top"></div>
+                        <div class="timeline-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6 9H4.5C3.12 9 2 7.88 2 6.5C2 5.12 3.12 4 4.5 4H6"/>
+                                <path d="M18 9H19.5C20.88 9 22 7.88 22 6.5C22 5.12 20.88 4 19.5 4H18"/>
+                                <path d="M6 9V20C6 20.5304 6.21071 21.0391 6.58579 21.4142C6.96086 21.7893 7.46957 22 8 22H16C16.5304 22 17.0391 21.7893 17.4142 21.4142C17.7893 21.0391 18 20.5304 18 20V9"/>
+                                <path d="M6 9C6 8.46957 6.21071 7.96086 6.58579 7.58579C6.96086 7.21071 7.46957 7 8 7H16C16.5304 7 17.0391 7.21071 17.4142 7.58579C17.7893 7.96086 18 8.46957 18 9"/>
+                                <path d="M12 2L14 5H10L12 2Z"/>
+                                <path d="M12 22V18"/>
+                            </svg>
+                        </div>
+                        <div class="timeline-connector"></div>
+                    </div>
+                    <div class="timeline-right">
+                        <div class="timeline-content">
+                            <div class="timeline-year-text">2025</div>
+                            <h3 class="timeline-title">Historic Milestone</h3>
+                            <div class="timeline-divider"></div>
+                            <p class="timeline-description">Attained RMB 1 billion in annual distribution revenue across China.</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <section class="brief-operational" id="BRIEF-OPERATIONAL">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">By the Numbers</span>
+                <h2>Our Growth Story</h2>
+                <p>Real metrics that define our journey and commitment to excellence</p>
+            </div>
+            <div class="modern-data-grid">
+                <div class="modern-card modern-card-featured reveal" data-target="1500">
+                    <div class="card-accent"></div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <img src="images/icon-customers.svg" loading="lazy" alt="Customers">
+                        </div>
+                        <div class="card-value">
+                            <span class="counter">0</span>
+                            <span class="suffix">+</span>
+                        </div>
+                        <div class="card-label">Active Customers</div>
+                        <div class="card-description">Trusted by industry leaders worldwide</div>
+                    </div>
+                </div>
+                <div class="modern-card reveal" data-target="100">
+                    <div class="card-accent"></div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <img src="images/icon-brands.svg" loading="lazy" alt="Brands">
+                        </div>
+                        <div class="card-value">
+                            <span class="counter">0</span>
+                            <span class="suffix">+</span>
+                        </div>
+                        <div class="card-label">Brands</div>
+                        <div class="card-sub-label">Represented</div>
+                    </div>
+                </div>
+                <div class="modern-card reveal" data-target="2000">
+                    <div class="card-accent"></div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <img src="images/icon-skus.svg" loading="lazy" alt="SKUs">
+                        </div>
+                        <div class="card-value">
+                            <span class="counter">0</span>
+                            <span class="suffix">K+</span>
+                        </div>
+                        <div class="card-label">SKUs</div>
+                        <div class="card-sub-label">in Stock</div>
+                    </div>
+                </div>
+                <div class="modern-card reveal" data-target="250">
+                    <div class="card-accent"></div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <img src="images/icon-team.svg" loading="lazy" alt="Team">
+                        </div>
+                        <div class="card-value">
+                            <span class="counter">0</span>
+                            <span class="suffix">+</span>
+                        </div>
+                        <div class="card-label">Team Members</div>
+                        <div class="card-sub-label">Worldwide</div>
+                    </div>
+                </div>
+                <div class="modern-card reveal" data-target="25000">
+                    <div class="card-accent"></div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <img src="images/icon-barcodes.svg" loading="lazy" alt="Barcodes">
+                        </div>
+                        <div class="card-value">
+                            <span class="counter">0</span>
+                            <span class="suffix">K+</span>
+                        </div>
+                        <div class="card-label">Barcodes</div>
+                        <div class="card-sub-label">Scanned Annually</div>
+                    </div>
+                </div>
+                <div class="modern-card reveal" data-target="30">
+                    <div class="card-accent"></div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <img src="images/icon-salesmen.svg" loading="lazy" alt="Salesmen">
+                        </div>
+                        <div class="card-value">
+                            <span class="counter">0</span>
+                            <span class="suffix">+</span>
+                        </div>
+                        <div class="card-label">Salesmen</div>
+                        <div class="card-sub-label">Across the globe</div>
+                    </div>
+                </div>
+                <div class="modern-card modern-card-wide reveal" data-target="5">
+                    <div class="card-accent"></div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <img src="images/icon-warehouses.svg" loading="lazy" alt="Warehouses">
+                        </div>
+                        <div class="card-value">
+                            <span class="counter">0</span>
+                        </div>
+                        <div class="card-label">Ingredient Warehouses</div>
+                        <div class="card-description">4 in Mainland China, 1 in Malaysia</div>
+                    </div>
+                </div>
+                <div class="modern-card reveal" data-target="2">
+                    <div class="card-accent"></div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <img src="images/icon-plants.svg" loading="lazy" alt="Plants">
+                        </div>
+                        <div class="card-value">
+                            <span class="counter">0</span>
+                        </div>
+                        <div class="card-label">Chemical Plants</div>
+                        <div class="card-sub-label">China & Malaysia</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="our-partners" id="OUR-PARTNERS">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Trusted By</span>
+                <h2>Our Clients</h2>
+                <p>We're proud to collaborate with these amazing companies that share our passion for the F&F industry and its authentic experiences.</p>
+            </div>
+            <div class="our-partners-grid">
+                                <div class="our-partner-logo reveal">
+                    <div class="our-partner-logo-placeholder">
+                        <img src="images/LOGO_SVG_firmenich.svg" loading="lazy" alt="DSM-Firmenich">
+                    </div>
+                    <span class="our-partner-name">DSM-Firmenich</span>
+                </div>
+                                <div class="our-partner-logo reveal">
+                    <div class="our-partner-logo-placeholder">
+                        <img src="images/LOGO_SVG_givaudan.svg" loading="lazy" alt="Givaudan S.A.">
+                    </div>
+                    <span class="our-partner-name">Givaudan S.A.</span>
+                </div>
+                                <div class="our-partner-logo reveal">
+                    <div class="our-partner-logo-placeholder">
+                        <img src="images/LOGO_SVG_iff.svg" loading="lazy" alt="Int'l F&F">
+                    </div>
+                    <span class="our-partner-name">Int'l F&F</span>
+                </div>
+                                <div class="our-partner-logo reveal">
+                    <div class="our-partner-logo-placeholder">
+                        <img src="images/LOGO_SVG_Lucta.svg" loading="lazy" alt="Lucta S.A.">
+                    </div>
+                    <span class="our-partner-name">Lucta S.A.</span>
+                </div>
+                                <div class="our-partner-logo reveal">
+                    <div class="our-partner-logo-placeholder">
+                        <img src="images/LOGO_SVG_P&G.svg" loading="lazy" alt="P&G Inc">
+                    </div>
+                    <span class="our-partner-name">P&G Inc</span>
+                </div>
+                                <div class="our-partner-logo reveal">
+                    <div class="our-partner-logo-placeholder">
+                        <img src="images/LOGO_SVG_Robertet.svg" loading="lazy" alt="Robertet S.A.">
+                    </div>
+                    <span class="our-partner-name">Robertet S.A.</span>
+                </div>
+                                <div class="our-partner-logo reveal">
+                    <div class="our-partner-logo-placeholder">
+                        <img src="images/LOGO_SVG_Symrise.svg" loading="lazy" alt="Symrise">
+                    </div>
+                    <span class="our-partner-name">Symrise</span>
+                </div>
+                <div class="our-partner-logo reveal">
+                    <div class="our-partner-logo-placeholder">
+                        <img src="images/LOGO_SVG_Hasegawa.svg" loading="lazy" alt="T. Hasegawa">
+                    </div>
+                    <span class="our-partner-name">T.Hasegawa</span>
+                </div>
+                <div class="our-partner-logo reveal">
+                    <div class="our-partner-logo-placeholder">
+                        <img src="images/LOGO_SVG_Takasago.svg" loading="lazy" alt="Takasago">
+                    </div>
+                    <span class="our-partner-name">Takasago</span>
+                </div>
+                <div class="our-partner-logo reveal">
+                    <div class="our-partner-logo-placeholder">
+                        <img src="images/LOGO_SVG_MANE.svg" loading="lazy" alt="V. Mane Fils">
+                    </div>
+                    <span class="our-partner-name">V.Mane.Fils</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-us" id="CONTACT-US">
+        <div class="container">
+            <div class="contact-us-content reveal">
+                <h2>Ready to Connect with us??</h2>
+                <p>Over 1,500+ Partners Already Trusting Us. It's Your Turn Next!</p>
+                <a href="ProductSearch_UI.html" class="contact-us-button">
+                    Browse our Product Range
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84.4 17.8" class="footer-logo">
+                <path fill="#fff" d="M28.6-21.7h-5.5c-2.4,0-4.3,2.2-4.3,4.9v2c0,2.7,1.9,4.9,4.3,4.9h5.5c2.4,0,4.3-2.2,4.3-4.9v-2c0-2.7-1.9-4.9-4.3-4.9ZM30.7-14.9c0,1.5-1.3,2.7-3,2.7h-.2c-.1,0-.3,0-.4,0h-3.1c-1.6,0-3-1.2-3-2.7v-1.8c0-1.5,1.3-2.7,3-2.7h3.1c.1,0,.3,0,.4,0h.2c1.6,0,3,1.2,3,2.7v1.8Z"/>
+                <polygon fill="#fff" points="41.2 -21.7 35.3 -21.7 35.3 -19.5 41.2 -19.5 41.2 -19.5 41.2 -9.9 43.5 -9.9 43.5 -19.5 43.5 -19.5 49.4 -19.5 49.4 -21.7 43.5 -21.7 41.2 -21.7"/>
+                <path fill="#fff" d="M51.8-16.8v2c0,2.7,1.9,4.9,4.3,4.9h9.8v-2.2h-8.9c-1.5,0-2.8-1.1-2.9-2.5h11.9v-2.3h-11.9c.1-1.4,1.4-2.5,2.9-2.5h8.9v-2.2h-9.8c-2.3,0-4.3,2.2-4.3,4.9Z"/>
+                <path fill="#fff" d="M82.3-16.8c0-2.7-1.9-4.9-4.3-4.9h-5.5c-2.3,0-4.3,2.2-4.3,4.9v2c0,2.7,1.9,4.9,4.3,4.9h5.6c.8,0,1.5-.2,2.1-.6l.7.6,1.5-1.6-.7-.6c.4-.8.7-1.7.7-2.6v-2h0ZM77.2-12.2h-.2c-.1,0-.3,0-.4,0h-3.2c-1.6,0-2.9-1.2-2.9-2.7v-1.8c0-1.5,1.3-2.7,2.9-2.7h.2c.1,0,.3,0,.4,0h3.2c1.6,0,2.9,1.2,2.9,2.7v1.8c0,.4,0,.7-.2,1.1l-.7-.6-1.5,1.6.5.5c-.3.1-.7.2-1,.2Z"/>
+                <path fill="#fff" d="M2.3-19.4h10.2L4-13.4s-.4.3-.6.4c-.4.2-1,.7-1,1.4v1.6h14.1v-2.2H6.2l8.3-5.9s.6-.4.7-.5c.9-.6,1.2-.9,1.2-1.5v-1.6H2.3v2.2Z"/>
+                <path fill="#fff" d="M28.6,3h-5.5c-2.4,0-4.3,2.2-4.3,4.9v2c0,2.7,1.9,4.9,4.3,4.9h5.5c2.4,0,4.3-2.2,4.3-4.9v-2c0-2.7-1.9-4.9-4.3-4.9ZM30.7,9.7c0,1.5-1.3,2.7-3,2.7h-.2c-.1,0-.3,0-.4,0h-3.1c-1.6,0-3-1.2-3-2.7v-1.8c0-1.5,1.3-2.7,3-2.7h3.1c.1,0,.3,0,.4,0h.2c1.6,0,3,1.2,3,2.7v1.8Z"/>
+                <polygon fill="#fff" points="41.2 3 35.3 3 35.3 5.2 41.2 5.2 41.2 5.2 41.2 14.7 43.5 14.7 43.5 5.2 43.5 5.2 49.4 5.2 49.4 3 43.5 3 41.2 3"/>
+                <path fill="#fff" d="M51.8,7.8v2c0,2.7,1.9,4.9,4.3,4.9h9.8v-2.2h-8.9c-1.5,0-2.8-1.1-2.9-2.5h11.9v-2.3h-11.9c.1-1.4,1.4-2.5,2.9-2.5h8.9v-2.2h-9.8c-2.3,0-4.3,2.2-4.3,4.9Z"/>
+                <path fill="#fff" d="M82.3,7.9c0-2.7-1.9-4.9-4.3-4.9h-5.5c-2.3,0-4.3,2.2-4.3,4.9v2c0,2.7,1.9,4.9,4.3,4.9h5.6c.8,0,1.5-.2,2.1-.6l.7.6,1.5-1.6-.7-.6c.4-.8.7-1.7.7-2.6v-2h0ZM77.2,12.5h-.2c-.1,0-.3,0-.4,0h-3.2c-1.6,0-2.9-1.2-2.9-2.7v-1.8c0-1.5,1.3-2.7,2.9-2.7h.2c.1,0,.3,0,.4,0h3.2c1.6,0,2.9,1.2,2.9,2.7v1.8c0,.4,0,.7-.2,1.1l-.7-.6-1.5,1.6.5.5c-.3.1-.7.2-1,.2Z"/>
+                <path fill="#fff" d="M2.3,5.2h10.2L4,11.3s-.4.3-.6.4c-.4.2-1,.7-1,1.4v1.6h14.1v-2.2H6.2l8.3-5.9s.6-.4.7-.5c.9-.6,1.2-.9,1.2-1.5v-1.6H2.3v2.2Z"/>
+            </svg>
+        <div class="footer-links">
+            <a href="#HERO">Home</a>
+            <a href="FacilityInfo.html">Facilities</a>
+            <a href="OwnProduct_light">Own Products</a>
+            <a href="ProductSearch_UI.html">Total Products</a>
+            <a href="contact.html">Contact us</a>
+        </div>
+        <p class="footer-copy">漏 2026 ZOTEQ. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
