@@ -1,36 +1,17 @@
-# Dependencies
 node_modules/
-
-# Backups
-*-backup-*.html
-*-备份*.html
-backups/
-
-# Temp files
-JS-tests/
 *.log
-js-tests/
-
-# Playwright
-PlayWright/
-
-# IDE
-.vscode/
-.idea/
-.trae/
-
-# OS files
 .DS_Store
 Thumbs.db
-
-# Design docs
-设计规范/
-参考资料/
+*.tmp
+*.bak
+backups/
+js-tests/
 screenshots/
-
-# Other
-src/
-public/
-!public/images/
-*.xlsx
-*.env
+videos/
+node_modules/
+dist/
+build/
+.cache/
+*.swp
+*.swo
+*.~

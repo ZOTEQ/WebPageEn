@@ -1,0 +1,132 @@
+请按以下要求生产设施介绍
+#语言：全英文网站，以下中文说明仅供参考，要求翻成英文显示
+#产品详细页名称：FacilityInfo.hmtl
+#公用部分：页头与页脚，与其它页面共享调用
+#设计规范：DESIGN.MD，
+# 图标ICON规范：\计规范\ICON规范.png
+#风格协同: index.html; productsearch_ui.html; productinfo.html
+#skill: awwwards/impeccable/taste等
+#完成后要求playwright视频审核动效，切屏静帧审核
+
+#主体部分说明：
+
+##第一部分介绍两个生产基地
+### 两个工厂都会有数张照片，请先用免版板照片替一下
+###重庆生产基地，留好二张照片的位置
+Founded in 2004 and based in Longqiao Industrial Park, Fuling District, Chongqing, the company is a national high-tech and specialized innovative enterprise affiliated with ZOTEQ GROUP.
+It specializes in the R&D and production of gamma-lactone and other synthetic fragrances. Its 180-mu production base delivers an annual capacity of 5,000 tons, with 30+ marketed products and nearly 100 manufacturable varieties.
+Fully equipped with advanced production facilities and R&D laboratories, it holds ISO, REACH, KOSHER and HALAL international certifications
+###马来西亚生产基地，留好二张照片的位置
+A professional supplier and manufacturer focusing on F&F and their ingredients.
+Based in Selangor, Malaysia, the company serves customers across food or F&F industries worldwide.
+It owns complete production lines and advanced R&D laboratories to ensure stable product quality and customized solutions.
+The company strictly follows international quality standards and maintains reliable supply capacity for global partners.
+### 自产产品链接页入口
+
+##第三部分，介绍中国四个分销站点
+### 会有数张照片，至少四张，请先用免版权照片替一下
+（用图标显示每个站点的功能）
+###北京：总部，财务，销售
+###上海：销售，采购，仓储，质检，样品
+###广州：销售，仓储
+###重庆：生产，仓储，销售，采购，数据
+###代理国际品牌: logo墙
+
+##第二部分，介绍四个实验室
+### 会有数张照片，至少四张，请先用免版权照片替一下
+（用图标ICON显示每个实验室的的属性）
+###： 合成香料实验室，位于重庆
+###：生物合成实验室，位于上海
+###：香气整理实验室，位于上海
+###：植提实验室，位于重庆
+
+##第四部分，介绍八个实验设备（BENTO布局，一整屏）
+### 会有八张照片，要求是正方型显示的，请先用免版权照片替一下
+### 气相色谱图片
+### 气相质谱图片
+### 液相色谱图片
+### 密度仪图片
+### 拆光仪图片
+### 自动酸值仪图片
+### 自动旋光仪图片
+### 柔光箱图片
+
+##第五部分，阿里网店
+### 一张网店的大图以及链接
+### 八个图标+英文（中文仅供参考）
+Premium 品质高端
+Reliable 实力靠谱
+Professional 专业深耕
+Certified 国际认证
+Diverse 品类丰富
+Ample 库存充足
+Fast 发货高效
+Customizable 可定制服务
+###加一个入口链接
+ 
+======================================================================================
+请按以下要求生成产品详情页
+#语言：全英文
+#产品详细页名称：ProductInfo.hmtl
+#公用部分：页头与页脚，与其它页面共享调用
+#表结构说明：产品数据库表结构设计.md
+#主体部分说明：
+##产品展示部分
+##产品推荐部分：四个展位，用于随机推荐其它产品
+#设计规范：design.md
+#风格协同: index.html; productsearch_ui.html
+#skill: awwwards/impeccable/taste等
+# 行业同行参考
+https://studio.dsm-firmenich.com/product/beyond-lilyflorer-pe-184256
+https://www.symrise.com/scent-and-care/aroma-molecules/perfumery-ingredients/#Allyl-Caproate
+https://www.takasago.com/en/node/659
+#要求做PLAYWRIGHT视觉审核
+
+
+========================================================
+index.html>new launches 模块，做如下修改
+- 先备份，再动手风格跟随设计规范
+- 四卡片版式布局，卡片风格参考附图, 但要求该模块与其它模块风格相融
+- 卡片用全图型，用上浅下深的渐变蒙板
+
+- 左上角有香气描述：woody, green， 右上角有ICON
+- 按钮上方有如下元素：
+显示推广用品名，作为标题：Ambroxxxx
+下一行是CAS no. XXX-XX-X | FEMA no.XXXX
+分割线
+然后是产品简述：an ingredient with amber-woody note...
+- 下方有按钮，引导入下一级界面：Learn More
+
+其它几组自由发挥文案和切题图片
+如有疑问，可以/plan提问
+
+请严格按照我的指令来生成卡片
+要求：NEW LAUNCHES高度为一屏显示，卡片布局不要过高，要适配屏幕高度
+1）用全图型卡片，而非半图半文字型
+2）全图卡片上要有从上到下的透明至深色渐变
+3）顶部显示香气简述+半透+白色SVG的LOGO
+4）卡片下方版式
+- 标题：Ambroxxxx
+- 细体小字 CAS no. XXX-XX-X | FEMA no.XXXX
+- 分割线
+- 简述：an ingredient with amber-woody note...
+- 下方有全宽按钮，引导入下一级界面：Learn More
+
+参考图例，table-ui-design.html
+1，顶部带有导航栏，底部有FOOTER
+2，大标题：如图所示
+3，大搜索栏，有左水印与右搜索ICON
+4， 产品表格字段列表，仅参考其样式， 
+INGREDIENT - 显示原料名称，下方极小字显示产品组号，产品前带有图型图标
+CATEGORY, 显示BIOBASED, SYNTHETIC, EU NAT. US NAT.四种
+CAS,显示CAS号 
+FEMA, 显示FEMA号
+REACH Status， 显示是否注册EU REACH, 值为： Yes/No
+ACTION，出一个放大镜的LOGO， 点击会进入下一级产品详细页面
+注意：要有分页功能
+5，设计要求
+- 现有的表格深色风格就不错，最好不要变。
+- 其它所有部分设计可围绕深色表格来生成，
+- 但请严格按照设计规范生成，design.md
+- 可参考taste/impeccable/awwwards等skills来帮助设计
+
