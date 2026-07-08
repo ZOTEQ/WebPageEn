@@ -132,13 +132,32 @@
         }
 
         .section-subtitle {
-            font-size: 1.125rem;
+            font-size: 1rem;
             color: var(--text-secondary);
             max-width: 600px;
             margin: 0 auto;
+            line-height: 1.6;
         }
 
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 18px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: calc(var(--space-unit) * 4);
+        }
 
+        .section-label::before,
+        .section-label::after {
+            content: '';
+            width: 56px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
 
         .hero {
             min-height: 100vh;
@@ -1646,6 +1665,7 @@
         <section class="section" id="bases">
             <div class="container">
                 <div class="section-header reveal">
+                    <span class="section-label">Manufacturing Excellence</span>
                     <h2 class="section-title">Dual Production Bases</h2>
                     <p class="section-subtitle">Two world-class manufacturing facilities ensuring consistent quality and reliable supply</p>
                 </div>
@@ -1739,6 +1759,7 @@
         <section class="section section-alt" id="labs">
             <div class="container">
                 <div class="section-header reveal">
+                    <span class="section-label">Innovation Hub</span>
                     <h2 class="section-title">R&D Laboratories</h2>
                     <p class="section-subtitle">Four specialized research facilities driving innovation in fragrance and flavor science</p>
                 </div>
@@ -1810,6 +1831,7 @@
         <section class="section" id="sites">
             <div class="container">
                 <div class="section-header reveal">
+                    <span class="section-label">Global Reach</span>
                     <h2 class="section-title">Distribution Network</h2>
                     <p class="section-subtitle">Four strategic locations ensuring efficient service and delivery across Asia</p>
                 </div>
@@ -2018,7 +2040,7 @@
                 <img src="images/Facility_RosemaryBanner_1920x1280.jpg" alt="Alibaba Store" class="hero-image">
                 <div class="alibaba-hero-overlay">
                     <div class="hero-content">
-                        <span class="badge">Official Flagship Store</span>
+                        <span class="section-label">Online Store</span>
                         <h2>Online-Shop on Alibaba</h2>
                         <p>Trusted supplier since 2016 - Direct factory supply with competitive pricing</p>
                         <div class="hero-stats">
@@ -2058,6 +2080,7 @@
         <section class="bento-section" id="equipment">
             <div class="container">
                 <div class="bento-header reveal">
+                    <span class="section-label">Precision Instruments</span>
                     <h2 class="bento-title">Lab Equipment</h2>
                     <p class="bento-subtitle">Advanced analytical instrumentation ensuring precision and quality control</p>
                 </div>
