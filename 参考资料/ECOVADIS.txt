@@ -1,0 +1,83 @@
+制作企业官网【可持续发展Sustainability政策】专题网页模块，现代简约商务风格，白底浅灰基调，扁平化UI设计，整体干净专业、稳重正式，适配电脑端展示。
+模块分为4大分区，横向等分4卡片布局，每个卡片独立分区+专属图标+配图+正文文案：
+1. 四大板块标题：Environment、Labor & Human Rights、Ethics、Sustainable Procurement，每个板块搭配**线性简约商务ICON**，风格统一；
+2. 每个卡片结构：顶部板块英文标题+彩色线性图标 + 右侧极简主题配图 + 下方逐条罗列英文政策细则文本，字体清晰易读；
+3. 视觉要求：低饱和度商务配色（浅绿、浅蓝、浅灰为主），圆角卡片、轻微阴影，无花哨特效；图标为线性轮廓风，配图为极简插画/实景简约静物图，和对应板块主题匹配；
+4. 文案内容严格使用以下文本，分板块对应摆放：
+【1. Environment 环境管理】
+Legal waste disposal & hazardous waste records
+Energy conservation for utilities
+Chemical & VOC control with leak prevention
+Waste & packaging recycling
+Carbon tracking & environmental certifications
+配套图标：环保/绿色地球/废弃物管理图标，配图：工厂环保设施、绿植简约插画
+
+【2. Labor & Human Rights 劳工与人权】
+Standard contracts & regulated working hours
+Legal payroll, no child/forced labor
+PPE & occupational health care
+Anti-discrimination & staff complaint channel
+配套图标：员工/团队/安全防护图标，配图：职场员工、劳保用品简约插画
+
+【3. Ethics 商业道德】
+Anti-bribery & conflict of interest rules
+Controlled business hospitality
+Third-party due diligence & compliance training
+Confidential whistleblowing & compliance files
+配套图标：盾牌/合规/诚信图标，配图：公正、合规守则简约插画
+
+【4. Sustainable Procurement 可持续采购】
+Supplier EHS qualification audit
+Periodic sustainable supplier reviews
+Eco-material & recyclable packaging priority
+Supply chain labor risk inspection
+配套图标：供应链/采购/合作图标，配图：供应链、环保包装简约插画
+
+整体排版规整、层级分明，符合企业官网视觉规范，高清输出，UI界面完整。
+
+=========================================
+EcoVadis 可持续四大评审板块（工厂实操 4 大块，化工 / 香精适用）
+1. 环境（Environment｜环保）
+废水、废气、固废、危废合规处置，危废台账、处置合同
+能耗管控：水电、蒸汽、天然气降耗、节能改造
+化学品管理：原料 MSDS、防泄漏、仓储防渗、VOC 管控
+废弃物减量、包装物回收、循环利用
+碳排放统计、环保环评 / 排污证件
+2. 劳工与人权（Labor & Human Rights）
+劳动合同、五险一金、工时合规，杜绝超时加班
+最低工资、薪资准时发放、禁止童工 / 强迫用工
+车间劳保用品、职业健康体检、职业病防护
+员工申诉渠道、反歧视、工会 / 员工代表机制
+3. 商业道德（Ethics）
+反行贿、反回扣、反腐败制度
+利益冲突申报、礼品招待管控
+合规培训、第三方中间商背调
+举报热线、合规台账留存
+4. 可持续采购（Sustainable Procurement｜供应链）
+上游原料供应商准入审核（环保、用工资质）
+向供应商传递可持续要求、定期年审供方
+优先环保原料、可回收包装采购
+供应链风险排查（童工、违规工厂）
+
+Sustainability
+1. Environment
+Legal waste disposal & hazardous waste records
+Energy conservation for utilities
+Chemical & VOC control with leak prevention
+Waste & packaging recycling
+Carbon tracking & environmental certifications
+2. Labor & Human Rights
+Standard contracts & regulated working hours
+Legal payroll, no child/forced labor
+PPE & occupational health care
+Anti-discrimination & staff complaint channel
+3. Ethics
+Anti-bribery & conflict of interest rules
+Controlled business hospitality
+Third-party due diligence & compliance training
+Confidential whistleblowing & compliance files
+4. Sustainable Procurement
+Supplier EHS qualification audit
+Periodic sustainable supplier reviews
+Eco-material & recyclable packaging priority
+Supply chain labor risk inspection

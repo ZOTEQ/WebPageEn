@@ -1,0 +1,76 @@
+/* 卡片容器 */
+.card {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #141414;
+  border: 1px solid #1f1f1f;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ========== 半调网点蒙板（核心）========== */
+.halftone-overlay {
+  position: absolute;
+  inset: 0;                          /* top:0 right:0 bottom:0 left:0 */
+  background-image: radial-gradient(
+    circle,
+    #000 1px,
+    transparent 1px
+  );
+  background-size: 4px 4px;          /* 网点间距 */
+  opacity: 0.2;                       /* 20% 透明度 */
+  mix-blend-mode: multiply;           /* 正片叠底混合 */
+  pointer-events: none;               /* 不阻挡鼠标事件 */
+}
+
+/* 悬浮遮罩 */
+.hover-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(16px);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.card:hover .hover-overlay {
+  opacity: 1;
+}
+
+/* 悬浮标签 */
+.hover-label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #fff;
+  color: #0a0a0a;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* 渐变色边框（hover label 的外圈） */
+.hover-label::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #89AACC 0%, #4E85BF 100%);
+  z-index: -1;
+}
+
+.hover-label em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+}

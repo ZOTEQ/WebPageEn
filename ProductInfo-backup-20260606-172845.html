@@ -1,0 +1,3107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geranyl Acetate 60 | ZOTEQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="components/nav.css">
+    <link rel="stylesheet" href="components/footer.css">
+    
+    <style>
+        :root {
+            --ocean: #3d8b8b;
+            --ocean-light: #5aadad;
+            --ocean-dark: #2a6b6b;
+            --sand: #d4a574;
+            --text-primary: #2d2d2d;
+            --text-secondary: #5a5a5a;
+            --text-tertiary: #8a8a8a;
+            --white: #ffffff;
+            --bg-primary: #fafafa;
+            --bg-secondary: #f5f5f5;
+            --bg-dark: #0a0f1a;
+            --bg-card: #ffffff;
+            --bg-frosted: rgba(255, 255, 255, 0.7);
+            --border-subtle: rgba(26, 26, 26, 0.08);
+            --border-hover: rgba(26, 26, 26, 0.15);
+            --space-unit: 8px;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-cubic: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* 本页专属：初始状态使用 DESIGN.MD 青色主题 + 毛玻璃 frosted glass */
+        .main-nav.dark-theme {
+            background: rgba(61, 139, 139, 0.6);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+            transition: all 0.5s var(--ease-out-expo);
+        }
+
+        .main-nav.dark-theme .logo-svg path,
+        .main-nav.dark-theme .logo-svg polygon {
+            fill: var(--white) !important;
+        }
+
+        .main-nav.dark-theme .nav-links a {
+            color: rgba(255, 255, 255, 0.92) !important;
+        }
+
+        .main-nav.dark-theme .nav-links a:hover {
+            color: var(--white) !important;
+        }
+
+        .main-nav.dark-theme .nav-links a::after {
+            background: var(--white) !important;
+        }
+
+        .main-nav.dark-theme .search-container {
+            background: rgba(255, 255, 255, 0.12) !important;
+            border-color: rgba(255, 255, 255, 0.24) !important;
+        }
+
+        .main-nav.dark-theme .search-icon {
+            color: rgba(255, 255, 255, 0.75) !important;
+        }
+
+        .main-nav.dark-theme .search-input {
+            color: var(--white) !important;
+        }
+
+        .main-nav.dark-theme .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.55) !important;
+        }
+
+        .main-nav.dark-theme .nav-cta {
+            background: var(--white) !important;
+            color: var(--ocean) !important;
+            border: 1px solid transparent !important;
+        }
+
+        .main-nav.dark-theme .nav-cta:hover {
+            background: rgba(255, 255, 255, 0.92) !important;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+            color: var(--ocean-dark) !important;
+        }
+
+        .main-nav.dark-theme .mobile-menu-btn {
+            color: var(--white) !important;
+        }
+
+        /* 滚动后：白色毛玻璃，更贴合品牌 light 风格 */
+        .main-nav.dark-theme.scrolled {
+            background: rgba(255, 255, 255, 0.72) !important;
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border-bottom: 1px solid rgba(61, 139, 139, 0.12) !important;
+            box-shadow: 0 8px 32px rgba(61, 139, 139, 0.08) !important;
+        }
+
+        .main-nav.dark-theme.scrolled .logo-svg path,
+        .main-nav.dark-theme.scrolled .logo-svg polygon {
+            fill: var(--ocean) !important;
+        }
+
+        .main-nav.dark-theme.scrolled .nav-links a {
+            color: var(--text-secondary) !important;
+        }
+
+        .main-nav.dark-theme.scrolled .nav-links a:hover {
+            color: var(--ocean) !important;
+        }
+
+        .main-nav.dark-theme.scrolled .nav-links a::after {
+            background: var(--ocean) !important;
+        }
+
+        .main-nav.dark-theme.scrolled .search-container {
+            background: rgba(61, 139, 139, 0.06) !important;
+            border-color: rgba(61, 139, 139, 0.18) !important;
+        }
+
+        .main-nav.dark-theme.scrolled .search-icon {
+            color: var(--text-tertiary) !important;
+        }
+
+        .main-nav.dark-theme.scrolled .search-input {
+            color: var(--text-primary) !important;
+        }
+
+        .main-nav.dark-theme.scrolled .search-input::placeholder {
+            color: var(--text-tertiary) !important;
+        }
+
+        .main-nav.dark-theme.scrolled .nav-cta {
+            background: var(--ocean) !important;
+            color: var(--white) !important;
+        }
+
+        .main-nav.dark-theme.scrolled .nav-cta:hover {
+            background: var(--ocean-dark) !important;
+            color: var(--white) !important;
+            box-shadow: 0 12px 32px rgba(61, 139, 139, 0.35) !important;
+        }
+
+        .main-nav.dark-theme.scrolled .mobile-menu-btn {
+            color: var(--text-primary) !important;
+        }
+
+        /* Icon Styles */
+        .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s var(--ease-out-expo), color 0.3s var(--ease-out-expo);
+            color: var(--text-secondary);
+        }
+
+        .icon:hover {
+            transform: scale(1.1) rotate(5deg);
+            color: var(--ocean);
+        }
+
+        .btn svg,
+        .view-btn svg,
+        .product-card-btn svg,
+        .nav-link svg,
+        .feature-icon svg,
+        .icon-wrapper svg {
+            transition: transform 0.3s var(--ease-out-expo);
+        }
+
+        .btn:hover svg,
+        .view-btn:hover svg,
+        .product-card-btn:hover svg,
+        .nav-link:hover svg,
+        .feature-icon:hover svg,
+        .icon-wrapper:hover svg {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .hero-section {
+            position: relative;
+            padding: calc(var(--space-unit) * 12) 0 calc(var(--space-unit) * 10);
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+        }
+
+        .hero-bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233d8b8b' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: calc(var(--space-unit) * 18) calc(var(--space-unit) * 7);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: calc(var(--space-unit) * 10);
+            align-items: flex-end;
+        }
+
+        .hero-text {
+            animation: fadeSlideUp 1s var(--ease-out-expo) both;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .product-title-section {
+            margin-top: calc(var(--space-unit) * 8);
+        }
+
+        .hero-visual {
+            animation: fadeSlideUp 1s var(--ease-out-expo) 0.2s both;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 1.5);
+            margin-bottom: calc(var(--space-unit) * 3);
+            font-size: 0.8125rem;
+            color: var(--text-tertiary);
+        }
+
+        .breadcrumb a {
+            color: var(--text-tertiary);
+            text-decoration: none;
+            transition: color 0.25s var(--ease-out-expo);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--ocean);
+        }
+
+        .breadcrumb-separator {
+            opacity: 0.5;
+        }
+
+        .breadcrumb-current {
+            color: var(--text-secondary);
+        }
+
+        .product-meta-row {
+            display: flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 2);
+            flex-wrap: wrap;
+            margin-bottom: calc(var(--space-unit) * 5);
+        }
+
+        .product-category-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 1);
+            padding: calc(var(--space-unit) * 1.5) calc(var(--space-unit) * 3);
+            background: rgba(61, 139, 139, 0.1);
+            border: 1px solid rgba(61, 139, 139, 0.2);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--ocean);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .product-code-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 1);
+            padding: calc(var(--space-unit) * 1.5) calc(var(--space-unit) * 3);
+            background: rgba(61, 139, 139, 0.1);
+            border: 1px solid rgba(61, 139, 139, 0.2);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--ocean);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+
+        .product-code-icon {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        .product-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin-bottom: calc(var(--space-unit) * 3);
+            color: var(--text-primary);
+        }
+
+        .product-synonym {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: calc(var(--space-unit) * 2);
+            font-style: italic;
+        }
+
+        .product-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+            margin: calc(var(--space-unit) * 4) 0;
+        }
+
+        .info-divider {
+            height: 1px;
+            background: var(--border-subtle);
+            margin: calc(var(--space-unit) * 4) 0;
+        }
+
+        .product-olfactory-section {
+            margin: calc(var(--space-unit) * 2) 0;
+            padding: calc(var(--space-unit) * 2) 0;
+        }
+
+        .olfactory-divider-top {
+            height: 1px;
+            background: var(--border-subtle);
+            margin-bottom: calc(var(--space-unit) * 2);
+        }
+
+        .olfactory-divider-bottom {
+            height: 1px;
+            background: var(--border-subtle);
+            margin-top: calc(var(--space-unit) * 2);
+        }
+
+        .olfactory-item {
+            display: flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 2);
+            margin-bottom: calc(var(--space-unit) * 2);
+        }
+
+        .olfactory-icon-container {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(61, 139, 139, 0.08);
+            border: 1px solid rgba(61, 139, 139, 0.15);
+            vertical-align: middle;
+        }
+
+        .olfactory-icon {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        .olfactory-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--ocean);
+            letter-spacing: 0.05em;
+            vertical-align: middle;
+            text-transform: uppercase;
+        }
+
+        .product-detail-row {
+            display: flex;
+            gap: calc(var(--space-unit) * 4);
+        }
+
+        .detail-column {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--space-unit) * 3);
+            flex: 1;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--space-unit) * 0.5);
+        }
+
+        .detail-divider {
+            width: 1px;
+            background: var(--border-subtle);
+        }
+
+        .detail-label {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            display: inline-flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 1);
+        }
+
+        .detail-label::before {
+            content: "";
+            display: none;
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+            background: currentColor;
+            -webkit-mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            mask-size: contain;
+            mask-repeat: no-repeat;
+        }
+
+        .detail-label[data-icon]::before {
+            display: inline-block;
+        }
+
+        .detail-label[data-icon="shield"]::before {
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3C/svg%3E");
+        }
+
+        .detail-label[data-icon="list"]::before {
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cline x1='8' y1='6' x2='21' y2='6'/%3E%3Cline x1='8' y1='12' x2='21' y2='12'/%3E%3Cline x1='8' y1='18' x2='21' y2='18'/%3E%3Cline x1='3' y1='6' x2='3.01' y2='6'/%3E%3Cline x1='3' y1='12' x2='3.01' y2='12'/%3E%3Cline x1='3' y1='18' x2='3.01' y2='18'/%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cline x1='8' y1='6' x2='21' y2='6'/%3E%3Cline x1='8' y1='12' x2='21' y2='12'/%3E%3Cline x1='8' y1='18' x2='21' y2='18'/%3E%3Cline x1='3' y1='6' x2='3.01' y2='6'/%3E%3Cline x1='3' y1='12' x2='3.01' y2='12'/%3E%3Cline x1='3' y1='18' x2='3.01' y2='18'/%3E%3C/svg%3E");
+        }
+
+        .detail-label[data-icon="database"]::before {
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cellipse cx='12' cy='5' rx='9' ry='3'/%3E%3Cpath d='M21 12c0 1.66-4 3-9 3s-9-1.34-9-3'/%3E%3Cpath d='M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5'/%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cellipse cx='12' cy='5' rx='9' ry='3'/%3E%3Cpath d='M21 12c0 1.66-4 3-9 3s-9-1.34-9-3'/%3E%3Cpath d='M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5'/%3E%3C/svg%3E");
+        }
+
+        .detail-label[data-icon="award"]::before {
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Ccircle cx='12' cy='8' r='7'/%3E%3Cpolyline points='8.21 13.89 7 23 12 20 17 23 15.79 13.88'/%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Ccircle cx='12' cy='8' r='7'/%3E%3Cpolyline points='8.21 13.89 7 23 12 20 17 23 15.79 13.88'/%3E%3C/svg%3E");
+        }
+
+        .detail-value {
+            font-family: 'Inter', monospace;
+            font-size: 1rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .detail-value.reach-yes {
+            color: var(--ocean);
+        }
+
+        .product-synonym-label {
+            font-weight: 600;
+            color: var(--text-tertiary);
+            font-style: normal;
+            margin-right: 4px;
+        }
+
+        .product-detail-tags {
+            display: flex;
+            gap: calc(var(--space-unit) * 6);
+            margin-bottom: calc(var(--space-unit) * 5);
+            flex-wrap: wrap;
+        }
+
+        .detail-tag {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--space-unit) * 0.5);
+            min-width: 140px;
+        }
+
+        .detail-tag-label {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .detail-tag-value {
+            font-family: 'Inter', monospace;
+            font-size: 0.9375rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .detail-tag-value.reach-yes {
+            color: var(--ocean);
+        }
+
+        .product-codes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: calc(var(--space-unit) * 8);
+            padding-top: calc(var(--space-unit) * 4);
+            border-top: 1px solid var(--border-subtle);
+            justify-content: flex-start;
+        }
+
+        .product-code-item {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--space-unit) * 0.5);
+            min-width: 140px;
+        }
+
+        .code-label {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .code-value {
+            font-family: 'Inter', monospace;
+            font-size: 1rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeSlideUp 0.8s var(--ease-out-expo) 0.2s both;
+        }
+
+        .product-image-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: 28px;
+            box-shadow: 0 20px 60px rgba(61, 139, 139, 0.15);
+            transition: box-shadow 0.6s var(--ease-out-expo),
+                        transform 0.6s var(--ease-out-expo),
+                        border-radius 0.6s var(--ease-out-expo);
+            isolation: isolate;
+        }
+
+        .product-image-container::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            z-index: 4;
+            pointer-events: none;
+        }
+
+        .product-image-container:hover {
+            box-shadow: 0 30px 90px rgba(61, 139, 139, 0.3),
+                        0 0 0 1px rgba(61, 139, 139, 0.2);
+            transform: translateY(-4px);
+        }
+
+        /* ===== Orbit Ring System ===== */
+        .orbit-system {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .orbit-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(61, 139, 139, 0.35);
+            box-shadow: 0 0 12px rgba(61, 139, 139, 0.08),
+                        inset 0 0 12px rgba(61, 139, 139, 0.05);
+        }
+
+        .orbit-ring-1 {
+            top: 8%;
+            left: 8%;
+            right: 8%;
+            bottom: 28%;
+            animation: orbitSpin1 28s linear infinite;
+        }
+
+        .orbit-ring-2 {
+            top: 5%;
+            left: 5%;
+            right: 5%;
+            bottom: 32%;
+            border-style: dashed;
+            border-color: rgba(90, 173, 173, 0.25);
+            animation: orbitSpin2 42s linear infinite reverse;
+        }
+
+        @keyframes orbitSpin1 { to { transform: rotate(360deg); } }
+        @keyframes orbitSpin2 { to { transform: rotate(360deg); } }
+
+        .orbit-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--ocean);
+            box-shadow: 0 0 8px rgba(61, 139, 139, 0.6),
+                        0 0 20px rgba(61, 139, 139, 0.25);
+        }
+
+        .orbit-dot-1 {
+            top: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .orbit-dot-2 {
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--sand);
+            box-shadow: 0 0 8px rgba(212, 165, 116, 0.6),
+                        0 0 20px rgba(212, 165, 116, 0.25);
+            width: 6px;
+            height: 6px;
+        }
+
+        .orbit-dot-3 {
+            top: 50%;
+            right: -4px;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--ocean-light);
+            box-shadow: 0 0 8px rgba(90, 173, 173, 0.6);
+        }
+
+        .orbit-dot-4 {
+            top: 50%;
+            left: -4px;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 10px;
+            background: var(--ocean);
+            box-shadow: 0 0 12px rgba(61, 139, 139, 0.7),
+                        0 0 30px rgba(61, 139, 139, 0.3);
+            animation: dotPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes dotPulse {
+            0%, 100% { box-shadow: 0 0 12px rgba(61, 139, 139, 0.7), 0 0 30px rgba(61, 139, 139, 0.3); transform: translateY(-50%) scale(1); }
+            50%      { box-shadow: 0 0 20px rgba(61, 139, 139, 0.9), 0 0 45px rgba(61, 139, 139, 0.45); transform: translateY(-50%) scale(1.25); }
+        }
+
+        .orbit-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: centerPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes centerPulse {
+            0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+            50%      { opacity: 1;   transform: translate(-50%, -50%) scale(1.15); }
+        }
+
+        .orbit-badge {
+            position: absolute;
+            top: calc(var(--space-unit) * 4);
+            right: calc(var(--space-unit) * 4);
+            display: inline-flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 1.5);
+            padding: calc(var(--space-unit) * 1.5) calc(var(--space-unit) * 3);
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            color: var(--ocean);
+            font-size: 0.6875rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            border-radius: 100px;
+            box-shadow: 0 6px 24px rgba(61, 139, 139, 0.25),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            z-index: 5;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transition: transform 0.4s var(--ease-out-expo),
+                        background 0.4s var(--ease-out-expo),
+                        color 0.4s var(--ease-out-expo);
+        }
+
+        .orbit-badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--ocean);
+            box-shadow: 0 0 0 0 rgba(61, 139, 139, 0.6);
+            animation: badgePulse 2.5s ease-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%   { box-shadow: 0 0 0 0 rgba(61, 139, 139, 0.7); }
+            70%  { box-shadow: 0 0 0 14px rgba(61, 139, 139, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(61, 139, 139, 0); }
+        }
+
+        .product-image-container:hover .orbit-badge {
+            background: rgba(61, 139, 139, 0.85);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .product-image-container:hover .orbit-badge .orbit-badge-dot {
+            background: #fff;
+        }
+
+        .product-image-container:hover .orbit-ring {
+            border-color: rgba(61, 139, 139, 0.55);
+            box-shadow: 0 0 20px rgba(61, 139, 139, 0.2),
+                        inset 0 0 20px rgba(61, 139, 139, 0.1);
+        }
+
+        .product-image-container:hover .orbit-ring-2 {
+            border-color: rgba(90, 173, 173, 0.4);
+        }
+
+        .product-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s var(--ease-out-expo), filter 1s var(--ease-out-expo);
+            display: block;
+            z-index: 1;
+            position: relative;
+        }
+
+        .product-image-container:hover img {
+            transform: scale(1.06);
+            filter: saturate(1.15) brightness(1.05);
+        }
+
+        /* Orbit card: molecular formula container decorations */
+        .orbit-card {
+            position: relative;
+        }
+
+        .orbit-card-border {
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            border: 1px solid rgba(61, 139, 139, 0.18);
+            pointer-events: none;
+            transition: border-color 0.5s var(--ease-out-expo);
+        }
+
+        .product-image-container:hover .orbit-card-border {
+            border-color: rgba(61, 139, 139, 0.4);
+        }
+
+        .orbit-card-tick {
+            position: absolute;
+            background: rgba(61, 139, 139, 0.5);
+            z-index: 1;
+            transition: background 0.4s var(--ease-out-expo), transform 0.4s var(--ease-out-expo);
+        }
+
+        .orbit-card-tick-t {
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 2px;
+            border-radius: 1px;
+        }
+
+        .orbit-card-tick-r {
+            right: -1px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2px;
+            height: 20px;
+            border-radius: 1px;
+        }
+
+        .orbit-card-tick-b {
+            bottom: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 2px;
+            border-radius: 1px;
+        }
+
+        .orbit-card-tick-l {
+            left: -1px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2px;
+            height: 20px;
+            border-radius: 1px;
+        }
+
+        .product-image-container:hover .orbit-card-tick {
+            background: var(--ocean);
+        }
+
+        .product-image-container:hover .orbit-card-tick-t { transform: translateX(-50%) scaleX(1.5); }
+        .product-image-container:hover .orbit-card-tick-r { transform: translateY(-50%) scaleY(1.5); }
+        .product-image-container:hover .orbit-card-tick-b { transform: translateX(-50%) scaleX(1.5); }
+        .product-image-container:hover .orbit-card-tick-l { transform: translateY(-50%) scaleY(1.5); }
+
+        .molecular-formula-container {
+            position: absolute;
+            bottom: calc(var(--space-unit) * 6);
+            left: calc(var(--space-unit) * 5);
+            right: calc(var(--space-unit) * 5);
+            padding: calc(var(--space-unit) * 4) calc(var(--space-unit) * 5);
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(20px) saturate(160%);
+            -webkit-backdrop-filter: blur(20px) saturate(160%);
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            box-shadow: 0 8px 30px rgba(61, 139, 139, 0.18),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            z-index: 4;
+            transition: transform 0.5s var(--ease-out-expo),
+                        box-shadow 0.5s var(--ease-out-expo),
+                        background 0.5s var(--ease-out-expo);
+        }
+
+        .product-image-container:hover .molecular-formula-container {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 40px rgba(61, 139, 139, 0.3),
+                        0 0 0 1px rgba(61, 139, 139, 0.15),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.62);
+        }
+
+        .formula-grid {
+            display: flex;
+            flex-direction: row;
+            gap: calc(var(--space-unit) * 6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .formula-divider {
+            width: 1px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .formula-item {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--space-unit) * 0.5);
+        }
+
+        .formula-label {
+            font-size: 0.625rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            display: inline-flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 1);
+        }
+
+        .formula-label::before {
+            content: "";
+            display: inline-block;
+            width: 13px;
+            height: 13px;
+            flex-shrink: 0;
+            background: currentColor;
+            -webkit-mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            mask-size: contain;
+            mask-repeat: no-repeat;
+        }
+
+        .formula-label::before {
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M9 3h6v7l4 8H5l4-8V3z'/%3E%3Cline x1='9' y1='3' x2='15' y2='3'/%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M9 3h6v7l4 8H5l4-8V3z'/%3E%3Cline x1='9' y1='3' x2='15' y2='3'/%3E%3C/svg%3E");
+        }
+
+        .formula-label[data-icon="weight"]::before {
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M12 3a4 4 0 0 0-4 4c0 2 2 3 2 5h4c0-2 2-3 2-5a4 4 0 0 0-4-4z'/%3E%3Cpath d='M9 14h6l1 8H8l1-8z'/%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M12 3a4 4 0 0 0-4 4c0 2 2 3 2 5h4c0-2 2-3 2-5a4 4 0 0 0-4-4z'/%3E%3Cpath d='M9 14h6l1 8H8l1-8z'/%3E%3C/svg%3E");
+        }
+
+        .formula-value {
+            font-family: 'Inter', monospace;
+            font-size: 1.125rem;
+            color: var(--text-primary);
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes icon-pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(61, 139, 139, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(61, 139, 139, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(61, 139, 139, 0);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px) rotate(-2deg);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0) rotate(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.15s; }
+        .reveal-delay-2 { transition-delay: 0.25s; }
+        .reveal-delay-3 { transition-delay: 0.35s; }
+
+        .info-section {
+            position: relative;
+            z-index: 2;
+            padding: calc(var(--space-unit) * 16) calc(var(--space-unit) * 7);
+            background-image:
+                linear-gradient(
+                    180deg,
+                    rgba(10, 15, 26, 0.88) 0%,
+                    rgba(10, 15, 26, 0.55) 50%,
+                    rgba(10, 15, 26, 0.88) 100%
+                ),
+                url('images/ProductSearch_Hero_1920x768.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .info-header {
+            max-width: 1400px;
+            margin: 0 auto calc(var(--space-unit) * 10);
+            text-align: center;
+        }
+
+        .info-section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 2.25);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--ocean);
+            margin-bottom: calc(var(--space-unit) * 4);
+        }
+
+        .info-section-label::before,
+        .info-section-label::after {
+            content: '';
+            width: 56px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--ocean), transparent);
+        }
+
+        .info-section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: -0.02em;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: calc(var(--space-unit) * 5);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: calc(var(--space-unit) * 6);
+            transition: all 0.5s var(--ease-out-expo);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            will-change: transform;
+        }
+
+        .info-card-transparent {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: all 0.5s var(--ease-out-expo), backdrop-filter 0.5s var(--ease-out-expo), -webkit-backdrop-filter 0.5s var(--ease-out-expo);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 4px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .info-card-transparent:hover {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(61, 139, 139, 0.25);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 30px rgba(61, 139, 139, 0.15), 0 32px 80px rgba(0, 0, 0, 0.45);
+        }
+
+        .info-card-bg {
+            background: linear-gradient(180deg, rgba(61, 139, 139, 0.08) 0%, rgba(10, 15, 26, 0.0) 100%), rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(61, 139, 139, 0.2);
+        }
+
+        .info-card-bg::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            background-image: url('images/product_odor_green_1200x1200.jpg');
+            background-size: cover;
+            background-position: center bottom;
+            opacity: 0.6;
+            z-index: 0;
+            transition: transform 1.2s var(--ease-out-expo), background-position 1.2s var(--ease-out-expo);
+        }
+
+        .info-card-bg:hover::before {
+            transform: scale(1.08);
+            background-position: center calc(50% + 3%);
+        }
+
+        .info-card-bg::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(10, 15, 26, 0.95) 0%,
+                rgba(10, 15, 26, 0.92) 60%,
+                rgba(10, 15, 26, 0.7) 85%,
+                rgba(10, 15, 26, 0.2) 100%
+            );
+            z-index: 1;
+            transition: background 0.8s var(--ease-out-expo);
+        }
+
+        .info-card-bg:hover::after {
+            background: linear-gradient(
+                to bottom,
+                rgba(10, 15, 26, 0.95) 0%,
+                rgba(10, 15, 26, 0.92) 60%,
+                rgba(10, 15, 26, 0.65) 85%,
+                rgba(10, 15, 26, 0.35) 100%
+            );
+        }
+
+        .info-card-bg:hover {
+            box-shadow: inset 0 -60px 80px rgba(61, 139, 139, 0.25), 0 32px 80px rgba(0, 0, 0, 0.45), 0 0 40px rgba(61, 139, 139, 0.25), 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .info-card-bg > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .info-card:hover {
+            border-color: rgba(61, 139, 139, 0.5);
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.45), 0 0 40px rgba(61, 139, 139, 0.25), 0 8px 24px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .info-card.active {
+            background: linear-gradient(135deg, rgba(61, 139, 139, 0.15) 0%, rgba(61, 139, 139, 0.08) 100%);
+            border-color: var(--ocean);
+            border-width: 2px;
+            transform: scale(1.04) translateY(-4px);
+            box-shadow: 0 30px 80px rgba(61, 139, 139, 0.3), 0 0 40px rgba(61, 139, 139, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            z-index: 10;
+        }
+
+        .info-card.active .info-card-icon {
+            background: linear-gradient(135deg, var(--ocean) 0%, var(--ocean-dark) 100%);
+            color: var(--white);
+            transform: rotate(360deg) scale(1.15);
+            transition: transform 0.8s var(--ease-out-expo), background 0.4s var(--ease-out-expo), color 0.4s var(--ease-out-expo);
+        }
+
+        .info-card.active .info-card-title {
+            color: var(--ocean-light);
+        }
+
+        .info-card-header {
+            display: flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 2.5);
+            padding-bottom: calc(var(--space-unit) * 4);
+            margin-bottom: calc(var(--space-unit) * 4);
+            position: relative;
+        }
+
+        .info-card-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: rgba(61, 139, 139, 0.25);
+            transition: all 0.5s var(--ease-out-expo);
+        }
+
+        .info-card:hover .info-card-header::after {
+            height: 2px;
+            background: linear-gradient(90deg, var(--ocean) 0%, rgba(61, 139, 139, 0.4) 50%, transparent 100%);
+            box-shadow: 0 0 10px rgba(61, 139, 139, 0.5);
+        }
+
+        /* Card orbit deco: matches hero image orbit system */
+        .card-orbit-deco {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 140px;
+            height: 140px;
+            pointer-events: none;
+            z-index: 3;
+            opacity: 0.5;
+            transition: opacity 0.5s var(--ease-out-expo);
+        }
+
+        .info-card:hover .card-orbit-deco,
+        .info-card.active .card-orbit-deco {
+            opacity: 1;
+        }
+
+        .card-orbit-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(61, 139, 139, 0.3);
+        }
+
+        .card-orbit-ring-1 {
+            inset: 20%;
+            animation: cardOrbitSpin1 20s linear infinite;
+        }
+
+        .card-orbit-ring-2 {
+            inset: 10%;
+            border-style: dashed;
+            border-color: rgba(90, 173, 173, 0.2);
+            animation: cardOrbitSpin2 30s linear infinite reverse;
+        }
+
+        @keyframes cardOrbitSpin1 { to { transform: rotate(360deg); } }
+        @keyframes cardOrbitSpin2 { to { transform: rotate(360deg); } }
+
+        .card-orbit-dot {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--ocean);
+        }
+
+        .card-orbit-dot-a {
+            width: 5px;
+            height: 5px;
+            top: 30%;
+            right: -2px;
+            box-shadow: 0 0 6px rgba(61, 139, 139, 0.5);
+            animation: cardDotA 12s linear infinite;
+        }
+
+        .card-orbit-dot-b {
+            width: 4px;
+            height: 4px;
+            bottom: 20%;
+            left: 15%;
+            background: var(--sand);
+            box-shadow: 0 0 6px rgba(212, 165, 116, 0.5);
+            animation: cardDotB 18s linear infinite reverse;
+        }
+
+        @keyframes cardDotA {
+            from { transform: rotate(0deg)   translateX(48px) rotate(0deg); }
+            to   { transform: rotate(360deg) translateX(48px) rotate(-360deg); }
+        }
+
+        @keyframes cardDotB {
+            from { transform: rotate(0deg)   translateX(56px) rotate(0deg); }
+            to   { transform: rotate(360deg) translateX(56px) rotate(-360deg); }
+        }
+
+        .info-card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(61, 139, 139, 0.2) 0%, rgba(61, 139, 139, 0.15) 100%);
+            color: var(--ocean-light);
+            transition: all 0.4s var(--ease-out-expo);
+            position: relative;
+            overflow: hidden;
+            will-change: transform;
+        }
+
+        .info-card-icon::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 20px;
+            background: transparent;
+            opacity: 0;
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .info-card:hover .info-card-icon {
+            background: linear-gradient(135deg, var(--ocean) 0%, var(--ocean-dark) 100%);
+            color: var(--white);
+            transform: rotate(12deg) scale(1.15);
+        }
+
+        .info-card:hover .info-card-icon::after {
+            opacity: 1;
+            box-shadow: 0 0 20px rgba(61, 139, 139, 0.5);
+            border: 2px solid rgba(61, 139, 139, 0.3);
+            animation: icon-pulse 1.5s infinite;
+        }
+
+        .info-card-icon svg {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.5s var(--ease-out-expo);
+        }
+
+        .info-card:hover .info-card-icon svg {
+            transform: scale(1.1);
+        }
+
+        .info-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: -0.01em;
+            transition: color 0.3s var(--ease-out-expo), letter-spacing 0.4s var(--ease-out-expo), transform 0.4s var(--ease-out-expo);
+        }
+
+        .info-card:hover .info-card-title {
+            color: var(--ocean-light);
+            letter-spacing: 0.02em;
+            transform: scale(1.02);
+        }
+
+        .info-list {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--space-unit) * 4);
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--space-unit) * 0.5);
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .info-card:hover .info-item:nth-child(1) { transform: translateX(8px); transition-delay: 0.05s; }
+        .info-card:hover .info-item:nth-child(2) { transform: translateX(8px); transition-delay: 0.10s; }
+        .info-card:hover .info-item:nth-child(3) { transform: translateX(8px); transition-delay: 0.15s; }
+        .info-card:hover .info-item:nth-child(4) { transform: translateX(8px); transition-delay: 0.20s; }
+
+        .info-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--ocean-light);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            transition: color 0.3s var(--ease-out-expo);
+            display: inline-flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 1);
+        }
+
+        .info-label::before {
+            content: "";
+            display: none;
+            width: 15px;
+            height: 15px;
+            flex-shrink: 0;
+            background: var(--ocean-light);
+            -webkit-mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            mask-size: contain;
+            mask-repeat: no-repeat;
+        }
+
+        .info-label[data-icon]::before {
+            display: inline-block;
+        }
+
+        .info-label[data-icon="nose"]::before {
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M12 2C8 2 5 5 5 9c0 4 2 6 3 8h8c1-2 3-4 3-8 0-4-3-7-7-7z'/%3E%3Cpath d='M9 20h6'/%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M12 2C8 2 5 5 5 9c0 4 2 6 3 8h8c1-2 3-4 3-8 0-4-3-7-7-7z'/%3E%3Cpath d='M9 20h6'/%3E%3C/svg%3E");
+        }
+
+        .info-label[data-icon="flask"]::before {
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M9 3h6v7l4 8H5l4-8V3z'/%3E%3Cline x1='9' y1='3' x2='15' y2='3'/%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M9 3h6v7l4 8H5l4-8V3z'/%3E%3Cline x1='9' y1='3' x2='15' y2='3'/%3E%3C/svg%3E");
+        }
+
+        .info-label[data-icon="eye"]::before {
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E");
+        }
+
+        .info-label[data-icon="clock"]::before {
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolyline points='12 6 12 12 16 14'/%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolyline points='12 6 12 12 16 14'/%3E%3C/svg%3E");
+        }
+
+        .info-label[data-icon="box"]::before {
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z'/%3E%3Cpolyline points='3.27 6.96 12 12.01 20.73 6.96'/%3E%3Cline x1='12' y1='22.08' x2='12' y2='12'/%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z'/%3E%3Cpolyline points='3.27 6.96 12 12.01 20.73 6.96'/%3E%3Cline x1='12' y1='22.08' x2='12' y2='12'/%3E%3C/svg%3E");
+        }
+
+        .info-label[data-icon="package"]::before {
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M16.5 9.4l-9-5.19'/%3E%3Cpath d='M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z'/%3E%3Cpolyline points='3.27 6.96 12 12.01 20.73 6.96'/%3E%3Cline x1='12' y1='22.08' x2='12' y2='12'/%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M16.5 9.4l-9-5.19'/%3E%3Cpath d='M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z'/%3E%3Cpolyline points='3.27 6.96 12 12.01 20.73 6.96'/%3E%3Cline x1='12' y1='22.08' x2='12' y2='12'/%3E%3C/svg%3E");
+        }
+
+        .info-label[data-icon="fire"]::before {
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M12 2C8 2 5 5 5 9c0 4 3 6 3 8h8c0-2 3-4 3-8 0-4-3-7-7-7z'/%3E%3Cpath d='M12 19v3'/%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M12 2C8 2 5 5 5 9c0 4 3 6 3 8h8c0-2 3-4 3-8 0-4-3-7-7-7z'/%3E%3Cpath d='M12 19v3'/%3E%3C/svg%3E");
+        }
+
+        .info-label[data-icon="thermo"]::before {
+            -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z'/%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z'/%3E%3C/svg%3E");
+        }
+
+        .info-card:hover .info-label {
+            color: var(--ocean-light);
+        }
+
+        .info-value {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+            transition: color 0.3s var(--ease-out-expo);
+        }
+
+        .info-card:hover .info-value {
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .info-value.highlight {
+            color: var(--sand);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .info-value.success {
+            color: var(--sand);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .specs-section {
+            padding: calc(var(--space-unit) * 16) calc(var(--space-unit) * 7);
+            background: var(--bg-secondary);
+        }
+
+        .specs-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .specs-header {
+            text-align: center;
+            margin-bottom: calc(var(--space-unit) * 10);
+        }
+
+        .specs-label {
+            display: inline-flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 2.25);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--ocean);
+            margin-bottom: calc(var(--space-unit) * 4);
+        }
+
+        .specs-label::before,
+        .specs-label::after {
+            content: '';
+            width: 56px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--ocean), transparent);
+        }
+
+        .specs-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .specs-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: calc(var(--space-unit) * 8);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+            transition: all 0.4s var(--ease-out-expo);
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+
+        .specs-card:hover {
+            background: var(--bg-card);
+            border-color: rgba(61, 139, 139, 0.3);
+            box-shadow: 0 4px 16px rgba(61, 139, 139, 0.08);
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+        }
+
+        .spec-column {
+            padding: 0 calc(var(--space-unit) * 6);
+            border-right: 1px solid rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 1;
+        }
+
+        .spec-column:last-child {
+            border-right: none;
+        }
+
+        .spec-item {
+            padding: calc(var(--space-unit) * 5) calc(var(--space-unit) * 3);
+            border-bottom: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            margin: calc(var(--space-unit) * 1) 0;
+            transition: all 0.35s var(--ease-out-expo);
+        }
+
+        .spec-item:last-child {
+            border-bottom: none;
+        }
+
+        .spec-item:hover {
+            background: linear-gradient(135deg, rgba(61, 139, 139, 0.05) 0%, rgba(61, 139, 139, 0.02) 100%);
+            cursor: pointer;
+            position: relative;
+            border-radius: 8px;
+            border: 1px solid rgba(61, 139, 139, 0.15);
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(61, 139, 139, 0.12);
+            transform: scale(1.015);
+        }
+
+        .spec-item:hover::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--ocean) 0%, var(--ocean-light) 100%);
+            border-radius: 3px 0 0 8px;
+            z-index: 2;
+        }
+
+        .spec-item:hover .spec-label,
+        .spec-item:hover .spec-value {
+            position: relative;
+            z-index: 101;
+        }
+
+        .spec-label {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: calc(var(--space-unit) * 1.5);
+            display: block;
+        }
+
+        .spec-value {
+            font-size: 0.9375rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .spec-value.highlight {
+            color: var(--ocean);
+            font-weight: 600;
+        }
+
+        .spec-item-empty {
+            border-bottom: none;
+            padding: 0;
+        }
+
+        .recommendations-section {
+            padding: calc(var(--space-unit) * 16) calc(var(--space-unit) * 7);
+            background: linear-gradient(180deg, #fefefe 0%, #faf9f7 50%, #f5f4f2 100%);
+        }
+
+        .rec-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .rec-header {
+            text-align: center;
+            margin-bottom: calc(var(--space-unit) * 10);
+        }
+
+        .rec-label {
+            display: inline-flex;
+            align-items: center;
+            gap: calc(var(--space-unit) * 2.25);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--ocean);
+            margin-bottom: calc(var(--space-unit) * 4);
+        }
+
+        .rec-label::before,
+        .rec-label::after {
+            content: '';
+            width: 56px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--ocean), transparent);
+        }
+
+        .rec-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .rec-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: calc(var(--space-unit) * 5);
+        }
+
+        .rec-card {
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s var(--ease-out-expo);
+            cursor: pointer;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+        }
+
+        .rec-card:hover {
+            border-color: rgba(61, 139, 139, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .rec-card-image {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+        }
+
+        .rec-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s var(--ease-out-expo);
+        }
+
+        .rec-card:hover .rec-card-image img {
+            transform: scale(1.1);
+        }
+
+        .rec-card-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.4) 100%);
+            opacity: 0;
+            transition: opacity 0.5s var(--ease-out-expo);
+        }
+
+        .rec-card:hover .rec-card-image::after {
+            opacity: 1;
+        }
+
+        .rec-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
+        }
+
+        .rec-card-category {
+            position: absolute;
+            top: calc(var(--space-unit) * 4);
+            left: calc(var(--space-unit) * 4);
+            padding: calc(var(--space-unit) * 1) calc(var(--space-unit) * 2.5);
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            border-radius: 100px;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .rec-card-content {
+            padding: calc(var(--space-unit) * 4);
+        }
+
+        .rec-card-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: calc(var(--space-unit) * 1);
+            letter-spacing: -0.01em;
+        }
+
+        .rec-card-codes {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            font-family: 'Inter', monospace;
+            margin-bottom: calc(var(--space-unit) * 2);
+        }
+
+        .rec-card-desc {
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .rec-card-arrow {
+            position: absolute;
+            top: calc(var(--space-unit) * 4);
+            right: calc(var(--space-unit) * 4);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(61, 139, 139, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            opacity: 0;
+            transform: translateY(12px) scale(0.8);
+            transition: all 0.4s var(--ease-out-expo);
+            box-shadow: 0 4px 16px rgba(61, 139, 139, 0.4);
+        }
+
+        .rec-card:hover .rec-card-arrow {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .rec-card-arrow svg {
+            width: 16px;
+            height: 16px;
+            stroke-width: 2.5;
+            transition: transform 0.3s var(--ease-out-expo);
+        }
+
+        .rec-card:hover .rec-card-arrow svg {
+            transform: translateX(3px);
+        }
+
+        .cta-section {
+            padding: calc(var(--space-unit) * 16) calc(var(--space-unit) * 7);
+            background: linear-gradient(135deg, var(--ocean) 0%, var(--ocean-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.12;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .cta-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: calc(var(--space-unit) * 3);
+            letter-spacing: -0.02em;
+        }
+
+        .cta-desc {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: calc(var(--space-unit) * 6);
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: calc(var(--space-unit) * 4);
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: calc(var(--space-unit) * 2);
+            padding: calc(var(--space-unit) * 3) calc(var(--space-unit) * 6);
+            border-radius: 100px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s var(--ease-out-expo);
+            cursor: pointer;
+            border: none;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: calc(var(--space-unit) * 5);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s var(--ease-out-expo);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-sm {
+            border-radius: 12px;
+            padding: calc(var(--space-unit) * 3.5);
+        }
+
+        .card-lg {
+            border-radius: 20px;
+            padding: calc(var(--space-unit) * 6);
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--ocean-dark);
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-4px);
+        }
+
+        .btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        @media (max-width: 1100px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: calc(var(--space-unit) * 8);
+            }
+
+            .hero-visual {
+                order: 2;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            .hero-text {
+                order: 1;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .specs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .rec-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                padding: calc(var(--space-unit) * 18) calc(var(--space-unit) * 4) calc(var(--space-unit) * 10);
+            }
+
+            .info-section {
+                padding: calc(var(--space-unit) * 12) calc(var(--space-unit) * 4);
+            }
+
+            .specs-section {
+                padding: calc(var(--space-unit) * 12) calc(var(--space-unit) * 4);
+            }
+
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .recommendations-section {
+                padding: calc(var(--space-unit) * 12) calc(var(--space-unit) * 4);
+            }
+
+            .rec-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: calc(var(--space-unit) * 12) calc(var(--space-unit) * 4);
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .product-codes {
+                gap: calc(var(--space-unit) * 4);
+            }
+
+            .product-meta-row {
+                gap: calc(var(--space-unit) * 2);
+            }
+
+            .formula-grid {
+                flex-direction: column;
+                gap: calc(var(--space-unit) * 3);
+                align-items: center;
+            }
+
+            .formula-divider {
+                width: 60px;
+                height: 1px;
+            }
+        }
+
+        
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                transition: none !important;
+                animation: none !important;
+            }
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body class="force-dark-nav force-dark-footer">
+    <!-- 公共导航 -->
+    <div id="nav-placeholder"></div>
+
+    <main id="fullpage" class="main-content">
+        <section class="hero-section">
+            <div class="hero-bg-pattern"></div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <nav class="breadcrumb">
+                        <a href="index.html">Home</a>
+                        <span class="breadcrumb-separator">/</span>
+                        <a href="ProductSearch_UI.html">Products</a>
+                        <span class="breadcrumb-separator">/</span>
+                        <span class="breadcrumb-current">Geranyl Acetate 60</span>
+                    </nav>
+                    
+                    <div class="product-meta-row">
+                        <span class="product-category-tag">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                <path d="M2 17l10 5 10-5"></path>
+                                <path d="M2 12l10 5 10-5"></path>
+                            </svg>
+                            <span class="category-text">Biobased</span>
+                        </span>
+                        <span class="product-code-tag">
+                            <svg class="product-code-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="4" y1="9" x2="20" y2="9"></line>
+                                <line x1="4" y1="15" x2="20" y2="15"></line>
+                                <line x1="10" y1="3" x2="8" y2="21"></line>
+                                <line x1="16" y1="3" x2="14" y2="21"></line>
+                            </svg>
+                            Code: C013
+                        </span>
+                    </div>
+                    
+                    <div class="product-title-section">
+                        <h1 class="product-title">Geranyl Acetate 60</h1>
+                        <p class="product-synonym"><span class="product-synonym-label">Synonym:</span>Geranyl acetate synthetic</p>
+                        
+                        <div class="product-olfactory-section">
+                            <div class="olfactory-divider-top"></div>
+                            <div class="olfactory-item">
+                                <div class="olfactory-icon-container">
+                                    <img src="images/Icon_odor_Green.svg" alt="odor icon" class="olfactory-icon">
+                                </div>
+                                <span class="olfactory-value">Green, Fruity</span>
+                            </div>
+                            <div class="olfactory-divider-bottom"></div>
+                        </div>
+                        
+                        <div class="product-detail-row">
+                        <div class="detail-column">
+                            <div class="detail-item">
+                                <span class="detail-label" data-icon="shield">REACH:</span>
+                                <span class="detail-value reach-yes">Yes</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label" data-icon="list">EINECS:</span>
+                                <span class="detail-value">234-323-3</span>
+                            </div>
+                        </div>
+                        <div class="detail-divider"></div>
+                        <div class="detail-column">
+                            <div class="detail-item">
+                                <span class="detail-label" data-icon="database">CAS Number</span>
+                                <span class="detail-value">105-87-3</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label" data-icon="award">FEMA Number</span>
+                                <span class="detail-value">2059</span>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="product-image-container">
+                        <div class="orbit-system">
+                            <div class="orbit-ring orbit-ring-1">
+                                <span class="orbit-dot orbit-dot-1"></span>
+                                <span class="orbit-dot orbit-dot-2"></span>
+                            </div>
+                            <div class="orbit-ring orbit-ring-2">
+                                <span class="orbit-dot orbit-dot-3"></span>
+                                <span class="orbit-dot orbit-dot-4"></span>
+                            </div>
+                            <div class="orbit-center">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="10" stroke="var(--ocean)" stroke-width="1" opacity="0.6"/>
+                                    <circle cx="12" cy="12" r="4" fill="var(--ocean)" opacity="0.8"/>
+                                    <circle cx="12" cy="12" r="2" fill="#fff" opacity="0.9"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="orbit-badge">
+                            <span class="orbit-badge-dot"></span>
+                            ZPC0005
+                        </div>
+                        <img src="images/product_odor_green_1200x1200.jpg" alt="Geranyl Acetate">
+                        <div class="molecular-formula-container orbit-card">
+                            <div class="orbit-card-border"></div>
+                            <div class="orbit-card-tick orbit-card-tick-t"></div>
+                            <div class="orbit-card-tick orbit-card-tick-r"></div>
+                            <div class="orbit-card-tick orbit-card-tick-b"></div>
+                            <div class="orbit-card-tick orbit-card-tick-l"></div>
+                            <div class="formula-grid">
+                            <div class="formula-item">
+                                <span class="formula-label">Molecular Formula</span>
+                                <span class="formula-value">C₁₂H₂₀O₂</span>
+                            </div>
+                            <div class="formula-divider"></div>
+                            <div class="formula-item">
+                                <span class="formula-label" data-icon="weight">Molecular Weight</span>
+                                <span class="formula-value">196.29 g/mol</span>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section">
+            <div class="info-header reveal">
+                <span class="info-section-label">Essential Information</span>
+                <h2 class="info-section-title">Product Details</h2>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-card info-card-bg reveal reveal-delay-1">
+                    <div class="card-orbit-deco">
+                        <span class="card-orbit-ring card-orbit-ring-1"></span>
+                        <span class="card-orbit-ring card-orbit-ring-2"></span>
+                        <span class="card-orbit-dot card-orbit-dot-a"></span>
+                        <span class="card-orbit-dot card-orbit-dot-b"></span>
+                    </div>
+                    <div class="info-card-header">
+                        <div class="info-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                <path d="M2 17l10 5 10-5"></path>
+                                <path d="M2 12l10 5 10-5"></path>
+                            </svg>
+                        </div>
+                        <h3 class="info-card-title">Odor & Application</h3>
+                    </div>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <span class="info-label" data-icon="nose">Odor Description</span>
+                            <span class="info-value">Strong fruity and floral aromas reminiscent of rose and lavender</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label" data-icon="flask">Application</span>
+                            <span class="info-value">Daily chemical essence formula, personal care products</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card info-card-transparent reveal reveal-delay-2">
+                    <div class="card-orbit-deco">
+                        <span class="card-orbit-ring card-orbit-ring-1"></span>
+                        <span class="card-orbit-ring card-orbit-ring-2"></span>
+                        <span class="card-orbit-dot card-orbit-dot-a"></span>
+                        <span class="card-orbit-dot card-orbit-dot-b"></span>
+                    </div>
+                    <div class="info-card-header">
+                        <div class="info-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="3" y1="9" x2="21" y2="9"></line>
+                                <line x1="9" y1="21" x2="9" y2="9"></line>
+                            </svg>
+                        </div>
+                        <h3 class="info-card-title">Packing & Storage</h3>
+                    </div>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <span class="info-label" data-icon="eye">Appearance</span>
+                            <span class="info-value">Colorless to pale yellow liquid</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label" data-icon="clock">Shelf Life</span>
+                            <span class="info-value highlight">24 Months</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label" data-icon="box">Storage</span>
+                            <span class="info-value">Cool & dry place, away from oxidizing agents</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label" data-icon="package">Package</span>
+                            <span class="info-value">180KGS / 25KGS / 5KGS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card info-card-transparent reveal reveal-delay-3">
+                    <div class="card-orbit-deco">
+                        <span class="card-orbit-ring card-orbit-ring-1"></span>
+                        <span class="card-orbit-ring card-orbit-ring-2"></span>
+                        <span class="card-orbit-dot card-orbit-dot-a"></span>
+                        <span class="card-orbit-dot card-orbit-dot-b"></span>
+                    </div>
+                    <div class="info-card-header">
+                        <div class="info-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="info-card-title">Properties</h3>
+                    </div>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <span class="info-label" data-icon="fire">Flash Point</span>
+                            <span class="info-value">109°C</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label" data-icon="thermo">Boiling Point</span>
+                            <span class="info-value">245°C</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="specs-section">
+            <div class="specs-container">
+                <div class="specs-header reveal">
+                    <span class="specs-label">Quality Standards</span>
+                    <h2 class="specs-title">Technical Specifications</h2>
+                </div>
+                
+                <div class="specs-card reveal">
+                    <div class="specs-grid">
+                        <div class="spec-column">
+                            <div class="spec-item reveal reveal-delay-1">
+                                <div class="spec-label">Appearance</div>
+                                <div class="spec-value">Colorless to pale yellow liquid</div>
+                            </div>
+                            <div class="spec-item reveal reveal-delay-2">
+                                <div class="spec-label">Boiling Point</div>
+                                <div class="spec-value highlight">245°C</div>
+                            </div>
+                            <div class="spec-item reveal reveal-delay-3">
+                                <div class="spec-label">Storage</div>
+                                <div class="spec-value">Cool & dry place, away from oxidizing agents</div>
+                            </div>
+                            <div class="spec-item reveal reveal-delay-4">
+                                <div class="spec-label">Purity by GC</div>
+                                <div class="spec-value">98-100%</div>
+                            </div>
+                        </div>
+                        <div class="spec-column">
+                            <div class="spec-item reveal reveal-delay-1">
+                                <div class="spec-label">Flash Point</div>
+                                <div class="spec-value highlight">109°C</div>
+                            </div>
+                            <div class="spec-item reveal reveal-delay-2">
+                                <div class="spec-label">Shelf Life</div>
+                                <div class="spec-value">24 Months</div>
+                            </div>
+                            <div class="spec-item reveal reveal-delay-3">
+                                <div class="spec-label">Packaging</div>
+                                <div class="spec-value">180KGS / 25KGS / 5KGS</div>
+                            </div>
+                            <div class="spec-item spec-item-empty"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="recommendations-section">
+            <div class="rec-container">
+                <div class="rec-header reveal">
+                    <span class="rec-label">Explore More</span>
+                    <h2 class="rec-title">Related Products</h2>
+                </div>
+                
+                <div class="rec-grid">
+                    <a href="ProductInfo.html" class="rec-card reveal reveal-delay-1">
+                        <div class="rec-card-image">
+                            <img src="https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=400&q=85" alt="Linalool">
+                            <div class="rec-card-overlay"></div>
+                            <span class="rec-card-category">Biobased</span>
+                        </div>
+                        <div class="rec-card-content">
+                            <h3 class="rec-card-name">Linalool</h3>
+                            <div class="rec-card-codes">CAS: 78-70-6 · FEMA: 2635</div>
+                            <p class="rec-card-desc">A naturally occurring terpene alcohol with a sweet, floral scent profile.</p>
+                        </div>
+                        <div class="rec-card-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <a href="ProductInfo.html" class="rec-card reveal reveal-delay-1">
+                        <div class="rec-card-image">
+                            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&q=85" alt="Citronellol">
+                            <div class="rec-card-overlay"></div>
+                            <span class="rec-card-category">EU Natural</span>
+                        </div>
+                        <div class="rec-card-content">
+                            <h3 class="rec-card-name">Citronellol</h3>
+                            <div class="rec-card-codes">CAS: 106-22-9 · FEMA: 2311</div>
+                            <p class="rec-card-desc">A natural monoterpenoid with delicate rose-like fragrance notes.</p>
+                        </div>
+                        <div class="rec-card-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <a href="ProductInfo.html" class="rec-card reveal reveal-delay-2">
+                        <div class="rec-card-image">
+                            <img src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=400&q=85" alt="Geraniol">
+                            <div class="rec-card-overlay"></div>
+                            <span class="rec-card-category">Biobased</span>
+                        </div>
+                        <div class="rec-card-content">
+                            <h3 class="rec-card-name">Geraniol</h3>
+                            <div class="rec-card-codes">CAS: 106-24-1 · FEMA: 2507</div>
+                            <p class="rec-card-desc">A natural monoterpene alcohol with sweet rose fragrance characteristics.</p>
+                        </div>
+                        <div class="rec-card-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <a href="ProductInfo.html" class="rec-card reveal reveal-delay-2">
+                        <div class="rec-card-image">
+                            <img src="https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?w=400&q=85" alt="Neryl Acetate">
+                            <div class="rec-card-overlay"></div>
+                            <span class="rec-card-category">Synthetic</span>
+                        </div>
+                        <div class="rec-card-content">
+                            <h3 class="rec-card-name">Neryl Acetate</h3>
+                            <div class="rec-card-codes">CAS: 141-12-8 · FEMA: 2773</div>
+                            <p class="rec-card-desc">A floral-smelling monoterpene ester found in various essential oils.</p>
+                        </div>
+                        <div class="rec-card-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="cta-pattern"></div>
+            <div class="cta-container reveal">
+                <h2 class="cta-title">Ready to explore more ingredients?</h2>
+                <p class="cta-desc">Contact our team for samples, technical specifications, or custom formulation support. We're here to help create exceptional products together.</p>
+                <div class="cta-buttons">
+                    <a href="ProductSearch_UI.html" class="btn btn-primary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="M21 21l-4.35-4.35"></path>
+                        </svg>
+                        Browse All Products
+                    </a>
+                    <a href="Contact.html" class="btn btn-secondary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        Contact Our Team
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 公共页脚 -->
+    <div id="footer-placeholder"></div>
+
+    <script src="components/nav.js"></script>
+    <script src="components/footer.js"></script>
+    <script>
+        const productDatabase = {
+            'Ambroxan': {
+                name: 'Ambroxan',
+                synonym: 'Ambroxide',
+                code: 'AR-001',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '229-881-8',
+                cas: '6790-58-5',
+                fema: '3471',
+                molecularFormula: 'C₁₆H₂₈O',
+                molecularWeight: '236.40 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Limonene': {
+                name: 'd-Limonene',
+                synonym: 'Citrus terpene',
+                code: 'AR-002',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '209-943-4',
+                cas: '5989-27-5',
+                fema: '2633',
+                molecularFormula: 'C₁₀H₁₆',
+                molecularWeight: '136.24 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Geraniol': {
+                name: 'Geraniol',
+                synonym: 'trans-Geraniol',
+                code: 'AR-003',
+                category: 'EU Natural',
+                reach: 'Yes',
+                einecs: '203-377-1',
+                cas: '106-24-1',
+                fema: '2507',
+                molecularFormula: 'C₁₀H₁₈O',
+                molecularWeight: '154.25 g/mol',
+                image: 'https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=800&q=80'
+            },
+            'Vanillin': {
+                name: 'Vanillin',
+                synonym: '4-Hydroxy-3-methoxybenzaldehyde',
+                code: 'AR-004',
+                category: 'US Natural',
+                reach: 'Non',
+                einecs: '204-465-2',
+                cas: '121-33-5',
+                fema: '3107',
+                molecularFormula: 'C₈H₈O₃',
+                molecularWeight: '152.15 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Citral': {
+                name: 'Citral',
+                synonym: '3,7-Dimethyl-2,6-octadienal',
+                code: 'AR-005',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '206-246-3',
+                cas: '5392-40-5',
+                fema: '2303',
+                molecularFormula: 'C₁₀H₁₆O',
+                molecularWeight: '152.24 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Eugenol': {
+                name: 'Eugenol',
+                synonym: '4-Allyl-2-methoxyphenol',
+                code: 'AR-006',
+                category: 'EU Natural',
+                reach: 'Yes',
+                einecs: '202-679-1',
+                cas: '97-53-0',
+                fema: '2467',
+                molecularFormula: 'C₁₀H₁₂O₂',
+                molecularWeight: '164.20 g/mol',
+                image: 'https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=800&q=80'
+            },
+            'Linalool': {
+                name: 'Linalool',
+                synonym: '3,7-Dimethyl-1,6-octadien-3-ol',
+                code: 'AR-007',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '201-144-4',
+                cas: '78-70-6',
+                fema: '2635',
+                molecularFormula: 'C₁₀H₁₈O',
+                molecularWeight: '154.25 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Citronellol': {
+                name: 'Citronellol',
+                synonym: '3,7-Dimethyl-6-octen-1-ol',
+                code: 'AR-008',
+                category: 'EU Natural',
+                reach: 'Yes',
+                einecs: '203-375-0',
+                cas: '106-22-9',
+                fema: '2311',
+                molecularFormula: 'C₁₀H₂₀O',
+                molecularWeight: '156.27 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Menthol': {
+                name: 'Menthol',
+                synonym: '2-Isopropyl-5-methylcyclohexanol',
+                code: 'AR-009',
+                category: 'US Natural',
+                reach: 'Yes',
+                einecs: '218-690-9',
+                cas: '2216-51-5',
+                fema: '2665',
+                molecularFormula: 'C₁₀H₂₀O',
+                molecularWeight: '156.27 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Benzaldehyde': {
+                name: 'Benzaldehyde',
+                synonym: 'Benzoic aldehyde',
+                code: 'AR-010',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '202-860-4',
+                cas: '100-52-7',
+                fema: '2127',
+                molecularFormula: 'C₇H₆O',
+                molecularWeight: '106.12 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Ionone Alpha': {
+                name: 'Alpha-Ionone',
+                synonym: '4-(2,6,6-Trimethylcyclohex-1-en-1-yl)but-3-en-2-one',
+                code: 'AR-011',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '215-093-8',
+                cas: '127-41-3',
+                fema: '2594',
+                molecularFormula: 'C₁₃H₂₀O',
+                molecularWeight: '192.30 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Gamma-Decalactone': {
+                name: 'Gamma-Decalactone',
+                synonym: '4-Hydroxydecanoic acid lactone',
+                code: 'AR-012',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '211-892-9',
+                cas: '706-14-9',
+                fema: '2360',
+                molecularFormula: 'C₁₀H₁₈O₂',
+                molecularWeight: '170.25 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Ethyl Maltol': {
+                name: 'Ethyl Maltol',
+                synonym: '2-Ethyl-3-hydroxy-4-pyranone',
+                code: 'AR-013',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '225-609-6',
+                cas: '4940-11-8',
+                fema: '3487',
+                molecularFormula: 'C₇H₈O₃',
+                molecularWeight: '140.14 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Cinnamaldehyde': {
+                name: 'Cinnamaldehyde',
+                synonym: '3-Phenylprop-2-enal',
+                code: 'AR-014',
+                category: 'EU Natural',
+                reach: 'Yes',
+                einecs: '203-213-9',
+                cas: '104-55-2',
+                fema: '2286',
+                molecularFormula: 'C₉H₈O',
+                molecularWeight: '132.16 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Hexyl Acetate': {
+                name: 'Hexyl Acetate',
+                synonym: 'Acetic acid hexyl ester',
+                code: 'AR-015',
+                category: 'Synthetic',
+                reach: 'Non',
+                einecs: '205-551-8',
+                cas: '142-92-7',
+                fema: '2565',
+                molecularFormula: 'C₈H₁₆O₂',
+                molecularWeight: '144.21 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Benzyl Acetate': {
+                name: 'Benzyl Acetate',
+                synonym: 'Acetic acid phenylmethyl ester',
+                code: 'AR-016',
+                category: 'US Natural',
+                reach: 'Yes',
+                einecs: '205-403-5',
+                cas: '140-11-4',
+                fema: '2135',
+                molecularFormula: 'C₉H₁₀O₂',
+                molecularWeight: '150.18 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Phenylethanol': {
+                name: 'Phenylethanol',
+                synonym: '2-Phenylethanol',
+                code: 'AR-017',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '200-447-2',
+                cas: '60-12-8',
+                fema: '2858',
+                molecularFormula: 'C₈H₁₀O',
+                molecularWeight: '122.16 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Methyl Salicylate': {
+                name: 'Methyl Salicylate',
+                synonym: 'Methyl 2-hydroxybenzoate',
+                code: 'AR-018',
+                category: 'US Natural',
+                reach: 'Yes',
+                einecs: '200-678-5',
+                cas: '68-91-7',
+                fema: '2745',
+                molecularFormula: 'C₈H₈O₃',
+                molecularWeight: '152.15 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Alpha-Pinene': {
+                name: 'Alpha-Pinene',
+                synonym: '2,6,6-Trimethylbicyclo[3.1.1]hept-2-ene',
+                code: 'AR-019',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '201-291-9',
+                cas: '80-56-8',
+                fema: '2902',
+                molecularFormula: 'C₁₀H₁₆',
+                molecularWeight: '136.24 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Damascone Beta': {
+                name: 'Beta-Damascone',
+                synonym: '1-(2,6,6-Trimethylcyclohex-1-en-1-yl)but-2-en-1-one',
+                code: 'AR-020',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '245-851-7',
+                cas: '23726-90-1',
+                fema: '3622',
+                molecularFormula: 'C₁₃H₂₀O',
+                molecularWeight: '192.30 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Hedione': {
+                name: 'Hedione',
+                synonym: 'Methyl dihydrojasmonate',
+                code: 'AR-021',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '250-359-8',
+                cas: '3088-48-7',
+                fema: '3404',
+                molecularFormula: 'C₁₃H₂₂O₃',
+                molecularWeight: '226.31 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Iso E Super': {
+                name: 'Iso E Super',
+                synonym: '7-Methyl-3,4-dihydro-2H-1-benzopyran-4-one',
+                code: 'AR-022',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '259-110-3',
+                cas: '54464-57-2',
+                fema: '3449',
+                molecularFormula: 'C₁₄H₁₈O₂',
+                molecularWeight: '218.29 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Galaxolide': {
+                name: 'Galaxolide',
+                synonym: '1,3,4,6,7,8-Hexahydro-4,6,6,7,8,8-hexamethylcyclopenta[g]benzopyran',
+                code: 'AR-023',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '214-972-9',
+                cas: '1222-05-5',
+                fema: '2544',
+                molecularFormula: 'C₁₈H₂₆O',
+                molecularWeight: '258.40 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Musk Tonalide': {
+                name: 'Musk Tonalide',
+                synonym: '6-Acetyl-1,1,2,4,4,7-hexamethyltetralin',
+                code: 'AR-024',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '216-138-9',
+                cas: '1506-02-1',
+                fema: '2668',
+                molecularFormula: 'C₁₈H₂₆O',
+                molecularWeight: '258.40 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Veratraldehyde': {
+                name: 'Veratraldehyde',
+                synonym: '3,4-Dimethoxybenzaldehyde',
+                code: 'AR-025',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '204-408-1',
+                cas: '120-14-9',
+                fema: '3109',
+                molecularFormula: 'C₉H₁₀O₃',
+                molecularWeight: '166.17 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Anisyl Alcohol': {
+                name: 'Anisyl Alcohol',
+                synonym: '4-Methoxybenzyl alcohol',
+                code: 'AR-026',
+                category: 'EU Natural',
+                reach: 'Yes',
+                einecs: '203-273-6',
+                cas: '105-13-5',
+                fema: '2098',
+                molecularFormula: 'C₈H₁₀O₂',
+                molecularWeight: '138.16 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Cinnamyl Alcohol': {
+                name: 'Cinnamyl Alcohol',
+                synonym: '3-Phenylprop-2-en-1-ol',
+                code: 'AR-027',
+                category: 'EU Natural',
+                reach: 'Yes',
+                einecs: '203-212-3',
+                cas: '104-54-1',
+                fema: '2294',
+                molecularFormula: 'C₉H₁₀O',
+                molecularWeight: '134.18 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Nerol': {
+                name: 'Nerol',
+                synonym: 'cis-Geraniol',
+                code: 'AR-028',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '203-376-5',
+                cas: '106-25-2',
+                fema: '2775',
+                molecularFormula: 'C₁₀H₁₈O',
+                molecularWeight: '154.25 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Geranyl Acetate': {
+                name: 'Geranyl Acetate',
+                synonym: 'Geranyl acetate synthetic',
+                code: 'AR-029',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '234-323-3',
+                cas: '105-87-3',
+                fema: '2509',
+                molecularFormula: 'C₁₂H₂₀O₂',
+                molecularWeight: '196.29 g/mol',
+                image: 'https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=800&q=80'
+            },
+            'Linalyl Acetate': {
+                name: 'Linalyl Acetate',
+                synonym: '3,7-Dimethyl-1,6-octadien-3-yl acetate',
+                code: 'AR-030',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '204-106-2',
+                cas: '115-95-7',
+                fema: '2636',
+                molecularFormula: 'C₁₂H₂₀O₂',
+                molecularWeight: '196.29 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Citronellyl Acetate': {
+                name: 'Citronellyl Acetate',
+                synonym: '3,7-Dimethyl-6-octen-1-yl acetate',
+                code: 'AR-031',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '205-767-8',
+                cas: '150-84-5',
+                fema: '2311',
+                molecularFormula: 'C₁₂H₂₂O₂',
+                molecularWeight: '198.31 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Terpineol Alpha': {
+                name: 'Alpha-Terpineol',
+                synonym: '4-Methyl-1-(1-methylethyl)cyclohex-1-en-1-ol',
+                code: 'AR-032',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '202-676-4',
+                cas: '98-55-5',
+                fema: '3045',
+                molecularFormula: 'C₁₀H₁₈O',
+                molecularWeight: '154.25 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Delta-3-Carene': {
+                name: 'Delta-3-Carene',
+                synonym: '3,7,7-Trimethylbicyclo[4.1.0]hept-3-ene',
+                code: 'AR-033',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '236-600-9',
+                cas: '13466-78-9',
+                fema: '3821',
+                molecularFormula: 'C₁₀H₁₆',
+                molecularWeight: '136.24 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Camphor': {
+                name: 'Camphor',
+                synonym: '1,7,7-Trimethylbicyclo[2.2.1]heptan-2-one',
+                code: 'AR-034',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '200-962-4',
+                cas: '76-22-2',
+                fema: '2231',
+                molecularFormula: 'C₁₀H₁₆O',
+                molecularWeight: '152.24 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Borneol': {
+                name: 'Borneol',
+                synonym: '1,7,7-Trimethylbicyclo[2.2.1]heptan-2-ol',
+                code: 'AR-035',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '208-066-6',
+                cas: '507-70-0',
+                fema: '2157',
+                molecularFormula: 'C₁₀H₁₈O',
+                molecularWeight: '154.25 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Eucalyptol': {
+                name: 'Eucalyptol',
+                synonym: '1,8-Cineole',
+                code: 'AR-036',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '207-431-5',
+                cas: '470-82-6',
+                fema: '2465',
+                molecularFormula: 'C₁₀H₁₈O',
+                molecularWeight: '154.25 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Fenchone': {
+                name: 'Fenchone',
+                synonym: '1,3,3-Trimethylbicyclo[2.2.1]heptan-2-one',
+                code: 'AR-037',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '214-727-6',
+                cas: '1195-79-5',
+                fema: '2479',
+                molecularFormula: 'C₁₀H₁₆O',
+                molecularWeight: '152.24 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Thymol': {
+                name: 'Thymol',
+                synonym: '5-Methyl-2-isopropylphenol',
+                code: 'AR-038',
+                category: 'EU Natural',
+                reach: 'Yes',
+                einecs: '201-944-8',
+                cas: '89-83-8',
+                fema: '3066',
+                molecularFormula: 'C₁₀H₁₄O',
+                molecularWeight: '150.22 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Carvacrol': {
+                name: 'Carvacrol',
+                synonym: '2-Methyl-5-isopropylphenol',
+                code: 'AR-039',
+                category: 'EU Natural',
+                reach: 'Yes',
+                einecs: '207-849-6',
+                cas: '499-89-8',
+                fema: '2249',
+                molecularFormula: 'C₁₀H₁₄O',
+                molecularWeight: '150.22 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Pulegone': {
+                name: 'Pulegone',
+                synonym: '5-Methyl-2-isopropylcyclohex-4-en-1-one',
+                code: 'AR-040',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '201-943-1',
+                cas: '89-82-7',
+                fema: '2963',
+                molecularFormula: 'C₁₀H₁₆O',
+                molecularWeight: '152.24 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Menthone': {
+                name: 'Menthone',
+                synonym: '2-Isopropyl-5-methylcyclohexanone',
+                code: 'AR-041',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '233-952-4',
+                cas: '10458-14-7',
+                fema: '2667',
+                molecularFormula: 'C₁₀H₁₈O',
+                molecularWeight: '154.25 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Isomenthone': {
+                name: 'Isomenthone',
+                synonym: '2-Isopropyl-5-methylcyclohexanone',
+                code: 'AR-042',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '207-732-7',
+                cas: '491-07-6',
+                fema: '3460',
+                molecularFormula: 'C₁₀H₁₈O',
+                molecularWeight: '154.25 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Tetrahydrolinalool': {
+                name: 'Tetrahydrolinalool',
+                synonym: '3,7-Dimethyloctan-3-ol',
+                code: 'AR-043',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '201-134-4',
+                cas: '78-69-3',
+                fema: '3060',
+                molecularFormula: 'C₁₀H₂₂O',
+                molecularWeight: '158.28 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Dimetol': {
+                name: 'Dimetol',
+                synonym: '2,4-Dimethylbenzaldehyde',
+                code: 'AR-044',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '202-887-7',
+                cas: '100-87-0',
+                fema: '3442',
+                molecularFormula: 'C₉H₁₀O',
+                molecularWeight: '134.18 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Myrcene': {
+                name: 'Myrcene',
+                synonym: '7-Methyl-3-methyleneocta-1,6-diene',
+                code: 'AR-045',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '204-622-5',
+                cas: '123-35-3',
+                fema: '2762',
+                molecularFormula: 'C₁₀H₁₆',
+                molecularWeight: '136.24 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Ocimene Beta': {
+                name: 'Beta-Ocimene',
+                synonym: '3,7-Dimethyl-1,3,6-octatriene',
+                code: 'AR-046',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '237-383-2',
+                cas: '13877-91-3',
+                fema: '3539',
+                molecularFormula: 'C₁₀H₁₆',
+                molecularWeight: '136.24 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Sabinene': {
+                name: 'Sabinene',
+                synonym: '4-Methyl-1-(1-methylethyl)bicyclo[3.1.0]hex-3-ene',
+                code: 'AR-047',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '222-226-1',
+                cas: '3387-41-5',
+                fema: '3813',
+                molecularFormula: 'C₁₀H₁₆',
+                molecularWeight: '136.24 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Alloocimene': {
+                name: 'Alloocimene',
+                synonym: '2,6-Dimethyl-2,4,6-octatriene',
+                code: 'AR-048',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '211-612-9',
+                cas: '673-84-7',
+                fema: '2541',
+                molecularFormula: 'C₁₀H₁₆',
+                molecularWeight: '136.24 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Ysland': {
+                name: 'Ysland',
+                synonym: '1,3,4,6,7,8-Hexahydro-4,6,6,7,8,8-hexamethylcyclopenta[g]benzopyran',
+                code: 'AR-049',
+                category: 'Synthetic',
+                reach: 'Yes',
+                einecs: '251-693-0',
+                cas: '33745-11-8',
+                fema: '3446',
+                molecularFormula: 'C₁₈H₂₆O',
+                molecularWeight: '258.40 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            },
+            'Citronellal': {
+                name: 'Citronellal',
+                synonym: '3,7-Dimethyl-6-octenal',
+                code: 'AR-050',
+                category: 'Biobased',
+                reach: 'Yes',
+                einecs: '203-374-5',
+                cas: '106-23-0',
+                fema: '2307',
+                molecularFormula: 'C₁₀H₁₈O',
+                molecularWeight: '154.25 g/mol',
+                image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80'
+            }
+        };
+
+        function loadProductFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productName = urlParams.get('product');
+            
+            if (productName && productDatabase[productName]) {
+                const product = productDatabase[productName];
+                
+                try {
+                    document.title = product.name + ' | ZOTEQ';
+                    
+                    const elements = {
+                        '.breadcrumb-current': product.name,
+                        '.product-title': product.name,
+                        '.product-code-tag': 'Code: ' + product.code,
+                        '.category-text': product.category,
+                        '.detail-column:first-child .detail-item:nth-child(2) .detail-value': product.einecs,
+                        '.detail-column:last-child .detail-item:first-child .detail-value': product.cas,
+                        '.detail-column:last-child .detail-item:nth-child(2) .detail-value': product.fema,
+                        '.formula-value:first-child': product.molecularFormula,
+                        '.formula-value:last-child': product.molecularWeight
+                    };
+                    
+                    for (const [selector, value] of Object.entries(elements)) {
+                        const element = document.querySelector(selector);
+                        if (element) {
+                            element.textContent = value;
+                        }
+                    }
+                    
+                    const reachElement = document.querySelector('.detail-value.reach-yes, .detail-value.reach-no');
+                    if (reachElement) {
+                        reachElement.textContent = product.reach;
+                        reachElement.className = 'detail-value ' + (product.reach === 'Yes' ? 'reach-yes' : 'reach-no');
+                    }
+                    
+                    const categoryTag = document.querySelector('.product-category-tag');
+                    if (categoryTag) {
+                        categoryTag.style.background = 'rgba(61, 139, 139, 0.1)';
+                        categoryTag.style.color = '#3d8b8b';
+                    }
+                    
+                    const synonymElement = document.querySelector('.product-synonym');
+                    if (synonymElement) {
+                        synonymElement.innerHTML = `<span class="product-synonym-label">Synonym:</span>${product.synonym}`;
+                    }
+                    
+                    const imgElement = document.querySelector('.product-image-container img');
+                    if (imgElement) {
+                        imgElement.src = product.image;
+                        imgElement.alt = product.name;
+                    }
+                } catch (e) {
+                    console.error('Error loading product:', e);
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProductFromURL();
+            document.querySelectorAll('.reveal').forEach((el, i) => {
+                setTimeout(() => {
+                    el.classList.add('visible');
+                }, i * 100);
+            });
+            
+            const nav = document.querySelector('.main-nav');
+            if (nav) {
+                const handleScroll = () => {
+                    if (window.scrollY > 50) {
+                        nav.classList.add('scrolled');
+                    } else {
+                        nav.classList.remove('scrolled');
+                    }
+                };
+                
+                handleScroll();
+                window.addEventListener('scroll', handleScroll);
+            }
+
+            // Product Details 卡片点击交互
+            const infoCards = document.querySelectorAll('.info-card');
+            infoCards.forEach(card => {
+                card.style.cursor = 'pointer';
+                
+                card.addEventListener('click', function(e) {
+                    // 移除其他卡片的active状态
+                    infoCards.forEach(c => {
+                        if (c !== card) {
+                            c.classList.remove('active');
+                        }
+                    });
+                    
+                    // 切换当前卡片的active状态
+                    this.classList.toggle('active');
+                });
+
+                // 鼠标离开时恢复原状
+                card.addEventListener('mouseleave', function() {
+                    this.classList.remove('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
